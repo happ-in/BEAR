@@ -2,14 +2,14 @@
 <div class="wrapper">
     <div>
         <h2>{{ beer.name }}</h2>
-        <img :src="beer.countryImg" />
+        <img class="countryImg" :src="beer.countryImg" />
     </div>
     <img :src="beer.imgUrl" />
     <!-- <div v-for="hashtag in hashtags" :key="beer.name">
         <p>{{ hashtag }}</p>
     </div> -->
     <div class="btn">
-        <button>다시하기</button>
+        <button class="repeat">다시하기</button>
         <button>상세페이지</button>
     </div>
 </div>
@@ -34,4 +34,22 @@
 </script>
 
 <style>
+.repeat {
+    position: absolute;
+    width: 138px;
+    height: 43px;
+    left: 42px;
+    top: 570px;
+
+    background: #FFFFFF;
+    border: 1px solid #939597;
+    box-sizing: border-box;
+}
+.countryImg {
+    position: absolute;
+    width: 24px;
+    height: 15.97px;
+    left: 287px;
+    top: 72px;
+}
 </style>
