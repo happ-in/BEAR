@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:mariadb://3.35.138.192:3306/zootopia
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: zootopia
+    password: zoo2021!
+
+  jpa:
+    open-in-view: false
+    generate-ddl: true
+    show-sql: true
