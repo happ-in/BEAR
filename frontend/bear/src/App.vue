@@ -17,7 +17,18 @@
 }
 
 #nav {
-  padding: 30px;
+  position: absolute;
+  /* width: 81px; */
+  height: 30px;
+  /* left: 140px; */
+  top: 13px;
+
+  font-family: Noto Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 30px;
+  /* identical to box height */
 }
 
 #nav a {
