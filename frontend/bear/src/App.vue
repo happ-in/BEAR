@@ -2,7 +2,7 @@
   <div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> |
-    <router-link to="/recomendation">Rcomendation</router-link>
+    <router-link to="/recomendation">Recomendation</router-link>
   </div>
   <router-view />
 </template>
@@ -18,9 +18,7 @@
 
 #nav {
   position: absolute;
-  /* width: 81px; */
   height: 30px;
-  /* left: 140px; */
   top: 13px;
 
   font-family: Noto Sans;
@@ -28,7 +26,6 @@
   font-weight: normal;
   font-size: 20px;
   line-height: 30px;
-  /* identical to box height */
 }
 
 #nav a {
