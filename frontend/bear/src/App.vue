@@ -1,24 +1,14 @@
 <template>
-<div id="nav">
-    <body>
-        <div data-role="page">
-            <div data-role="header">
-                <a href="#" data-icon="arrow-l" data-rel="back">이전</a>
-                <h3>header</h3>
-            </div>
-        </div>
-    </body>
-</div>
-  <!-- <div id="nav">
+  <div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> |
-    <router-link to="/recomendation">Recomendation</router-link>
-  </div> -->
+    <router-link to="/recomendation">Rcomendation</router-link>
+  </div>
   <router-view />
 </template>
 
 <style>
-/* #app {
+#app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -27,15 +17,7 @@
 }
 
 #nav {
-  position: absolute;
-  height: 30px;
-  top: 13px;
-
-  font-family: Noto Sans;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 20px;
-  line-height: 30px;
+  padding: 30px;
 }
 
 #nav a {
@@ -45,5 +27,5 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
-} */
+}
 </style>
