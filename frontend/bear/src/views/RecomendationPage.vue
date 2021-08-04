@@ -47,6 +47,7 @@
 
 <style>
 /* 다시하기랑 상세페이지 중간으로/ 글자 간격 띄우고 싶다  */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400&display=swap');
 .wrapper {
     position: absolute;
     width: 367vw;
@@ -54,6 +55,7 @@
     left: -4px;
     top: -4px;
 
+    font-family: 'Noto Sans KR', sans-serif;
     background: linear-gradient(180deg, rgba(245, 223, 77, 0) 0%, rgba(245, 223, 77, 0.453125) 21.88%, rgba(245, 223, 77, 0.945675) 36.98%, #F5DF4D 100%);
 }
 .card {
@@ -71,7 +73,7 @@ h1 {
     /* width: 100%; */
 
     margin-bottom: 4px;
-    font-family: Noto Sans;
+    font-family: 'Noto Sans KR', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 25px;
@@ -122,7 +124,7 @@ h1 img {
 
     text-decoration: none;
 
-    font-family: Noto Sans;
+    font-family: 'Noto Sans KR', sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 15px;
@@ -148,7 +150,7 @@ h1 img {
 
     text-decoration: none;
 
-    font-family: Noto Sans;
+    font-family: 'Noto Sans KR', sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 15px;
@@ -182,7 +184,7 @@ h1 img {
 
     text-align: left;
     text-shadow: -1px 0 #939597, 0 1px #939597, 1px 0 #939597, 0 -1px #939597;
-    font-family: Noto Sans;
+    font-family: 'Noto Sans KR', sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 20px;
