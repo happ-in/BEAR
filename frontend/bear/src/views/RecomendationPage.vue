@@ -46,6 +46,8 @@
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
 /* 다시하기랑 상세페이지 중간으로/ 글자 간격 띄우고 싶다  */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400&display=swap');
 .wrapper {
@@ -75,7 +77,7 @@ h1 {
     margin-bottom: 4px;
     font-family: 'Noto Sans KR', sans-serif;
     font-style: normal;
-    font-weight: normal;
+    font-weight: 400;
     font-size: 25px;
     /* line-height: 38px; */
 
