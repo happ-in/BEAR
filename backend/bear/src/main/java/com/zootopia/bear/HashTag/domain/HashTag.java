@@ -28,9 +28,6 @@ public class HashTag {
 	@OneToMany(mappedBy = "hashTag")
 	private List<ReviewHashTag> reviewHashTags = new ArrayList<>();
 
-	@OneToMany(mappedBy = "hashTag")
-	private List<BeerHashTag> beerHashTags = new ArrayList<>();
-
 	public HashTag(String hashTagName) {
 		this.hashTagName = hashTagName;
 	}
