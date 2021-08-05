@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.zootopia.bear.Review.dto.ReviewRegistryDto;
+import com.zootopia.bear.Review.service.ReviewRegistryService;
 
 import lombok.RequiredArgsConstructor;
 
