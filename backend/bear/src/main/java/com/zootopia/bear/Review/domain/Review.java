@@ -37,6 +37,9 @@ public class Review {
 	@OneToMany(mappedBy = "review")
 	private List<ReviewHashTag> reviewHashTags = new ArrayList<>();
 
+	@OneToMany(mappedBy = "review")
+	private List<ReviewLike> reviewLikes = new ArrayList<>();
+
 	public static Review createReview(ReviewRegistryDto reviewRegistryDto) {
 		return Review.builder()
 			.userId(reviewRegistryDto.getUserId())
