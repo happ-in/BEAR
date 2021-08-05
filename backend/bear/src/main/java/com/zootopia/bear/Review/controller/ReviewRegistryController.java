@@ -16,11 +16,12 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping(value = "/review")
 @RequiredArgsConstructor
 public class ReviewRegistryController {
+
 	private final ReviewRegistryService reviewRegistryService;
 
 	@PostMapping
-	public ResponseEntity<?> registryReview(@RequestBody ReviewRegistryDto dto) {
-		reviewRegistryService.registryReview(dto);
+	public ResponseEntity<?> reviewRegistry(@RequestBody ReviewRegistryDto reviewRegistryDto) {
+		reviewRegistryService.reviewRegistry(reviewRegistryDto);
 		return new ResponseEntity<>(true, HttpStatus.OK);
 	}
 }
