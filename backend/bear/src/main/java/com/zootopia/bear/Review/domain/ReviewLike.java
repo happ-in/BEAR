@@ -9,6 +9,7 @@ import javax.persistence.MapsId;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -26,6 +27,7 @@ public class ReviewLike {
 	@JoinColumn(name = "review_id")
 	private Review review;
 
+	@Builder
 	public ReviewLike(long userid, Review review) {
 		this.userReviewId = new ReviewLikeId(userid, review.getReviewId());
 		this.review = review;

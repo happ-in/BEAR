@@ -7,5 +7,5 @@ import com.zootopia.bear.Review.domain.ReviewLike;
 import com.zootopia.bear.Review.domain.ReviewLikeId;
 
 @Repository
-public interface UserReviewRepository extends JpaRepository<ReviewLike, ReviewLikeId> {
+public interface ReviewLikeRepository extends JpaRepository<ReviewLike, ReviewLikeId> {
 }
