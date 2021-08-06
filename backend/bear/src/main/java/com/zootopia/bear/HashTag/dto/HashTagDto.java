@@ -8,7 +8,12 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class HashTagDto {
+	private int hashTagId;
 	private String hashTagName;
 
 	public HashTagDto() {}
+
+	public HashTagDto(String hashTagName) {
+		this.hashTagName = hashTagName;
+	}
 }
