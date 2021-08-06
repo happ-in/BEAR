@@ -18,7 +18,7 @@ public class BeerRandomRecommendationDto {
 	private String category;
 	private double alcoholProof;
 	private String beerImage;
-	private List<HashTagNameDto> hashTagNameDtos = new ArrayList<>();
+	private List<HashTagNameDto> hashTags = new ArrayList<>();
 
 	public BeerRandomRecommendationDto(Beer beer, List<HashTagNameDto> hashTagNameDtos) {
 		this.beerId = beer.getBeerId();
@@ -27,6 +27,6 @@ public class BeerRandomRecommendationDto {
 		this.category = beer.getCategory();
 		this.alcoholProof = beer.getAlcoholProof();
 		this.beerImage = beer.getBeerImage();
-		this.hashTagNameDtos.addAll(hashTagNameDtos);
+		this.hashTags.addAll(hashTagNameDtos);
 	}
 }
