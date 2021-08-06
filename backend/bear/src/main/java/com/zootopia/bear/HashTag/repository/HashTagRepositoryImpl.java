@@ -3,7 +3,7 @@ package com.zootopia.bear.HashTag.repository;
 import static com.zootopia.bear.HashTag.domain.QHashTag.hashTag;
 import static com.zootopia.bear.HashTag.domain.QReviewHashTag.reviewHashTag;
 
-import com.zootopia.bear.HashTag.dto.HashTagDto;
+import com.zootopia.bear.HashTag.dto.HashTagNameDto;
 
 import java.util.List;
 
@@ -16,9 +16,9 @@ import lombok.RequiredArgsConstructor;
 public class HashTagRepositoryImpl implements HashTagRepositoryCustom {
 	private final JPAQueryFactory queryFactory;
 
-	public List<HashTagDto> searchHashTagTop4(int beerId) {
+	public List<HashTagNameDto> searchHashTagTop4(int beerId) {
 		return queryFactory
-			.select(Projections.constructor(HashTagDto.class,
+			.select(Projections.constructor(HashTagNameDto.class,
 				hashTag.hashTagName))
 			.from(reviewHashTag)
 			.leftJoin(hashTag)

@@ -5,6 +5,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.zootopia.bear.Beer.domain.Beer;
+import com.zootopia.bear.Beer.dto.BeerDto;
+import com.zootopia.bear.Beer.repository.BeerRepository;
 import com.zootopia.bear.HashTag.domain.HashTag;
 import com.zootopia.bear.HashTag.dto.HashTagDto;
 import com.zootopia.bear.HashTag.repository.HashTagRepository;
@@ -15,14 +18,24 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class SearchService {
 
+	private final BeerRepository beerRepository;
 	private final HashTagRepository hashTagRepository;
 
-	public List<HashTagDto> searchHashTag(String hashTag) {
-		List<HashTag> hashTags = hashTagRepository.findByHashTagContains(hashTag);
-		List<HashTagDto> hashTagDtos = new ArrayList<>();
-		for (HashTag tag : hashTags) {
-			hashTagDtos.add(new HashTagDto(tag.getHashTagId(), tag.getHashTagName()));
+	public List<HashTagDto> searchHashTag(String hashTagName) {
+		List<HashTag> hashTags = hashTagRepository.findByHashTagNameContains(hashTagName);
+		List<HashTagDto> hashTagNameDtos = new ArrayList<>();
+		for (HashTag hashTag : hashTags) {
+			hashTagNameDtos.add(new HashTagDto(hashTag.getHashTagId(), hashTag.getHashTagName()));
 		}
-		return hashTagDtos;
+		return hashTagNameDtos;
+	}
+
+	public List<BeerDto> searchBeer(String beerName) {
+		List<Beer> beers = beerRepository.findByBeerNameContains(beerName);
+		List<BeerDto> beerDtos = new ArrayList<>();
+		for (Beer beer : beers) {
+			beerDtos.add(new BeerDto(beer.getBeerId(), beer.getBeerName(), beer.getBeerImage()));
+		}
+		return beerDtos;
 	}
 }

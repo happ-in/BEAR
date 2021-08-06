@@ -14,5 +14,5 @@ public interface HashTagRepository extends JpaRepository<HashTag, Integer>, Hash
 
 	Optional<HashTag> findByHashTagName(String hashTagName);
 
-	List<HashTag> findByHashTagContains(String hashTag);
+	List<HashTag> findByHashTagNameContains(String hashTagName);
 }
