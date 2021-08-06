@@ -24,7 +24,7 @@ public class Beer {
 
 	private String countryName;
 
-	private String category;
+	private String beerCategory;
 
 	private double alcoholProof;
 

@@ -24,7 +24,7 @@ public class BeerRandomRecommendationDto {
 		this.beerId = beer.getBeerId();
 		this.beerName = beer.getBeerName();
 		this.countryName = beer.getCountryName();
-		this.category = beer.getCategory();
+		this.category = beer.getBeerCategory();
 		this.alcoholProof = beer.getAlcoholProof();
 		this.beerImage = beer.getBeerImage();
 		this.hashTags.addAll(hashTagNameDtos);
