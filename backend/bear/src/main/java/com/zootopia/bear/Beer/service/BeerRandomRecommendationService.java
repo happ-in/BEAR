@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.zootopia.bear.Beer.domain.Beer;
 import com.zootopia.bear.Beer.dto.BeerRandomRecommendationDto;
 import com.zootopia.bear.Beer.repository.BeerRepository;
-import com.zootopia.bear.HashTag.dto.HashTagDto;
+import com.zootopia.bear.HashTag.dto.HashTagNameDto;
 import com.zootopia.bear.HashTag.repository.HashTagRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -21,7 +21,7 @@ public class BeerRandomRecommendationService {
 
 	public BeerRandomRecommendationDto beerRandomRecommendation() {
 		Beer beer = beerRepository.searchRandomBeer();
-		List<HashTagDto> hashTagDtos = hashTagRepository.searchHashTagTop4(beer.getBeerId());
-		return new BeerRandomRecommendationDto(beer, hashTagDtos);
+		List<HashTagNameDto> hashTagNameDtos = hashTagRepository.searchHashTagTop4(beer.getBeerId());
+		return new BeerRandomRecommendationDto(beer, hashTagNameDtos);
 	}
 }

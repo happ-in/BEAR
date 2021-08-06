@@ -1,14 +1,15 @@
 package com.zootopia.bear.HashTag.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
-public class HashTagDto {
-	private String hashTagName;
+public class HashTagDto extends HashTagNameDto {
+	private int hashTagId;
 
-	public HashTagDto() {}
+	public HashTagDto(int hashTagId, String hashTagName) {
+		super(hashTagName);
+		this.hashTagId = hashTagId;
+	}
 }

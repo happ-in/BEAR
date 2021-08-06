@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.zootopia.bear.Beer.domain.Beer;
-import com.zootopia.bear.HashTag.dto.HashTagDto;
+import com.zootopia.bear.HashTag.dto.HashTagNameDto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -18,15 +18,15 @@ public class BeerRandomRecommendationDto {
 	private String category;
 	private double alcoholProof;
 	private String beerImage;
-	private List<HashTagDto> hashTagDtos = new ArrayList<>();
+	private List<HashTagNameDto> hashTagNameDtos = new ArrayList<>();
 
-	public BeerRandomRecommendationDto(Beer beer, List<HashTagDto> hashTagDtos) {
+	public BeerRandomRecommendationDto(Beer beer, List<HashTagNameDto> hashTagNameDtos) {
 		this.beerId = beer.getBeerId();
 		this.beerName = beer.getBeerName();
 		this.countryName = beer.getCountryName();
 		this.category = beer.getCategory();
 		this.alcoholProof = beer.getAlcoholProof();
 		this.beerImage = beer.getBeerImage();
-		this.hashTagDtos.addAll(hashTagDtos);
+		this.hashTagNameDtos.addAll(hashTagNameDtos);
 	}
 }

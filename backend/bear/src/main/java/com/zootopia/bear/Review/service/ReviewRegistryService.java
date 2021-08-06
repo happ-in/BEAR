@@ -5,7 +5,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.zootopia.bear.HashTag.domain.HashTag;
 import com.zootopia.bear.HashTag.domain.ReviewHashTag;
-import com.zootopia.bear.HashTag.dto.HashTagDto;
+import com.zootopia.bear.HashTag.dto.HashTagNameDto;
 import com.zootopia.bear.HashTag.repository.HashTagRepository;
 import com.zootopia.bear.HashTag.repository.ReviewHashTagRepository;
 import com.zootopia.bear.Review.domain.Review;
@@ -27,11 +27,11 @@ public class ReviewRegistryService {
 		// 1. 리뷰 등록
 		Review review = reviewRepository.save(Review.createReview(reviewRegistryDto));
 
-		for (HashTagDto hashTagDto : reviewRegistryDto.getHashTags()) {
+		for (HashTagNameDto hashTagNameDto : reviewRegistryDto.getHashTags()) {
 			// 1. 해시태그 등록
 			HashTag hashTag =
-				hashTagRepository.findByHashTagName(hashTagDto.getHashTagName())
-					.orElseGet(() -> hashTagRepository.save(new HashTag(hashTagDto.getHashTagName())));
+				hashTagRepository.findByHashTagName(hashTagNameDto.getHashTagName())
+					.orElseGet(() -> hashTagRepository.save(new HashTag(hashTagNameDto.getHashTagName())));
 
 			// 2. 리뷰-해시태그 등록
 			reviewHashTagRepository.save(new ReviewHashTag(review, hashTag));
