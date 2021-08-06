@@ -26,7 +26,7 @@ public class BeerHashTagDto {
 		this.beerId = beer.getBeerId();
 		this.beerName = beer.getBeerName();
 		this.countryName = beer.getCountryName();
-		this.beerCategory = beer.getBeerCategory();
+		this.beerCategory = beer.getBeerCategory().name();
 		this.alcoholProof = beer.getAlcoholProof();
 		this.beerImage = beer.getBeerImage();
 		this.hashTags.addAll(hashTagTotalDtos);
