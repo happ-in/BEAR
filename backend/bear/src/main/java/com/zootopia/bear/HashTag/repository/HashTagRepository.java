@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 import com.zootopia.bear.HashTag.domain.HashTag;
 
 @Repository
-public interface HashTagRepository extends JpaRepository<HashTag, Integer> {
-	Optional<HashTag> findById(Integer integer);
+public interface HashTagRepository extends JpaRepository<HashTag, Integer>, HashTagRepositoryCustom {
+	Optional<HashTag> findById(Integer hashTagId);
 
 	Optional<HashTag> findByHashTagName(String hashTagName);
 }
