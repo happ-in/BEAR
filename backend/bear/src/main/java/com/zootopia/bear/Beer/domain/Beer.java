@@ -22,11 +22,11 @@ public class Beer {
 
 	private String beerName;
 
-	private String country_name;
+	private String countryName;
 
 	private String category;
 
 	private double alcoholProof;
 
-	private String beer_image;
+	private String beerImage;
 }
