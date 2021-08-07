@@ -1,6 +1,6 @@
 <template>
 <!-- 화면가이드  -->
-  <div id="guide"> 
+  <div id="guide" ref="guide"> 
     <div id="guide_inner_1">  
       <svg
         id="guide_img"
@@ -147,6 +147,9 @@
         </g>
       </svg>
     </div>
+    <div id="container" ref="con">
+  <h1>Hello, world!{{this.sampleData}}</h1>
+</div>
 </template>
 <script>
   export default {
@@ -167,18 +170,19 @@
               )
               .then((entity) => {
                 //const { width, height } = entity.physicalSize;
-                const div = document.createElement("div");
-                div.style.width = 360 + "px"; //width + 'px';
-                div.style.height = 640 + "px"; //height + "px";
-                //div.style.border = '1px solid red';
-                div.innerHTML = `
-                          <p id="beer_hash_one">#커피향</p>
-                          <p id="beer_hash_two">#수제흑맥주</p>
-                          <p id="beer_hash_three">#쌉쌀한맛</p>
-                          <p id="beer_hash_four">#흑맥주입문</p>
-                          <p id="beer_title">말표 흑맥주</p>
-                          <p id="beer_star">4.2</p>
-                          `;
+                // const div = document.createElement("div");
+                // div.style.width = 360 + "px"; //width + 'px';
+                // div.style.height = 640 + "px"; //height + "px";
+                // //div.style.border = '1px solid red';
+                // div.innerHTML = `
+                //           <p id="beer_hash_one">#커피향</p>
+                //           <p id="beer_hash_two">#수제흑맥주</p>
+                //           <p id="beer_hash_three">#쌉쌀한맛</p>
+                //           <p id="beer_hash_four">#흑맥주입문</p>
+                //           <p id="beer_title">말표 흑맥주</p>
+                //           <p id="beer_star">4.2</p>
+                //           `;
+                let div = this.$refs.con;
                 const xrElement = letsee.createXRElement(div);
                 letsee.bindXRElement(xrElement, entity);
               });
@@ -232,23 +236,21 @@
               location.href = "https://www.naver.com/";
             });
             letsee.onTrackStart(() => {
-              let guide = document.getElementById("guide");
-              guide.style.visibility = "hidden";
-              guide.style["z-index"] = 0;
+              this.$refs.guide.style.visibility = "hidden";
+              this.$refs.guide.style["z-index"] = 0;
               
             });
             letsee.onTrackEnd((e) => {
-              let guide = document.getElementById("guide");
-              guide.style.visibility = "visible";
-              guide.style["z-index"] = 500;
+              this.$refs.guide.style.visibility = "visible";
+              this.$refs.guide.style["z-index"] = 500;
               console.log('TrackEnd');
-              console.log(e)
-              console.log(this.sampleData)
+              console.log(e);
+              console.log(this.sampleData);
+              this.sampleData = "wow";
             });
-            let guide = document.getElementById("guide");
-            guide.style.visibility = "visible";
-            guide.style["z-index"] = 500;
-            document.getElementById("btn_div").style.visibility = "visible";
+            this.$refs.guide.style.visibility = "visible";
+            this.$refs.guide.style["z-index"] = 500;
+            //this.$refs.btn_div.style.visibility = "visible";
             });
           letsee.init();
           }, //컴포넌트가 생성되면 실행
