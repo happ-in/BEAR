@@ -1,6 +1,8 @@
 package com.zootopia.bear.Beer.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,7 +26,7 @@ public class Beer {
 
 	private String countryName;
 
-	private String category;
+	private String beerCategory;
 
 	private double alcoholProof;
 
