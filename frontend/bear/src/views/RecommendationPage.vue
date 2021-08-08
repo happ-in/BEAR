@@ -6,6 +6,7 @@
             {{ beer.name }} 
             <img :src="beer.countryImg" />
         </h1>
+
         <!-- 맥주 이미지 -->
         <div class="beerimg-box"><img :src="beer.imgUrl"/></div>
     
@@ -46,8 +47,6 @@
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
-
 /* 다시하기랑 상세페이지 중간으로/ 글자 간격 띄우고 싶다  */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400&display=swap');
 .wrapper {
