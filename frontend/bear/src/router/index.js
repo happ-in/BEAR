@@ -1,6 +1,7 @@
+
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
-import Recomendation from "../views/RecomendationPage.vue";
+import Recommendation from "../views/RecommendationPage.vue";
 
 const routes = [
   {
@@ -18,9 +19,9 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
   {
-    path: "/recomendation",
-    name: "Recomendation",
-    component: Recomendation,
+    path: "/recommendation",
+    name: "Recommendation",
+    component: Recommendation,
   },
 ];
 
