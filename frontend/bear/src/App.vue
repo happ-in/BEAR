@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Header from './components/TheHeader.vue'
+import Header from './components/TheTabBar.vue'
 export default {
   name: 'App',
   components: {

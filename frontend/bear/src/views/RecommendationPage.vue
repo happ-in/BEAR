@@ -2,15 +2,6 @@
 <div class="wrapper">
     <div>
         <h2>{{ beer.name }}</h2>
-        <img :src="beer.countryImg" />
-    </div>
-    <img :src="beer.imgUrl" />
-    <!-- <div v-for="hashtag in hashtags" :key="beer.name">
-        <p>{{ hashtag }}</p>
-    </div> -->
-    <div class="btn">
-        <button>다시하기</button>
-        <button>상세페이지</button>
     </div>
 </div>
 </template>

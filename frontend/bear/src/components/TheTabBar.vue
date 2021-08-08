@@ -1,17 +1,12 @@
 <template>
     <div id="nav">
-        <div data-role="page">
-            <div class="container">
-                <button @click="goBack" type="button"><img id="backIcon" src="../assets/navigation_arrow_left_back_icon.png" /></button>
-                <h3>{{ pageName }}</h3>
-            </div>
-        </div>
+        
     </div>
 </template>
-<script>
 
+<script>
     export default {
-        name: 'Header', //컴포넌트 이름
+        name: 'TabBar', //컴포넌트 이름
         components: {},
         data() { //html과 자바스크립트 코드에서 사용할 데이터 변수 선언
             return {
@@ -38,16 +33,6 @@
         methods: {
             goBack(){
                 this.$router.go(-1); [2]
-            },
-            getPageName() {
-                var pageName = "";
-            
-                var tempPageName = window.location.href;
-                console.log(tempPageName)
-                var strPageName = tempPageName.split("/");
-                pageName = strPageName[strPageName.length-1].split("?")[0];
-            
-                return pageName;
             },
         } //컴포넌트 내에서 사용할 메소드 정의
     }
