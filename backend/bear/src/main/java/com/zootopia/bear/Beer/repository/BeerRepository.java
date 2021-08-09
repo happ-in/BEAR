@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.zootopia.bear.Beer.domain.Beer;
 
-public interface BeerRepository extends JpaRepository<Beer, Integer> {
+public interface BeerRepository extends JpaRepository<Beer, Integer>, BeerRepositoryCustom {
 	Beer findById(int id);
 
 	@Query(value = "select * from beer order by rand() limit 1", nativeQuery = true)
