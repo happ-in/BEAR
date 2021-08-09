@@ -1,7 +1,7 @@
 <template>
 <div class="wrapper">
     <div>
-        <h2>{{ beer.name }}</h2>
+        <h2>추천 페이지</h2>
     </div>
 </div>
 </template>

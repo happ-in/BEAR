@@ -6,7 +6,7 @@
             :key="list.key"
             :to="list.link"
             tag="li"
-            class="tabbar-menu=list"
+            class="tabbar-menu-list"
             class-activate="active"
             exact>{{list.title}}
             </router-link>
@@ -22,7 +22,7 @@
             return {
                  lists: [
                      {link: '/recommendation', title: '랜덤 추천'},
-                    //  {link: '/ranking', title:'랭킹'},
+                     {link: '/ranking', title:'랭킹'},
                     //  {link: '/', title:'홈피드'},
                     //  {link: '/search', title:'검색'},
                     //  {link: '/myprofile', title:'마이페이지'}
@@ -44,30 +44,25 @@
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
-#app {
-  font-family: 'Noto Sans KR', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: black;
+#tab-wrap {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-around;
 }
+#menu {
+    padding: 0;
+    /* text-align: center; */
 
-.container {
-  display: flex;
+    font-family: 'Noto Sans KR', sans-serif;
+    /* text-decoration: none; */
 }
-
-#backIcon {
-  width: 7vw;
-  height: 7vw;
-  vertical-align: middle;
-  margin-right: auto;
-}
-
-h3 {
-  align-items: center;
-  margin: 0 auto;
-
+.tabbar-menu-list {
+    padding: 0 3vw;
 }
 </style>
