@@ -2,6 +2,7 @@ package com.zootopia.bear.Beer.repository;
 
 import static com.zootopia.bear.Beer.domain.QBeer.beer;
 import static com.zootopia.bear.Review.domain.QReview.review;
+import static com.zootopia.bear.utils.StringUtils.RANK_LIMIT;
 
 import java.util.List;
 
@@ -32,6 +33,7 @@ public class BeerRepositoryImpl implements BeerRepositoryCustom {
 			.on(beer.beerId.eq(review.beerId))
 			.groupBy(beer.beerId)
 			.orderBy(beer.count().desc())
+			.limit(RANK_LIMIT)
 			.fetch();
 	}
 
@@ -52,6 +54,7 @@ public class BeerRepositoryImpl implements BeerRepositoryCustom {
 			.where(beer.beerCategory.contains(category))
 			.groupBy(beer.beerId)
 			.orderBy(beer.count().desc())
+			.limit(RANK_LIMIT)
 			.fetch();
 	}
 }
