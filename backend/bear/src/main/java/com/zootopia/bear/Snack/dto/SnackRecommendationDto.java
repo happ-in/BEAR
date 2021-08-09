@@ -5,11 +5,14 @@ import java.util.List;
 
 import com.zootopia.bear.Snack.domain.SnackDetail;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
 public class SnackRecommendationDto {
 	private String snackCategory;
 	private List<SnackDto> snacks = new ArrayList<>();
