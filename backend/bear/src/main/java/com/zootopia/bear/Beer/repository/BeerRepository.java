@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.zootopia.bear.Beer.domain.Beer;
 
-public interface BeerRepository extends JpaRepository<Beer, Integer> {
+public interface BeerRepository extends JpaRepository<Beer, Integer>, BeerRankingRepositoryCustom {
 	@Override
 	Optional<Beer> findById(Integer beerId);
 
