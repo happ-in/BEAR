@@ -12,6 +12,6 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<User,Long> {
 
     //nickname 중복여부 확인 1. 리스트로 전부 다 찾기 2. 자기 자신 제외하고 찾기
-    @Query("SELECT nickname FROM User where user_id=:user_id")
-    public boolean findNicknameByUserId(@Param("user_id") Long user_id);
+//    @Query("SELECT nickname FROM User where userId=:userId")
+//    public String findNicknameByUserId(@Param("userId") Long userId);
 }

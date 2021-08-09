@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -16,11 +17,17 @@ import javax.persistence.Table;
 @Table(name = "USER")
 public class User {
     @Id
-    private long user_id;
-    private String custom_id;
+    @Column(name = "user_id")
+    private long userId;
+    @Column(name = "custom_id")
+    private String customId;
+    @Column(name = "nickname")
     private String nickname;
+    @Column(name = "sex")
     private String sex;
-    private String image;
-    private long share_count;
+    @Column(name = "user_image")
+    private String userImage;
+    @Column(name = "share_count")
+    private long shareCount;
 
 }

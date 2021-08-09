@@ -104,12 +104,12 @@ public class UserService {
             JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
 
             // properties 정보 -> 필수 동의 사항
-            Long user_id = element.getAsJsonObject().get("id").getAsLong();
+            Long userId = element.getAsJsonObject().get("id").getAsLong();
             String nickname = properties.getAsJsonObject().get("nickname").getAsString();
             String profile_image = properties.getAsJsonObject().get("profile_image").getAsString();
-            user.setUser_id(user_id);
+            user.setUserId(userId);
             user.setNickname(nickname);
-            user.setImage(profile_image);
+            user.setUserImage(profile_image);
 
             //kakao_account -> 선택 동의 여부 확인
             boolean has_email = kakao_account.getAsJsonObject().get("has_email").getAsBoolean();
@@ -117,9 +117,9 @@ public class UserService {
 
             if (has_email) {
                 String custom_id = kakao_account.getAsJsonObject().get("email").getAsString();
-                user.setCustom_id(custom_id);
+                user.setCustomId(custom_id);
             } else {
-                user.setCustom_id("empty");
+                user.setCustomId("empty");
             }
 
             if (has_gender) {
@@ -139,7 +139,7 @@ public class UserService {
     }
 
     public long getUserId(String access_Token){
-        long user_id=0;
+        long userId=0;
         String reqURL = "https://kapi.kakao.com/v2/user/me";
         try {
             URL url = new URL(reqURL);
@@ -163,21 +163,21 @@ public class UserService {
             JsonParser parser = new JsonParser();
             JsonElement element = parser.parse(result);
 
-            user_id = element.getAsJsonObject().get("id").getAsLong();
+            userId = element.getAsJsonObject().get("id").getAsLong();
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        return user_id;
+        return userId;
     }
 
-    public Optional<User> getUser(long user_id) {
-        return userRepository.findById(user_id);
+    public Optional<User> getUser(long userId) {
+        return userRepository.findById(userId);
     }
 
     public boolean joinUser(User user) {
-        Long user_id = user.getUser_id();
-        if(!userRepository.findById(user_id).isPresent()) {
+        Long userId = user.getUserId();
+        if(!userRepository.findById(userId).isPresent()) {
             userRepository.save(user);
             return true;
         }
@@ -185,8 +185,8 @@ public class UserService {
     }
 
     public boolean updateUser(User user) {
-        Long user_id = user.getUser_id();
-        Optional<User> new_user = userRepository.findById(user_id);
+        Long userId = user.getUserId();
+        Optional<User> new_user = userRepository.findById(userId);
 
         if(!new_user.isPresent()) {
             return false;
@@ -196,13 +196,13 @@ public class UserService {
     }
 
     public boolean deleteUser(User user) {
-        Long user_id = user.getUser_id();
-        Optional<User> new_user = userRepository.findById(user_id);
+        Long userId = user.getUserId();
+        Optional<User> new_user = userRepository.findById(userId);
 
         if(!new_user.isPresent()) {
             return false;
         } else {
-            userRepository.deleteById(user_id);
+            userRepository.deleteById(userId);
             return true;
         }
     }

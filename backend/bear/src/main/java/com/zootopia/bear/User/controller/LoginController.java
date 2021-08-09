@@ -25,15 +25,15 @@ public class LoginController {
 
     @RequestMapping("/kakao")
     public ResponseEntity<?> home(@RequestParam(value = "code", required = false) String code, HttpSession session) throws Exception{
-        String access_Token = userService.getAccessToken(code);
-        Long user_id = userService.getUserId(access_Token);
-        User user = userService.getUser(user_id).get();
+        String accessToken = userService.getAccessToken(code);
+        Long userId = userService.getUserId(accessToken);
+        User user = userService.getUser(userId).get();
         if(user==null) {
-            user = userService.getKakaoInfo(access_Token);
+            user = userService.getKakaoInfo(accessToken);
             userService.joinUser(user);
         }
-        session.setAttribute("user_id",user_id);
-        session.setAttribute("access_Token",access_Token);
+        session.setAttribute("userId",userId);
+        session.setAttribute("accessToken",accessToken);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
