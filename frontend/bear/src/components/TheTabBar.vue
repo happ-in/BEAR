@@ -1,6 +1,16 @@
 <template>
-    <div id="nav">
-        
+    <div id="tab-wrap">
+        <ul id="menu">
+            <router-link
+            v-for="list in lists"
+            :key="list.key"
+            :to="list.link"
+            tag="li"
+            class="tabbar-menu=list"
+            class-activate="active"
+            exact>{{list.title}}
+            </router-link>
+        </ul>
     </div>
 </template>
 
@@ -10,18 +20,13 @@
         components: {},
         data() { //html과 자바스크립트 코드에서 사용할 데이터 변수 선언
             return {
-                 links: [
-                    {
-                        id: 0,
-                        text: "메인으로",
-                        page: "/"
-                    },
-                    {
-                        id: 1,
-                        text: "First로 가기",
-                        page: "/first"
-                    }
-                ],
+                 lists: [
+                     {link: '/recommendation', title: '랜덤 추천'},
+                    //  {link: '/ranking', title:'랭킹'},
+                    //  {link: '/', title:'홈피드'},
+                    //  {link: '/search', title:'검색'},
+                    //  {link: '/myprofile', title:'마이페이지'}
+                 ]
             };
         },
         setup() {}, //컴포지션 API

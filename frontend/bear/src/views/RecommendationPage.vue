@@ -8,7 +8,7 @@
 
 <script>
     export default {
-        name: 'Recomandation', //컴포넌트 이름
+        name: 'Recommeendation', //컴포넌트 이름
         components: {},
         data() { //html과 자바스크립트 코드에서 사용할 데이터 변수 선언
             return {

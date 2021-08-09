@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <Header />
     <router-view/> 
+    <tab-bar></tab-bar>
   </div>
 </template>
 
 <script>
-import Header from './components/TheTabBar.vue'
+import TabBar from './components/TheTabBar.vue'
 export default {
-  name: 'App',
+  name: 'app',
   components: {
-    Header,
+    'tab-bar': TabBar,
   }
 }
 </script>
