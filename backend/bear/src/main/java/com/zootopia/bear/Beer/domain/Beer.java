@@ -1,13 +1,9 @@
 package com.zootopia.bear.Beer.domain;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import com.zootopia.bear.Beer.dto.BeerCategory;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -28,8 +24,7 @@ public class Beer {
 
 	private String countryName;
 
-	@Enumerated(EnumType.STRING)
-	private BeerCategory beerCategory;
+	private String beerCategory;
 
 	private double alcoholProof;
 
