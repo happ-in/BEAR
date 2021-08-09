@@ -29,7 +29,7 @@ public class UserService {
 
     public String getAccessToken (String authorize_code) {
         String access_Token = "";
-        String refresh_Token = "";
+        //String refresh_Token = "";
         String reqURL = "https://kauth.kakao.com/oauth/token";
 
         try {
@@ -188,14 +188,15 @@ public class UserService {
         Long user_id = user.getUser_id();
         Optional<User> new_user = userRepository.findById(user_id);
 
-        if(new_user.isPresent()) {
-            userRepository.save(user);
-            return true;
+        if(!new_user.isPresent()) {
+            return false;
         }
-        return false;
+        // nickname check
+        return true;
     }
 
-    public boolean deleteUser(Long user_id) {
+    public boolean deleteUser(User user) {
+        Long user_id = user.getUser_id();
         Optional<User> new_user = userRepository.findById(user_id);
 
         if(!new_user.isPresent()) {

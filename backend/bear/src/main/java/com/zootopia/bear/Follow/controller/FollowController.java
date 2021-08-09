@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @RequestMapping("/follow")
 @RestController
@@ -21,9 +22,10 @@ public class FollowController {
         this.followService = followService;
     }
 
-    @GetMapping("/f1")
-    public ResponseEntity<?> testgetFollows(HttpSession session){
-        //followService.getFollows();
+    @GetMapping("/follows")
+    public ResponseEntity<?> getFollows(HttpSession session){
+        Long user_id = (Long) session.getAttribute("user_id");
+        List<Long> list = followService.getFollows(user_id);
         return null;
     }
 
