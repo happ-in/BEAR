@@ -23,9 +23,10 @@
                  lists: [
                      {link: '/recommendation', title: '랜덤 추천'},
                      {link: '/ranking', title:'랭킹'},
-                    //  {link: '/', title:'홈피드'},
-                    //  {link: '/search', title:'검색'},
-                    //  {link: '/myprofile', title:'마이페이지'}
+                     {link: '/', title:'홈피드'},
+                     {link: '/search', title:'검색'},
+                     {link: '/myprofile', title:'마이페이지'},
+                     {link: '/ar', title:'AR'}
                  ]
             };
         },
@@ -33,7 +34,46 @@
         created() {
             
         }, //컴포넌트가 생성되면 실행
-        mounted() {}, //template에 정의된 html코드가 레너링된 후 실행
+        mounted() {
+            // // Hide Header on on scroll down 
+            // var didScroll; 
+            // var lastScrollTop = 0; 
+            // var delta = 5; 
+            // var navbarHeight = $('header').outerHeight(); 
+            
+            // $(window).scroll(function(event){ 
+            //     didScroll = true; 
+            //     }); 
+                
+            // setInterval(function() { 
+            //     if (didScroll) { 
+            //         hasScrolled(); 
+            //         didScroll = false; 
+            //     } 
+            // }, 250); 
+
+            // function hasScrolled() { 
+            //     var st = $(this).scrollTop(); 
+                
+            //     // Make sure they scroll more than delta 
+            //     if(Math.abs(lastScrollTop - st) <= delta) 
+            //         return; 
+                    
+            //     // If they scrolled down and are past the navbar, add class .nav-up. 
+            //     // This is necessary so you never see what is "behind" the navbar. 
+            //     if (st > lastScrollTop && st > navbarHeight){ 
+            //         // Scroll Down 
+            //         $('header').removeClass('nav-down').addClass('nav-up'); 
+            //     } else { 
+            //         // Scroll Up 
+            //         if(st + $(window).height() < $(document).height()) {
+            //             $('header').removeClass('nav-up').addClass('nav-down'); 
+            //         } 
+            //     } 
+                
+            //     lastScrollTop = st; 
+            // }
+        }, //template에 정의된 html코드가 레너링된 후 실행
         unmounted() {}, //unmount가 완료된 후 실행
         methods: {
             goBack(){
@@ -47,10 +87,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
 #tab-wrap {
-    position: absolute;
+    position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
+    height: 10vw;
 
     display: flex;
     justify-content: space-around;

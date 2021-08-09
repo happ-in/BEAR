@@ -1,11 +1,13 @@
 <template>
 <div class="wrapper">
+    <!-- 페이지 이름 -->
+    <h1>랜덤 추천</h1>
     <!-- 맥주 이름, 국기 이미지 -->
     <div class="card">
-        <h1 style="display: flex; justify-content: space-around;">
+        <h2>
             {{ beer.name }} 
             <img :src="beer.countryImg" />
-        </h1>
+        </h2>
 
         <!-- 맥주 이미지 -->
         <div class="beerimg-box"><img :src="beer.imgUrl"/></div>
@@ -51,28 +53,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400&display=swap');
 .wrapper {
     position: absolute;
-    width: 367vw;
-    height: 190vw;
+    width: 102%;
+    height: 101%;
     left: -4px;
-    top: -4px;
+    top: -5px;
+    
 
     font-family: 'Noto Sans KR', sans-serif;
     background: linear-gradient(180deg, rgba(245, 223, 77, 0) 0%, rgba(245, 223, 77, 0.453125) 21.88%, rgba(245, 223, 77, 0.945675) 36.98%, #F5DF4D 100%);
 }
-.card {
-    margin-top: 48px;
-    margin-left: 35px;
+h1 {
     display: flex;
+    justify-content: center;
+    margin: 2% 0%;
+}
+.card {
+    margin-top: 1%;
+    margin-left: 10%;
+    display: flex;
+    justify-content: center;
+    /* align-item: center; */
     flex-direction: column;
     width: 291px;
 }
-h1 {
+h2 {
     /* vertical-align:middle; */
     /* position: absolute; */
     /* left: 35px;
     top: 40px; */
     /* width: 100%; */
+    display: flex; 
+    justify-content: space-around;
 
+    margin-top: 3px;
     margin-bottom: 4px;
     font-family: 'Noto Sans KR', sans-serif;
     font-style: normal;
@@ -82,7 +95,7 @@ h1 {
 
     color: #000000;
 }
-h1 img {
+h2 img {
     position: inline;
     /* vertical-align: middle; */
     align-self: center;
