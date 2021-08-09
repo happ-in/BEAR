@@ -19,11 +19,6 @@ const routes = [
   //     import(/* webpackChunkName: "about" */ "../views/About.vue"),
   // },
   {
-<<<<<<< HEAD
-    path: "/recommendation",
-    name: "Recommendation",
-    component: Recommendation,
-=======
     path: "/",
     name: "Home",
     component: Home,
@@ -40,8 +35,7 @@ const routes = [
   {
     path: "/recomendation",
     name: "Recomendation",
-    component: Recomendation,
->>>>>>> origin
+    component: Recommendation,
   },
 ];
 

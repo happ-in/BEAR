@@ -1,15 +1,8 @@
 <template>
-<<<<<<< HEAD
   <div id="app">
     <router-view></router-view> 
     
     <tab-bar></tab-bar>
-=======
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/ar">AR</router-link> |
-    <router-link to="/recomendation">Rcomendation</router-link>
->>>>>>> origin
   </div>
 </template>
 
