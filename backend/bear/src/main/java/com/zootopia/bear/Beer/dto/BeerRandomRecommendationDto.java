@@ -6,11 +6,16 @@ import java.util.List;
 import com.zootopia.bear.Beer.domain.Beer;
 import com.zootopia.bear.HashTag.dto.HashTagNameDto;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
+@AllArgsConstructor
 public class BeerRandomRecommendationDto {
 	private int beerId;
 	private String beerName;
