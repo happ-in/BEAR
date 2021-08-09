@@ -19,9 +19,29 @@ const routes = [
   //     import(/* webpackChunkName: "about" */ "../views/About.vue"),
   // },
   {
+<<<<<<< HEAD
     path: "/recommendation",
     name: "Recommendation",
     component: Recommendation,
+=======
+    path: "/",
+    name: "Home",
+    component: Home,
+  },
+  {
+    path: "/ar",
+    name: "Ar",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/ArPage.vue"),
+  },
+  {
+    path: "/recomendation",
+    name: "Recomendation",
+    component: Recomendation,
+>>>>>>> origin
   },
 ];
 
