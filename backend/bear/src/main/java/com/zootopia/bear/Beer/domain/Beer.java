@@ -1,9 +1,14 @@
 package com.zootopia.bear.Beer.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.zootopia.bear.Country.domain.Country;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -22,7 +27,9 @@ public class Beer {
 
 	private String beerName;
 
-	private String countryName;
+	@ManyToOne
+	@JoinColumn(name = "country_name")
+	private Country country;
 
 	private String beerCategory;
 
