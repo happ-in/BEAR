@@ -1,4 +1,4 @@
-package com.zootopia.bear.rank.controller;
+package com.zootopia.bear.Rank.controller;
 
 import static com.zootopia.bear.utils.StringUtils.*;
 
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.zootopia.bear.rank.dto.RankDto;
-import com.zootopia.bear.rank.service.RankService;
+import com.zootopia.bear.Rank.dto.RankDto;
+import com.zootopia.bear.Rank.service.RankService;
 
 import lombok.RequiredArgsConstructor;
 

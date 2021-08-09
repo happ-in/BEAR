@@ -7,7 +7,7 @@ import java.util.List;
 
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.zootopia.bear.rank.dto.RankDto;
+import com.zootopia.bear.Rank.dto.RankDto;
 
 import lombok.RequiredArgsConstructor;
 

@@ -1,4 +1,4 @@
-package com.zootopia.bear.rank.dto;
+package com.zootopia.bear.Rank.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

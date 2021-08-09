@@ -1,11 +1,11 @@
-package com.zootopia.bear.rank.service;
+package com.zootopia.bear.Rank.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import com.zootopia.bear.Beer.repository.BeerRepository;
-import com.zootopia.bear.rank.dto.RankDto;
+import com.zootopia.bear.Rank.dto.RankDto;
 
 import lombok.RequiredArgsConstructor;
 
