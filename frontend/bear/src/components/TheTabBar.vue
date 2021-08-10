@@ -20,6 +20,7 @@
         components: {},
         data() { //html과 자바스크립트 코드에서 사용할 데이터 변수 선언
             return {
+<<<<<<< HEAD
                  lists: [
                      {link: '/recommendation', title: '랜덤 추천'},
                      {link: '/ranking', title:'랭킹'},
@@ -28,14 +29,27 @@
                      {link: '/myprofile', title:'마이페이지'},
                      {link: '/ar', title:'AR'}
                  ]
+=======
+                lists: [
+                    {link: '/recommendation', title: '랜덤 추천'},
+                    {link: '/ranking', title:'랭킹'},
+                    {link: '/', title:'홈피드'},
+                    {link: '/search', title:'검색'},
+                    {link: '/myprofile', title:'마이페이지'}
+                ]
+>>>>>>> 09f1928 (Fix: Change git collision)
             };
         },
         setup() {}, //컴포지션 API
         created() {
             
         }, //컴포넌트가 생성되면 실행
+<<<<<<< HEAD
         mounted() {
         }, //template에 정의된 html코드가 레너링된 후 실행
+=======
+        mounted() {}, //template에 정의된 html코드가 레너링된 후 실행
+>>>>>>> 09f1928 (Fix: Change git collision)
         unmounted() {}, //unmount가 완료된 후 실행
         methods: {
             goBack(){
@@ -49,23 +63,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
 #tab-wrap {
+<<<<<<< HEAD
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
     height: 10vw;
 
+=======
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+>>>>>>> 09f1928 (Fix: Change git collision)
     display: flex;
     justify-content: space-around;
 }
 #menu {
     padding: 0;
     /* text-align: center; */
+<<<<<<< HEAD
 
     font-family: 'Noto Sans KR', sans-serif;
+=======
+   font-family: 'Noto Sans KR', sans-serif;
+>>>>>>> 09f1928 (Fix: Change git collision)
     /* text-decoration: none; */
 }
 .tabbar-menu-list {
     padding: 0 3vw;
 }
+<<<<<<< HEAD
 </style>
+=======
+</style>
+>>>>>>> 09f1928 (Fix: Change git collision)

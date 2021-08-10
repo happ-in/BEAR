@@ -2,6 +2,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 // import Home from "../views/Home.vue";
 import Recommendation from "../views/RecommendationPage.vue";
+// import RankingMain from "../views/RankingMainPage.vue";
 
 const routes = [
   // {
@@ -10,13 +11,13 @@ const routes = [
   //   component: Home,
   // },
   // {
-  //   path: "/about",
-  //   name: "About",
+  //   path: "/ar",
+  //   name: "Ar",
   //   // route level code-splitting
   //   // this generates a separate chunk (about.[hash].js) for this route
   //   // which is lazy-loaded when the route is visited.
   //   component: () =>
-  //     import(/* webpackChunkName: "about" */ "../views/About.vue"),
+  //     import(/* webpackChunkName: "about" */ "../views/ArPage.vue"),
   // },
   {
     path: "/",
@@ -37,6 +38,7 @@ const routes = [
     name: "Recomendation",
     component: Recommendation,
   },
+<<<<<<< HEAD
   {
     path: "/search",
     name: "Search",
@@ -47,6 +49,13 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/SearchPage.vue"),
   },
   
+=======
+  // {
+  //   path: "/ranking",
+  //   name: "RankingMain",
+  //   component: RankingMain,
+  // },
+>>>>>>> 09f1928 (Fix: Change git collision)
 ];
 
 const router = createRouter({
