@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,8 +35,11 @@ public class Review {
 
 	private double rating;
 
-	@OneToMany(mappedBy = "review")
+	@OneToMany(mappedBy = "review", fetch = FetchType.LAZY)
 	private List<ReviewHashTag> reviewHashTags = new ArrayList<>();
+
+	@OneToMany(mappedBy = "review", fetch = FetchType.LAZY)
+	private List<ReviewLike> reviewLikes = new ArrayList<>();
 
 	public static Review createReview(ReviewRegistryDto reviewRegistryDto) {
 		return Review.builder()

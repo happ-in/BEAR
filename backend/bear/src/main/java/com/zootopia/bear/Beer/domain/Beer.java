@@ -1,15 +1,14 @@
 package com.zootopia.bear.Beer.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
-import com.zootopia.bear.HashTag.domain.BeerHashTag;
+import com.zootopia.bear.Country.domain.Country;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -28,14 +27,13 @@ public class Beer {
 
 	private String beerName;
 
-	private String country_name;
+	@ManyToOne
+	@JoinColumn(name = "country_name")
+	private Country country;
 
-	private String category;
+	private String beerCategory;
 
 	private double alcoholProof;
 
-	private String beer_image;
-
-	@OneToMany(mappedBy = "beer")
-	private List<BeerHashTag> beerHashTags = new ArrayList<>();
+	private String beerImage;
 }

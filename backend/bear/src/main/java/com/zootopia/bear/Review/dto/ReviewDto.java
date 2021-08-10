@@ -1,0 +1,24 @@
+package com.zootopia.bear.Review.dto;
+
+import java.util.List;
+
+import com.zootopia.bear.Beer.domain.Beer;
+import com.zootopia.bear.HashTag.domain.HashTag;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@Builder
+public class ReviewDto {
+	private int reviewId;
+	private double rating;
+	private Beer beer;
+	private long totalLike;
+	private boolean isLike;
+	private List<HashTag> hashTags;
+}

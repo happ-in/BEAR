@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -25,11 +28,9 @@ public class HashTag {
 
 	private String hashTagName;
 
-	@OneToMany(mappedBy = "hashTag")
+	@OneToMany(mappedBy = "hashTag", fetch = FetchType.LAZY)
+	@JsonIgnore
 	private List<ReviewHashTag> reviewHashTags = new ArrayList<>();
-
-	@OneToMany(mappedBy = "hashTag")
-	private List<BeerHashTag> beerHashTags = new ArrayList<>();
 
 	public HashTag(String hashTagName) {
 		this.hashTagName = hashTagName;

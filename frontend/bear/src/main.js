@@ -6,3 +6,4 @@ import mixin from "./mixin";
 import ElementPlus from 'element-plus';
 
 createApp(App).use(store).use(router).mixin(mixin).use(ElementPlus).mount("#app");
+
