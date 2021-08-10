@@ -1,4 +1,5 @@
-<template></template>
+<template>
+<div></div></template>
 <script>
     export default {
         name: '', //컴포넌트 이름
