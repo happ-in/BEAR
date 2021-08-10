@@ -27,9 +27,9 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public String getAccessToken (String authorize_code) {
-        String access_Token = "";
-        //String refresh_Token = "";
+    public String getAccessToken (String authorizeCode) {
+        String accessToken = "";
+        //String refreshToken = "";
         String reqURL = "https://kauth.kakao.com/oauth/token";
 
         try {
@@ -46,7 +46,7 @@ public class UserService {
             sb.append("grant_type=authorization_code");
             sb.append("&client_id=29af7f847f80be77ed28e6d1c6bee1fd");  //Kakao REST API Key
             sb.append("&redirect_uri=http://localhost:8080/testLogin");     // Access Token 전달 경로
-            sb.append("&code=" + authorize_code);
+            sb.append("&code=" + authorizeCode);
             bw.write(sb.toString());
             bw.flush();
 
@@ -63,7 +63,7 @@ public class UserService {
             JsonParser parser = new JsonParser();
             JsonElement element = parser.parse(result);
 
-            access_Token = element.getAsJsonObject().get("access_token").getAsString();
+            accessToken = element.getAsJsonObject().get("access_token").getAsString();
             //refresh_Token = element.getAsJsonObject().get("refresh_token").getAsString();
 
 
@@ -72,10 +72,10 @@ public class UserService {
             e.printStackTrace();
         }
 
-        return access_Token;
+        return accessToken;
     }
 
-    public User getKakaoInfo (String access_Token) {
+    public User getKakaoInfo (String accessToken) {
         User user = new User();
         String reqURL = "https://kapi.kakao.com/v2/user/me";
         try {
@@ -84,7 +84,7 @@ public class UserService {
             conn.setRequestMethod("GET");
 
             //    요청을 위한 Header 설정
-            conn.setRequestProperty("Authorization", "Bearer " + access_Token);
+            conn.setRequestProperty("Authorization", "Bearer " + accessToken);
 
             int responseCode = conn.getResponseCode();
 
@@ -112,17 +112,17 @@ public class UserService {
             user.setUserImage(profile_image);
 
             //kakao_account -> 선택 동의 여부 확인
-            boolean has_email = kakao_account.getAsJsonObject().get("has_email").getAsBoolean();
-            boolean has_gender = kakao_account.getAsJsonObject().get("has_gender").getAsBoolean();
+            boolean hasEmail = kakao_account.getAsJsonObject().get("has_email").getAsBoolean();
+            boolean hasGender = kakao_account.getAsJsonObject().get("has_gender").getAsBoolean();
 
-            if (has_email) {
-                String custom_id = kakao_account.getAsJsonObject().get("email").getAsString();
-                user.setCustomId(custom_id);
+            if (hasEmail) {
+                String customId = kakao_account.getAsJsonObject().get("email").getAsString();
+                user.setCustomId(customId);
             } else {
                 user.setCustomId("empty");
             }
 
-            if (has_gender) {
+            if (hasGender) {
                 String sex = kakao_account.getAsJsonObject().get("gender").getAsString();
                 user.setSex(sex);
             } else {
@@ -138,7 +138,7 @@ public class UserService {
         return user;
     }
 
-    public long getUserId(String access_Token){
+    public long getUserId(String accessToken){
         long userId=0;
         String reqURL = "https://kapi.kakao.com/v2/user/me";
         try {
@@ -147,7 +147,7 @@ public class UserService {
             conn.setRequestMethod("GET");
 
             //    요청을 위한 Header 설정
-            conn.setRequestProperty("Authorization", "Bearer " + access_Token);
+            conn.setRequestProperty("Authorization", "Bearer " + accessToken);
 
             int responseCode = conn.getResponseCode();
 
@@ -213,13 +213,13 @@ public class UserService {
         return users;
     }
 
-    public void kakaoLogout(String access_Token) {
+    public void kakaoLogout(String accessToken) {
         String reqURL = "https://kapi.kakao.com/v1/user/logout";
         try {
             URL url = new URL(reqURL);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("POST");
-            conn.setRequestProperty("Authorization", "Bearer " + access_Token);
+            conn.setRequestProperty("Authorization", "Bearer " + accessToken);
 
             int responseCode = conn.getResponseCode();
 
