@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.persistence.OneToMany;
 import java.io.Serializable;
 
 @Data
@@ -16,7 +15,7 @@ import java.io.Serializable;
 public class BookmarkId implements Serializable {
 
     @Column(name = "user_id")
-    private Long user_id;
+    private Long userId;
 
     @Column(name = "beer_id")
     private int beerId;

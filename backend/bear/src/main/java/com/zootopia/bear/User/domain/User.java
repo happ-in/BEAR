@@ -1,13 +1,12 @@
 package com.zootopia.bear.User.domain;
 
+import com.zootopia.bear.Bookmark.domain.Bookmark;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -29,5 +28,9 @@ public class User {
     private String userImage;
     @Column(name = "share_count")
     private long shareCount;
+
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    private List<Bookmark> bookmark;
 
 }
