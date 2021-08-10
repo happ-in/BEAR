@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
+import java.util.Optional;
 
 
 @RequestMapping("/login")
@@ -24,13 +25,13 @@ public class LoginController {
     }
 
     @RequestMapping("/kakao")
-    public ResponseEntity<?> home(@RequestParam(value = "code", required = false) String code, HttpSession session) throws Exception{
+    public ResponseEntity<?> home(@RequestParam(value = "code", required = false) String code, HttpSession session ) throws Exception{
         String accessToken = userService.getAccessToken(code);
         Long userId = userService.getUserId(accessToken);
-        User user = userService.getUser(userId).get();
-        if(user==null) {
-            user = userService.getKakaoInfo(accessToken);
-            userService.joinUser(user);
+        Optional<User> user = userService.getUser(userId);
+        if(!user.isPresent()) {
+            user = Optional.of(userService.getKakaoInfo(accessToken));
+            userService.joinUser(user.get());
         }
         session.setAttribute("userId",userId);
         session.setAttribute("accessToken",accessToken);

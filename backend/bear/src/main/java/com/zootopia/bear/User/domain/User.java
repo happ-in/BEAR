@@ -29,7 +29,7 @@ public class User {
     @Column(name = "share_count")
     private long shareCount;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private List<Bookmark> bookmark;
 

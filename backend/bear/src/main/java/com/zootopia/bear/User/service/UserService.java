@@ -20,6 +20,9 @@ import java.util.Optional;
 @Service
 public class UserService {
 
+    private final static String kakaoRESTApiKey = "29af7f847f80be77ed28e6d1c6bee1fd";
+    private final static String redirectURL = "http://localhost:8080/login/kakao";
+
     private final UserRepository userRepository;
 
     @Autowired
@@ -44,8 +47,8 @@ public class UserService {
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
             StringBuilder sb = new StringBuilder();
             sb.append("grant_type=authorization_code");
-            sb.append("&client_id=29af7f847f80be77ed28e6d1c6bee1fd");  //Kakao REST API Key
-            sb.append("&redirect_uri=http://localhost:8080/testLogin");     // Access Token 전달 경로
+            sb.append("&client_id="+kakaoRESTApiKey);  //Kakao REST API Key
+            sb.append("&redirect_uri="+redirectURL);     // Access Token 전달 경로
             sb.append("&code=" + authorizeCode);
             bw.write(sb.toString());
             bw.flush();
@@ -118,15 +121,14 @@ public class UserService {
             if (hasEmail) {
                 String customId = kakao_account.getAsJsonObject().get("email").getAsString();
                 user.setCustomId(customId);
-            } else {
-                user.setCustomId("empty");
             }
-
             if (hasGender) {
                 String sex = kakao_account.getAsJsonObject().get("gender").getAsString();
-                user.setSex(sex);
-            } else {
-                user.setSex("empty");
+                if(sex.equals("male")) {
+                    user.setSex("M");
+                } else {
+                    user.setSex("F");
+                }
             }
 
 
