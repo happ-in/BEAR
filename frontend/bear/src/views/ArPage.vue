@@ -148,7 +148,7 @@
       </svg>
     </div>
     <div id="container" ref="con">
-  <h1>Hello, world!{{this.beerData.title}}</h1>
+  <h1>Hello, world!{{this.beerData.beerName}}{{this.beerData}}</h1>
   <p id="beer_hash_one">#커피향</p>
   <p id="beer_hash_two">#수제흑맥주</p>
   <p id="beer_hash_three">#쌉쌀한맛</p>
@@ -175,7 +175,8 @@
             letsee.start();
             letsee
               .addTarget(
-                "https://developer.letsee.io/api-tm/target-manager/target-uid/6100c1be332d3ccecddc2804"
+                "https://developer.letsee.io/api-tm/target-manager/target-uid/61123eff130fc5b620875e3b"
+                //"https://developer.letsee.io/api-tm/target-manager/target-uid/6100c1be332d3ccecddc2804"
               )
               .then((entity) => {
                 this.getBeerData(1);
@@ -257,7 +258,7 @@
           window.open("https://www.naver.com/");
           },
           async getBeerData(id) {
-            this.beerData = await this.$api("https://jsonplaceholder.typicode.com/todos/"+ id,"get"); //test API
+            this.beerData = await this.$api("https://localhost:8080/beer?beerId="+id,"get"); //test API
             console.log(this.beerData);
           }
     } //컴포넌트 내에서 사용할 메소드 정의

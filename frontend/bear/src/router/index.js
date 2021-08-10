@@ -38,7 +38,6 @@ const routes = [
     name: "Recomendation",
     component: Recommendation,
   },
-<<<<<<< HEAD
   {
     path: "/search",
     name: "Search",
@@ -49,13 +48,6 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/SearchPage.vue"),
   },
   
-=======
-  // {
-  //   path: "/ranking",
-  //   name: "RankingMain",
-  //   component: RankingMain,
-  // },
->>>>>>> 09f1928 (Fix: Change git collision)
 ];
 
 const router = createRouter({
