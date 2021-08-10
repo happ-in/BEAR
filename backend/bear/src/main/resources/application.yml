@@ -8,13 +8,3 @@ spring:
   jpa:
     open-in-view: false
     show-sql: true
-
-server:
-  ssl:
-    enabled: true
-    key-alias: bearkeystore
-    key-store: bearkeystore.pkcs12
-    key-store-password: 'zoo2021!'
-    key-password: 'zoo2021!'
-    trust-store: beartrust.pkcs12
-    trust-store-password: 'zoo2021!'
