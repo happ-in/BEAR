@@ -148,7 +148,14 @@
       </svg>
     </div>
     <div id="container" ref="con">
-  <h1>Hello, world!{{this.sampleData}}{{this.beerData}}{{this.brName}}</h1>
+  <h1>Hello, world!{{this.beerData.title}}</h1>
+  <p id="beer_hash_one">#커피향</p>
+  <p id="beer_hash_two">#수제흑맥주</p>
+  <p id="beer_hash_three">#쌉쌀한맛</p>
+  <p id="beer_hash_four">#흑맥주입문</p>
+  <p id="beer_title">{{this.beerData.beerName}}</p>
+  <p id="beer_star">4.2</p>
+  <p ref="test"></p>
 </div>
 </template>
 <script>
@@ -158,13 +165,12 @@
         data() { //html과 자바스크립트 코드에서 사용할 데이터 변수 선언
             return {
                 sampleData: 'hidden',
-                beerData: [],
+                beerData: '',
                 brName: 'no',
             };
         },
         setup() {}, //컴포지션 API
         created() {
-          this.getBeerData(15);
           letsee.ready(() => {
             letsee.start();
             letsee
@@ -172,19 +178,7 @@
                 "https://developer.letsee.io/api-tm/target-manager/target-uid/6100c1be332d3ccecddc2804"
               )
               .then((entity) => {
-                //const { width, height } = entity.physicalSize;
-                // const div = document.createElement("div");
-                // div.style.width = 360 + "px"; //width + 'px';
-                // div.style.height = 640 + "px"; //height + "px";
-                // //div.style.border = '1px solid red';
-                // div.innerHTML = `
-                //           <p id="beer_hash_one">#커피향</p>
-                //           <p id="beer_hash_two">#수제흑맥주</p>
-                //           <p id="beer_hash_three">#쌉쌀한맛</p>
-                //           <p id="beer_hash_four">#흑맥주입문</p>
-                //           <p id="beer_title">말표 흑맥주</p>
-                //           <p id="beer_star">4.2</p>
-                //           `;
+                this.getBeerData(1);
                 let div = this.$refs.con;
                 const xrElement = letsee.createXRElement(div);
                 letsee.bindXRElement(xrElement, entity);
@@ -195,20 +189,7 @@
                 "https://developer.letsee.io/api-tm/target-manager/target-uid/60f7cf8a398942b60ead2d39"
               )
               .then((entity) => {
-                //const { width, height } = entity.physicalSize;
-                // const div = document.createElement("div");
-                // div.style.width = 360 + "px";
-                // div.style.height = 640 + "px";
-                // //div.style.border = '1px solid blue';
-                // div.innerHTML = `
-                //           <p id="beer_hash_one">#커피향</p>
-                //           <p id="beer_hash_two">#수제흑맥주</p>
-                //           <p id="beer_hash_three">#쌉쌀한맛</p>
-                //           <p id="beer_hash_four">#흑맥주입문</p>
-                //           <p id="beer_title">말표 흑맥주</p>
-                //           <p id="beer_star">4.2</p>
-                //           `;
-                
+                this.getBeerData(2);
                 let div = this.$refs.con;
                 const xrElement = letsee.createXRElement(div);
                 letsee.bindXRElement(xrElement, entity);
@@ -222,9 +203,7 @@
                 const div = document.createElement("div");
                 div.style.width = 360 + "px";
                 div.style.height = 640 + "px";
-                this.getBeerData(16);
 
-                //div.style.border = '1px solid blue';
                 div.innerHTML = `
                           <p id="beer_hash_one">#양꼬치</p>
                           <p id="beer_hash_two">#무난무난</p>
@@ -241,6 +220,25 @@
             document.getElementById("btn_more").addEventListener("click", () => {
               location.href = "https://www.naver.com/";
             });
+            letsee.onTrackStart((e) => {
+              this.$refs.guide.style.visibility = "hidden";
+              this.$refs.guide.style["z-index"] = 0;
+              this.sampleData = e;//.trace.entity;
+              this.brName = this.beerData.beerName;
+              this.getBeerData(4);
+              this.$refs.test = "tt"
+            });
+            letsee.onTrackEnd((e) => {
+              this.$refs.guide.style.visibility = "visible";
+              this.$refs.guide.style["z-index"] = 500;
+              console.log('TrackEnd');
+              console.log(e.trace.entity.substr(60,25));
+
+              console.log(this.sampleData);
+              this.brName = this.beerData.beerName;
+              console.log(this.brName);
+              console.log(this.beerData);
+            });
             
             this.$refs.guide.style.visibility = "visible";
             this.$refs.guide.style["z-index"] = 500;
@@ -249,27 +247,6 @@
           letsee.init();
           }, //컴포넌트가 생성되면 실행
         mounted() {
-          letsee.onTrackStart((e) => {
-              this.$refs.guide.style.visibility = "hidden";
-              this.$refs.guide.style["z-index"] = 0;
-              this.sampleData = e;//.trace.entity;
-              this.getBeerData(15)
-              this.brName = this.beerData.beerName;
-              
-            });
-            letsee.onTrackEnd((e) => {
-              this.$refs.guide.style.visibility = "visible";
-              this.$refs.guide.style["z-index"] = 500;
-              console.log('TrackEnd');
-              console.log(e.trace.entity);
-              console.log(this.sampleData);
-              this.getBeerData(15)
-              this.brName = this.beerData.beerName;
-              console.log(this.brName);
-              console.log(this.beerData);
-              
-
-            });
         }, //template에 정의된 html코드가 레너링된 후 실행
         unmounted() {}, //unmount가 완료된 후 실행
         methods: {recommendFood: () => {
@@ -279,8 +256,8 @@
           },goSearch: () => {
           window.open("https://www.naver.com/");
           },
-          async getBeerData(beerID) {
-            this.beerData = await this.$api("http://localhost:8080/beer?beerId="+ beerID,"get");
+          async getBeerData(id) {
+            this.beerData = await this.$api("https://jsonplaceholder.typicode.com/todos/"+ id,"get"); //test API
             console.log(this.beerData);
           }
     } //컴포넌트 내에서 사용할 메소드 정의

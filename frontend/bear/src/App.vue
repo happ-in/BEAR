@@ -2,7 +2,8 @@
   <div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/ar">AR</router-link> |
-    <router-link to="/recomendation">Rcomendation</router-link>
+    <router-link to="/recomendation">Rcomendation</router-link> |
+    <router-link to="/search">Search</router-link> |
   </div>
   <router-view />
 </template>
