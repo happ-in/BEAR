@@ -1,8 +1,15 @@
 
 <template>
-    <div id="app">
-        <el-button>안녕</el-button>
+<div>
+    <h1>랭킹</h1>
+    <div>
+        <el-carousel :interval="5000" type="card" height="500px" autoplay="false" indication-position="outside">
+            <el-carousel-item v-for="item in 6" :key="item">
+                <h3 class="medium">{{ item }}</h3>
+            </el-carousel-item>
+        </el-carousel>
     </div>
+</div>
 </template>
 
 

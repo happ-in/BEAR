@@ -20,8 +20,8 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/ArPage.vue"),
   },
   {
-    path: "/recomendation",
-    name: "Recomendation",
+    path: "/recommendation",
+    name: "Recommendation",
     component: Recommendation,
   },
   {
