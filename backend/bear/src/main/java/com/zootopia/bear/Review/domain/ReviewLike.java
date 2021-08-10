@@ -23,7 +23,7 @@ public class ReviewLike {
 	private ReviewLikeId userReviewId;
 
 	@MapsId(value = "reviewId")
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "review_id")
 	private Review review;
 
