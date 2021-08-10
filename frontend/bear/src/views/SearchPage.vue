@@ -14,12 +14,24 @@
     ></el-autocomplete>
   </el-col>
 </el-row>
+<el-button-group style="margin-top:60px">
+  <el-button type="warning" plain style="width:120px" ref="account" @click="setCategory('account')">계정</el-button>
+  <el-button type="warning" plain style="width:120px" ref="tag" @click="setCategory('tag')">태그</el-button>
+  <el-button type="warning" plain style="width:120px" ref="beer" @click="setCategory('beer')">맥주</el-button>
+</el-button-group>
+{{category}}
 </div>
 </template>
 
 <script>
   import { defineComponent, ref, onMounted } from 'vue'
 export default defineComponent({
+    data() {
+        return {
+            category: '',
+            buttontype: 'success'
+        }
+    },
   setup() {
     const restaurants = ref([]);
     const querySearch = (queryString, cb) => {
@@ -65,7 +77,11 @@ export default defineComponent({
   },
   methods: {
       async submitAutoComplete() {
-          this.restaurants.value = await this.$api("localhost:8080/search/beer?keyword="+ this.state1,"get");
+          this.restaurants.value = await this.$api("https://localhost:8080/search/beer?keyword="+ this.state1,"get");
+          console.log(this.restaurants.value);
+      },
+      setCategory(data){
+        this.category = data;
       }
   }
 });
@@ -77,7 +93,7 @@ export default defineComponent({
     width: 360px;
     height: 640px;
 
-    background: #939597;
+    background: white;
 }
 
 #search_input {
@@ -87,7 +103,7 @@ export default defineComponent({
     left: 0px;
     top: 0px;
     border-radius: 50px;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-left: 40px;
 }
 
