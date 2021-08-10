@@ -29,7 +29,7 @@ export default defineComponent({
     data() {
         return {
             category: '',
-            buttontype: 'success'
+            buttontype: 'success',
         }
     },
   setup() {
@@ -77,8 +77,10 @@ export default defineComponent({
   },
   methods: {
       async submitAutoComplete() {
-          this.restaurants.value = await this.$api("https://localhost:8080/search/beer?keyword="+ this.state1,"get");
+          this.restaurants.value = await this.$api("https://i5a403.p.ssafy.io/search/beer?keyword="+ this.state1,"get");
           console.log(this.restaurants.value);
+          console.log(this.state1);
+          console.log(data1);
       },
       setCategory(data){
         this.category = data;
