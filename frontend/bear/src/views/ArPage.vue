@@ -148,13 +148,12 @@
       </svg>
     </div>
     <div id="container" ref="con">
-  <h1>Hello, world!{{this.sampleData}}{{this.beerData}}</h1>
-  <p id="beer_hash_one">#커피향</p>
-  <p id="beer_hash_two">#수제흑맥주</p>
-  <p id="beer_hash_three">#쌉쌀한맛</p>
-  <p id="beer_hash_four">#흑맥주입문</p>
-  <p id="beer_title">{{this.beerData.beerName}}</p>
-  <p id="beer_star">4.2</p>
+  <p id="beer_hash_one" ref="hash1"></p>
+  <p id="beer_hash_two" ref="hash2"></p>
+  <p id="beer_hash_three" ref="hash3"></p>
+  <p id="beer_hash_four" ref="hash4"></p>
+  <p id="beer_title" ref="title"></p>
+  <p id="beer_star" ref="proof"></p>
   <p ref="test"></p>
 </div>
 </template>
@@ -165,7 +164,7 @@
         data() { //html과 자바스크립트 코드에서 사용할 데이터 변수 선언
             return {
                 sampleData: 'hidden',
-                beerData: [],
+                beerData: {"beerName":'수집중'},
                 brName: 'no',
             };
         },
@@ -179,8 +178,9 @@
                 "https://developer.letsee.io/api-tm/target-manager/target-uid/6100c1be332d3ccecddc2804"
               )
               .then((entity) => {
-                //this.getBeerData(1);
                 let div = this.$refs.con;
+                div.style.width = 360 + "px";
+                div.style.height = 640 + "px";
                 const xrElement = letsee.createXRElement(div);
                 letsee.bindXRElement(xrElement, entity);
               });
@@ -190,8 +190,9 @@
                 "https://developer.letsee.io/api-tm/target-manager/target-uid/60f7cf8a398942b60ead2d39"
               )
               .then((entity) => {
-                //this.getBeerData(2);
                 let div = this.$refs.con;
+                div.style.width = 360 + "px";
+                div.style.height = 640 + "px";
                 const xrElement = letsee.createXRElement(div);
                 letsee.bindXRElement(xrElement, entity);
               });
@@ -200,20 +201,9 @@
                 "https://developer.letsee.io/api-tm/target-manager/target-uid/610c9268130fc5b620875e38"
               )
               .then((entity) => {
-                //const { width, height } = entity.physicalSize;
-                const div = document.createElement("div");
+                let div = this.$refs.con;
                 div.style.width = 360 + "px";
                 div.style.height = 640 + "px";
-                //this.getBeerData(13);
-                div.innerHTML = `
-                          <p id="beer_hash_one">#양꼬치</p>
-                          <p id="beer_hash_two">#무난무난</p>
-                          <p id="beer_hash_three">#깔끔한맛</p>
-                          <p id="beer_hash_four">#중국음식이랑</p>
-                          <p id="beer_title">칭따오</p>
-                          <p id="beer_star">3.8</p>
-                          `;
-
                 const xrElement = letsee.createXRElement(div);
                 letsee.bindXRElement(xrElement, entity);
               });
@@ -224,28 +214,18 @@
             letsee.onTrackStart((e) => {
               this.$refs.guide.style.visibility = "hidden";
               this.$refs.guide.style["z-index"] = 0;
-              this.sampleData = e;//.trace.entity;
-              this.brName = this.beerData.beerName;
               this.getBeerData((e.trace.entity.substr(84,1)));
-              this.$refs.test.innerHTML = " "+this.beerData.title+"";
+              console.log(e)
+              this.$refs.title.innerHTML = " "+this.beerData.beerName+"";
+              this.$refs.proof.innerHTML = " "+this.beerData.beerId+"";
               
             });
             letsee.onTrackEnd((e) => {
               this.$refs.guide.style.visibility = "visible";
               this.$refs.guide.style["z-index"] = 500;
-              console.log('TrackEnd');
-              console.log(e.trace.entity.substr(60,25));
               console.log(e.trace.entity.substr(84,1))
-
               console.log(this.sampleData);
-              this.brName = this.beerData.beerName;
-              this.getBeerData(1);
-              axios.get('https://i5a403.p.ssafy.io?beerId=7')
-                .then(response => {
-                  console.log(response);
-                })
-              console.log(this.brName);
-              console.log(this.beerData);
+              this.getBeerData((e.trace.entity.substr(84,1)));
             });
             
             this.$refs.guide.style.visibility = "visible";
@@ -265,7 +245,7 @@
           window.open("https://www.naver.com/");
           },
           async getBeerData(id) {
-            this.beerData = await this.$api("https://jsonplaceholder.typicode.com/todos/"+id,"get"); //test API
+            this.beerData = await this.$api("https://i5a403.p.ssafy.io/beer?beerId="+id,"get"); //test API
             console.log(this.beerData);
           }
     } //컴포넌트 내에서 사용할 메소드 정의
@@ -424,7 +404,7 @@
 }
 #beer_title {
   position: absolute;
-  width: 182px;
+  width: 300px;
   height: 32px;
   left: 118px;
   top: 55px;
