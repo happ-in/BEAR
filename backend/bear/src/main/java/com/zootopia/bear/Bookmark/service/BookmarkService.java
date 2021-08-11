@@ -4,8 +4,9 @@ import com.zootopia.bear.Bookmark.domain.Bookmark;
 import com.zootopia.bear.Bookmark.domain.BookmarkId;
 import com.zootopia.bear.Bookmark.repository.BookmarkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-
+@Service
 public class BookmarkService {
     private final BookmarkRepository bookmarkRepository;
 
