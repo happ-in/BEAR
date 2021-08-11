@@ -28,13 +28,13 @@ public class FollowController {
     public ResponseEntity<?> addFollow(HttpSession session, @RequestParam(name = "followUserId") Long followUserId){
         Long userId = (Long) session.getAttribute("userId");
         followService.addFollowUser(userId,followUserId);
-        return new ResponseEntity<>(null, HttpStatus.OK);
+        return new ResponseEntity<>(true, HttpStatus.OK);
     }
 
     @DeleteMapping("/deleteFollow")
     public ResponseEntity<?> deleteFollow(HttpSession session, @RequestParam(name = "followUserId") Long followUserId){
         Long userId = (Long) session.getAttribute("userId");
         followService.deleteFollowUser(userId,followUserId);
-        return new ResponseEntity<>(null, HttpStatus.OK);
+        return new ResponseEntity<>(true, HttpStatus.OK);
     }
 }

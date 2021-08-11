@@ -5,9 +5,6 @@ import com.zootopia.bear.Beer.domain.Beer;
 import com.zootopia.bear.User.domain.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-
 
 import javax.persistence.*;
 

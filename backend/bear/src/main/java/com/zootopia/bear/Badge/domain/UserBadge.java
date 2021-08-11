@@ -1,7 +1,6 @@
 package com.zootopia.bear.Badge.domain;
 
-import com.zootopia.bear.Beer.domain.Beer;
-
+import com.zootopia.bear.User.domain.User;
 import javax.persistence.*;
 
 @Entity
@@ -17,5 +16,5 @@ public class UserBadge {
     @MapsId("userId")
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private Beer beer;
+    private User user;
 }
