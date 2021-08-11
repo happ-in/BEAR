@@ -31,9 +31,4 @@ public class FollowerService {
     public void deleteFollowUser(Long userId,Long followUserId){
         followerRepository.deleteById(new FollowerId(userId,followUserId));
     }
-
-
-
-
-
 }
