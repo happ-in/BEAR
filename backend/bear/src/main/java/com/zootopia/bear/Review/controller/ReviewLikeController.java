@@ -1,5 +1,7 @@
 package com.zootopia.bear.Review.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,13 +23,13 @@ public class ReviewLikeController {
 	private final ReviewLikeService reviewLikeService;
 
 	@PostMapping
-	public ResponseEntity<?> reviewLike(@RequestBody ReviewLikeDto reviewLikeDto) {
+	public ResponseEntity<?> reviewLike(@Valid @RequestBody ReviewLikeDto reviewLikeDto) {
 		reviewLikeService.reviewLike(reviewLikeDto);
 		return new ResponseEntity<>(true, HttpStatus.OK);
 	}
 
 	@DeleteMapping
-	public ResponseEntity<?> reviewDislike(@RequestBody ReviewLikeDto reviewLikeDto) {
+	public ResponseEntity<?> reviewDislike(@Valid @RequestBody ReviewLikeDto reviewLikeDto) {
 		reviewLikeService.reviewDislike(reviewLikeDto);
 		return new ResponseEntity<>(true, HttpStatus.OK);
 	}
