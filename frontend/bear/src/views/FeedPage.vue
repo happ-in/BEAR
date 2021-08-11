@@ -1,4 +1,5 @@
 <template>
+  <h2>홈피드</h2>
   <el-card class="box-card">
     <!-- 작성자 정보 -->
     <template #header>
@@ -46,6 +47,8 @@
       </el-col>
     </el-row>
   </el-card>
+
+  <router-link to="/review/write">리뷰</router-link>
 </template>
 
 <script>
