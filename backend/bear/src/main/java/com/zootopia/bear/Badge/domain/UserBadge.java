@@ -1,13 +1,10 @@
 package com.zootopia.bear.Badge.domain;
 
 import com.zootopia.bear.Beer.domain.Beer;
-import com.zootopia.bear.User.domain.User;
 
-import javax.persistence.EmbeddedId;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
+import javax.persistence.*;
 
+@Entity
 public class UserBadge {
     @EmbeddedId
     private UserBadgeId userBadgeId;
@@ -17,8 +14,8 @@ public class UserBadge {
     @JoinColumn(name = "badge_id")
     private Badge badge;
 
-    @MapsId("beerId")
+    @MapsId("userId")
     @ManyToOne
-    @JoinColumn(name = "beer_id")
+    @JoinColumn(name = "user_id")
     private Beer beer;
 }

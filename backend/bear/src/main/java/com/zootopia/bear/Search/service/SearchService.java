@@ -5,6 +5,8 @@ import java.util.List;
 
 import com.zootopia.bear.Bookmark.domain.Bookmark;
 import com.zootopia.bear.Bookmark.repository.BookmarkRepository;
+import com.zootopia.bear.Follower.domain.Follower;
+import com.zootopia.bear.Follower.repository.FollowerRepository;
 import org.springframework.stereotype.Service;
 
 import com.zootopia.bear.Beer.domain.Beer;
@@ -53,4 +55,6 @@ public class SearchService {
 		}
 		return beerDtoList;
 	}
+
+
 }

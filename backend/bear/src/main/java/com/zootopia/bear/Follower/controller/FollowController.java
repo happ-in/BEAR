@@ -30,15 +30,15 @@ public class FollowController {
     @GetMapping("/follows")
     public ResponseEntity<?> getFollows(HttpSession session){
         Long userId = (Long) session.getAttribute("userId");
-        List<Long> list = followService.getFollowList(userId);
-        return getResponseEntity(list);
+        List<Long> followList = followService.getFollowList(userId);
+        return getResponseEntity(followList);
     }
 
     @GetMapping("/followers")
     public ResponseEntity<?> getFollowers(HttpSession session){
         Long followUserId = (Long) session.getAttribute("userId");
-        List<Long> list = followService.getFollowerList(followUserId);
-        return getResponseEntity(list);
+        List<Long> followerList = followService.getFollowerList(followUserId);
+        return getResponseEntity(followerList);
     }
 
     private ResponseEntity<?> getResponseEntity(List<Long> list) {

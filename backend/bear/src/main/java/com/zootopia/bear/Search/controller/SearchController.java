@@ -11,6 +11,8 @@ import com.zootopia.bear.Search.service.SearchService;
 
 import lombok.RequiredArgsConstructor;
 
+import javax.servlet.http.HttpSession;
+
 @RestController
 @RequestMapping("/search")
 @RequiredArgsConstructor
@@ -26,5 +28,17 @@ public class SearchController {
 	@GetMapping("/beer")
 	public ResponseEntity<?> searchBeer(@RequestParam String keyword) {
 		return new ResponseEntity<>(searchService.searchBeer(keyword), HttpStatus.OK);
+	}
+
+	@GetMapping("/bookmark")
+	public ResponseEntity<?> searchBookmark(HttpSession session) {
+		Long userId = (Long) session.getAttribute("userId");
+		return new ResponseEntity<>(searchService.searchBookmark(userId),HttpStatus.OK);
+	}
+
+	@GetMapping("/badge")
+	public ResponseEntity<?> searchBadge(){
+
+		return null;
 	}
 }
