@@ -154,7 +154,9 @@
   <p id="beer_hash_four" ref="hash4"></p>
   <p id="beer_title" ref="title"></p>
   <p id="beer_star" ref="proof"></p>
-  <p ref="test"></p>
+  <p ref="country"></p>
+  <p ref="flag"></p>
+  <p ref="star"></p>
 </div>
 </template>
 <script>
@@ -166,6 +168,9 @@
                 sampleData: 'hidden',
                 beerData: {"beerName":'수집중'},
                 brName: 'no',
+                country: '',
+                star:''
+
             };
         },
         setup() {}, //컴포지션 API
@@ -218,6 +223,11 @@
               console.log(e)
               this.$refs.title.innerHTML = " "+this.beerData.beerName+"";
               this.$refs.proof.innerHTML = " "+this.beerData.beerId+"";
+              this.country = require('../assets/flags/'+this.beerData.country.countryName+'.png')
+              this.star = require('../assets/stars/'+this.beerData.beerId%5+'.png')
+              this.$refs.country.innerHTML = " "+this.beerData.country.countryName+"";
+              this.$refs.flag.innerHTML= "<img id=flag src="+this.country +"/>";
+              this.$refs.star.innerHTML= "<img id=star src="+this.star +"/>";
               
             });
             letsee.onTrackEnd((e) => {
@@ -295,7 +305,13 @@
   top: 50%;
   left: 50%;
 }
-
+#star {
+  position: absolute;
+  width: 200px;
+  height: 43px;
+  left: 80px;
+  top: 117px;
+}
 #btn_div {
   width: 100%;
   height: 40px;
@@ -330,6 +346,13 @@
   object-fit: contain;
 }
 
+#flag{
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  left: 271px;
+  top: 61px;
+}
 #beer_hash_one {
   position: absolute;
   width: 174px;
