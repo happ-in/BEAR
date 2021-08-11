@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import com.zootopia.bear.HashTag.domain.ReviewHashTag;
 import com.zootopia.bear.Review.dto.ReviewRegistryDto;
@@ -24,6 +26,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder
+@Table(
+	name = "review",
+	uniqueConstraints = @UniqueConstraint(columnNames = {"userId", "beerId"})
+)
 public class Review {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
