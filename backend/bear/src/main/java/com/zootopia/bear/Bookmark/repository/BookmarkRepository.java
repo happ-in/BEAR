@@ -6,8 +6,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.Table;
+import java.util.List;
 
 @Repository
 @Table(name="bookmark")
 public interface BookmarkRepository extends JpaRepository<Bookmark, BookmarkId> {
+    public List<Bookmark> findAllByBookmarkId_UserId(Long userId);
 }

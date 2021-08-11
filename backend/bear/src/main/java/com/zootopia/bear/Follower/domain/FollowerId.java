@@ -1,5 +1,6 @@
 package com.zootopia.bear.Follower.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,7 @@ import java.io.Serializable;
 @Data
 @Embeddable
 @NoArgsConstructor
+@AllArgsConstructor
 public class FollowerId implements Serializable {
 
     @Column(name = "user_id")
@@ -17,8 +19,4 @@ public class FollowerId implements Serializable {
     @Column(name = "follow_user_id")
     private Long followUserId;
 
-    public FollowerId(Long userId,Long followUserId){
-        this.userId = userId;
-        this.followUserId = followUserId;
-    }
 }

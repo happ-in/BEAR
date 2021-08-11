@@ -3,6 +3,8 @@ package com.zootopia.bear.Search.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.zootopia.bear.Bookmark.domain.Bookmark;
+import com.zootopia.bear.Bookmark.repository.BookmarkRepository;
 import org.springframework.stereotype.Service;
 
 import com.zootopia.bear.Beer.domain.Beer;
@@ -20,6 +22,7 @@ public class SearchService {
 
 	private final BeerRepository beerRepository;
 	private final HashTagRepository hashTagRepository;
+	private final BookmarkRepository bookmarkRepository;
 
 	public List<HashTagDto> searchHashTag(String hashTagName) {
 		List<HashTag> hashTags = hashTagRepository.findByHashTagNameContains(hashTagName);
@@ -37,5 +40,17 @@ public class SearchService {
 			beerDtos.add(new BeerDto(beer.getBeerId(), beer.getBeerName(), beer.getBeerImage()));
 		}
 		return beerDtos;
+	}
+
+	public List<BeerDto> searchBookmark(Long userId){
+		List<Bookmark> bookmarkList = bookmarkRepository.findAllByBookmarkId_UserId(userId);
+		List<BeerDto> beerDtoList = new ArrayList<>();
+		for(Bookmark bookmark : bookmarkList) {
+			int beerId = bookmark.getBookmarkId().getBeerId();
+			Beer beer = beerRepository.getById(beerId);
+			BeerDto beerDto = new BeerDto(beer.getBeerId(),beer.getBeerName(),beer.getBeerImage());
+			beerDtoList.add(beerDto);
+		}
+		return beerDtoList;
 	}
 }

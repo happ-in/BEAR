@@ -3,10 +3,17 @@ package com.zootopia.bear.Bookmark.domain;
 
 import com.zootopia.bear.Beer.domain.Beer;
 import com.zootopia.bear.User.domain.User;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+
 
 import javax.persistence.*;
 
 @Entity
+@Getter
+@NoArgsConstructor
 public class Bookmark {
     @EmbeddedId
     private BookmarkId bookmarkId;
@@ -21,4 +28,7 @@ public class Bookmark {
     @JoinColumn(name = "beer_id")
     private Beer beer;
 
+    public Bookmark(BookmarkId bookmarkId) {
+        this.bookmarkId = bookmarkId;
+    }
 }
