@@ -3,13 +3,14 @@ import { createRouter, createWebHistory } from "vue-router";
 // import Home from "../views/Home.vue";
 import Recommendation from "../views/RecommendationPage.vue";
 // import RankingMain from "../views/RankingMainPage.vue";
+import Landing from "../views/LandingPage.vue";
 
 const routes = [
-  // {
-  //   path: "/",
-  //   name: "Home",
-  //   component: Home,
-  // },
+  {
+    path: "/",
+    name: "Landing",
+    component: Landing,
+  },
   // {
   //   path: "/ar",
   //   name: "Ar",
