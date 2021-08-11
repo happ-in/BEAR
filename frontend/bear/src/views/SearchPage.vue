@@ -108,5 +108,7 @@ export default defineComponent({
     margin-top: 10px;
     margin-left: 40px;
 }
-
+img{
+  border:none;
+}
 </style>
