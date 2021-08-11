@@ -12,7 +12,7 @@ import java.util.List;
 @Table(name="follower")
 public interface FollowerRepository extends JpaRepository<Follower, FollowerId> {
 
-    public List<Follower> findFollowersByFollowerId_UserId( Long userId);
+    public List<Follower> findFollowersByFollowerId_UserId(Long userId);
 
     public List<Follower> findFollowersByFollowerId_FollowUserId(Long followUserId);
 

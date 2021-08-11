@@ -6,7 +6,10 @@ import java.util.List;
 import com.zootopia.bear.Bookmark.domain.Bookmark;
 import com.zootopia.bear.Bookmark.repository.BookmarkRepository;
 import com.zootopia.bear.Follower.domain.Follower;
+import com.zootopia.bear.Follower.dto.FollowDto;
 import com.zootopia.bear.Follower.repository.FollowerRepository;
+import com.zootopia.bear.User.domain.User;
+import com.zootopia.bear.User.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import com.zootopia.bear.Beer.domain.Beer;
@@ -25,6 +28,8 @@ public class SearchService {
 	private final BeerRepository beerRepository;
 	private final HashTagRepository hashTagRepository;
 	private final BookmarkRepository bookmarkRepository;
+	private final UserRepository userRepository;
+	private final FollowerRepository followerRepository;
 
 	public List<HashTagDto> searchHashTag(String hashTagName) {
 		List<HashTag> hashTags = hashTagRepository.findByHashTagNameContains(hashTagName);
@@ -54,6 +59,28 @@ public class SearchService {
 			beerDtoList.add(beerDto);
 		}
 		return beerDtoList;
+	}
+
+	public List<FollowDto> getFollowList(Long userId){
+		List<Follower> list = followerRepository.findFollowersByFollowerId_UserId(userId);
+		List<FollowDto> followList = new ArrayList<>();
+		for(Follower follower : list) {
+			Long followUserId = follower.getFollowerId().getFollowUserId();
+			User followUser = userRepository.getById(followUserId);
+			followList.add(new FollowDto(followUserId,followUser.getNickname()));
+		}
+		return followList;
+	}
+
+	public List<FollowDto> getFollowerList(Long followUserId){
+		List<Follower> list = followerRepository.findFollowersByFollowerId_FollowUserId(followUserId);
+		List<FollowDto> followerList = new ArrayList<>();
+		for(Follower follower : list) {
+			Long followerId = follower.getFollowerId().getUserId();
+			User followerUser = userRepository.getById(followerId);
+			followerList.add(new FollowDto(followerId,followerUser.getNickname()));
+		}
+		return followerList;
 	}
 
 
