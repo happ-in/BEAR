@@ -24,15 +24,17 @@ public class BeerHashTagDto {
 	private Country country;
 	private double alcoholProof;
 	private String beerImage;
+	private double beerAvg;
 	private List<HashTagTotalDto> hashTags = new ArrayList<>();
 
-	public BeerHashTagDto(Beer beer, List<HashTagTotalDto> hashTagTotalDtos) {
+	public BeerHashTagDto(Beer beer, double beerAvg, List<HashTagTotalDto> hashTagTotalDtos) {
 		this.beerId = beer.getBeerId();
 		this.beerName = beer.getBeerName();
 		this.country = beer.getCountry();
 		this.beerCategory = beer.getBeerCategory();
 		this.alcoholProof = beer.getAlcoholProof();
 		this.beerImage = beer.getBeerImage();
+		this.beerAvg = beerAvg;
 		this.hashTags.addAll(hashTagTotalDtos);
 	}
 }
