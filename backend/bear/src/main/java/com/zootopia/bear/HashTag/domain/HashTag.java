@@ -3,6 +3,7 @@ package com.zootopia.bear.HashTag.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -26,6 +27,7 @@ public class HashTag {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int hashTagId;
 
+	@Column(unique = true)
 	private String hashTagName;
 
 	@OneToMany(mappedBy = "hashTag", fetch = FetchType.LAZY)

@@ -22,6 +22,6 @@ public class SnackRecommendationController {
 	@GetMapping
 	public ResponseEntity<?> snackRecommendation(@RequestParam String beerCategory) {
 		SnackRecommendationDto snackRecommendation = snackRecommendationService.SnackRecommendation(beerCategory);
-		return new ResponseEntity<>(snackRecommendation, HttpStatus.OK);
+		return ResponseEntity.ok(snackRecommendation);
 	}
 }

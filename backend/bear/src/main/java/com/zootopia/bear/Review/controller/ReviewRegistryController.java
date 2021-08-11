@@ -1,7 +1,10 @@
 package com.zootopia.bear.Review.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,14 +25,14 @@ public class ReviewRegistryController {
 	private final ReviewRegistryService reviewRegistryService;
 
 	@PostMapping
-	public ResponseEntity<?> reviewRegistry(@RequestBody ReviewRegistryDto reviewRegistryDto) {
+	public ResponseEntity<?> reviewRegistry(@Valid @RequestBody ReviewRegistryDto reviewRegistryDto) {
 		reviewRegistryService.reviewRegistry(reviewRegistryDto);
-		return new ResponseEntity<>(true, HttpStatus.OK);
+		return ResponseEntity.ok(true);
 	}
 
 	@PutMapping
-	public ResponseEntity<?> reviewUpdate(@RequestBody ReviewUpdateDto reviewUpdateDto) {
+	public ResponseEntity<?> reviewUpdate(@Valid @RequestBody ReviewUpdateDto reviewUpdateDto) {
 		reviewRegistryService.reviewUpdate(reviewUpdateDto);
-		return new ResponseEntity<>(true, HttpStatus.OK);
+		return ResponseEntity.ok(true);
 	}
 }

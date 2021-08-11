@@ -11,6 +11,8 @@ import com.zootopia.bear.Beer.repository.BeerRepository;
 import com.zootopia.bear.Country.domain.Country;
 import com.zootopia.bear.HashTag.dto.HashTagTotalDto;
 import com.zootopia.bear.HashTag.repository.HashTagRepository;
+import com.zootopia.bear.Review.domain.Review;
+import com.zootopia.bear.Review.repository.ReviewRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -19,11 +21,13 @@ import lombok.RequiredArgsConstructor;
 @Transactional(readOnly = true)
 public class BeerSearchService {
 	private final BeerRepository beerRepository;
+	private final ReviewRepository reviewRepository;
 	private final HashTagRepository hashTagRepository;
 
 	public BeerHashTagDto beerSearch(int beerId) {
 		Beer beer = beerRepository.findById(beerId);
+		double beerAvg = reviewRepository.beerAvg(beerId);
 		List<HashTagTotalDto> hashTagTotalDtos = hashTagRepository.searchHashTagToTal(beerId);
-		return new BeerHashTagDto(beer, hashTagTotalDtos);
+		return new BeerHashTagDto(beer, beerAvg, hashTagTotalDtos);
 	}
 }

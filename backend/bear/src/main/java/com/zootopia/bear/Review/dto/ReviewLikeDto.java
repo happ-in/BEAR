@@ -1,5 +1,7 @@
 package com.zootopia.bear.Review.dto;
 
+import com.sun.istack.NotNull;
+
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,6 +13,10 @@ import lombok.Setter;
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor
 public class ReviewLikeDto {
-	private int userId;
+
+	@NotNull
+	private long userId;
+
+	@NotNull
 	private int reviewId;
 }

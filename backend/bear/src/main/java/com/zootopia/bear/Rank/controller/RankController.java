@@ -25,36 +25,36 @@ public class RankController {
 	@GetMapping
 	public ResponseEntity<?> rankAll() {
 		List<RankDto> rank = rankService.rankAll();
-		return new ResponseEntity<>(rank, HttpStatus.OK);
+		return ResponseEntity.ok(rank);
 	}
 
 	@GetMapping("/lager")
 	public ResponseEntity<?> rankByLager() {
 		List<RankDto> rank = rankService.rankByCategory(LAGER);
-		return new ResponseEntity<>(rank, HttpStatus.OK);
+		return ResponseEntity.ok(rank);
 	}
 
 	@GetMapping("/ale")
 	public ResponseEntity<?> rankByAle() {
 		List<RankDto> rank = rankService.rankByCategory(ALE);
-		return new ResponseEntity<>(rank, HttpStatus.OK);
+		return ResponseEntity.ok(rank);
 	}
 
 	@GetMapping("/wheat")
 	public ResponseEntity<?> rankByWheat() {
 		List<RankDto> rank = rankService.rankByCategory(WHEAT);
-		return new ResponseEntity<>(rank, HttpStatus.OK);
+		return ResponseEntity.ok(rank);
 	}
 
 	@GetMapping("/stout")
 	public ResponseEntity<?> rankByStout() {
 		List<RankDto> rank = rankService.rankByCategory(STOUT);
-		return new ResponseEntity<>(rank, HttpStatus.OK);
+		return ResponseEntity.ok(rank);
 	}
 
 	@GetMapping("/rtd")
 	public ResponseEntity<?> rankByRtd() {
 		List<RankDto> rank = rankService.rankByCategory(RTD);
-		return new ResponseEntity<>(rank, HttpStatus.OK);
+		return ResponseEntity.ok(rank);
 	}
 }
