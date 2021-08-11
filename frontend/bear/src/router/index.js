@@ -1,4 +1,3 @@
-
 import { createRouter, createWebHistory } from "vue-router";
 // import Home from "../views/Home.vue";
 import Recommendation from "../views/RecommendationPage.vue";
@@ -30,8 +29,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/ArPage.vue"),
+    component: () => import(/* webpackChunkName: "about" */ "../views/ArPage.vue"),
   },
   {
     path: "/recommendation",
@@ -44,10 +42,13 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/SearchPage.vue"),
+    component: () => import(/* webpackChunkName: "about" */ "../views/SearchPage.vue"),
   },
-  
+  {
+    path: "/feed",
+    name: "Feed",
+    component: () => import(/* webpackChunkName: "about" */ "../views/FeedPage.vue"),
+  },
 ];
 
 const router = createRouter({
