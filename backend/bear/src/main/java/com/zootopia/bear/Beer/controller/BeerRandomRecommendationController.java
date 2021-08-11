@@ -21,6 +21,6 @@ public class BeerRandomRecommendationController {
 	@GetMapping
 	public ResponseEntity<?> beerRandomRecommendation() {
 		BeerRandomRecommendationDto beerRandomRecommendationDto = beerRandomRecommendationService.beerRandomRecommendation();
-		return new ResponseEntity<>(beerRandomRecommendationDto, HttpStatus.OK);
+		return ResponseEntity.ok(beerRandomRecommendationDto);
 	}
 }

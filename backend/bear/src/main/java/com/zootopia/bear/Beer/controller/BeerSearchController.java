@@ -22,6 +22,6 @@ public class BeerSearchController {
 	@GetMapping
 	public ResponseEntity<?> beerSearch(@RequestParam int beerId) {
 		BeerHashTagDto beerHashTagDto = beerSearchService.beerSearch(beerId);
-		return new ResponseEntity<>(beerHashTagDto, HttpStatus.OK);
+		return ResponseEntity.ok(beerHashTagDto);
 	}
 }
