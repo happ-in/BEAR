@@ -1,5 +1,6 @@
 package com.zootopia.bear.Exception;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,5 +20,10 @@ public class ApiControllerAdvice {
 			.getAllErrors()
 			.forEach(e -> errors.put(((FieldError) e).getField(), e.getDefaultMessage()));
 		return ResponseEntity.badRequest().body(errors);
+	}
+
+	@ExceptionHandler(SQLException.class)
+	public ResponseEntity<?> handleSqlException(SQLException e) {
+		return ResponseEntity.badRequest().body(e.getMessage());
 	}
 }
