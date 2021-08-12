@@ -27,7 +27,7 @@ public class User {
     @Column(name = "user_image")
     private String userImage;
     @Column(name = "share_count")
-    private long shareCount;
+    private int shareCount;
 
 //    @OneToMany(fetch = FetchType.EAGER)
 //    @JoinColumn(name = "user_id")

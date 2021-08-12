@@ -1,6 +1,7 @@
 package com.zootopia.bear.Review.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -17,4 +18,6 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
 	@Modifying(clearAutomatically = true)
 	@Query(value = "update review set rating = :rating where review_id = :reviewId", nativeQuery = true)
 	void updateReview(@Param("reviewId") int reviewId, @Param("rating") double rating);
+
+	public Optional<Review> findTopByBeerId(int beerId);
 }

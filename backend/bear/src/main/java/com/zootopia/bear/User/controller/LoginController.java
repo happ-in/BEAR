@@ -28,7 +28,7 @@ public class LoginController {
     @GetMapping("/kakao")
     public ResponseEntity<?> home(@RequestParam(value = "code", required = false) String code, HttpSession session ) throws Exception{
         String accessToken = userService.getAccessToken(code);
-        Long userId = userService.getUserId(accessToken);
+        long userId = userService.getUserId(accessToken);
         Optional<User> user = userService.getUser(userId);
         if(!user.isPresent()) {
             user = Optional.of(userService.getKakaoInfo(accessToken));

@@ -15,7 +15,7 @@ import java.io.Serializable;
 public class BookmarkId implements Serializable {
 
     @Column(name = "user_id")
-    private Long userId;
+    private long userId;
 
     @Column(name = "beer_id")
     private int beerId;
