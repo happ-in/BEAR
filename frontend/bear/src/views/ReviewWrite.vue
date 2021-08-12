@@ -17,14 +17,30 @@
 
       <div style="margin-top: 20px">
         <div v-for="(hashTag, index) in beer.hashTags" :key="index" class="checkbox-wrapper">
-          <input type="checkbox" v-model="tagNames" :value="hashTag.hashTagName" />
+          <input
+            type="checkbox"
+            ref="tags"
+            v-model="tagNames"
+            :id="hashTag.hashTagName"
+            :value="hashTag.hashTagName"
+          />
           <div>
             <span style="padding: 5px"> #{{ hashTag.hashTagName }} </span>
           </div>
         </div>
       </div>
     </el-card>
-    <span>{{ tagNames }}</span>
+
+    <el-row style="margin: 3px">
+      <el-col :span="20"
+        ><el-input placeholder="직접 입력" v-model="keyword" class="input-with-select"
+      /></el-col>
+      <el-col :span="4"><el-button icon="el-icon-search"></el-button></el-col>
+    </el-row>
+
+    <div class="tag-name" v-for="(tagName, index) in tagNames" :key="index">
+      <el-button @click="cancel(index)">#{{ tagName }}</el-button>
+    </div>
   </div>
 </template>
 <script>
@@ -52,17 +68,26 @@ export default {
       rating: null,
       hashTags: [],
       tagNames: [],
+      keyword: "",
     };
   },
   setup() {}, //컴포지션 API
   created() {}, //컴포넌트가 생성되면 실행
   mounted() {}, //template에 정의된 html코드가 레너링된 후 실행
   unmounted() {}, //unmount가 완료된 후 실행
-  methods: {},
+  methods: {
+    cancel(index) {
+      this.beer.hashTags.forEach((element) => {
+        if (element.hashTagName == this.tagNames[index]) {
+          this.tagNames.pop(this.tagNames[index]);
+        }
+      });
+    },
+  },
 };
 </script>
 <style>
-input {
+input[type="checkbox"] {
   position: absolute;
   top: 0;
   left: 0;
