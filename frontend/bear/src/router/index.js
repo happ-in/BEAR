@@ -10,26 +10,9 @@ const routes = [
     name: "Landing",
     component: Landing,
   },
-  // {
-  //   path: "/ar",
-  //   name: "Ar",
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () =>
-  //     import(/* webpackChunkName: "about" */ "../views/ArPage.vue"),
-  // },
-  // {
-  //   path: "/",
-  //   name: "Home",
-  //   component: Home,
-  // },
   {
     path: "/ar",
     name: "Ar",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ "../views/ArPage.vue"),
   },
   {
@@ -54,6 +37,11 @@ const routes = [
     path: "/review/write",
     name: "ReviewWrite",
     component: () => import(/* webpackChunkName: "about" */ "../views/ReviewWrite.vue"),
+  },
+  {
+    path: "/login",
+    name: "KakaoLogin",
+    component: () => import(/* webpackChunkName: "about" */ "../views/LoginPage.vue"),
   },
 ];
 
