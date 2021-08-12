@@ -26,27 +26,7 @@ public class UserBadgeService {
     private final BadgeRepository badgeRepository;
     private final ReviewRepository reviewRepository;
 
-    public List<GainBadge> checkBadge(long userId) {
-        List<GainBadge> gainBadgeList = new ArrayList<>();
-        List<Badge> userBadgeList = new ArrayList<>();
-        for(UserBadge userBadge : userBadgeRepository.findAllByUserBadgeId_UserId(userId)) {
-            userBadgeList.add(userBadge.getBadge());
-        }
-        List<Badge> badgeList = badgeRepository.findAll();
 
-        for(Badge badge : badgeList) {
-            if(userBadgeList.contains(badge)) {
-                gainBadgeList.add(new GainBadge(badge,true));
-            } else {
-                gainBadgeList.add(new GainBadge(badge,false));
-            }
-        }
-        return gainBadgeList;
-    }
-
-
-
-    // 안주전문가: 안주 추천 3회 이상
     public void addExpertBadge(long userId) {
         int badgeId = 1;
         UserBadgeId checkUserBadgeId = new UserBadgeId(badgeId,userId);
@@ -65,7 +45,6 @@ public class UserBadgeService {
         }
     }
 
-    // 콜럼버스: 각 맥주 당 처음 리뷰를 달았을 경우
     public void addColumbusBadge(long userId,int beerId) {
         int badgeId = 2;
         UserBadgeId checkUserBadgeId = new UserBadgeId(badgeId,userId);
@@ -83,7 +62,6 @@ public class UserBadgeService {
         }
     }
 
-    // 천사표 리뷰어: 4.5점 5회 이상
     public void addAngelBadge(long userId) {
         int badgeId = 3;
         UserBadgeId checkUserBadgeId = new UserBadgeId(badgeId,userId);
@@ -107,7 +85,7 @@ public class UserBadgeService {
             userBadgeRepository.save(userBadge);
         }
     }
-    // 프로 불편러: 1점 이하 2회 이상
+
     public void addDevilBadge(long userId) {
         int badgeId = 4;
         UserBadgeId checkUserBadgeId = new UserBadgeId(badgeId,userId);

@@ -20,13 +20,13 @@ public class BookmarkRegistryController {
     public ResponseEntity<?> addBookmark(@RequestParam int beerId, HttpSession session) {
         long userId = (long) session.getAttribute("userId");
         bookmarkService.addBookmark(userId,beerId);
-        return new ResponseEntity<>(null, HttpStatus.OK);
+        return new ResponseEntity<>(true, HttpStatus.OK);
     }
 
     @DeleteMapping
     public ResponseEntity<?> deleteBookmark(@RequestParam int beerId, HttpSession session) {
         long userId = (long) session.getAttribute("userId");
         bookmarkService.deleteBookmark(userId,beerId);
-        return new ResponseEntity<>(null, HttpStatus.OK);
+        return new ResponseEntity<>(true, HttpStatus.OK);
     }
 }

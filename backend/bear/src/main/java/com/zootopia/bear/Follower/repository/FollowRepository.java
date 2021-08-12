@@ -9,8 +9,8 @@ import javax.persistence.Table;
 import java.util.List;
 
 @Repository
-@Table(name="follower")
-public interface FollowerRepository extends JpaRepository<Follower, FollowerId> {
+@Table(name="follow")
+public interface FollowRepository extends JpaRepository<Follower, FollowerId> {
 
     public List<Follower> findFollowersByFollowerId_UserId(Long userId);
 

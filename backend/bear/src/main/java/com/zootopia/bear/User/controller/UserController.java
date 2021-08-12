@@ -30,15 +30,14 @@ public class UserController {
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
-    @GetMapping("/myInfo")
-    public ResponseEntity<?> getMyInfo(HttpSession session) {
-        Long userId = (Long) session.getAttribute("userId");
+    @GetMapping("/userInfo")
+    public ResponseEntity<?> getMyInfo(@RequestParam long userId) {
         User user = userService.getUser(userId).get();
         return new ResponseEntity<>(user,HttpStatus.OK);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<?> updateUser(@RequestParam User user){
+    public ResponseEntity<?> updateUser(@RequestBody User user){
         if(userService.updateUser(user)) {
             return new ResponseEntity<>(true, HttpStatus.OK);
         }
@@ -46,7 +45,7 @@ public class UserController {
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<?> deleteUser(@RequestParam User user){
+    public ResponseEntity<?> deleteUser(@RequestBody User user){
         if(userService.deleteUser(user)) {
             return new ResponseEntity<>(true, HttpStatus.OK);
         }

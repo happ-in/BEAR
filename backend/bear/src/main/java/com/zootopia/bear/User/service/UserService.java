@@ -194,6 +194,7 @@ public class UserService {
             return false;
         }
         // nickname check
+        userRepository.save(user);
         return true;
     }
 

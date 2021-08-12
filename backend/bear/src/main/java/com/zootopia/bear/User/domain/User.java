@@ -29,8 +29,5 @@ public class User {
     @Column(name = "share_count")
     private int shareCount;
 
-//    @OneToMany(fetch = FetchType.EAGER)
-//    @JoinColumn(name = "user_id")
-//    private List<Bookmark> bookmark;
 
 }
