@@ -34,7 +34,7 @@ public class UserController {
     public ResponseEntity<?> getMyInfo(HttpSession session) {
         Long userId = (Long) session.getAttribute("userId");
         User user = userService.getUser(userId).get();
-        return new ResponseEntity<>(null,HttpStatus.OK);
+        return new ResponseEntity<>(user,HttpStatus.OK);
     }
 
     @PutMapping("/update")

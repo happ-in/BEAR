@@ -36,7 +36,7 @@ public class LoginController {
         }
         session.setAttribute("userId",userId);
         session.setAttribute("accessToken",accessToken);
-        return new ResponseEntity<>(user, HttpStatus.OK);
+        return new ResponseEntity<>(true, HttpStatus.OK);
     }
 
 

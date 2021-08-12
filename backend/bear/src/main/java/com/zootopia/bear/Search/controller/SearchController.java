@@ -38,24 +38,24 @@ public class SearchController {
 		return new ResponseEntity<>(searchService.searchBookmark(userId),HttpStatus.OK);
 	}
 
-	@GetMapping("/badge")
-	public ResponseEntity<?> searchBadge(){
-
-		return null;
-	}
-
 	@GetMapping("/follows")
-	public ResponseEntity<?> getFollows(HttpSession session){
+	public ResponseEntity<?> searchFollows(HttpSession session){
 		Long userId = (Long) session.getAttribute("userId");
 		List<FollowDto> followList = searchService.getFollowList(userId);
 		return new ResponseEntity<>(followList,HttpStatus.OK);
 	}
 
 	@GetMapping("/followers")
-	public ResponseEntity<?> getFollowers(HttpSession session){
+	public ResponseEntity<?> searchFollowers(HttpSession session){
 		Long followUserId = (Long) session.getAttribute("userId");
 		List<FollowDto> followerList = searchService.getFollowerList(followUserId);
 		return new ResponseEntity<>(followerList,HttpStatus.OK);
+	}
+
+	@GetMapping("/badge")
+	public ResponseEntity<?> searchBadge(){
+
+		return null;
 	}
 
 }
