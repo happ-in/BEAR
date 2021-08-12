@@ -22,7 +22,7 @@
             return {
                  lists: [
                      {link: '/recommendation', title: '랜덤 추천'},
-                     {link: '/ranking', title:'랭킹'},
+                     {link: '/rank', title:'랭킹'},
                      {link: '/', title:'홈피드'},
                      {link: '/search', title:'검색'},
                      {link: '/myprofile', title:'마이페이지'},

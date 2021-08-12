@@ -25,7 +25,7 @@ const routes = [
     component: Recommendation,
   },
   {
-    path: "/ranking",
+    path: "/rank",
     name: "RankingMain",
     component: RankingMain,
   },

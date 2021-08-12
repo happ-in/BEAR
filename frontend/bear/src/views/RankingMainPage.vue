@@ -1,20 +1,88 @@
-
 <template>
 <div>
-    <h1>랭킹</h1>
-    <div>
-        <el-carousel :interval="5000" type="card" height="500px" autoplay="false" indication-position="outside">
-            <el-carousel-item v-for="item in 6" :key="item">
-                <h3 class="medium">{{ item }}</h3>
-            </el-carousel-item>
-        </el-carousel>
+  <div>
+    <h1>Ranking</h1>
+  </div>
+  <div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            
+            <!-- 전체 -->
+            <div class="swiper-slide">
+              <button class="slide-image" type="submit" name="lagger">
+                <img src="http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=999&simg=%2Fcontent%2Fimage%2F2018%2F06%2F27%2F20180627000547_0.jpg" alt="">
+              </button>
+            </div>
+
+            <!-- 라거 -->
+            <div class="swiper-slide">
+              <button class="slide-image" type="submit" name="에일">
+                <img src="https://previews.123rf.com/images/vclements/vclements1002/vclements100200018/6410721-%EB%A7%A5%EC%A3%BC-%EB%A8%B8%EA%B7%B8%EC%9E%94%EC%9D%98-%EC%86%90%EC%9E%A1%EC%9D%B4%EC%97%90-%EC%88%98%EA%B0%91%EC%9D%98-%EC%84%B8%EB%A1%9C-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%95%8C%EC%BD%94%EC%98%AC-%EC%A4%91%EB%8F%85.jpg" alt="">
+              </button>
+            </div>
+
+            <!-- 에일 -->
+            <div class="swiper-slide">
+              <button class="slide-image" type="submit" name="에일">
+                <img src="https://en.pimg.jp/037/137/297/1/37137297.jpg" alt="">
+              </button>
+            </div>
+            
+            <!-- 밀맥주 -->
+            <div class="swiper-slide">
+              <button class="slide-image" type="submit" name="에일">
+                <img src="https://en.pimg.jp/037/137/297/1/37137297.jpg" alt="">
+              </button>
+            </div>
+
+
+            <!-- 스타우트 -->
+            <div class="swiper-slide">
+                <button class="slide-image" type="submit" name="에일">
+                    <img src="https://en.pimg.jp/037/137/297/1/37137297.jpg" alt="">
+                </button>
+            </div>
+
+
+            <!-- 라들러/RTD -->
+            <div class="swiper-slide">
+                <button class="slide-image" type="submit" name="에일">
+                    <img src="https://en.pimg.jp/037/137/297/1/37137297.jpg" alt="">
+                </button>
+            </div>
+
+
+
+            <!-- <div class="swiper-slide">
+                <div 
+                    class="slide-image" 
+                    style="background-image: url(https://images.unsplash.com/photo-1483985988355-763728e1935b?w=500&h=500&q=70&fit=crop&crop=faces)">
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <article class="slide-content">
+                    <h4>Lorem Ipsum</h4>
+                    <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore molestias itaque reiciendis et excepturi odit eligendi cum eaque ad culpa, numquam corrupti rem praesentium, earum beatae temporibus nulla voluptates laudantium!
+                    </p>
+                    <footer>
+                        <div>01/02</div>
+                        <a href="#">READ MORE</a>
+                    </footer>
+                </article>
+            </div> -->
+
+        </div>
+        <div class="swiper-pagination"></div>
     </div>
+  </div>
 </div>
 </template>
 
 
 <script>
-
+// import ListItem from "@/경로";
     export default {
         name: '', //컴포넌트 이름
         components: {},
@@ -23,29 +91,218 @@
                 sampleData: ''
             };
         },
-        setup() {}, //컴포지션 API
-        created() {}, //컴포넌트가 생성되면 실행
-        mounted() {}, //template에 정의된 html코드가 레너링된 후 실행
+        setup() {
+
+        }, //컴포지션 API
+        created() {
+
+        }, //컴포넌트가 생성되면 실행
+        mounted() {
+            new Swiper('.swiper-container', {
+            slidesPerView: 'auto',
+            initialSlide: 2,
+            speed: 1000,
+            spaceBetween: 32,
+            loop: true,
+            centeredSlides: true,
+            roundLengths: true,
+            mousewheel: true,
+            grabCursor: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+          });
+        }, //template에 정의된 html코드가 레너링된 후 실행
         unmounted() {}, //unmount가 완료된 후 실행
-        methods: {} //컴포넌트 내에서 사용할 메소드 정의
+        methods: {
+
+        } //컴포넌트 내에서 사용할 메소드 정의
     }
 </script>
 
-<style>
+<style lang="scss">
+// https://dribbble.com/shots/6763080-Cruise-Tech-Motion-Study
 
-  .el-carousel__item h3 {
-    color: #475669;
-    font-size: 14px;
-    opacity: 0.75;
-    line-height: 200px;
-    margin: 0;
-  }
+$breakpoints: (
+    'sm': 50px,
+    'md': 108px,
+    'lg': 1024px,
+);
 
-  .el-carousel__item:nth-child(2n) {
-    background-color: #99a9bf;
-  }
+$theme-color: #939597;
 
-  .el-carousel__item:nth-child(2n+1) {
-    background-color: #d3dce6;
-  }
+body {
+    background-color: #f6f7fb;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+// title
+h1 {
+    // display: flex;
+    // justify-content: center;
+    margin: 0.5% 0% 1% 0%;
+}
+
+// ==========================================
+// SWIPER
+// ==========================================
+
+.swiper-container {
+    //슬라이드 세로 길이
+    height: 500px;
+    //슬라이드 전체 가로 길이 
+    width: 1500px;
+    padding-bottom: 85px;
+}
+
+.swiper-wrapper {
+    // enough width to have off screen slides partially visible     
+    width: 60%;
+    will-change: transform;
+}
+
+.swiper-slide {
+    width: 90%;
+    background-color: white;
+    overflow: hidden;
+    
+    &.swiper-slide-active,
+    &.swiper-slide-duplicate-active {
+        .slide-image {
+            transform: scale3d(1, 1, 1);
+        }
+    }
+    
+    @media (min-width: map-get($breakpoints, 'sm')) {
+        width: 100%;
+
+        &.swiper-slide-next,
+        &.swiper-slide-prev,
+        &.swiper-slide-duplicate-next,
+        &.swiper-slide-duplicate-prev {
+            .slide-image {
+                transform: scale3d(1, 1, 1);
+            }
+        }
+    }
+
+    @media (min-width: map-get($breakpoints, 'md')) {
+        width: 33.333333%;
+        
+        &.swiper-slide-next,
+        &.swiper-slide-prev,
+        &.swiper-slide-duplicate-next,
+        &.swiper-slide-duplicate-prev {
+            .slide-image {
+                transform: scale3d(1, 1, 1);
+            }
+        }
+    }
+
+    @media (min-width: map-get($breakpoints, 'lg')) {
+        width: 25%;
+    }
+}
+
+.swiper-pagination {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 85px;
+    
+    // chained selector hack to handle very specific overrides
+    &#{&} {
+        bottom: 0;
+    }
+}
+
+.swiper-pagination-bullet {
+    background: $theme-color;
+    width: 22px;
+    height: 4px;
+    border-radius: 0;
+    transition: opacity 1s ease;
+    
+    &#{&}#{&} {
+        margin: 0;
+    }
+    
+    @media (min-width: map-get($breakpoints, 'md')) {
+        width: 40px;
+    }
+}
+
+
+// ==========================================
+// SLIDES
+// ==========================================
+
+.slide-image {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    transform: scale3d(1.3, 1.3, 1); // 3d to hardware accelerate
+    backface-visibility: hidden;
+    will-change: transform;
+    transition: transform 1400ms ease;
+
+    button {
+      padding: 0;
+    }
+    img {
+      object-fit: contain;
+    }
+}
+
+
+.slide-content {
+    padding: 0 2.2rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    
+    h4 {
+        font-size: 25px;
+        font-weight: 400;
+        margin: 0 0 1rem;
+        padding-top: 2.8rem;
+        flex-grow: 0;
+    }
+    
+    p {
+        display: flex;
+        line-height: 1.8;
+        margin-top: 0;
+        font-size: 14px;
+        flex-grow: 1;
+    }
+    
+    footer {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding-bottom: 2.8rem;
+        font-size: 14px;
+        color: #c2c0e0;
+    }
+    
+    a {
+        color: $theme-color;
+        font-size: 12px;
+        font-weight: 700;
+        text-decoration: none;
+        border-bottom: 3px solid currentColor;
+        padding-bottom: 3px;
+    }
+}
 </style>
