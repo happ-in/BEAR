@@ -12,6 +12,6 @@ import com.zootopia.bear.Review.domain.ReviewLikeId;
 
 @Repository
 public interface ReviewLikeRepository extends JpaRepository<ReviewLike, ReviewLikeId> {
-	@Query(value = "select * from review_like where review_id=:reviewId", nativeQuery = true)
-	List<ReviewLike> searchAllByReviewId(@Param("reviewId") int reviewId);
+	@Query(value = "select count(*) from review_like where review_id=:reviewId", nativeQuery = true)
+	long searchAllByReviewId(@Param("reviewId") int reviewId);
 }

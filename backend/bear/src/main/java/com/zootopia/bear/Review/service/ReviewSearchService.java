@@ -32,17 +32,25 @@ public class ReviewSearchService {
 	private final ReviewLikeRepository reviewLikeRepository;
 
 	public List<ReviewDto> searchMyReview(long userId) {
-		List<ReviewDto> reviewDtos = new ArrayList<>();
-
 		// 1. 내가 작성한 리뷰 가져오기
 		List<Review> reviews = reviewRepository.findAllByUserId(userId);
+		return getReviewDtos(userId, reviews);
+	}
+
+	public List<ReviewDto> feed(long userId) {
+		List<Review> reviews = reviewRepository.searchFeed(userId);
+		return getReviewDtos(userId, reviews);
+	}
+
+	private List<ReviewDto> getReviewDtos(long userId, List<Review> reviews) {
+		List<ReviewDto> reviewDtos = new ArrayList<>();
 		for (Review review : reviews) {
 			// 2. 맥주 정보 가져오기
-			Beer beer = getBeer(review);
+			Beer beer = beerRepository.findById(review.getBeerId());
 			List<HashTag> hashTags = getHashTags(review);
 			int reviewId = review.getReviewId();
-			boolean isLike = isLike(userId, reviewId);
-			long totalLike = getTotalLike(reviewId);
+			boolean isLike = reviewLikeRepository.findById(new ReviewLikeId(userId, reviewId)).isPresent();
+			long totalLike = reviewLikeRepository.searchAllByReviewId(reviewId);
 			ReviewDto reviewDto = ReviewDto.builder()
 				.beer(beer)
 				.reviewId(review.getReviewId())
@@ -50,20 +58,11 @@ public class ReviewSearchService {
 				.hashTags(hashTags)
 				.isLike(isLike)
 				.totalLike(totalLike)
+				.startDate(review.getStartDate())
 				.build();
 			reviewDtos.add(reviewDto);
 		}
 		return reviewDtos;
-	}
-
-	private long getTotalLike(int reviewId) {
-		long totalLike = reviewLikeRepository.searchAllByReviewId(reviewId).size();
-		return totalLike;
-	}
-
-	private boolean isLike(long userId, int reviewId) {
-		boolean isLike = reviewLikeRepository.findById(new ReviewLikeId(userId, reviewId)).isPresent();
-		return isLike;
 	}
 
 	private List<HashTag> getHashTags(Review review) {
@@ -74,9 +73,5 @@ public class ReviewSearchService {
 			hashTags.add(hashTag);
 		}
 		return hashTags;
-	}
-
-	private Beer getBeer(Review review) {
-		return beerRepository.findById(review.getBeerId());
 	}
 }
