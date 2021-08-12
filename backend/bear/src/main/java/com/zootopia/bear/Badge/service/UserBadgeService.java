@@ -1,7 +1,9 @@
 package com.zootopia.bear.Badge.service;
 
+import com.zootopia.bear.Badge.domain.Badge;
 import com.zootopia.bear.Badge.domain.UserBadge;
 import com.zootopia.bear.Badge.domain.UserBadgeId;
+import com.zootopia.bear.Badge.dto.GainBadge;
 import com.zootopia.bear.Badge.repository.BadgeRepository;
 import com.zootopia.bear.Badge.repository.UserBadgeRepository;
 import com.zootopia.bear.Review.domain.Review;
@@ -9,9 +11,9 @@ import com.zootopia.bear.Review.repository.ReviewRepository;
 import com.zootopia.bear.User.domain.User;
 import com.zootopia.bear.User.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,6 +25,26 @@ public class UserBadgeService {
     private final UserRepository userRepository;
     private final BadgeRepository badgeRepository;
     private final ReviewRepository reviewRepository;
+
+    public List<GainBadge> checkBadge(long userId) {
+        List<GainBadge> gainBadgeList = new ArrayList<>();
+        List<Badge> userBadgeList = new ArrayList<>();
+        for(UserBadge userBadge : userBadgeRepository.findAllByUserBadgeId_UserId(userId)) {
+            userBadgeList.add(userBadge.getBadge());
+        }
+        List<Badge> badgeList = badgeRepository.findAll();
+
+        for(Badge badge : badgeList) {
+            if(userBadgeList.contains(badge)) {
+                gainBadgeList.add(new GainBadge(badge,true));
+            } else {
+                gainBadgeList.add(new GainBadge(badge,false));
+            }
+        }
+        return gainBadgeList;
+    }
+
+
 
     // 안주전문가: 안주 추천 3회 이상
     public void addExpertBadge(long userId) {

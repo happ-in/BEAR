@@ -7,4 +7,5 @@ import lombok.AllArgsConstructor;
 public class FollowDto {
     private Long userId;
     private String nickname;
+    private String userImage;
 }
