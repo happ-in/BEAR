@@ -1,6 +1,7 @@
 <template>
   <h2>{{ user.customId }}</h2>
   <el-container class="mb-4" style="margin-top: 5%">
+    <!-- 프로필 이미지 -->
     <el-aside width="200px">
       <div class="block profile-image">
         <el-avatar
@@ -11,11 +12,15 @@
         />
       </div>
     </el-aside>
+
+    <!-- 뱃지, 닉네임 -->
     <el-main>
       <div>뱃지명</div>
       <div>{{ user.nickName }}</div>
     </el-main>
   </el-container>
+
+  <!-- 리뷰수/팔로잉/팔로워 -->
   <el-row>
     <el-col :span="8">
       <div class="grid-content bg-purple">리뷰수</div>
@@ -31,6 +36,7 @@
     </el-col>
   </el-row>
 
+  <!-- 팔로우/팔로우 취소 -->
   <el-row>
     <el-button plain style="width: 100%; margin: 3%" @click="isFollow = !isFollow">
       {{ isFollow ? "팔로우 취소" : "팔로우" }}
@@ -39,11 +45,13 @@
 
   <div>
     <el-card class="box-card">
+      <!-- 맥주이미지 -->
       <el-row>
         <el-col :span="7"
           ><img :src="beer.beerImage" class="grid-content bg-purple" style="width: 100%" />
         </el-col>
 
+        <!-- 제목, 별점, 해시태그 -->
         <el-col :span="14">
           <el-row :gutter="20">
             <span>
@@ -65,6 +73,7 @@
           </div>
         </el-col>
 
+        <!-- 하트 -->
         <el-col :span="3">
           <div class="heart-wrapper">
             <div class="heart-image"><img :src="src" class="image" /></div>
