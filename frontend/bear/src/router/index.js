@@ -55,6 +55,11 @@ const routes = [
     name: "ReviewWrite",
     component: () => import(/* webpackChunkName: "about" */ "../views/ReviewWrite.vue"),
   },
+  {
+    path: "/profile",
+    name: "UserFollow",
+    component: () => import(/* webpackChunkName: "about" */ "../views/UserFollowPage.vue"),
+  },
 ];
 
 const router = createRouter({
