@@ -48,7 +48,8 @@
     </el-row>
   </el-card>
 
-  <router-link to="/review/write">리뷰</router-link>
+  <router-link to="/review/write">리뷰</router-link> |
+  <router-link to="/profile">계정정보</router-link>
 </template>
 
 <script>
