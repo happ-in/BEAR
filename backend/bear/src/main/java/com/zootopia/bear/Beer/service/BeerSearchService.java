@@ -8,10 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.zootopia.bear.Beer.domain.Beer;
 import com.zootopia.bear.Beer.dto.BeerHashTagDto;
 import com.zootopia.bear.Beer.repository.BeerRepository;
-import com.zootopia.bear.Country.domain.Country;
 import com.zootopia.bear.HashTag.dto.HashTagTotalDto;
 import com.zootopia.bear.HashTag.repository.HashTagRepository;
-import com.zootopia.bear.Review.domain.Review;
 import com.zootopia.bear.Review.repository.ReviewRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -28,6 +26,13 @@ public class BeerSearchService {
 		Beer beer = beerRepository.findById(beerId);
 		double beerAvg = reviewRepository.beerAvg(beerId);
 		List<HashTagTotalDto> hashTagTotalDtos = hashTagRepository.searchHashTagToTal(beerId);
+		return new BeerHashTagDto(beer, beerAvg, hashTagTotalDtos);
+	}
+
+	public BeerHashTagDto beerSearch(String searchId) {
+		Beer beer = beerRepository.findBySearchId(searchId);
+		double beerAvg = reviewRepository.beerAvg(beer.getBeerId());
+		List<HashTagTotalDto> hashTagTotalDtos = hashTagRepository.searchHashTagToTal(beer.getBeerId());
 		return new BeerHashTagDto(beer, beerAvg, hashTagTotalDtos);
 	}
 }

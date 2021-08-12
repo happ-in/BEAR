@@ -24,4 +24,10 @@ public class BeerSearchController {
 		BeerHashTagDto beerHashTagDto = beerSearchService.beerSearch(beerId);
 		return ResponseEntity.ok(beerHashTagDto);
 	}
+
+	@GetMapping("/ar")
+	public ResponseEntity<?> beerSearchAr(@RequestParam String searchId) {
+		BeerHashTagDto beerHashTagDto = beerSearchService.beerSearch(searchId);
+		return ResponseEntity.ok(beerHashTagDto);
+	}
 }

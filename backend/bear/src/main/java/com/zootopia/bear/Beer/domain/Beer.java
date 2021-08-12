@@ -36,4 +36,6 @@ public class Beer {
 	private double alcoholProof;
 
 	private String beerImage;
+
+	private String searchId;
 }

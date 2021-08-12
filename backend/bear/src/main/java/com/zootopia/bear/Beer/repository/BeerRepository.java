@@ -14,4 +14,6 @@ public interface BeerRepository extends JpaRepository<Beer, Integer>, BeerReposi
 	Beer searchRandomBeer();
 
 	List<Beer> findByBeerNameContains(String beerName);
+
+	Beer findBySearchId(String searchId);
 }
