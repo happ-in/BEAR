@@ -50,6 +50,11 @@ const routes = [
     name: "Feed",
     component: () => import(/* webpackChunkName: "about" */ "../views/FeedPage.vue"),
   },
+  {
+    path: "/review/write",
+    name: "ReviewWrite",
+    component: () => import(/* webpackChunkName: "about" */ "../views/ReviewWrite.vue"),
+  },
 ];
 
 const router = createRouter({
