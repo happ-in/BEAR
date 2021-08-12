@@ -2,7 +2,7 @@
 <div class="wrapper">
     <ul>
         <!-- countryName, beerCategory, alcoholProof 도 추가-->
-        <li v-for="beerName in category" v-bind:key="beerName">
+        <li v-for="beerName in 7" v-bind:key="beerName">
             <el-card class="box-card">
             <template #header>
                 <div class="card-header">
@@ -33,7 +33,11 @@
         },
         setup() {}, //컴포지션 API
         created() {}, //컴포넌트가 생성되면 실행
-        mounted() {}, //template에 정의된 html코드가 레너링된 후 실행
+        mounted() {
+            // function () {
+            //     axios.get("./test.json").then(response => (this.items = response))
+            // }
+        }, //template에 정의된 html코드가 레너링된 후 실행
         unmounted() {}, //unmount가 완료된 후 실행
         methods: {} //컴포넌트 내에서 사용할 메소드 정의
     }
