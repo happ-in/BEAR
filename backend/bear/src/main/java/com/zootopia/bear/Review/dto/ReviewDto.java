@@ -1,5 +1,6 @@
 package com.zootopia.bear.Review.dto;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.zootopia.bear.Beer.domain.Beer;
@@ -20,5 +21,6 @@ public class ReviewDto {
 	private Beer beer;
 	private long totalLike;
 	private boolean isLike;
+	private LocalDateTime startDate;
 	private List<HashTag> hashTags;
 }

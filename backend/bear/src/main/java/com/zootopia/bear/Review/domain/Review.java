@@ -1,5 +1,6 @@
 package com.zootopia.bear.Review.domain;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +42,8 @@ public class Review {
 
 	private double rating;
 
+	private LocalDateTime startDate;
+
 	@OneToMany(mappedBy = "review", fetch = FetchType.LAZY)
 	private List<ReviewHashTag> reviewHashTags = new ArrayList<>();
 
@@ -52,6 +55,7 @@ public class Review {
 			.userId(reviewRegistryDto.getUserId())
 			.beerId(reviewRegistryDto.getBeerId())
 			.rating(reviewRegistryDto.getRating())
+			.startDate(LocalDateTime.now())
 			.build();
 	}
 }
