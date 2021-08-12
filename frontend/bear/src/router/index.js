@@ -42,10 +42,16 @@ const routes = [
     path: "/login",
     name: "KakaoLogin",
     component: () => import(/* webpackChunkName: "about" */ "../views/LoginPage.vue"),
-
+  },
+  {
     path: "/profile",
-    name: "UserFollow",
-    component: () => import(/* webpackChunkName: "about" */ "../views/UserFollowPage.vue"),
+    name: "UserProfile",
+    component: () => import(/* webpackChunkName: "about" */ "../views/UserProfilePage.vue"),
+  },
+  {
+    path: "/myprofile",
+    name: "MyProfile",
+    component: () => import(/* webpackChunkName: "about" */ "../views/MyProfilePage.vue"),
   },
 ];
 
