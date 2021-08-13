@@ -1,8 +1,8 @@
-package com.zootopia.bear.Follower.service;
+package com.zootopia.bear.Follow.service;
 
-import com.zootopia.bear.Follower.domain.Follower;
-import com.zootopia.bear.Follower.domain.FollowerId;
-import com.zootopia.bear.Follower.repository.FollowRepository;
+import com.zootopia.bear.Follow.domain.Follow;
+import com.zootopia.bear.Follow.domain.FollowerId;
+import com.zootopia.bear.Follow.repository.FollowRepository;
 import com.zootopia.bear.User.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ public class FollowService {
 
     public void addFollowUser(Long userId,Long followUserId){
         FollowerId followerId = new FollowerId(userId,followUserId);
-        followRepository.save(new Follower(followerId));
+        followRepository.save(new Follow(followerId));
     }
 
     public void deleteFollowUser(Long userId,Long followUserId){

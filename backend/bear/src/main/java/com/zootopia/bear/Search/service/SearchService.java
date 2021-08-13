@@ -2,6 +2,7 @@ package com.zootopia.bear.Search.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import com.zootopia.bear.Badge.domain.Badge;
 import com.zootopia.bear.Badge.domain.UserBadge;
@@ -10,9 +11,9 @@ import com.zootopia.bear.Badge.repository.BadgeRepository;
 import com.zootopia.bear.Badge.repository.UserBadgeRepository;
 import com.zootopia.bear.Bookmark.domain.Bookmark;
 import com.zootopia.bear.Bookmark.repository.BookmarkRepository;
-import com.zootopia.bear.Follower.domain.Follower;
-import com.zootopia.bear.Follower.dto.FollowDto;
-import com.zootopia.bear.Follower.repository.FollowRepository;
+import com.zootopia.bear.Follow.domain.Follow;
+import com.zootopia.bear.Follow.dto.FollowDto;
+import com.zootopia.bear.Follow.repository.FollowRepository;
 import com.zootopia.bear.User.domain.User;
 import com.zootopia.bear.User.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -61,30 +62,34 @@ public class SearchService {
 		List<BeerDto> beerDtoList = new ArrayList<>();
 		for(Bookmark bookmark : bookmarkList) {
 			int beerId = bookmark.getBookmarkId().getBeerId();
-			Beer beer = beerRepository.getById(beerId);
+			Beer beer = beerRepository.findById(beerId);
 			BeerDto beerDto = new BeerDto(beer.getBeerId(),beer.getBeerName(),beer.getBeerImage());
 			beerDtoList.add(beerDto);
 		}
 		return beerDtoList;
 	}
 
-	public List<FollowDto> getFollowList(Long userId){
-		List<Follower> list = followRepository.findFollowersByFollowerId_UserId(userId);
+	public Optional<User> getUser(long userId) {
+		return userRepository.findById(userId);
+	}
+
+	public List<FollowDto> getFollowList(long userId){
+		List<Follow> list = followRepository.findAllByFollowerId_UserId(userId);
 		List<FollowDto> followList = new ArrayList<>();
-		for(Follower follower : list) {
-			Long followUserId = follower.getFollowerId().getFollowUserId();
-			User followUser = userRepository.getById(followUserId);
+		for(Follow follower : list) {
+			long followUserId = follower.getFollowerId().getFollowUserId();
+			User followUser = userRepository.findById(followUserId).get();
 			followList.add(new FollowDto(followUserId,followUser.getNickname(), followUser.getUserImage()));
 		}
 		return followList;
 	}
 
-	public List<FollowDto> getFollowerList(Long followUserId){
-		List<Follower> list = followRepository.findFollowersByFollowerId_FollowUserId(followUserId);
+	public List<FollowDto> getFollowerList(long followUserId){
+		List<Follow> list = followRepository.findAllByFollowerId_FollowUserId(followUserId);
 		List<FollowDto> followerList = new ArrayList<>();
-		for(Follower follower : list) {
-			Long followerId = follower.getFollowerId().getUserId();
-			User followerUser = userRepository.getById(followerId);
+		for(Follow follower : list) {
+			long followerId = follower.getFollowerId().getUserId();
+			User followerUser = userRepository.findById(followerId).get();
 			followerList.add(new FollowDto(followerId,followerUser.getNickname(),followerUser.getUserImage()));
 		}
 		return followerList;
@@ -92,18 +97,19 @@ public class SearchService {
 
 	public List<GainBadge> getGainBadgeList(long userId) {
 		List<GainBadge> gainBadgeList = new ArrayList<>();
-		List<Badge> userBadgeList = new ArrayList<>();
+		List<Integer> userBadgeList = new ArrayList<>();
 		for(UserBadge userBadge : userBadgeRepository.findAllByUserBadgeId_UserId(userId)) {
-			userBadgeList.add(userBadge.getBadge());
+			userBadgeList.add(userBadge.getUserBadgeId().getBadgeId());
 		}
 		List<Badge> badgeList = badgeRepository.findAll();
 
 		for(Badge badge : badgeList) {
-			if(userBadgeList.contains(badge)) {
+			if(userBadgeList.contains(badge.getBadgeId())) {
 				gainBadgeList.add(new GainBadge(badge,true));
 			} else {
 				gainBadgeList.add(new GainBadge(badge,false));
 			}
+
 		}
 		return gainBadgeList;
 	}

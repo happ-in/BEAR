@@ -1,9 +1,9 @@
-package com.zootopia.bear.Follower.controller;
+package com.zootopia.bear.Follow.controller;
 
 
 
 
-import com.zootopia.bear.Follower.service.FollowService;
+import com.zootopia.bear.Follow.service.FollowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

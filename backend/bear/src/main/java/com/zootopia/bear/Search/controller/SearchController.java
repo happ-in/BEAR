@@ -1,6 +1,7 @@
 package com.zootopia.bear.Search.controller;
 
 
+import com.zootopia.bear.User.domain.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +29,14 @@ public class SearchController {
 	@GetMapping("/beer")
 	public ResponseEntity<?> searchBeer(@RequestParam String keyword) {
 		return new ResponseEntity<>(searchService.searchBeer(keyword), HttpStatus.OK);
+	}
+
+	@GetMapping("/userInfo")
+	public ResponseEntity<?> getMyInfo(@RequestParam long userId) {
+		if(searchService.getUser(userId).isPresent()) {
+			return new ResponseEntity<>(searchService.getUser(userId).get(),HttpStatus.OK);
+		}
+		return new ResponseEntity<>(false,HttpStatus.BAD_REQUEST);
 	}
 
 	@GetMapping("/bookmark")

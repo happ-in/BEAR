@@ -1,4 +1,4 @@
-package com.zootopia.bear.Follower.domain;
+package com.zootopia.bear.Follow.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

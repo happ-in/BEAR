@@ -30,12 +30,6 @@ public class UserController {
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
-    @GetMapping("/userInfo")
-    public ResponseEntity<?> getMyInfo(@RequestParam long userId) {
-        User user = userService.getUser(userId).get();
-        return new ResponseEntity<>(user,HttpStatus.OK);
-    }
-
     @PutMapping("/update")
     public ResponseEntity<?> updateUser(@RequestBody User user){
         if(userService.updateUser(user)) {

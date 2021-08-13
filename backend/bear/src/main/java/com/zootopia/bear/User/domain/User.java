@@ -13,7 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "USER")
+@Table(name = "user")
 public class User {
     @Id
     @Column(name = "user_id")
@@ -28,6 +28,4 @@ public class User {
     private String userImage;
     @Column(name = "share_count")
     private int shareCount;
-
-
 }
