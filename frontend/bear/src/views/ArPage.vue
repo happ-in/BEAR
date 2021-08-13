@@ -70,7 +70,7 @@
       xmlns="http://www.w3.org/2000/svg"
       width="300"
       height="200"
-      viewBox="-270 -20 300 200"
+      viewBox="-200 -20 300 200"
       fill="white"
     >
       <path
@@ -639,11 +639,13 @@
         }, //template에 정의된 html코드가 레너링된 후 실행
         unmounted() {}, //unmount가 완료된 후 실행
         methods: {recommendFood(){
-            this.$router.push('/');
+            // this.$router.push('/');
+            window.open('https://i5a403.p.ssafy.io/beer/detail?beerId='+this.beerData.beerId+'');
           },goProfile(){
             this.$router.push('/profile');
+            window.open('https://i5a403.p.ssafy.io/beer/profile')
           },goSearch(){
-            this.$router.push('/search');
+            window.open('https://i5a403.p.ssafy.io/beer/search')
           },
           async getBeerData(id) {
             this.beerData = await this.$api("https://i5a403.p.ssafy.io/beer/ar?searchId="+id,"get"); //test API
@@ -729,8 +731,11 @@
 #btn_div {
   width: 100%;
   height: 40px;
-  position: fixed;
   margin-bottom: 50px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 85%;
+  left: 50%;
   bottom: 0;
   display: flex;
   align-content: center;
@@ -743,8 +748,11 @@
 #btn_nav1 {
   width: 100%;
   height: 640px;
-  position: fixed;
   margin-top: 50px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 43%;
+  left: 50%;
   bottom: 0;
   display: flex;
   align-content: center;
@@ -757,8 +765,11 @@
 #btn_nav2 {
   width: 100%;
   height: 640px;
-  position: fixed;
   margin-top: 50px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 43%;
+  left: 70%;
   bottom: 0;
   display: flex;
   align-content: center;
