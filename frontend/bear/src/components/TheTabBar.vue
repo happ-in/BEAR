@@ -9,18 +9,12 @@
     </div>
     <!-- tabbar -->
     <div class="tabbar">
-      <ul id="menu">
-        <router-link
-          v-for="route in routes"
-          :key="route.key"
-          :to="route.path"
-          tag="li"
-          class="tabbar-menu-list"
-          class-activate="active"
-          exact
-          >{{ route.title }}
+      <div id="menu">
+        <router-link v-for="route in routes" :key="route.key" :to="route.path" class="tabbar-menu-list" class-activate="active" exact>
+          <img width="40" :src="route.img" alt="" />
+          <div>{{ route.title }}</div>
         </router-link>
-      </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -33,11 +27,11 @@ export default {
     //html과 자바스크립트 코드에서 사용할 데이터 변수 선언
     return {
       routes: [
-        { path: "/recommendation", title: "랜덤 추천" },
-        { path: "/ranking", title: "랭킹" },
-        { path: "/feed", title: "홈피드" },
-        { path: "/search", title: "검색" },
-        { path: "/myprofile", title: "마이페이지" },
+        { path: "/recommendation", title: "랜덤추천", img: require("../assets/tabBar/dice.png") },
+        { path: "/ranking", title: "랭킹", img: require("../assets/tabBar/rank.png") },
+        { path: "/feed", title: "홈피드", img: require("../assets/tabBar/house.png") },
+        { path: "/search", title: "검색", img: require("../assets/tabBar/search.png") },
+        { path: "/myprofile", title: "마이페이지", img: require("../assets/tabBar/profile.png") },
       ],
       ar_link: { path: "/ar", title: "AR" },
     };
@@ -94,6 +88,8 @@ export default {
 }
 #menu {
   padding: 0;
+  display: flex;
+  text-align: center;
   /* text-align: center; */
 
   font-family: "Noto Sans KR", sans-serif;
