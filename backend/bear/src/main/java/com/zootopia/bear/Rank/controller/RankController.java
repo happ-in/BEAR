@@ -22,7 +22,7 @@ public class RankController {
 
 	private final RankService rankService;
 
-	@GetMapping
+	@GetMapping("/all")
 	public ResponseEntity<?> rankAll() {
 		List<RankDto> rank = rankService.rankAll();
 		return ResponseEntity.ok(rank);
