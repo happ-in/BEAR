@@ -81,11 +81,11 @@ padding: 18px 0;
     /* flex-direction: row; */
     justify-content: center;
 }
-.box-card h2 {
+/* .box-card h2 {
 }
 .box-card img {
 
-}
+} */
 #beerInfo {
     display: flex;
     flex-direction: row
