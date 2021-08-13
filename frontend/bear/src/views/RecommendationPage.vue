@@ -10,7 +10,7 @@
       </h2>
 
       <!-- 맥주 이미지 -->
-      <div class="beerimg-box"><img :src="beer.beerImage" /></div>
+      <div class="beerimg-box"><img :src="beerImage" /></div>
 
       <!-- 해시태그 -->
       <ul class="hashtag">
@@ -27,11 +27,7 @@
           </svg>
           다시하기
         </a>
-        <a
-          href="#"
-          class="button"
-          id="detailbtn"
-          @click="this.$router.push({ name: 'Detail', params: { beerId: this.beer.beerId } })"
+        <a href="#" class="button" id="detailbtn" @click="this.$router.push({ name: 'Detail', params: { beerId: this.beer.beerId } })"
           >상세페이지</a
         >
       </div>
@@ -48,6 +44,7 @@ export default {
     return {
       beer: [],
       countryImage: "",
+      beerImage: "",
     };
   },
   setup() {}, //컴포지션 API
@@ -60,6 +57,8 @@ export default {
     async retry() {
       this.beer = await this.$api("https://i5a403.p.ssafy.io/beer/random", "get");
       this.countryImage = require("../assets/flags/" + this.beer.country.countryName + ".png");
+      this.beerImage = require("../assets/beers/" + this.beer.beerImage + ".png");
+      console.log(this.beerImage);
     },
   }, //컴포넌트 내에서 사용할 메소드 정의
 };
@@ -150,7 +149,7 @@ h2 img {
   top: 20px;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 90%;
   object-fit: contain;
 }
 #btn {
