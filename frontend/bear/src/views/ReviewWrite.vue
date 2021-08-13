@@ -117,4 +117,7 @@ input[type="checkbox"]:checked ~ div {
   line-height: 25px;
   transition: 0.5s ease;
 }
+video{
+    display: none;
+}
 </style>

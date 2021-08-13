@@ -186,4 +186,7 @@ button:active {
 .likeFeed {
   color: white;
 }
+video{
+    display: none;
+}
 </style>

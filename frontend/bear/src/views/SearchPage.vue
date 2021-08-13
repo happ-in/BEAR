@@ -111,4 +111,7 @@ export default defineComponent({
 img{
   border:none;
 }
+video{
+    display: none;
+}
 </style>
