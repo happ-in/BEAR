@@ -312,5 +312,8 @@ h1 {
     border-bottom: 3px solid currentColor;
     padding-bottom: 3px;
   }
+  video{
+    display: none;
+    }
 }
 </style>

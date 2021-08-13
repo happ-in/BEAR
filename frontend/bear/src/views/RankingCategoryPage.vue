@@ -62,5 +62,7 @@ export default {
 </script>
 
 <style>
-
+video{
+    display: none;
+    }
 </style>
