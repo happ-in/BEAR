@@ -8,81 +8,63 @@
         <div class="swiper-wrapper">
           <!-- 전체 -->
           <div class="swiper-slide">
-            <button
-              class="slide-image"
-              type="submit"
-              name="all"
-              @click="pushRankCategory"
-            >
-              <img
-                src="http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=999&simg=%2Fcontent%2Fimage%2F2018%2F06%2F27%2F20180627000547_0.jpg"
-                alt=""
+            <button class="slide-image" type="submit" name="all" @click="pushRankCategory($event)">
+              <img src="http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=999&simg=%2Fcontent%2Fimage%2F2018%2F06%2F27%2F20180627000547_0.jpg"
+                alt="all"
               />
             </button>
           </div>
 
           <!-- 라거 -->
           <div class="swiper-slide">
-            <button
-              class="slide-image"
-              type="submit"
-              name="lager"
-              @click="pushRankCategory"
-            >
+            <button class="slide-image" type="submit" name="lager" @click="pushRankCategory($event)">
               <img
                 src="https://previews.123rf.com/images/vclements/vclements1002/vclements100200018/6410721-%EB%A7%A5%EC%A3%BC-%EB%A8%B8%EA%B7%B8%EC%9E%94%EC%9D%98-%EC%86%90%EC%9E%A1%EC%9D%B4%EC%97%90-%EC%88%98%EA%B0%91%EC%9D%98-%EC%84%B8%EB%A1%9C-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%95%8C%EC%BD%94%EC%98%AC-%EC%A4%91%EB%8F%85.jpg"
-                alt=""
+                alt="lager"
               />
             </button>
           </div>
 
           <!-- 에일 -->
           <div class="swiper-slide">
-            <button
-              class="slide-image"
-              type="submit"
-              name="ale"
-              @click="pushRankCategory"
-            >
-              <img src="https://en.pimg.jp/037/137/297/1/37137297.jpg" alt="" />
+            <button class="slide-image" type="submit" name="ale" @click="pushRankCategory($event)">
+              <img 
+                src="https://en.pimg.jp/037/137/297/1/37137297.jpg" 
+                alt="ale" 
+              />
             </button>
           </div>
 
           <!-- 밀맥주 -->
           <div class="swiper-slide">
-            <button
-              class="slide-image"
-              type="submit"
-              name="wheat"
-              @click="pushRankCategory"
-            >
-              <img src="https://en.pimg.jp/037/137/297/1/37137297.jpg" alt="" />
+            <button class="slide-image" type="submit" name="wheat" @click="pushRankCategory($event)">
+              <img 
+                src="https://en.pimg.jp/037/137/297/1/37137297.jpg" 
+                alt="wheat" 
+              />
             </button>
           </div>
 
           <!-- 스타우트 -->
           <div class="swiper-slide">
-            <button
-              class="slide-image"
-              type="submit"
-              name="stout"
-              @click="pushRankCategory"
-            >
-              <img src="https://en.pimg.jp/037/137/297/1/37137297.jpg" alt="" />
+            <button class="slide-image" type="submit" name="scout" @click="pushRankCategory($event)">
+              <img 
+                src="https://en.pimg.jp/037/137/297/1/37137297.jpg" 
+                alt="scout" 
+              />
             </button>
           </div>
 
           <!-- 라들러/RTD -->
           <div class="swiper-slide">
-            <button
-              class="slide-image"
-              type="submit"
-              name="rtd"
-              @click="pushRankCategory"
-            >
-              <img src="https://en.pimg.jp/037/137/297/1/37137297.jpg" alt="" />
+            <button class="slide-image" type="submit" name="rtd" @click="pushRankCategory($event)">
+              <img 
+                src="https://en.pimg.jp/037/137/297/1/37137297.jpg" 
+                alt="rtd" 
+              />
             </button>
           </div>
+
         </div>
         <div class="swiper-pagination"></div>
       </div>
@@ -125,12 +107,12 @@ export default {
   }, //template에 정의된 html코드가 레너링된 후 실행
   unmounted() {}, //unmount가 완료된 후 실행
   methods: {
-    pushRankCategory() {
-      this.$route.push({
+    pushRankCategory(event) {
+      this.$router.push({
         name: "RankingCategory",
-        params: { category: 'lager' },
+        params: { category: event.target.alt },
       });
-    },
+    },  
   }, //컴포넌트 내에서 사용할 메소드 정의
 };
 </script>
@@ -169,7 +151,7 @@ h1 {
 
 .swiper-container {
   //슬라이드 세로 길이
-  height: 500px;
+  height: 430px;
   //슬라이드 전체 가로 길이
   width: 1500px;
   padding-bottom: 85px;

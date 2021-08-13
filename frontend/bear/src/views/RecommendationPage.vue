@@ -1,36 +1,37 @@
 <template>
-  <div class="wrapper">
+  <div class="random-wrapper">
     <!-- 페이지 이름 -->
     <h1>랜덤 추천</h1>
     <!-- 맥주 이름, 국기 이미지 -->
     <div class="card">
-      <h2>
-        {{ beer.name }}
-        <img :src="beer.countryImg" />
-      </h2>
+        <h2>
+            {{ beer.name }}
+            <img :src="beer.countryImg" />
+        </h2>
 
-      <!-- 맥주 이미지 -->
-      <div class="beerimg-box"><img :src="beer.imgUrl" /></div>
+        <!-- 맥주 이미지 -->
+        <div class="beerimg-box"><img :src="beer.imgUrl" /></div>
 
-      <!-- 해시태그 -->
-      <ul class="hashtag">
-        <li v-for="hashtag in hashtagdata.hashtags" v-bind:key="hashtag.id">
-          <p>{{ hashtag }}</p>
-        </li>
-      </ul>
-    </div>
-    <!-- 버튼 -->
-    <div id="btn">
-      <a href="#" class="button" id="repeatbtn">
-        <svg fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M8 4V0L3 5l5 5V6a6 6 0 11-6 6H0a8 8 0 108-8z"
-            fill="#939597"
-          />
-        </svg>
-        다시하기
-      </a>
-      <a href="#" class="button" id="detailbtn">상세페이지</a>
+        <!-- 해시태그 -->
+        <ul class="hashtag">
+            <li v-for="hashtag in hashtagdata.hashtags" v-bind:key="hashtag.id">
+            <p>{{ hashtag }}</p>
+            </li>
+        </ul>
+    
+        <!-- 버튼 -->
+        <div id="btn">
+            <a href="#" class="button" id="repeatbtn">
+                <svg fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M8 4V0L3 5l5 5V6a6 6 0 11-6 6H0a8 8 0 108-8z"
+                    fill="#939597"
+                />
+                </svg>
+                다시하기
+            </a>
+            <a href="#" class="button" id="detailbtn">상세페이지</a>
+        </div>
     </div>
   </div>
 </template>
@@ -63,21 +64,29 @@ export default {
 <style>
 /* 다시하기랑 상세페이지 중간으로/ 글자 간격 띄우고 싶다  */
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400&display=swap");
-.wrapper {
+
+.random-wrapper {
   position: absolute;
   width: 102%;
   height: 101%;
   left: -4px;
   top: -5px;
 
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
   font-family: "Noto Sans KR", sans-serif;
-  background: linear-gradient(
+
+    background: linear-gradient(
     180deg,
     rgba(245, 223, 77, 0) 0%,
     rgba(245, 223, 77, 0.453125) 21.88%,
     rgba(245, 223, 77, 0.945675) 36.98%,
     #f5df4d 100%
   );
+
 }
 h1 {
   display: flex;
@@ -140,6 +149,10 @@ h2 img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+#btn {
+display: flex;
+  justify-content: space-around;
 }
 #repeatbtn {
   position: absolute;
