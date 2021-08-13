@@ -205,4 +205,7 @@ h2 img {
 
     color: #FFFFFF;
 }
+video{
+    display: none;
+}
 </style>

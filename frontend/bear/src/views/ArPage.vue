@@ -48,7 +48,7 @@
         </div>
   </div>
   <!-- 검색버튼 -->
-  <div id="btn_nav" ref="btn1">
+  <div id="btn_nav1" ref="btn1" @click="goSearch">
     <svg
         id="guide_img"
         xmlns="http://www.w3.org/2000/svg"
@@ -58,12 +58,12 @@
         fill="white"
       >
       <path @click="goSearch"
-        d="M31.008 27.231l-7.58-6.447c-0.784-0.705-1.622-1.029-2.299-0.998 1.789-2.096 2.87-4.815 2.87-7.787 0-6.627-5.373-12-12-12s-12 5.373-12 12 5.373 12 12 12c2.972 0 5.691-1.081 7.787-2.87-0.031 0.677 0.293 1.515 0.998 2.299l6.447 7.58c1.104 1.226 2.907 1.33 4.007 0.23s0.997-2.903-0.23-4.007zM12 20c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8z"
+          d="M18 22.082v-1.649c2.203-1.241 4-4.337 4-7.432 0-4.971 0-9-6-9s-6 4.029-6 9c0 3.096 1.797 6.191 4 7.432v1.649c-6.784 0.555-12 3.888-12 7.918h28c0-4.030-5.216-7.364-12-7.918z"
       ></path>
-    </svg>
+      </svg>
   </div>
   <!-- 프로필버튼 -->
-  <div id="btn_nav" ref="btn2">
+  <div id="btn_nav2" ref="btn2">
     <svg
         id="guide_img"
         xmlns="http://www.w3.org/2000/svg"
@@ -163,6 +163,7 @@
 </div>
 </template>
 <script>
+
   export default {
         name: '', //컴포넌트 이름
         components: {},
@@ -192,369 +193,369 @@
                 letsee.bindXRElement(xrElement, entity);
               });
 
-            letsee
-              .addTarget(//피츠
-                "https://developer.letsee.io/api-tm/target-manager/target-uid/6114a36d2f7b8005cc146efc"
-              )
-              .then((entity) => {
-                let div = this.$refs.con;
-                div.style.width = 360 + "px";
-                div.style.height = 640 + "px";
-                const xrElement = letsee.createXRElement(div);
-                letsee.bindXRElement(xrElement, entity);
-              });
-              letsee //파울라너 둔켈
-              .addTarget(
-                "https://developer.letsee.io/api-tm/target-manager/target-uid/6114a13656197305fc5c1322"
-              )
-              .then((entity) => {
-                let div = this.$refs.con;
-                div.style.width = 360 + "px";
-                div.style.height = 640 + "px";
-                const xrElement = letsee.createXRElement(div);
-                letsee.bindXRElement(xrElement, entity);
-              });
-              letsee //예거라들러자몽
-              .addTarget(
-                "https://developer.letsee.io/api-tm/target-manager/target-uid/61148b9e2f7b8005cc146efb"
-              )
-              .then((entity) => {
-                let div = this.$refs.con;
-                div.style.width = 360 + "px";
-                div.style.height = 640 + "px";
-                const xrElement = letsee.createXRElement(div);
-                letsee.bindXRElement(xrElement, entity);
-              });
-              letsee //예거라들러레몬
-              .addTarget(
-                "https://developer.letsee.io/api-tm/target-manager/target-uid/61148b643f9ee405ea644b26"
-              )
-              .then((entity) => {
-                let div = this.$refs.con;
-                div.style.width = 360 + "px";
-                div.style.height = 640 + "px";
-                const xrElement = letsee.createXRElement(div);
-                letsee.bindXRElement(xrElement, entity);
-              });
-              letsee //카프리
-              .addTarget(
-                "https://developer.letsee.io/api-tm/target-manager/target-uid/61148b2c3f9ee405ea644b25"
-              )
-              .then((entity) => {
-                let div = this.$refs.con;
-                div.style.width = 360 + "px";
-                div.style.height = 640 + "px";
-                const xrElement = letsee.createXRElement(div);
-                letsee.bindXRElement(xrElement, entity);
-              });
-              letsee //하이트
-              .addTarget(
-                "https://developer.letsee.io/api-tm/target-manager/target-uid/61148b092f7b8005cc146efa"
-              )
-              .then((entity) => {
-                let div = this.$refs.con;
-                div.style.width = 360 + "px";
-                div.style.height = 640 + "px";
-                const xrElement = letsee.createXRElement(div);
-                letsee.bindXRElement(xrElement, entity);
-              });
-              letsee //제주위트에일
-              .addTarget(
-                "https://developer.letsee.io/api-tm/target-manager/target-uid/61148adb3f9ee405ea644b24"
-              )
-              .then((entity) => {
-                let div = this.$refs.con;
-                div.style.width = 360 + "px";
-                div.style.height = 640 + "px";
-                const xrElement = letsee.createXRElement(div);
-                letsee.bindXRElement(xrElement, entity);
-              });
-              letsee //아사히
-              .addTarget(
-                "https://developer.letsee.io/api-tm/target-manager/target-uid/6114897bf8e80a05ba9010d9"
-              )
-              .then((entity) => {
-                let div = this.$refs.con;
-                div.style.width = 360 + "px";
-                div.style.height = 640 + "px";
-                const xrElement = letsee.createXRElement(div);
-                letsee.bindXRElement(xrElement, entity);
-              });
-              letsee //카스 라이트
-              .addTarget(
-                "https://developer.letsee.io/api-tm/target-manager/target-uid/6114896df8e80a05ba9010d8"
-              )
-              .then((entity) => {
-                let div = this.$refs.con;
-                div.style.width = 360 + "px";
-                div.style.height = 640 + "px";
-                const xrElement = letsee.createXRElement(div);
-                letsee.bindXRElement(xrElement, entity);
-              });
-              letsee //카스 후레시
-              .addTarget(
-                "https://developer.letsee.io/api-tm/target-manager/target-uid/611489683f9ee405ea644b23"
-              )
-              .then((entity) => {
-                let div = this.$refs.con;
-                div.style.width = 360 + "px";
-                div.style.height = 640 + "px";
-                const xrElement = letsee.createXRElement(div);
-                letsee.bindXRElement(xrElement, entity);
-              });
-              letsee //칼스버그
-              .addTarget(
-                "https://developer.letsee.io/api-tm/target-manager/target-uid/611489632f7b8005cc146ef9"
-              )
-              .then((entity) => {
-                let div = this.$refs.con;
-                div.style.width = 360 + "px";
-                div.style.height = 640 + "px";
-                const xrElement = letsee.createXRElement(div);
-                letsee.bindXRElement(xrElement, entity);
-              });
-              letsee //버드와이저
-              .addTarget(
-                "https://developer.letsee.io/api-tm/target-manager/target-uid/6114895e3f9ee405ea644b22"
-              )
-              .then((entity) => {
-                let div = this.$refs.con;
-                div.style.width = 360 + "px";
-                div.style.height = 640 + "px";
-                const xrElement = letsee.createXRElement(div);
-                letsee.bindXRElement(xrElement, entity);
-              });
-              letsee //블루문
-              .addTarget(
-                "https://developer.letsee.io/api-tm/target-manager/target-uid/6114895956197305fc5c1321"
-              )
-              .then((entity) => {
-                let div = this.$refs.con;
-                div.style.width = 360 + "px";
-                div.style.height = 640 + "px";
-                const xrElement = letsee.createXRElement(div);
-                letsee.bindXRElement(xrElement, entity);
-              });
-              letsee //구스 아일랜드
-              .addTarget(
-                "https://developer.letsee.io/api-tm/target-manager/target-uid/6114894ff8e80a05ba9010d7"
-              )
-              .then((entity) => {
-                let div = this.$refs.con;
-                div.style.width = 360 + "px";
-                div.style.height = 640 + "px";
-                const xrElement = letsee.createXRElement(div);
-                letsee.bindXRElement(xrElement, entity);
-              });
-              letsee //에델바이스 
-              .addTarget(
-                "https://developer.letsee.io/api-tm/target-manager/target-uid/61148935f8e80a05ba9010d6"
-              )
-              .then((entity) => {
-                let div = this.$refs.con;
-                div.style.width = 360 + "px";
-                div.style.height = 640 + "px";
-                const xrElement = letsee.createXRElement(div);
-                letsee.bindXRElement(xrElement, entity);
-              });
-              letsee //데스페라도스
-              .addTarget(
-                "https://developer.letsee.io/api-tm/target-manager/target-uid/6114892ff8e80a05ba9010d5"
-              )
-              .then((entity) => {
-                let div = this.$refs.con;
-                div.style.width = 360 + "px";
-                div.style.height = 640 + "px";
-                const xrElement = letsee.createXRElement(div);
-                letsee.bindXRElement(xrElement, entity);
-              });
-              letsee //빅웨이브 
-              .addTarget(
-                "https://developer.letsee.io/api-tm/target-manager/target-uid/61148929f8e80a05ba9010d4"
-              )
-              .then((entity) => {
-                let div = this.$refs.con;
-                div.style.width = 360 + "px";
-                div.style.height = 640 + "px";
-                const xrElement = letsee.createXRElement(div);
-                letsee.bindXRElement(xrElement, entity);
-              });
-              letsee //호가든 로제
-              .addTarget(
-                "https://developer.letsee.io/api-tm/target-manager/target-uid/6114891a3f9ee405ea644b21"
-              )
-              .then((entity) => {
-                let div = this.$refs.con;
-                div.style.width = 360 + "px";
-                div.style.height = 640 + "px";
-                const xrElement = letsee.createXRElement(div);
-                letsee.bindXRElement(xrElement, entity);
-              });
-              letsee //하이네켄
-              .addTarget(
-                "https://developer.letsee.io/api-tm/target-manager/target-uid/6114890f56197305fc5c1320"
-              )
-              .then((entity) => {
-                let div = this.$refs.con;
-                div.style.width = 360 + "px";
-                div.style.height = 640 + "px";
-                const xrElement = letsee.createXRElement(div);
-                letsee.bindXRElement(xrElement, entity);
-              });
-              letsee //한맥
-              .addTarget(
-                "https://developer.letsee.io/api-tm/target-manager/target-uid/6114890a3f9ee405ea644b20"
-              )
-              .then((entity) => {
-                let div = this.$refs.con;
-                div.style.width = 360 + "px";
-                div.style.height = 640 + "px";
-                const xrElement = letsee.createXRElement(div);
-                letsee.bindXRElement(xrElement, entity);
-              });
-              letsee //기네스
-              .addTarget(
-                "https://developer.letsee.io/api-tm/target-manager/target-uid/611489013f9ee405ea644b1f"
-              )
-              .then((entity) => {
-                let div = this.$refs.con;
-                div.style.width = 360 + "px";
-                div.style.height = 640 + "px";
-                const xrElement = letsee.createXRElement(div);
-                letsee.bindXRElement(xrElement, entity);
-              });
-              letsee //블랑
-              .addTarget(
-                "https://developer.letsee.io/api-tm/target-manager/target-uid/611488f72f7b8005cc146ef8"
-              )
-              .then((entity) => {
-                let div = this.$refs.con;
-                div.style.width = 360 + "px";
-                div.style.height = 640 + "px";
-                const xrElement = letsee.createXRElement(div);
-                letsee.bindXRElement(xrElement, entity);
-              });
-              letsee //파울라너 뮌헨라거
-              .addTarget(
-                "https://developer.letsee.io/api-tm/target-manager/target-uid/611488f13f9ee405ea644b1e"
-              )
-              .then((entity) => {
-                let div = this.$refs.con;
-                div.style.width = 360 + "px";
-                div.style.height = 640 + "px";
-                const xrElement = letsee.createXRElement(div);
-                letsee.bindXRElement(xrElement, entity);
-              });
-              letsee //밀러 
-              .addTarget(
-                "https://developer.letsee.io/api-tm/target-manager/target-uid/611488e63f9ee405ea644b1d"
-              )
-              .then((entity) => {
-                let div = this.$refs.con;
-                div.style.width = 360 + "px";
-                div.style.height = 640 + "px";
-                const xrElement = letsee.createXRElement(div);
-                letsee.bindXRElement(xrElement, entity);
-              });
-              letsee //필스너 우르켈
-              .addTarget(
-                "https://developer.letsee.io/api-tm/target-manager/target-uid/611488e03f9ee405ea644b1c"
-              )
-              .then((entity) => {
-                let div = this.$refs.con;
-                div.style.width = 360 + "px";
-                div.style.height = 640 + "px";
-                const xrElement = letsee.createXRElement(div);
-                letsee.bindXRElement(xrElement, entity);
-              });
-              letsee // 서머스비
-              .addTarget(
-                "https://developer.letsee.io/api-tm/target-manager/target-uid/611488d72f7b8005cc146ef6"
-              )
-              .then((entity) => {
-                let div = this.$refs.con;
-                div.style.width = 360 + "px";
-                div.style.height = 640 + "px";
-                const xrElement = letsee.createXRElement(div);
-                letsee.bindXRElement(xrElement, entity);
-              });
-              letsee // 산미구엘
-              .addTarget(
-                "https://developer.letsee.io/api-tm/target-manager/target-uid/611488d12f7b8005cc146ef5"
-              )
-              .then((entity) => {
-                let div = this.$refs.con;
-                div.style.width = 360 + "px";
-                div.style.height = 640 + "px";
-                const xrElement = letsee.createXRElement(div);
-                letsee.bindXRElement(xrElement, entity);
-              });
-              letsee //코젤 
-              .addTarget(
-                "https://developer.letsee.io/api-tm/target-manager/target-uid/611488cb3f9ee405ea644b1b"
-              )
-              .then((entity) => {
-                let div = this.$refs.con;
-                div.style.width = 360 + "px";
-                div.style.height = 640 + "px";
-                const xrElement = letsee.createXRElement(div);
-                letsee.bindXRElement(xrElement, entity);
-              });
-              letsee //타이거라들러 자몽
-              .addTarget(
-                "https://developer.letsee.io/api-tm/target-manager/target-uid/611488c53f9ee405ea644b1a"
-              )
-              .then((entity) => {
-                let div = this.$refs.con;
-                div.style.width = 360 + "px";
-                div.style.height = 640 + "px";
-                const xrElement = letsee.createXRElement(div);
-                letsee.bindXRElement(xrElement, entity);
-              });
-              letsee //타이거라들러 레몬
-              .addTarget(
-                "https://developer.letsee.io/api-tm/target-manager/target-uid/611488bf2f7b8005cc146ef4"
-              )
-              .then((entity) => {
-                let div = this.$refs.con;
-                div.style.width = 360 + "px";
-                div.style.height = 640 + "px";
-                const xrElement = letsee.createXRElement(div);
-                letsee.bindXRElement(xrElement, entity);
-              });
-              letsee //클라우드 생 드라프트
-              .addTarget(
-                "https://developer.letsee.io/api-tm/target-manager/target-uid/611488b256197305fc5c131f"
-              )
-              .then((entity) => {
-                let div = this.$refs.con;
-                div.style.width = 360 + "px";
-                div.style.height = 640 + "px";
-                const xrElement = letsee.createXRElement(div);
-                letsee.bindXRElement(xrElement, entity);
-              });
-              letsee //타이거
-              .addTarget(
-                "https://developer.letsee.io/api-tm/target-manager/target-uid/611488ac2f7b8005cc146ef3"
-              )
-              .then((entity) => {
-                let div = this.$refs.con;
-                div.style.width = 360 + "px";
-                div.style.height = 640 + "px";
-                const xrElement = letsee.createXRElement(div);
-                letsee.bindXRElement(xrElement, entity);
-              });
-              letsee //테라
-              .addTarget(
-                "https://developer.letsee.io/api-tm/target-manager/target-uid/611488a63f9ee405ea644b19"
-              )
-              .then((entity) => {
-                let div = this.$refs.con;
-                div.style.width = 360 + "px";
-                div.style.height = 640 + "px";
-                const xrElement = letsee.createXRElement(div);
-                letsee.bindXRElement(xrElement, entity);
-              });
+            // letsee
+            //   .addTarget(//피츠
+            //     "https://developer.letsee.io/api-tm/target-manager/target-uid/6114a36d2f7b8005cc146efc"
+            //   )
+            //   .then((entity) => {
+            //     let div = this.$refs.con;
+            //     div.style.width = 360 + "px";
+            //     div.style.height = 640 + "px";
+            //     const xrElement = letsee.createXRElement(div);
+            //     letsee.bindXRElement(xrElement, entity);
+            //   });
+            //   letsee //파울라너 둔켈
+            //   .addTarget(
+            //     "https://developer.letsee.io/api-tm/target-manager/target-uid/6114a13656197305fc5c1322"
+            //   )
+            //   .then((entity) => {
+            //     let div = this.$refs.con;
+            //     div.style.width = 360 + "px";
+            //     div.style.height = 640 + "px";
+            //     const xrElement = letsee.createXRElement(div);
+            //     letsee.bindXRElement(xrElement, entity);
+            //   });
+            //   letsee //예거라들러자몽
+            //   .addTarget(
+            //     "https://developer.letsee.io/api-tm/target-manager/target-uid/61148b9e2f7b8005cc146efb"
+            //   )
+            //   .then((entity) => {
+            //     let div = this.$refs.con;
+            //     div.style.width = 360 + "px";
+            //     div.style.height = 640 + "px";
+            //     const xrElement = letsee.createXRElement(div);
+            //     letsee.bindXRElement(xrElement, entity);
+            //   });
+            //   letsee //예거라들러레몬
+            //   .addTarget(
+            //     "https://developer.letsee.io/api-tm/target-manager/target-uid/61148b643f9ee405ea644b26"
+            //   )
+            //   .then((entity) => {
+            //     let div = this.$refs.con;
+            //     div.style.width = 360 + "px";
+            //     div.style.height = 640 + "px";
+            //     const xrElement = letsee.createXRElement(div);
+            //     letsee.bindXRElement(xrElement, entity);
+            //   });
+            //   letsee //카프리
+            //   .addTarget(
+            //     "https://developer.letsee.io/api-tm/target-manager/target-uid/61148b2c3f9ee405ea644b25"
+            //   )
+            //   .then((entity) => {
+            //     let div = this.$refs.con;
+            //     div.style.width = 360 + "px";
+            //     div.style.height = 640 + "px";
+            //     const xrElement = letsee.createXRElement(div);
+            //     letsee.bindXRElement(xrElement, entity);
+            //   });
+            //   letsee //하이트
+            //   .addTarget(
+            //     "https://developer.letsee.io/api-tm/target-manager/target-uid/61148b092f7b8005cc146efa"
+            //   )
+            //   .then((entity) => {
+            //     let div = this.$refs.con;
+            //     div.style.width = 360 + "px";
+            //     div.style.height = 640 + "px";
+            //     const xrElement = letsee.createXRElement(div);
+            //     letsee.bindXRElement(xrElement, entity);
+            //   });
+            //   letsee //제주위트에일
+            //   .addTarget(
+            //     "https://developer.letsee.io/api-tm/target-manager/target-uid/61148adb3f9ee405ea644b24"
+            //   )
+            //   .then((entity) => {
+            //     let div = this.$refs.con;
+            //     div.style.width = 360 + "px";
+            //     div.style.height = 640 + "px";
+            //     const xrElement = letsee.createXRElement(div);
+            //     letsee.bindXRElement(xrElement, entity);
+            //   });
+            //   letsee //아사히
+            //   .addTarget(
+            //     "https://developer.letsee.io/api-tm/target-manager/target-uid/6114897bf8e80a05ba9010d9"
+            //   )
+            //   .then((entity) => {
+            //     let div = this.$refs.con;
+            //     div.style.width = 360 + "px";
+            //     div.style.height = 640 + "px";
+            //     const xrElement = letsee.createXRElement(div);
+            //     letsee.bindXRElement(xrElement, entity);
+            //   });
+            //   letsee //카스 라이트
+            //   .addTarget(
+            //     "https://developer.letsee.io/api-tm/target-manager/target-uid/6114896df8e80a05ba9010d8"
+            //   )
+            //   .then((entity) => {
+            //     let div = this.$refs.con;
+            //     div.style.width = 360 + "px";
+            //     div.style.height = 640 + "px";
+            //     const xrElement = letsee.createXRElement(div);
+            //     letsee.bindXRElement(xrElement, entity);
+            //   });
+            //   letsee //카스 후레시
+            //   .addTarget(
+            //     "https://developer.letsee.io/api-tm/target-manager/target-uid/611489683f9ee405ea644b23"
+            //   )
+            //   .then((entity) => {
+            //     let div = this.$refs.con;
+            //     div.style.width = 360 + "px";
+            //     div.style.height = 640 + "px";
+            //     const xrElement = letsee.createXRElement(div);
+            //     letsee.bindXRElement(xrElement, entity);
+            //   });
+            //   letsee //칼스버그
+            //   .addTarget(
+            //     "https://developer.letsee.io/api-tm/target-manager/target-uid/611489632f7b8005cc146ef9"
+            //   )
+            //   .then((entity) => {
+            //     let div = this.$refs.con;
+            //     div.style.width = 360 + "px";
+            //     div.style.height = 640 + "px";
+            //     const xrElement = letsee.createXRElement(div);
+            //     letsee.bindXRElement(xrElement, entity);
+            //   });
+            //   letsee //버드와이저
+            //   .addTarget(
+            //     "https://developer.letsee.io/api-tm/target-manager/target-uid/6114895e3f9ee405ea644b22"
+            //   )
+            //   .then((entity) => {
+            //     let div = this.$refs.con;
+            //     div.style.width = 360 + "px";
+            //     div.style.height = 640 + "px";
+            //     const xrElement = letsee.createXRElement(div);
+            //     letsee.bindXRElement(xrElement, entity);
+            //   });
+            //   letsee //블루문
+            //   .addTarget(
+            //     "https://developer.letsee.io/api-tm/target-manager/target-uid/6114895956197305fc5c1321"
+            //   )
+            //   .then((entity) => {
+            //     let div = this.$refs.con;
+            //     div.style.width = 360 + "px";
+            //     div.style.height = 640 + "px";
+            //     const xrElement = letsee.createXRElement(div);
+            //     letsee.bindXRElement(xrElement, entity);
+            //   });
+            //   letsee //구스 아일랜드
+            //   .addTarget(
+            //     "https://developer.letsee.io/api-tm/target-manager/target-uid/6114894ff8e80a05ba9010d7"
+            //   )
+            //   .then((entity) => {
+            //     let div = this.$refs.con;
+            //     div.style.width = 360 + "px";
+            //     div.style.height = 640 + "px";
+            //     const xrElement = letsee.createXRElement(div);
+            //     letsee.bindXRElement(xrElement, entity);
+            //   });
+            //   letsee //에델바이스 
+            //   .addTarget(
+            //     "https://developer.letsee.io/api-tm/target-manager/target-uid/61148935f8e80a05ba9010d6"
+            //   )
+            //   .then((entity) => {
+            //     let div = this.$refs.con;
+            //     div.style.width = 360 + "px";
+            //     div.style.height = 640 + "px";
+            //     const xrElement = letsee.createXRElement(div);
+            //     letsee.bindXRElement(xrElement, entity);
+            //   });
+            //   letsee //데스페라도스
+            //   .addTarget(
+            //     "https://developer.letsee.io/api-tm/target-manager/target-uid/6114892ff8e80a05ba9010d5"
+            //   )
+            //   .then((entity) => {
+            //     let div = this.$refs.con;
+            //     div.style.width = 360 + "px";
+            //     div.style.height = 640 + "px";
+            //     const xrElement = letsee.createXRElement(div);
+            //     letsee.bindXRElement(xrElement, entity);
+            //   });
+            //   letsee //빅웨이브 
+            //   .addTarget(
+            //     "https://developer.letsee.io/api-tm/target-manager/target-uid/61148929f8e80a05ba9010d4"
+            //   )
+            //   .then((entity) => {
+            //     let div = this.$refs.con;
+            //     div.style.width = 360 + "px";
+            //     div.style.height = 640 + "px";
+            //     const xrElement = letsee.createXRElement(div);
+            //     letsee.bindXRElement(xrElement, entity);
+            //   });
+            //   letsee //호가든 로제
+            //   .addTarget(
+            //     "https://developer.letsee.io/api-tm/target-manager/target-uid/6114891a3f9ee405ea644b21"
+            //   )
+            //   .then((entity) => {
+            //     let div = this.$refs.con;
+            //     div.style.width = 360 + "px";
+            //     div.style.height = 640 + "px";
+            //     const xrElement = letsee.createXRElement(div);
+            //     letsee.bindXRElement(xrElement, entity);
+            //   });
+            //   letsee //하이네켄
+            //   .addTarget(
+            //     "https://developer.letsee.io/api-tm/target-manager/target-uid/6114890f56197305fc5c1320"
+            //   )
+            //   .then((entity) => {
+            //     let div = this.$refs.con;
+            //     div.style.width = 360 + "px";
+            //     div.style.height = 640 + "px";
+            //     const xrElement = letsee.createXRElement(div);
+            //     letsee.bindXRElement(xrElement, entity);
+            //   });
+            //   letsee //한맥
+            //   .addTarget(
+            //     "https://developer.letsee.io/api-tm/target-manager/target-uid/6114890a3f9ee405ea644b20"
+            //   )
+            //   .then((entity) => {
+            //     let div = this.$refs.con;
+            //     div.style.width = 360 + "px";
+            //     div.style.height = 640 + "px";
+            //     const xrElement = letsee.createXRElement(div);
+            //     letsee.bindXRElement(xrElement, entity);
+            //   });
+            //   letsee //기네스
+            //   .addTarget(
+            //     "https://developer.letsee.io/api-tm/target-manager/target-uid/611489013f9ee405ea644b1f"
+            //   )
+            //   .then((entity) => {
+            //     let div = this.$refs.con;
+            //     div.style.width = 360 + "px";
+            //     div.style.height = 640 + "px";
+            //     const xrElement = letsee.createXRElement(div);
+            //     letsee.bindXRElement(xrElement, entity);
+            //   });
+            //   letsee //블랑
+            //   .addTarget(
+            //     "https://developer.letsee.io/api-tm/target-manager/target-uid/611488f72f7b8005cc146ef8"
+            //   )
+            //   .then((entity) => {
+            //     let div = this.$refs.con;
+            //     div.style.width = 360 + "px";
+            //     div.style.height = 640 + "px";
+            //     const xrElement = letsee.createXRElement(div);
+            //     letsee.bindXRElement(xrElement, entity);
+            //   });
+            //   letsee //파울라너 뮌헨라거
+            //   .addTarget(
+            //     "https://developer.letsee.io/api-tm/target-manager/target-uid/611488f13f9ee405ea644b1e"
+            //   )
+            //   .then((entity) => {
+            //     let div = this.$refs.con;
+            //     div.style.width = 360 + "px";
+            //     div.style.height = 640 + "px";
+            //     const xrElement = letsee.createXRElement(div);
+            //     letsee.bindXRElement(xrElement, entity);
+            //   });
+            //   letsee //밀러 
+            //   .addTarget(
+            //     "https://developer.letsee.io/api-tm/target-manager/target-uid/611488e63f9ee405ea644b1d"
+            //   )
+            //   .then((entity) => {
+            //     let div = this.$refs.con;
+            //     div.style.width = 360 + "px";
+            //     div.style.height = 640 + "px";
+            //     const xrElement = letsee.createXRElement(div);
+            //     letsee.bindXRElement(xrElement, entity);
+            //   });
+            //   letsee //필스너 우르켈
+            //   .addTarget(
+            //     "https://developer.letsee.io/api-tm/target-manager/target-uid/611488e03f9ee405ea644b1c"
+            //   )
+            //   .then((entity) => {
+            //     let div = this.$refs.con;
+            //     div.style.width = 360 + "px";
+            //     div.style.height = 640 + "px";
+            //     const xrElement = letsee.createXRElement(div);
+            //     letsee.bindXRElement(xrElement, entity);
+            //   });
+            //   letsee // 서머스비
+            //   .addTarget(
+            //     "https://developer.letsee.io/api-tm/target-manager/target-uid/611488d72f7b8005cc146ef6"
+            //   )
+            //   .then((entity) => {
+            //     let div = this.$refs.con;
+            //     div.style.width = 360 + "px";
+            //     div.style.height = 640 + "px";
+            //     const xrElement = letsee.createXRElement(div);
+            //     letsee.bindXRElement(xrElement, entity);
+            //   });
+            //   letsee // 산미구엘
+            //   .addTarget(
+            //     "https://developer.letsee.io/api-tm/target-manager/target-uid/611488d12f7b8005cc146ef5"
+            //   )
+            //   .then((entity) => {
+            //     let div = this.$refs.con;
+            //     div.style.width = 360 + "px";
+            //     div.style.height = 640 + "px";
+            //     const xrElement = letsee.createXRElement(div);
+            //     letsee.bindXRElement(xrElement, entity);
+            //   });
+            //   letsee //코젤 
+            //   .addTarget(
+            //     "https://developer.letsee.io/api-tm/target-manager/target-uid/611488cb3f9ee405ea644b1b"
+            //   )
+            //   .then((entity) => {
+            //     let div = this.$refs.con;
+            //     div.style.width = 360 + "px";
+            //     div.style.height = 640 + "px";
+            //     const xrElement = letsee.createXRElement(div);
+            //     letsee.bindXRElement(xrElement, entity);
+            //   });
+            //   letsee //타이거라들러 자몽
+            //   .addTarget(
+            //     "https://developer.letsee.io/api-tm/target-manager/target-uid/611488c53f9ee405ea644b1a"
+            //   )
+            //   .then((entity) => {
+            //     let div = this.$refs.con;
+            //     div.style.width = 360 + "px";
+            //     div.style.height = 640 + "px";
+            //     const xrElement = letsee.createXRElement(div);
+            //     letsee.bindXRElement(xrElement, entity);
+            //   });
+            //   letsee //타이거라들러 레몬
+            //   .addTarget(
+            //     "https://developer.letsee.io/api-tm/target-manager/target-uid/611488bf2f7b8005cc146ef4"
+            //   )
+            //   .then((entity) => {
+            //     let div = this.$refs.con;
+            //     div.style.width = 360 + "px";
+            //     div.style.height = 640 + "px";
+            //     const xrElement = letsee.createXRElement(div);
+            //     letsee.bindXRElement(xrElement, entity);
+            //   });
+            //   letsee //클라우드 생 드라프트
+            //   .addTarget(
+            //     "https://developer.letsee.io/api-tm/target-manager/target-uid/611488b256197305fc5c131f"
+            //   )
+            //   .then((entity) => {
+            //     let div = this.$refs.con;
+            //     div.style.width = 360 + "px";
+            //     div.style.height = 640 + "px";
+            //     const xrElement = letsee.createXRElement(div);
+            //     letsee.bindXRElement(xrElement, entity);
+            //   });
+            //   letsee //타이거
+            //   .addTarget(
+            //     "https://developer.letsee.io/api-tm/target-manager/target-uid/611488ac2f7b8005cc146ef3"
+            //   )
+            //   .then((entity) => {
+            //     let div = this.$refs.con;
+            //     div.style.width = 360 + "px";
+            //     div.style.height = 640 + "px";
+            //     const xrElement = letsee.createXRElement(div);
+            //     letsee.bindXRElement(xrElement, entity);
+            //   });
+            //   letsee //테라
+            //   .addTarget(
+            //     "https://developer.letsee.io/api-tm/target-manager/target-uid/611488a63f9ee405ea644b19"
+            //   )
+            //   .then((entity) => {
+            //     let div = this.$refs.con;
+            //     div.style.width = 360 + "px";
+            //     div.style.height = 640 + "px";
+            //     const xrElement = letsee.createXRElement(div);
+            //     letsee.bindXRElement(xrElement, entity);
+            //   });
               letsee //스텔라 
               .addTarget(
                 "https://developer.letsee.io/api-tm/target-manager/target-uid/611488a056197305fc5c131e"
@@ -589,9 +590,9 @@
                 letsee.bindXRElement(xrElement, entity);
               });
 
-            document.getElementById("btn_more").addEventListener("click", () => {
-              location.href = "https://www.naver.com/";
-            });
+            // document.getElementById("btn_more").addEventListener("click", () => {
+            //   location.href = "https://www.naver.com/";
+            // });
             this.$refs.btn1.style.visibility = "hidden";
             this.$refs.btn2.style.visibility = "hidden";
             this.$refs.btn3.style.visibility = "hidden";
@@ -637,12 +638,12 @@
         mounted() {
         }, //template에 정의된 html코드가 레너링된 후 실행
         unmounted() {}, //unmount가 완료된 후 실행
-        methods: {recommendFood: () => {
-          window.open("https://www.naver.com/");
-          },goProfile: () => {
-          window.open("https://www.naver.com/");
-          },goSearch: () => {
-          window.open("https://www.naver.com/");
+        methods: {recommendFood(){
+            this.$router.push('/');
+          },goProfile(){
+            this.$router.push('/profile');
+          },goSearch(){
+            this.$router.push('/search');
           },
           async getBeerData(id) {
             this.beerData = await this.$api("https://i5a403.p.ssafy.io/beer/ar?searchId="+id,"get"); //test API
@@ -740,7 +741,21 @@
   border-radius: 50px;
 }
 
-#btn_nav {
+#btn_nav1 {
+  width: 100%;
+  height: 640px;
+  position: fixed;
+  margin-top: 50px;
+  bottom: 0;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  z-index: 600;
+  visibility: visible;
+  border-radius: 50px;
+}
+
+#btn_nav2 {
   width: 100%;
   height: 640px;
   position: fixed;

@@ -79,5 +79,7 @@ export default {
         top: 65%;
         left: 40%; 
     }
-        
+    video{
+    display: none;
+    }
 </style>

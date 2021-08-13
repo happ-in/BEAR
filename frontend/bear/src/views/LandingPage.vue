@@ -20,8 +20,8 @@ export default {
     }
   },
   methods: {
-    goToAr: () => {
-      window.open("https://www.naver.com/");
+    goToAr(){
+      this.$router.push('/ar');
     }
   },
 }
@@ -58,5 +58,9 @@ export default {
     border-color: transparent !important;
     border: none;
     outline: none;
+  }
+  
+  video{
+    display: none;
   }
 </style>
