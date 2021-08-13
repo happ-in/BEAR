@@ -76,6 +76,7 @@ const routes = [
     name: "Follow",
     component: FollowPage,
   },
+  {
     path: "/detail/:beerId",
     name: "Detail",
     component: Detail,
