@@ -4,12 +4,14 @@
     <!-- 작성자 정보 -->
     <template #header>
       <div class="card-header">
-        <span>
-          <el-avatar :size="25" src="" @error="errorHandler" style="margin-right: 4px">
-            <img :src="user.userImage" />
-          </el-avatar>
-          {{ user.customId }}
-        </span>
+        <div @click="this.$router.push('/profile')">
+          <span>
+            <el-avatar :size="25" src="" @error="errorHandler" style="margin-right: 4px">
+              <img :src="user.userImage" />
+            </el-avatar>
+            {{ user.customId }}
+          </span>
+        </div>
 
         <div class="heart-wrapper">
           <div class="heart-image"><img :src="src" class="image" /></div>
@@ -48,8 +50,7 @@
     </el-row>
   </el-card>
 
-  <router-link to="/review/write">리뷰</router-link> |
-  <router-link to="/profile">계정정보</router-link>
+  <router-link to="/review/write">리뷰</router-link>
 </template>
 
 <script>
@@ -150,5 +151,8 @@ button:active {
 }
 .likeFeed {
   color: white;
+}
+video {
+  display: none;
 }
 </style>
