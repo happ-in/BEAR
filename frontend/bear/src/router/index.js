@@ -4,6 +4,7 @@ import Recommendation from "../views/RecommendationPage.vue";
 import RankingMain from "../views/RankingMainPage.vue";
 import Landing from "../views/LandingPage.vue";
 import RankingCategory from "../views/RankingCategoryPage.vue";
+import FollowPage from "../views/FollowPage.vue";
 
 const routes = [
   {
@@ -68,6 +69,11 @@ const routes = [
     path: "/ranking/:category",
     name: "RankingCategory",
     component: RankingCategory,
+  },
+  {
+    path: "/follow",
+    name: "Follow",
+    component: FollowPage,
   },
 ];
 

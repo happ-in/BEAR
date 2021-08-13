@@ -26,11 +26,11 @@
       <div class="grid-content bg-purple">리뷰수</div>
       <div class="grid-content bg-purple">00</div>
     </el-col>
-    <el-col :span="8">
+    <el-col :span="8" @click="goFollowing">
       <div class="grid-content bg-purple-light">팔로잉</div>
       <div class="grid-content bg-purple-light">00</div>
     </el-col>
-    <el-col :span="8">
+    <el-col :span="8" @click="goFollower">
       <div class="grid-content bg-purple">팔로워</div>
       <div class="grid-content bg-purple">00</div>
     </el-col>
@@ -185,6 +185,13 @@ export default {
         this.src = require("../assets/heart.png");
       }
     }, //컴포넌트 내에서 사용할 메소드 정의
+
+    goFollower() {
+      this.$router.push({ name: "Follow", params: { header: "팔로워" } });
+    },
+    goFollowing() {
+      this.$router.push({ name: "Follow", params: { header: "팔로잉" } });
+    },
   },
 };
 </script>
@@ -235,5 +242,8 @@ button:active {
 }
 .likeFeed {
   color: white;
+}
+video {
+  display: none;
 }
 </style>
