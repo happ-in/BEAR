@@ -18,15 +18,15 @@ public class BookmarkRegistryController {
 
     @PostMapping
     public ResponseEntity<?> addBookmark(@RequestParam int beerId, HttpSession session) {
-        Long userId = (Long) session.getAttribute("userId");
+        long userId = (long) session.getAttribute("userId");
         bookmarkService.addBookmark(userId,beerId);
-        return new ResponseEntity<>(null, HttpStatus.OK);
+        return new ResponseEntity<>(true, HttpStatus.OK);
     }
 
     @DeleteMapping
     public ResponseEntity<?> deleteBookmark(@RequestParam int beerId, HttpSession session) {
-        Long userId = (Long) session.getAttribute("userId");
+        long userId = (long) session.getAttribute("userId");
         bookmarkService.deleteBookmark(userId,beerId);
-        return new ResponseEntity<>(null, HttpStatus.OK);
+        return new ResponseEntity<>(true, HttpStatus.OK);
     }
 }

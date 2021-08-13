@@ -24,21 +24,13 @@ public class UserController {
     @RequestMapping(value="/logout")
     public ResponseEntity<?> logout(HttpSession session) {
         userService.kakaoLogout((String)session.getAttribute("accessToken"));  //access_Token 부여
-        //session 초기화 설정
         session.removeAttribute("accessToken");
         session.removeAttribute("userId");
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
-    @GetMapping("/myInfo")
-    public ResponseEntity<?> getMyInfo(HttpSession session) {
-        Long userId = (Long) session.getAttribute("userId");
-        User user = userService.getUser(userId).get();
-        return new ResponseEntity<>(null,HttpStatus.OK);
-    }
-
     @PutMapping("/update")
-    public ResponseEntity<?> updateUser(@RequestParam User user){
+    public ResponseEntity<?> updateUser(@RequestBody User user){
         if(userService.updateUser(user)) {
             return new ResponseEntity<>(true, HttpStatus.OK);
         }
@@ -46,7 +38,7 @@ public class UserController {
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<?> deleteUser(@RequestParam User user){
+    public ResponseEntity<?> deleteUser(@RequestBody User user){
         if(userService.deleteUser(user)) {
             return new ResponseEntity<>(true, HttpStatus.OK);
         }

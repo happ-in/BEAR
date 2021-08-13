@@ -1,4 +1,4 @@
-package com.zootopia.bear.Follower.domain;
+package com.zootopia.bear.Follow.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Follower {
+public class Follow {
     @EmbeddedId
     private FollowerId followerId;
 

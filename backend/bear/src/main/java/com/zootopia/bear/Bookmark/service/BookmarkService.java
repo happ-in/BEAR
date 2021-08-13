@@ -15,13 +15,13 @@ public class BookmarkService {
         this.bookmarkRepository = bookmarkRepository;
     }
 
-    public void addBookmark(Long userId,int beerId) {
+    public void addBookmark(long userId,int beerId) {
         BookmarkId bookmarkId = new BookmarkId(userId,beerId);
         Bookmark bookmark = new Bookmark(bookmarkId);
         bookmarkRepository.save(bookmark);
     }
 
-    public void deleteBookmark(Long userId,int beerId) {
+    public void deleteBookmark(long userId,int beerId) {
         BookmarkId bookmarkId = new BookmarkId(userId,beerId);
         Bookmark bookmark = new Bookmark(bookmarkId);
         bookmarkRepository.deleteById(bookmarkId);

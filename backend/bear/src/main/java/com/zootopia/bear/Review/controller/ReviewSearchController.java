@@ -23,7 +23,7 @@ public class ReviewSearchController {
 
 	@GetMapping
 	public ResponseEntity<?> MyReviewSearch(@RequestParam long userId) {
-		List<ReviewDto> reviewDtos = reviewSearchService.searchMyReview(userId);
-		return new ResponseEntity<>(reviewDtos, HttpStatus.OK);
+		List<ReviewDto> reviewDtoList = reviewSearchService.searchMyReview(userId);
+		return new ResponseEntity<>(reviewDtoList, HttpStatus.OK);
 	}
 }

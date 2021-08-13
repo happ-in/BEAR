@@ -173,9 +173,6 @@ public class UserService {
         return userId;
     }
 
-    public Optional<User> getUser(long userId) {
-        return userRepository.findById(userId);
-    }
 
     public boolean joinUser(User user) {
         Long userId = user.getUserId();
@@ -194,6 +191,7 @@ public class UserService {
             return false;
         }
         // nickname check
+        userRepository.save(user);
         return true;
     }
 
