@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="ranking-wrapper">
     <div>
       <h1>Ranking</h1>
     </div>
@@ -128,7 +128,7 @@ $breakpoints: (
 
 $theme-color: #939597;
 
-body {
+#ranking-wrapper {
   background-color: #f6f7fb;
   height: 100%;
   width: 100%;
