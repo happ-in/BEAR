@@ -4,34 +4,37 @@
     <h1>랜덤 추천</h1>
     <!-- 맥주 이름, 국기 이미지 -->
     <div class="card">
-        <h2>
-            {{ beer.name }}
-            <img :src="beer.countryImg" />
-        </h2>
+      <h2>
+        {{ beer.beerName }}
+        <img :src="countryImage" />
+      </h2>
 
-        <!-- 맥주 이미지 -->
-        <div class="beerimg-box"><img :src="beer.imgUrl" /></div>
+      <!-- 맥주 이미지 -->
+      <div class="beerimg-box"><img :src="beer.beerImage" /></div>
 
-        <!-- 해시태그 -->
-        <ul class="hashtag">
-            <li v-for="hashtag in hashtagdata.hashtags" v-bind:key="hashtag.id">
-            <p>{{ hashtag }}</p>
-            </li>
-        </ul>
-    
-        <!-- 버튼 -->
-        <div id="btn">
-            <a href="#" class="button" id="repeatbtn">
-                <svg fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M8 4V0L3 5l5 5V6a6 6 0 11-6 6H0a8 8 0 108-8z"
-                    fill="#939597"
-                />
-                </svg>
-                다시하기
-            </a>
-            <a href="#" class="button" id="detailbtn">상세페이지</a>
-        </div>
+      <!-- 해시태그 -->
+      <ul class="hashtag">
+        <li v-for="(hashtag, index) in beer.hashtags" :key="index">
+          <p>{{ hashtag.hashTagName }}</p>
+        </li>
+      </ul>
+
+      <!-- 버튼 -->
+      <div id="btn">
+        <a href="#" class="button" id="repeatbtn" @click="retry">
+          <svg fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 4V0L3 5l5 5V6a6 6 0 11-6 6H0a8 8 0 108-8z" fill="#939597" />
+          </svg>
+          다시하기
+        </a>
+        <a
+          href="#"
+          class="button"
+          id="detailbtn"
+          @click="this.$router.push({ name: 'Detail', params: { beerId: this.beer.beerId } })"
+          >상세페이지</a
+        >
+      </div>
     </div>
   </div>
 </template>
@@ -43,21 +46,22 @@ export default {
   data() {
     //html과 자바스크립트 코드에서 사용할 데이터 변수 선언
     return {
-      beer: {
-        name: "시메이 화이트 트리펠",
-        imgUrl:
-          "https://assets.business.veluga.kr/media/public/Chimay_Chimay_TripelCinq_Cents_4SYlnWG.png",
-        countryImg:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Flag_of_Belgium.svg/240px-Flag_of_Belgium.svg.png",
-      },
-      hashtagdata: { hashtags: ["#트라피스트", "#향신료", "#과일향", "#명품"] },
+      beer: [],
+      countryImage: "",
     };
   },
   setup() {}, //컴포지션 API
-  created() {}, //컴포넌트가 생성되면 실행
+  created() {
+    this.retry();
+  }, //컴포넌트가 생성되면 실행
   mounted() {}, //template에 정의된 html코드가 레너링된 후 실행
   unmounted() {}, //unmount가 완료된 후 실행
-  methods: {}, //컴포넌트 내에서 사용할 메소드 정의
+  methods: {
+    async retry() {
+      this.beer = await this.$api("https://i5a403.p.ssafy.io/beer/random", "get");
+      this.countryImage = require("../assets/flags/" + this.beer.country.countryName + ".png");
+    },
+  }, //컴포넌트 내에서 사용할 메소드 정의
 };
 </script>
 
@@ -72,21 +76,20 @@ export default {
   left: -4px;
   top: -5px;
 
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    align-items: center;
+  align-items: center;
 
   font-family: "Noto Sans KR", sans-serif;
 
-    background: linear-gradient(
+  background: linear-gradient(
     180deg,
     rgba(245, 223, 77, 0) 0%,
     rgba(245, 223, 77, 0.453125) 21.88%,
     rgba(245, 223, 77, 0.945675) 36.98%,
     #f5df4d 100%
   );
-
 }
 h1 {
   display: flex;
@@ -151,7 +154,7 @@ h2 img {
   object-fit: contain;
 }
 #btn {
-display: flex;
+  display: flex;
   justify-content: space-around;
 }
 #repeatbtn {
@@ -233,8 +236,7 @@ display: flex;
 
   color: #ffffff;
 }
-video{
-    display: none;
+video {
+  display: none;
 }
 </style>
-
