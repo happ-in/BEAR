@@ -149,7 +149,7 @@ h2 img {
   top: 20px;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 90%;
   object-fit: contain;
 }
 #btn {
