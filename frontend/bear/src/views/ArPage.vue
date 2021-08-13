@@ -145,6 +145,7 @@
           >
             <tspan x="0" y="0">안주추천</tspan>
           </text>
+          </g>
         </g>
       </svg>
     </div>
