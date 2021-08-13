@@ -15,9 +15,15 @@ import com.zootopia.bear.Review.domain.Review;
 public interface ReviewRepository extends JpaRepository<Review, Integer> {
 	List<Review> findAllByUserId(long userId);
 
+	@Query(value = "select sum(rating)/count(*) from review where beer_id=1 group by beer_id;", nativeQuery = true)
+	double beerAvg(int beerId);
+
 	@Modifying(clearAutomatically = true)
 	@Query(value = "update review set rating = :rating where review_id = :reviewId", nativeQuery = true)
 	void updateReview(@Param("reviewId") int reviewId, @Param("rating") double rating);
+
+	@Query(value = "select * from review r join follow f on r.user_id = f.follow_user_id where f.user_id = :userId order by r.start_date", nativeQuery = true)
+	List<Review> searchFeed(@Param("userId") long userId);
 
 	public Optional<Review> findTopByBeerId(int beerId);
 }

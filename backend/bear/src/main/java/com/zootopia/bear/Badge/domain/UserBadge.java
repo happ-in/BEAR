@@ -25,3 +25,4 @@ public class UserBadge {
     @JoinColumn(name = "user_id")
     private User user;
 }
+
