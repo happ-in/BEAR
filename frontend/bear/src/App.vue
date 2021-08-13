@@ -1,22 +1,19 @@
 <template>
   <div id="app">
-    <router-view></router-view> 
-    
+    <router-view></router-view>
+
     <tab-bar></tab-bar>
   </div>
 </template>
 
 <script>
-import TabBar from './components/TheTabBar.vue'
+import TabBar from "./components/TheTabBar.vue";
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    'tab-bar': TabBar,
-  }
-}
+    "tab-bar": TabBar,
+  },
+};
 </script>
 
-<style>
-
-
-</style>
+<style></style>

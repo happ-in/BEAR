@@ -1,8 +1,8 @@
-
 import { createRouter, createWebHistory } from "vue-router";
 // import Home from "../views/Home.vue";
 import Recommendation from "../views/RecommendationPage.vue";
-import RankingMain from "../views/RankingMainPage.vue";
+// import RankingMain from "../views/RankingMainPage.vue";
+import RankingCategory from "../views/RankingCategoryPage.vue";
 
 const routes = [
   // {
@@ -25,9 +25,14 @@ const routes = [
     component: Recommendation,
   },
   {
-    path: "/rank",
+    path: "/ranking",
     name: "RankingMain",
     component: RankingMain,
+  },
+  {
+    path: "/ranking/:category",
+    name: "RankingCategory",
+    component: RankingCategory,
   },
 ];
 
