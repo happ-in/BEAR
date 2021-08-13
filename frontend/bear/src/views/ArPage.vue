@@ -154,7 +154,7 @@
   <p id="beer_hash_two" ref="hash2"></p>
   <p id="beer_hash_three" ref="hash3"></p>
   <p id="beer_hash_four" ref="hash4"></p>
-  <p id="beer_title" ref="title"></p>
+  <p id="beer_title" @click="goReview" ref="title"></p>
   <p id="beer_star" ref="rate"></p>
   <p ref="country"></p>
   <p ref="flag"></p>
@@ -643,9 +643,11 @@
             window.open('https://i5a403.p.ssafy.io/beer/detail?beerId='+this.beerData.beerId+'');
           },goProfile(){
             this.$router.push('/profile');
-            window.open('https://i5a403.p.ssafy.io/beer/profile')
+            window.open('https://i5a403.p.ssafy.io/beer/profile');
           },goSearch(){
-            window.open('https://i5a403.p.ssafy.io/beer/search')
+            window.open('https://i5a403.p.ssafy.io/beer/search');
+          },goReview(){
+            window.open('https://i5a403.p.ssafy.io/beer/search');
           },
           async getBeerData(id) {
             this.beerData = await this.$api("https://i5a403.p.ssafy.io/beer/ar?searchId="+id,"get"); //test API
