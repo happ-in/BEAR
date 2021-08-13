@@ -1,8 +1,6 @@
 <template>
 <div id="container">
-  <el-row class="demo-autocomplete" id="search_input" style="border-radius:50px">
-  <el-col :span="20">
-    <el-autocomplete
+    <el-input id="search_input"
       class="inline-input"
       v-model="state1"
       @input="submitAutoComplete"
@@ -11,79 +9,47 @@
       prefix-icon="el-icon-search"
       @select="handleSelect"
       style="width: 309px;"
-    ></el-autocomplete>
-  </el-col>
-</el-row>
+    ></el-input>
 <el-button-group style="margin-top:60px">
   <el-button type="warning" plain style="width:120px" ref="account" @click="setCategory('account')">계정</el-button>
-  <el-button type="warning" plain style="width:120px" ref="tag" @click="setCategory('tag')">태그</el-button>
-  <el-button type="warning" plain style="width:120px" ref="beer" @click="setCategory('beer')">맥주</el-button>
+  <el-button type="warning" plain style="width:120px" ref="tag" @click="setCategory('hashtag')">태그</el-button>
+  <el-button type="warning" autofocus plain style="width:120px" ref="beer" @click="setCategory('beer')">맥주</el-button>
 </el-button-group>
-{{category}}
+<ul class="infinite-list" v-infinite-scroll="load" style="overflow:auto" v-if="category=='beer'">
+    <li v-for="i,index in resultData" class="infinite-list-item" :key="index">{{ i.beerName }}</li>
+</ul>
+<ul class="infinite-list" v-infinite-scroll="load" style="overflow:auto" v-if="category=='hashtag'">
+    <li v-for="i,index in resultData" class="infinite-list-item" :key="index">{{ i.hashTagName }}</li>
+</ul>
+
+
 </div>
 </template>
 
 <script>
-  import { defineComponent, ref, onMounted } from 'vue'
+  import { defineComponent } from 'vue'
 export default defineComponent({
     data() {
         return {
-            category: '',
+            category: 'beer',
             buttontype: 'success',
+            resultData: [],
+            state1: '',
+            count : 0
         }
     },
-  setup() {
-    const restaurants = ref([]);
-    const querySearch = (queryString, cb) => {
-      var results = queryString
-        ? restaurants.value.filter(createFilter(queryString))
-        : restaurants.value;
-        // call callback function to return suggestions
-        cb(results);
-    };
-    const createFilter = (queryString) => {
-      return (restaurant) => {
-        return (
-          restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) ===
-          0
-        );
-      };
-    };
-    const loadAll = () => {
-      return [
-        { "value": "뷰", "link": "https://github.com/vuejs/vue" },
-        { "value": "element", "link": "https://github.com/ElemeFE/element" },
-        { "value": "cooking", "link": "https://github.com/ElemeFE/cooking" },
-        { "value": "mint-ui", "link": "https://github.com/ElemeFE/mint-ui" },
-        { "value": "vuex", "link": "https://github.com/vuejs/vuex" },
-        { "value": "vue-router", "link": "https://github.com/vuejs/vue-router" },
-        { "value": "babel", "link": "https://github.com/babel/babel" }
-        ];
-    };
-    const handleSelect = (item) => {
-      console.log(item);
-    };
-    onMounted(() => {
-      restaurants.value = loadAll();
-    });
-    return {
-      restaurants,
-      state1: ref(''),
-      querySearch,
-      createFilter,
-      loadAll,
-      handleSelect,
-    };
-  },
   methods: {
       async submitAutoComplete() {
-          this.restaurants.value = await this.$api("https://i5a403.p.ssafy.io/search/beer?keyword="+ this.state1,"get");
-          console.log(this.restaurants.value);
-          console.log(this.state1);
-          console.log(data1);
+        if(this.state1){
+          this.resultData = await this.$api("https://i5a403.p.ssafy.io/search/"+this.category+"?keyword="+ this.state1,"get");
+        }
+          console.log(this.resultData);
       },
       setCategory(data){
         this.category = data;
+      },
+      load () {
+        this.count += 2
       }
   }
 });
@@ -104,9 +70,6 @@ export default defineComponent({
     height: 40px;
     left: 0px;
     top: 0px;
-    border-radius: 50px;
-    margin-top: 10px;
-    margin-left: 40px;
 }
 img{
   border:none;
