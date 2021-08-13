@@ -18,12 +18,12 @@ public class FollowService {
         this.userRepository = userRepository;
     }
 
-    public void addFollowUser(Long userId,Long followUserId){
+    public void addFollowUser(long userId,long followUserId){
         FollowerId followerId = new FollowerId(userId,followUserId);
         followRepository.save(new Follow(followerId));
     }
 
-    public void deleteFollowUser(Long userId,Long followUserId){
+    public void deleteFollowUser(long userId,long followUserId){
         followRepository.deleteById(new FollowerId(userId,followUserId));
     }
 }

@@ -24,7 +24,6 @@ public class UserController {
     @RequestMapping(value="/logout")
     public ResponseEntity<?> logout(HttpSession session) {
         userService.kakaoLogout((String)session.getAttribute("accessToken"));  //access_Token 부여
-        //session 초기화 설정
         session.removeAttribute("accessToken");
         session.removeAttribute("userId");
         return new ResponseEntity<>(null, HttpStatus.OK);

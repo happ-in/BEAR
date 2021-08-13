@@ -1,12 +1,11 @@
 package com.zootopia.bear.User.domain;
 
-import com.zootopia.bear.Bookmark.domain.Bookmark;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
+
 
 
 @Entity

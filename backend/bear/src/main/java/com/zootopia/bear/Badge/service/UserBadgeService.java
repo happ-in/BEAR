@@ -1,9 +1,7 @@
 package com.zootopia.bear.Badge.service;
 
-import com.zootopia.bear.Badge.domain.Badge;
 import com.zootopia.bear.Badge.domain.UserBadge;
 import com.zootopia.bear.Badge.domain.UserBadgeId;
-import com.zootopia.bear.Badge.dto.GainBadge;
 import com.zootopia.bear.Badge.repository.BadgeRepository;
 import com.zootopia.bear.Badge.repository.UserBadgeRepository;
 import com.zootopia.bear.Review.domain.Review;
@@ -13,7 +11,6 @@ import com.zootopia.bear.User.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
