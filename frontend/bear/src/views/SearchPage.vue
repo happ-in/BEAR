@@ -60,6 +60,10 @@ export default defineComponent({
   watch: {
     keyword: function () {
       if (this.keyword !== "") this.search();
+      else {
+        this.beers = [];
+        this.tags = [];
+      }
     },
   },
 });
