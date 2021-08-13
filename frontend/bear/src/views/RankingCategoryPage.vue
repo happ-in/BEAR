@@ -56,11 +56,9 @@ export default {
 
 
 <style>
-<<<<<<< HEAD
 video{
     display: none;
     }
-=======
 .text {
 font-size: 14px;
 }
@@ -92,5 +90,4 @@ padding: 18px 0;
     display: flex;
     flex-direction: row
 }
->>>>>>> 6e58734 (Feat: Add DetailPage)
 </style>

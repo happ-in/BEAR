@@ -4,11 +4,8 @@ import Recommendation from "../views/RecommendationPage.vue";
 import RankingMain from "../views/RankingMainPage.vue";
 import Landing from "../views/LandingPage.vue";
 import RankingCategory from "../views/RankingCategoryPage.vue";
-<<<<<<< HEAD
 import FollowPage from "../views/FollowPage.vue";
-=======
 import Detail from "../views/DetailPage.vue"
->>>>>>> 6e58734 (Feat: Add DetailPage)
 
 const routes = [
   {
@@ -75,17 +72,14 @@ const routes = [
     component: RankingCategory,
   },
   {
-<<<<<<< HEAD
     path: "/follow",
     name: "Follow",
     component: FollowPage,
   },
-=======
     path: "/detail/:beerId",
     name: "Detail",
     component: Detail,
   }
->>>>>>> 6e58734 (Feat: Add DetailPage)
 ];
 
 const router = createRouter({
