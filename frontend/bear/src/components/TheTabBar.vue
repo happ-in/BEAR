@@ -35,7 +35,7 @@ export default {
       routes: [
         { path: "/recommendation", title: "랜덤 추천" },
         { path: "/ranking", title: "랭킹" },
-        { path: "/", title: "홈피드" },
+        { path: "/feed", title: "홈피드" },
         { path: "/search", title: "검색" },
         { path: "/myprofile", title: "마이페이지" },
       ],
