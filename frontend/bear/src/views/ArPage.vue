@@ -50,33 +50,35 @@
   <!-- 검색버튼 -->
   <div id="btn_nav1" ref="btn1" @click="goSearch">
     <svg
-        id="guide_img"
-        xmlns="http://www.w3.org/2000/svg"
-        width="300"
-        height="200"
-        viewBox="0 -20 300 200"
-        fill="white"
-      >
-      <path @click="goSearch"
-          d="M18 22.082v-1.649c2.203-1.241 4-4.337 4-7.432 0-4.971 0-9-6-9s-6 4.029-6 9c0 3.096 1.797 6.191 4 7.432v1.649c-6.784 0.555-12 3.888-12 7.918h28c0-4.030-5.216-7.364-12-7.918z"
+      id="guide_img"
+      xmlns="http://www.w3.org/2000/svg"
+      width="300"
+      height="200"
+      viewBox="0 -20 300 200"
+      fill="white"
+    >
+      <path
+        @click="goSearch"
+        d="M31.008 27.231l-7.58-6.447c-0.784-0.705-1.622-1.029-2.299-0.998 1.789-2.096 2.87-4.815 2.87-7.787 0-6.627-5.373-12-12-12s-12 5.373-12 12 5.373 12 12 12c2.972 0 5.691-1.081 7.787-2.87-0.031 0.677 0.293 1.515 0.998 2.299l6.447 7.58c1.104 1.226 2.907 1.33 4.007 0.23s0.997-2.903-0.23-4.007zM12 20c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8z"
       ></path>
       </svg>
   </div>
   <!-- 프로필버튼 -->
   <div id="btn_nav2" ref="btn2">
     <svg
-        id="guide_img"
-        xmlns="http://www.w3.org/2000/svg"
-        width="300"
-        height="200"
-        viewBox="-270 -20 300 200"
-        fill="white"
-      >
-      <path @click="goProfile"
-          d="M18 22.082v-1.649c2.203-1.241 4-4.337 4-7.432 0-4.971 0-9-6-9s-6 4.029-6 9c0 3.096 1.797 6.191 4 7.432v1.649c-6.784 0.555-12 3.888-12 7.918h28c0-4.030-5.216-7.364-12-7.918z"
+      id="guide_img"
+      xmlns="http://www.w3.org/2000/svg"
+      width="300"
+      height="200"
+      viewBox="-270 -20 300 200"
+      fill="white"
+    >
+      <path
+        @click="goProfile"
+        d="M18 22.082v-1.649c2.203-1.241 4-4.337 4-7.432 0-4.971 0-9-6-9s-6 4.029-6 9c0 3.096 1.797 6.191 4 7.432v1.649c-6.784 0.555-12 3.888-12 7.918h28c0-4.030-5.216-7.364-12-7.918z"
       ></path>
-      </svg>
-    </div>
+    </svg>
+  </div>
   <!-- 안주추천 버튼 -->
   <div id="btn_div" ref="btn3">
       <svg 
@@ -122,13 +124,10 @@
           filter="url(#xdxotu3hsa)"
           transform="translate(-82 -122) translate(82 122)"
         >
-          <path
-            fill="#F5DF4D"
-            d="M0 0H140V44H0z"
-            transform="translate(6 6)"
-          />
+          <path fill="#F5DF4D" d="M0 0H140V44H0z" transform="translate(6 6)" />
         </g>
-        <g @click="recommendFood" 
+        <g
+          @click="recommendFood"
           filter="url(#w2ozhmi69b)"
           transform="translate(-82 -122) translate(82 122)"
         >
@@ -141,9 +140,10 @@
             style="
               text-shadow: -1px 0 #939597, 0 1px #939597, 1px 0 #939597,
                 0 -1px #939597;
-              text-align: right;"
-              >
-          <tspan x="0" y="0">안주추천</tspan>
+              text-align: right;
+            "
+          >
+            <tspan x="0" y="0">안주추천</tspan>
           </text>
           </g>
         </g>
@@ -654,7 +654,6 @@
   
 </script>
 <style>
-
 #guide_msg {
   width: 220px;
   height: 55px;

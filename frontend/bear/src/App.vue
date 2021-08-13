@@ -15,17 +15,13 @@
 </template>
 
 <script>
-import TabBar from './components/TheTabBar.vue'
+import TabBar from "./components/TheTabBar.vue";
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    'tab-bar': TabBar,
-  }
-}
+    "tab-bar": TabBar,
+  },
+};
 </script>
 
-<style>
-
-
-</style>
-
+<style></style>
