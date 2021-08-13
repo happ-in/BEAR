@@ -6,9 +6,7 @@
       <div class="card-header">
         <div @click="this.$router.push('/profile')">
           <span>
-            <el-avatar :size="25" src="" @error="errorHandler" style="margin-right: 4px">
-              <img :src="user.userImage" />
-            </el-avatar>
+            <el-avatar :size="25" :src="user.userImage" style="margin-right: 4px"> </el-avatar>
             {{ user.customId }}
           </span>
         </div>
@@ -49,7 +47,6 @@
       </el-col>
     </el-row>
   </el-card>
-
   <router-link to="/review/write">리뷰</router-link>
 </template>
 
