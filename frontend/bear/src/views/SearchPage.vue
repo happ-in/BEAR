@@ -17,17 +17,35 @@
       <el-button type="warning" plain style="width: 120px" @click="this.category = 'tag'"> 태그</el-button>
       <el-button type="warning" autofocus plain style="width: 120px" @click="this.category = 'beer'">맥주</el-button>
     </el-button-group>
-
+    <!-- 
     <ul class="infinite-list" v-infinite-scroll="load" style="overflow: auto" v-if="category == 'beer'">
       <li v-for="(beer, index) in beers" class="infinite-list-item" :key="index">
         {{ beer.beerName }}
       </li>
     </ul>
+    
     <ul class="infinite-list" v-infinite-scroll="load" style="overflow: auto" v-if="category == 'tag'">
       <li v-for="(hashTag, index) in tags" class="infinite-list-item" :key="index">
         {{ hashTag.hashTagName }}
       </li>
     </ul>
+     -->
+
+    <div v-if="category == 'beer'" class="result-wrapper">
+      <div v-for="(beer, index) in beers" :key="index" class="mb-4">
+        <!-- <el-avatar class="item" :size="40" :src="require('../assets/beers/' + beer.beerImage + '.png')"></el-avatar> -->
+        <img :src="require('../assets/beers/' + beer.beerImage + '.png')" alt="" class="round-image beer-item" />
+        <span>{{ beer.beerName }}</span>
+      </div>
+    </div>
+
+    <div v-if="category == 'tag'" class="result-wrapper">
+      <div v-for="(hashTag, index) in tags" :key="index" class="mb-4" style="display: flex">
+        <!-- <span class="tag-image item">태그</span> -->
+        <div class="tag-image">태그</div>
+        <span class="tag-text"># {{ hashTag.hashTagName }}</span>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -85,10 +103,43 @@ export default defineComponent({
   left: 0px;
   top: 0px;
 }
-img {
-  border: none;
+.round-image {
+  width: 45px;
+  height: 45px;
+  border-radius: 70%;
+  background: #939597;
+  overflow: hidden;
+  object-fit: scale-down;
 }
 video {
   display: none;
+}
+.result-wrapper {
+  margin: 2%;
+  font-size: large;
+  margin-bottom: 2%;
+}
+.beer-item {
+  vertical-align: middle;
+  margin-right: 3%;
+}
+.tag-image {
+  width: 45px;
+  height: 45px;
+  border-radius: 70%;
+  background: #939597;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  -webkit-text-emphasis-style: filled;
+}
+.tag-text {
+  align-self: center;
+  margin-left: 2%;
+}
+.mb-4 {
+  margin-bottom: 4%;
 }
 </style>
