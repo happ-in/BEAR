@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Recommendation from "../views/RecommendationPage.vue";
 // import RankingMain from "../views/RankingMainPage.vue";
 import Landing from "../views/LandingPage.vue";
+import RankingCategory from "../views/RankingCategoryPage.vue";
 
 const routes = [
   {
@@ -10,6 +11,11 @@ const routes = [
     name: "Landing",
     component: Landing,
   },
+  // {
+  //   path: "/",
+  //   name: "Home",
+  //   component: Home,
+  // },
   {
     path: "/ar",
     name: "Ar",
@@ -52,6 +58,16 @@ const routes = [
     path: "/myprofile",
     name: "MyProfile",
     component: () => import(/* webpackChunkName: "about" */ "../views/MyProfilePage.vue"),
+  },
+  {
+    path: "/ranking",
+    name: "RankingMain",
+    component: RankingMain,
+  },
+  {
+    path: "/ranking/:category",
+    name: "RankingCategory",
+    component: RankingCategory,
   },
 ];
 
