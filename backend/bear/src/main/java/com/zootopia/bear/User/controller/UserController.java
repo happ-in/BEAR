@@ -38,8 +38,8 @@ public class UserController {
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<?> deleteUser(@RequestBody User user){
-        if(userService.deleteUser(user)) {
+    public ResponseEntity<?> deleteUser(@RequestParam long userId){
+        if(userService.deleteUser(userId)) {
             return new ResponseEntity<>(true, HttpStatus.OK);
         }
         return new ResponseEntity<>(false,HttpStatus.BAD_REQUEST);
