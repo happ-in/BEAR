@@ -18,3 +18,4 @@ public class SnackDetail {
 	private SnackDetailId id;
 	private String snackImage;
 }
+
