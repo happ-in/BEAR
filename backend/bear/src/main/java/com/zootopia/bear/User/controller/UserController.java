@@ -1,7 +1,9 @@
 package com.zootopia.bear.User.controller;
 
+import com.zootopia.bear.Search.service.SearchService;
 import com.zootopia.bear.User.domain.User;
 import com.zootopia.bear.User.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,14 +14,12 @@ import javax.servlet.http.HttpSession;
 
 @RequestMapping("/user")
 @RestController
+@RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
+    private final SearchService searchService;
 
-    @Autowired
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
 
     @GetMapping(value="/logout")
     public ResponseEntity<?> logout(HttpSession session) {
@@ -45,4 +45,12 @@ public class UserController {
         return new ResponseEntity<>(false,HttpStatus.BAD_REQUEST);
     }
 
+    @GetMapping("/share")
+    public ResponseEntity<?> shareFeed(@RequestParam long userid){
+        User user = searchService.getUser(userid).get();
+        int origin = user.getShareCount();
+        user.setShareCount(origin+1);
+        userService.updateUser(user);
+        return new ResponseEntity<>(true, HttpStatus.OK);
+    }
 }
