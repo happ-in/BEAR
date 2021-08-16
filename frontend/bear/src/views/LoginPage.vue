@@ -15,52 +15,22 @@ export default {
   components: {},
   data() {
     return {
-      code: "",
+      data: [],
     };
   },
   mounted() {
-    Kakao.init('fa7ca4339835a3b0d37662fbf0b78fb8');
-    Kakao.isInitialized();
-    this.kakaoLogout();
+    // Kakao.init('fa7ca4339835a3b0d37662fbf0b78fb8');
+    // Kakao.isInitialized();
+    // this.kakaoLogout();
   },
   methods: {
-    kakaoLogin() {
-      window.Kakao.Auth.login({
-        scope: "profile_nickname, profile_image, account_email, gender",
-        success: this.getKakaoAccount,
-      });
-    },
-    getKakaoAccount() {
-      window.Kakao.API.request({
-        url: "/v2/user/me",
-        success: (res) => {
-          const kakao_account = res.kakao_account;
-          const nickname = kakao_account.profile.nickname; //카카오 닉네임
-          const email = kakao_account.email; //카카오 이메일
-          console.log("nickname", nickname);
-          console.log("email", email);
-          //로그인 처리 구현
-          console.log(kakao_account);
-          this.$store.commit("user", kakao_account);
-          alert("로그인 성공!");
-        },
-        fail: (error) => {
-          // this.$router.push("/errorPage");
-          console.log(error);
-        },
-      });
-    },
-    kakaoLogout() {
-      if (!window.Kakao.Auth.getAccessToken()) {
-        console.log("Not logged in.");
-        return;
-      }
-      window.Kakao.Auth.logout((response) => {
-        //로그아웃
-        console.log("access token:", window.Kakao.Auth.getAccessToken());
-        console.log("log out:", response);
-      });
-    },
+    async kakaoLogin(){
+      this.data = await this.$api("https://kauth.kakao.com/oauth/authorize?client_id=15e7887e87b724b15605d38adf95cf84&redirect_uri=http://localhost:8080/kakao/login&reponse_type=code","post"); //test API
+      console.log(session.getAttribute("accessToken"));
+      console.log(sessionStorage.getItem("accessToken"));
+      this.$router.push('/');
+
+    }
   },
 };
 </script>

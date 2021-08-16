@@ -27,12 +27,9 @@ public class User {
     private String userImage;
     @Column(name = "share_count")
     private int shareCount;
-<<<<<<< HEAD
 
 //    @OneToMany(fetch = FetchType.EAGER)
 //    @JoinColumn(name = "user_id")
 //    private List<Bookmark> bookmark;
 
-=======
->>>>>>> feature/ver2/BE/SJ
 }
