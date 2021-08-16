@@ -46,7 +46,7 @@ public class UserController {
         return new ResponseEntity<>(false,HttpStatus.BAD_REQUEST);
     }
 
-    @PostMapping("/share")
+    @PutMapping("/share")
     public ResponseEntity<?> shareFeed(@RequestParam long userid){
         User user = searchService.getUser(userid).get();
         int origin = user.getShareCount();
