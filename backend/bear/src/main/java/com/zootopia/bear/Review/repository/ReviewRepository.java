@@ -25,7 +25,5 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
 	@Query(value = "select * from review r join follow f on r.user_id = f.follow_user_id where f.user_id = :userId order by r.start_date", nativeQuery = true)
 	List<Review> searchFeed(@Param("userId") long userId);
 
-
-	public Optional<Review> findByBeerId(int beerId);
-
+	Optional<Review> findByBeerId(int beerId);
 }
