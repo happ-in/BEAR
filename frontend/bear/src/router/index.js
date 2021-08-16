@@ -6,6 +6,9 @@ import Landing from "../views/LandingPage.vue";
 import RankingCategory from "../views/RankingCategoryPage.vue";
 import FollowPage from "../views/FollowPage.vue";
 import Detail from "../views/DetailPage.vue"
+import store from '../store/index';
+
+
 
 const routes = [
   {
@@ -45,6 +48,7 @@ const routes = [
     path: "/review/write",
     name: "ReviewWrite",
     component: () => import(/* webpackChunkName: "about" */ "../views/ReviewWrite.vue"),
+    beforeEnter: requireAuth() //똑같은 방식으로 여러개 설정가능
   },
   {
     path: "/login",
@@ -82,6 +86,13 @@ const routes = [
     component: Detail,
   }
 ];
+
+const requireAuth = () => (to, from, next) => {
+  if (store.state.accessToken !== '') {
+    return next();
+  }
+  next('/login');
+}
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
