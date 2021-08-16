@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
-@RequestMapping("/follower")
+@RequestMapping("/follow")
 @RestController
 public class FollowController {
     private final FollowService followService;
@@ -20,7 +20,7 @@ public class FollowController {
         this.followService = followService;
     }
 
-    @PostMapping("/addFollow")
+    @PostMapping
     public ResponseEntity<?> addFollow(@RequestBody FollowRegister followRegister){
         long userId = followRegister.getUserId();
         long followUserId = followRegister.getFollowerId();
@@ -28,7 +28,7 @@ public class FollowController {
         return new ResponseEntity<>(true, HttpStatus.OK);
     }
 
-    @DeleteMapping("/deleteFollow")
+    @DeleteMapping
     public ResponseEntity<?> deleteFollow(@RequestBody FollowRegister followRegister){
         long userId = followRegister.getUserId();
         long followUserId = followRegister.getFollowerId();
