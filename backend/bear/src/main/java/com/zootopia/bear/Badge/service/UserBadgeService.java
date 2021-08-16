@@ -32,7 +32,7 @@ public class UserBadgeService {
             return;
         }
         User user = userRepository.getById(userId);
-        if(!userBadgeId.isPresent() && user.getShareCount()>=3) {
+        if(user.getShareCount()>=3) {
             UserBadge userBadge = new UserBadge(
                     checkUserBadgeId,
                     badgeRepository.getById(badgeId),

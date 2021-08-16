@@ -21,12 +21,12 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping(value="/logout")
+    @GetMapping(value="/logout")
     public ResponseEntity<?> logout(HttpSession session) {
         userService.kakaoLogout((String)session.getAttribute("accessToken"));  //access_Token 부여
         session.removeAttribute("accessToken");
         session.removeAttribute("userId");
-        return new ResponseEntity<>(null, HttpStatus.OK);
+        return new ResponseEntity<>(true, HttpStatus.OK);
     }
 
     @PutMapping("/update")
