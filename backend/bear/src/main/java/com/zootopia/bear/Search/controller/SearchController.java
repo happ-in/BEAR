@@ -1,7 +1,6 @@
 package com.zootopia.bear.Search.controller;
 
 
-import com.zootopia.bear.User.domain.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,12 +22,17 @@ public class SearchController {
 
 	@GetMapping("/hashtag")
 	public ResponseEntity<?> searchHashTag(@RequestParam String keyword) {
-		return new ResponseEntity<>(searchService.searchHashTag(keyword), HttpStatus.OK);
+		return ResponseEntity.ok().body(searchService.searchHashTag(keyword));
 	}
 
 	@GetMapping("/beer")
 	public ResponseEntity<?> searchBeer(@RequestParam String keyword) {
-		return new ResponseEntity<>(searchService.searchBeer(keyword), HttpStatus.OK);
+		return ResponseEntity.ok().body(searchService.searchBeer(keyword));
+	}
+
+	@GetMapping("/user")
+	public ResponseEntity<?> searchUser(@RequestParam String keyword) {
+		return ResponseEntity.ok().body(searchService.searchUser(keyword));
 	}
 
 	@GetMapping("/userInfo")
@@ -58,6 +62,4 @@ public class SearchController {
 	public ResponseEntity<?> searchBadge(@RequestParam long userId) {
 		return new ResponseEntity<>(searchService.getGainBadgeList(userId),HttpStatus.OK);
 	}
-
-
 }
