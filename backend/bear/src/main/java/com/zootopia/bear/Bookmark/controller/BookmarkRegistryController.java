@@ -1,5 +1,6 @@
 package com.zootopia.bear.Bookmark.controller;
 
+import com.zootopia.bear.Bookmark.dto.BookmarkDto;
 import com.zootopia.bear.Bookmark.service.BookmarkService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,15 +18,17 @@ public class BookmarkRegistryController {
     }
 
     @PostMapping
-    public ResponseEntity<?> addBookmark(@RequestParam int beerId, HttpSession session) {
-        long userId = (long) session.getAttribute("userId");
+    public ResponseEntity<?> addBookmark(@RequestBody BookmarkDto bookmarkDto) {
+        long userId = bookmarkDto.getUserId();
+        int beerId = bookmarkDto.getBeerId();
         bookmarkService.addBookmark(userId,beerId);
         return new ResponseEntity<>(true, HttpStatus.OK);
     }
 
     @DeleteMapping
-    public ResponseEntity<?> deleteBookmark(@RequestParam int beerId, HttpSession session) {
-        long userId = (long) session.getAttribute("userId");
+    public ResponseEntity<?> deleteBookmark(@RequestBody BookmarkDto bookmarkDto) {
+        long userId = bookmarkDto.getUserId();
+        int beerId = bookmarkDto.getBeerId();
         bookmarkService.deleteBookmark(userId,beerId);
         return new ResponseEntity<>(true, HttpStatus.OK);
     }

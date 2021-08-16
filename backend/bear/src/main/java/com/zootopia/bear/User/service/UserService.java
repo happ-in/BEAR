@@ -195,11 +195,10 @@ public class UserService {
         return true;
     }
 
-    public boolean deleteUser(User user) {
-        Long userId = user.getUserId();
-        Optional<User> new_user = userRepository.findById(userId);
+    public boolean deleteUser(long userId) {
+        Optional<User> user = userRepository.findById(userId);
 
-        if(!new_user.isPresent()) {
+        if(!user.isPresent()) {
             return false;
         } else {
             userRepository.deleteById(userId);
