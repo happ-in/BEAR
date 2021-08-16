@@ -26,6 +26,6 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
 	List<Review> searchFeed(@Param("userId") long userId);
 
 
-	public Optional<Review> findTopByBeerId(int beerId);
+	public Optional<Review> findByBeerId(int beerId);
 
 }

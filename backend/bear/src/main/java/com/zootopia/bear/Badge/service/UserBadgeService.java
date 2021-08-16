@@ -49,7 +49,7 @@ public class UserBadgeService {
         if(userBadgeId.isPresent()) {
             return;
         }
-        if(!reviewRepository.findTopByBeerId(beerId).isPresent()) {
+        if(!reviewRepository.findByBeerId(beerId).isPresent()) {
             UserBadge userBadge = new UserBadge(
                     checkUserBadgeId,
                     badgeRepository.getById(badgeId),

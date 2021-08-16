@@ -1,5 +1,6 @@
 package com.zootopia.bear.User.controller;
 
+import com.zootopia.bear.Badge.service.UserBadgeService;
 import com.zootopia.bear.Search.service.SearchService;
 import com.zootopia.bear.User.domain.User;
 import com.zootopia.bear.User.service.UserService;
