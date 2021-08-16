@@ -4,12 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-
 @Getter
 @Setter
 @AllArgsConstructor
 public class FollowDto {
-    private long userId;
-    private String nickname;
-    private String userImage;
+	private long userId;
+	private String nickname;
+	private String userImage;
 }

@@ -15,6 +15,7 @@ import com.zootopia.bear.Follow.domain.Follow;
 import com.zootopia.bear.Follow.dto.FollowDto;
 import com.zootopia.bear.Follow.repository.FollowRepository;
 import com.zootopia.bear.User.domain.User;
+import com.zootopia.bear.User.dto.UserDto;
 import com.zootopia.bear.User.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -55,6 +56,21 @@ public class SearchService {
 			beerDtos.add(new BeerDto(beer.getBeerId(), beer.getBeerName(), beer.getBeerImage()));
 		}
 		return beerDtos;
+	}
+
+	public List<UserDto> searchUser(String customId) {
+		List<User> users = userRepository.findByCustomIdContains(customId);
+		List<UserDto> userDtos = new ArrayList<>();
+		for (User user : users) {
+			UserDto userDto = UserDto.builder()
+				.userId(user.getUserId())
+				.customId(user.getCustomId())
+				.userImage(user.getUserImage())
+				.nickname(user.getNickname())
+				.build();
+			userDtos.add(userDto);
+		}
+		return userDtos;
 	}
 
 	public List<BeerDto> searchBookmark(Long userId){

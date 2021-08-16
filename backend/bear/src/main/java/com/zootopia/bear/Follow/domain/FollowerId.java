@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+
 import java.io.Serializable;
 
 @Data
@@ -14,9 +15,9 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class FollowerId implements Serializable {
 
-    @Column(name = "user_id")
-    private Long userId;
-    @Column(name = "follow_user_id")
-    private Long followUserId;
+	@Column(name = "user_id")
+	private Long userId;
+	@Column(name = "follow_user_id")
+	private Long followUserId;
 
 }
