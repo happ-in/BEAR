@@ -1,7 +1,7 @@
 <template>
   <div id="ranking-wrapper">
     <div>
-      <h1>Ranking</h1>
+      <h1 class="ranking-title">Ranking</h1>
     </div>
     <div>
       <div class="swiper-container">
@@ -129,7 +129,7 @@ $breakpoints: (
 $theme-color: #939597;
 
 #ranking-wrapper {
-  background-color: #f6f7fb;
+  background-color: white;
   height: 100%;
   width: 100%;
   display: flex;
@@ -139,10 +139,10 @@ $theme-color: #939597;
 }
 
 // title
-h1 {
+#ranking-title {
   // display: flex;
   // justify-content: center;
-  margin: 0.5% 0% 1% 0%;
+  margin: 10px;
 }
 
 // ==========================================
@@ -151,10 +151,11 @@ h1 {
 
 .swiper-container {
   //슬라이드 세로 길이
-  height: 430px;
+  height: 450px;
   //슬라이드 전체 가로 길이
   width: 1500px;
   padding-bottom: 85px;
+  padding-top: 12px;
 }
 
 .swiper-wrapper {

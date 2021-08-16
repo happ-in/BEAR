@@ -4,7 +4,10 @@
     <el-carousel indicator-position="outside">
         <el-carousel-item id="beer-detail">
             <img src="#" alt="">
-            <h3>{{ item }}</h3>
+            <h3>{{ beerData.beerName }}</h3>
+            <div>
+                
+            </div>
         </el-carousel-item>
         <el-carousel-item id="beer-snack">
             <h3>{{ item }}</h3>
