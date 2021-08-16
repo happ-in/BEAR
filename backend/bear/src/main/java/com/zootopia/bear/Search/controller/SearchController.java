@@ -1,7 +1,6 @@
 package com.zootopia.bear.Search.controller;
 
 
-import com.zootopia.bear.User.domain.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -11,7 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Follow {
-    @EmbeddedId
-    private FollowerId followerId;
+	@EmbeddedId
+	private FollowerId followerId;
 
 }

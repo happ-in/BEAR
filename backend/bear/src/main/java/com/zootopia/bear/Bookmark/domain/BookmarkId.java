@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
+
 import java.io.Serializable;
 
 @Data
@@ -15,10 +16,10 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class BookmarkId implements Serializable {
 
-    @Column(name = "user_id")
-    @NotNull(message = "로그인 되지 않은 사용자입니다.")
-    private long userId;
+	@Column(name = "user_id")
+	@NotNull(message = "로그인 되지 않은 사용자입니다.")
+	private long userId;
 
-    @Column(name = "beer_id")
-    private int beerId;
+	@Column(name = "beer_id")
+	private int beerId;
 }

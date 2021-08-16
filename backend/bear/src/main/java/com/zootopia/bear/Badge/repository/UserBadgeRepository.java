@@ -11,5 +11,5 @@ import java.util.List;
 @Repository
 @Table(name = "user_badge")
 public interface UserBadgeRepository extends JpaRepository<UserBadge, UserBadgeId> {
-    public List<UserBadge> findAllByUserBadgeId_UserId(long userId);
+    List<UserBadge> findAllByUserBadgeId_UserId(long userId);
 }
