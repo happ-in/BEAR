@@ -25,7 +25,7 @@ public class LoginController {
     private final SearchService searchService;
 
     @GetMapping("/kakao")
-    public ResponseEntity<?> home(@RequestParam(value = "code", required = false) String code, HttpSession session ) throws Exception{
+    public ResponseEntity<?> login(@RequestParam(value = "code", required = false) String code, HttpSession session ) throws Exception{
         String accessToken = userService.getAccessToken(code);
         long userId = userService.getUserId(accessToken);
         Optional<User> user = searchService.getUser(userId);
