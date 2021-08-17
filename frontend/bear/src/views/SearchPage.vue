@@ -69,6 +69,7 @@ export default defineComponent({
       else {
         this.beers = [];
         this.tags = [];
+        this.users = [];
       }
     },
     select: function () {
