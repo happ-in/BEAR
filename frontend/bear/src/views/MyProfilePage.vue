@@ -41,8 +41,11 @@
   </div>
 
   <!-- 북마크 -->
-  <div v-if="this.select == 'bookmark'">
-    <div></div>
+  <div v-if="this.select == 'bookmark'" style="width: 100%">
+    <div class="bookmark-item" v-for="(bookmark, index) in bookmarks" :key="index">
+      <button class="bookmark-btn"><img :src="bookmarkImage" alt="" /></button>
+      <img :src="require('../assets/beers/' + bookmark.beerImage + '.png')" alt="" />
+    </div>
   </div>
 
   <!-- 리뷰 -->
@@ -135,11 +138,17 @@ export default {
       },
       isFollow: false,
       src: require("../assets/heart.png"),
-      select: "",
+      bookmarks: [],
+      bookmarkImage: require("../assets/bookmark/bookmark-yes.png"),
+      isBookmark: true,
+      select: "bookmark",
     };
   },
   setup() {}, //컴포지션 API
-  created() {}, //컴포넌트가 생성되면 실행
+  created() {
+    this.getBookmarks();
+    console.log(this.bookmarks);
+  }, //컴포넌트가 생성되면 실행
   mounted() {}, //template에 정의된 html코드가 레너링된 후 실행
   unmounted() {}, //unmount가 완료된 후 실행
   methods: {
@@ -153,17 +162,37 @@ export default {
         this.src = require("../assets/heart.png");
       }
     }, //컴포넌트 내에서 사용할 메소드 정의
-
     goFollower() {
       this.$router.push({ name: "Follow", params: { header: "팔로워" } });
     },
     goFollowing() {
       this.$router.push({ name: "Follow", params: { header: "팔로잉" } });
     },
+    async getBookmarks() {
+      this.bookmarks = await this.$api("search/bookmark?userId=1847933666", "get");
+    },
   },
 };
 </script>
 <style>
+.bookmark-btn {
+  border: none;
+  background-color: transparent !important;
+}
+.bookmark-btn > img {
+  width: 20px;
+}
+.bookmark-item {
+  display: inline-block;
+  width: 30%;
+  border: 1px solid grey;
+  margin: 1%;
+}
+.bookmark-item > img {
+  height: 100px;
+  width: 100%;
+  object-fit: contain;
+}
 .profile-radio-toolbar {
   text-align-last: center;
 }
