@@ -38,7 +38,7 @@ public class SearchController {
 	@GetMapping("/userInfo")
 	public ResponseEntity<?> getMyInfo(@RequestParam long userId) {
 		if(searchService.getUser(userId).isPresent()) {
-			return new ResponseEntity<>(searchService.getUser(userId).get(),HttpStatus.OK);
+			return new ResponseEntity<>(searchService.getUserInfoDto(userId),HttpStatus.OK);
 		}
 		return new ResponseEntity<>(false,HttpStatus.BAD_REQUEST);
 	}

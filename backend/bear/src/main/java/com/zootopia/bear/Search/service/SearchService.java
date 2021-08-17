@@ -14,7 +14,9 @@ import com.zootopia.bear.Bookmark.repository.BookmarkRepository;
 import com.zootopia.bear.Follow.domain.Follow;
 import com.zootopia.bear.Follow.dto.FollowDto;
 import com.zootopia.bear.Follow.repository.FollowRepository;
+import com.zootopia.bear.Review.repository.ReviewRepository;
 import com.zootopia.bear.User.domain.User;
+import com.zootopia.bear.User.dto.UserInfoDto;
 import com.zootopia.bear.User.dto.UserDto;
 import com.zootopia.bear.User.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -39,6 +41,7 @@ public class SearchService {
 	private final FollowRepository followRepository;
 	private final UserBadgeRepository userBadgeRepository;
 	private final BadgeRepository badgeRepository;
+	private final ReviewRepository reviewRepository;
 
 	public List<HashTagDto> searchHashTag(String hashTagName) {
 		List<HashTag> hashTags = hashTagRepository.findByHashTagNameContains(hashTagName);
@@ -87,6 +90,25 @@ public class SearchService {
 
 	public Optional<User> getUser(long userId) {
 		return userRepository.findById(userId);
+	}
+
+	public UserInfoDto getUserInfoDto(long userId) {
+		User user = userRepository.findById(userId).get();
+		int reviewCount = reviewRepository.findAllByUserId(userId).size();
+		int followCount = followRepository.findAllByFollowerId_UserId(userId).size();
+		int followerCount = followRepository.findAllByFollowerId_FollowUserId(userId).size();
+
+		return UserInfoDto.builder()
+				.userId(user.getUserId())
+				.customId(user.getCustomId())
+				.userImage(user.getUserImage())
+				.nickname(user.getNickname())
+				.sex(user.getSex())
+				.shareCount(user.getShareCount())
+				.reviewCount(reviewCount)
+				.followCount(followCount)
+				.followerCount(followerCount)
+				.build();
 	}
 
 	public List<FollowDto> getFollowList(long userId){
