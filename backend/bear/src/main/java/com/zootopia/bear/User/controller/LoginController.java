@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 
@@ -28,31 +29,28 @@ public class LoginController {
 	private final SearchService searchService;
 
 	@GetMapping("/kakao")
-	public ResponseEntity<HashMap<String, String>> login(@RequestParam(value = "code", required = false) String code
-														 ) throws Exception {
+	public ModelAndView login(@RequestParam(value = "code", required = false) String code
+	) throws Exception {
 		String accessToken = userService.getAccessToken(code);
 		long userId = userService.getUserId(accessToken);
 		Optional<User> user = searchService.getUser(userId);
 		if (!user.isPresent()) {
-			user = Optional.of(userService.getKakaoInfo(accessToken));
-			userService.joinUser(user.get());
+			userService.joinUser(userService.getKakaoInfo(accessToken));
 		} else {
 			User userObject = user.get();
 			String image = userService.getUserImage(accessToken);
 			userObject.setUserImage(image);
 			userService.updateUser(userObject);
 		}
-//		session.setAttribute("userId", userId);
-//		session.setAttribute("accessToken", accessToken);
 
 		HashMap<String, String> map = new HashMap<>();
 		map.put("userId", String.valueOf(userId));
 		map.put("accessToken", accessToken);
-//
-//		model.addAttribute("userId" ,userId);
-//		model.addAttribute("accessToken",accessToken);
-
-		return ResponseEntity.ok().body(map);
+		String projectUrl = "http://localhost:8081/";
+		ModelAndView modelAndView = new ModelAndView("redirect:" + projectUrl);
+		modelAndView.addObject("userId",String.valueOf(userId));
+		modelAndView.addObject("accessToken",accessToken);
+		return modelAndView;
 	}
 
 }
