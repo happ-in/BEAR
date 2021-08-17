@@ -1,11 +1,11 @@
 <template>
   <div>
     <h1>상세페이지</h1>
-    <el-carousel :interval="0" indicator-position="outside" height="150vw">
-      <el-carousel-item class="beer-detail" >
-        <div class="detail-beerimg-box"><img :src="beerImage" /></div>
+    <el-carousel :interval="0" indicator-position="outside" height="130vw">
+      <el-carousel-item id="beer-detail" >
+        <div id="detail-beerimg-box" style="height:90vw; width:150vw; text-align-last:center; align-self:center; margin-bottom:3%;"><img :src="beerImage" /></div>
         <h3>{{ beerData.beerName }}</h3>
-        <el-rate class="detail-rate" v-model="beerData.beerAvg" allow-half disabled show-template="{beerData.beerAvg}"></el-rate>
+        <el-rate id="detail-rate" v-model="beerData.beerAvg" allow-half disabled show-template="{beerData.beerAvg}"></el-rate>
         <p>{{ beerData.contryName}}/{{ beerData.beerCategory }}/{{ beerData.alcoholProof }}</p>
         <!-- {{ beerData.country.countryName }} -->
         <div></div>
@@ -17,8 +17,8 @@
                 <span style="font-size:18px;">입니다</span></p>
             </div>
           
-          <div id="snack-card" v-for="(snack, index) in snackData" v-bind:key="index">
-            <img src="" alt="" />
+          <div id="snack-card" v-for="(snack, index) in snackData.snacks" v-bind:key="index">
+            <img id="snack-img" :src='require("../assets/snacks/" + snack.snackImage + ".png")' alt="" />
             <p>{{ snack.snackName }}</p>
           </div>
 
@@ -53,7 +53,7 @@ export default {
     },
     async getSnackData() {
       this.snackData = await this.$api("https://i5a403.p.ssafy.io/snack?beerCategory=" + this.beerData.beerCategory, "get");
-      this.snackImage = require("../assets/snacks/" + this.snackData.snackImage + ".png");
+      this.snackImage = require("../assets/snacks/" + this.snackData.snacks.snackImage + ".png");
       console.log(this.snackData)
     },
   }, //컴포넌트 내에서 사용할 메소드 정의
@@ -66,52 +66,52 @@ export default {
 </script>
 
 <style>
-.beer-detail {
-    height: 100%;
+#beer-detail {
+    height: 120vw;
     display: flex;
     justify-content: center;
     flex-direction: column;
+    margin-top: 4%;
 }
-.detail-bearimg-box{
-    place-self: center;
-
-    width: 80%;
-    height: 80%;
-
-    background: #ffffff;
-
-}
-.detail-beerimg-box img {
-    
-    width: 300px;
-    height: 300px;
+#detail-beerimg-box img {
+    padding-top: 5%;
+    height: 90%;
     object-fit: contain;
 }
-.beer-detail h3 {
+#beer-detail h3 {
     display: flex;
     justify-content: center;
-    font-size: 18px;
+    font-size: 22px;
     opacity: 0.75;
     margin: 0;
 }
-.detail-rate {
+#detail-rate {
     display: flex;
     justify-content: center;
 }
-.beer-detail p {
+#beer-detail p {
     display: flex;
     justify-content: center;
+    margin:1%;
 }
 
-.beer-detail:nth-child(2n) {
+#beer-detail:nth-child(2n) {
   background-color: white;
 }
 
-.beer-detail:nth-child(2n + 1) {
+#beer-detail:nth-child(2n + 1) {
   background-color: white;
 }
-.snack-sententce {
+#snack-sententce {
     margin-left: 3%;
+}
+#snack-img {
+    display: flex;
+    justify-content: center;
+
+    width: 50vw;
+    height: 50vw;
+    object-fit: contain;
 }
 .el-late {
     height: 100px;
