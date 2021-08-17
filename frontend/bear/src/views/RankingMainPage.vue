@@ -9,7 +9,7 @@
           <!-- 전체 -->
           <div class="swiper-slide">
             <button class="slide-image" type="submit" name="all" @click="pushRankCategory($event)">
-              <img src="http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=999&simg=%2Fcontent%2Fimage%2F2018%2F06%2F27%2F20180627000547_0.jpg"
+              <img src="../assets/rankingMain/all.png"
                 alt="all"
               />
             </button>
@@ -18,20 +18,14 @@
           <!-- 라거 -->
           <div class="swiper-slide">
             <button class="slide-image" type="submit" name="lager" @click="pushRankCategory($event)">
-              <img
-                src="https://previews.123rf.com/images/vclements/vclements1002/vclements100200018/6410721-%EB%A7%A5%EC%A3%BC-%EB%A8%B8%EA%B7%B8%EC%9E%94%EC%9D%98-%EC%86%90%EC%9E%A1%EC%9D%B4%EC%97%90-%EC%88%98%EA%B0%91%EC%9D%98-%EC%84%B8%EB%A1%9C-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%95%8C%EC%BD%94%EC%98%AC-%EC%A4%91%EB%8F%85.jpg"
-                alt="lager"
-              />
+              <img src="../assets/rankingMain/lager.png" alt="lager"/>
             </button>
           </div>
 
           <!-- 에일 -->
           <div class="swiper-slide">
             <button class="slide-image" type="submit" name="ale" @click="pushRankCategory($event)">
-              <img 
-                src="https://en.pimg.jp/037/137/297/1/37137297.jpg" 
-                alt="ale" 
-              />
+              <img src="../assets/rankingMain/ale.png" alt="ale" />
             </button>
           </div>
 
@@ -39,7 +33,7 @@
           <div class="swiper-slide">
             <button class="slide-image" type="submit" name="wheat" @click="pushRankCategory($event)">
               <img 
-                src="https://en.pimg.jp/037/137/297/1/37137297.jpg" 
+                src="../assets/rankingMain/wheat.png"
                 alt="wheat" 
               />
             </button>
@@ -47,21 +41,16 @@
 
           <!-- 스타우트 -->
           <div class="swiper-slide">
-            <button class="slide-image" type="submit" name="scout" @click="pushRankCategory($event)">
+            <button class="slide-image" type="submit" name="stout" @click="pushRankCategory($event)">
               <img 
-                src="https://en.pimg.jp/037/137/297/1/37137297.jpg" 
-                alt="scout" 
-              />
+                src="../assets/rankingMain/stout.png" alt="stout" />
             </button>
           </div>
 
           <!-- 라들러/RTD -->
           <div class="swiper-slide">
             <button class="slide-image" type="submit" name="rtd" @click="pushRankCategory($event)">
-              <img 
-                src="https://en.pimg.jp/037/137/297/1/37137297.jpg" 
-                alt="rtd" 
-              />
+              <img src="../assets/rankingMain/rtd.png" alt="rtd"/>
             </button>
           </div>
 
@@ -151,7 +140,7 @@ $theme-color: #939597;
 
 .swiper-container {
   //슬라이드 세로 길이
-  height: 450px;
+  height: 84%;
   //슬라이드 전체 가로 길이
   width: 1500px;
   padding-bottom: 85px;
@@ -252,7 +241,7 @@ $theme-color: #939597;
     padding: 0;
   }
   img {
-    object-fit: contain;
+    object-fit: cover;
   }
 }
 
