@@ -156,9 +156,12 @@
   <p id="beer_hash_four" ref="hash4"></p>
   <p id="beer_title" @click="goReview" ref="title"></p>
   <p id="beer_star" ref="rate"></p>
+  <p id="alcohol" ref="proof"></p>
+  <p id="category" ref="category"></p>
   <p ref="country"></p>
   <p ref="flag"></p>
   <p ref="star"></p>
+  
 </div>
 </template>
 <script>
@@ -237,7 +240,7 @@
   width: 200px;
   height: 43px;
   left: 80px;
-  top: 117px;
+  top: 25%;
 }
 #btn_div {
   width: 100%;
@@ -303,9 +306,52 @@
   left: 271px;
   top: 61px;
 }
+
+#alcohol {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: #f5df4d;
+  border-radius: 50%;
+  left: 240px;
+  text-align: center;
+  top: 45px;
+  text-shadow: 3px 3px 3px rgb(0, 0, 0);
+  /* margin: 0 auto; */
+
+  font-family: Noto Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 25px;
+
+  color: #ffffff;
+}
+
+#category {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: #f5df4d;
+  border-radius: 50%;
+  left: 205px;
+  text-align: center;
+  top: 45px;
+  text-shadow: 3px 3px 3px rgb(0, 0, 0);
+  /* margin: 0 auto; */
+
+  font-family: Noto Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 25px;
+
+  color: #ffffff;
+}
+
 #beer_hash_one {
   position: absolute;
-  width: 174px;
+  width: 254px;
   height: 72px;
   left: -4.28px;
   top: 278.02px;
@@ -313,7 +359,7 @@
   font-family: Noto Sans;
   font-style: normal;
   font-weight: bold;
-  font-size: 50px;
+  font-size: 60px;
   line-height: 68px;
   text-shadow: 3px 3px 3px rgb(0, 0, 0);
 
@@ -333,7 +379,7 @@
   font-family: Noto Sans;
   font-style: normal;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 34px;
   line-height: 33px;
 
   color: #ffffff;
@@ -349,7 +395,7 @@
   font-family: Noto Sans;
   font-style: normal;
   font-weight: bold;
-  font-size: 26px;
+  font-size: 46px;
   line-height: 35px;
   text-shadow: 3px 3px 3px rgb(0, 0, 0);
 
@@ -366,7 +412,7 @@
   font-family: Noto Sans;
   font-style: normal;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 44px;
   line-height: 33px;
 
   color: #ffffff;
@@ -377,9 +423,10 @@
 }
 #beer_title {
   position: absolute;
-  width: 300px;
+  width: 360px;
   height: 32px;
-  left: 58px;
+  /* left: 20%; */
+  text-align: center;
   top: 55px;
   text-shadow: 3px 3px 3px rgb(0, 0, 0);
   /* margin: 0 auto; */
@@ -387,7 +434,7 @@
   font-family: Noto Sans;
   font-style: normal;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 40px;
   line-height: 41px;
 
   color: #ffffff;

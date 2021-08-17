@@ -11,9 +11,9 @@ export default {
   data() {
     return {
       items: [
-        {id : 1, image: require('../assets/landing/1.png')},
-        {id : 2, image: require('../assets/landing/2.png')},
-        {id : 3, image: require('../assets/landing/3.png')}
+        {id : 1, image: require('../assets/landing/land1.png')},
+        {id : 2, image: require('../assets/landing/land2.gif')},
+        {id : 3, image: require('../assets/landing/land3.png')}
       ]
     }
   },
@@ -41,8 +41,8 @@ export default {
 
   #scanbutton{
     position: absolute;
-    top: 360px;
-    left: 90px;
+    top: 390px;
+    left: 100px;
     text-decoration: none;
     background-color: transparent !important;
     border-color: transparent !important;
