@@ -1,5 +1,5 @@
 <template>
-    <el-carousel width="360px" height="640px">
+    <el-carousel width="360px" height="760px">
       <el-carousel-item v-for="(item,index) in items" :key="index">
         <img :src="item.image" />  
         <button id="scanbutton" v-if="item.id === 3" @click="goToAr"><img src="../assets/landing/4.png"></button>    

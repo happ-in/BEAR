@@ -48,7 +48,7 @@
         </div>
   </div>
   <!-- 검색버튼 -->
-  <div id="btn_nav1" ref="btn1" @click="goSearch">
+  <div id="btn_nav1" ref="btn1">
     <svg
       id="guide_img"
       xmlns="http://www.w3.org/2000/svg"
@@ -265,7 +265,7 @@
   margin-top: 50px;
   position: absolute;
   transform: translate(-50%, -50%);
-  top: 43%;
+  top: 36%;
   left: 50%;
   bottom: 0;
   display: flex;
@@ -282,7 +282,7 @@
   margin-top: 50px;
   position: absolute;
   transform: translate(-50%, -50%);
-  top: 43%;
+  top: 36%;
   left: 70%;
   bottom: 0;
   display: flex;
