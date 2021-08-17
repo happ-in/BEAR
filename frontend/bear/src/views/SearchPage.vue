@@ -13,20 +13,20 @@
 
     <div v-if="select == 'account'" class="result-wrapper">
       <div v-for="(user, index) in users" :key="index" class="mb-4" @click="goToUser(user.userId)">
-        <img :src="user.userImage" alt="" class="round-image beer-item" />
+        <img :src="user.userImage" alt="" class="search-round-image beer-item" />
         <span>{{ user.customId }}</span>
       </div>
     </div>
 
     <div v-if="select == 'beer'" class="result-wrapper">
       <div v-for="(beer, index) in beers" :key="index" class="mb-4" @click="goToBeer(beer.beerId)">
-        <img :src="require('../assets/beers/' + beer.beerImage + '.png')" alt="" class="round-image beer-item" />
+        <img :src="require('../assets/beers/' + beer.beerImage + '.png')" alt="" class="search-round-image beer-item" />
         <span>{{ beer.beerName }}</span>
       </div>
     </div>
 
     <div v-if="select == 'tag'" class="result-wrapper">
-      <div v-for="(hashTag, index) in tags" :key="index" class="mb-4 flex-box" @click="goToHashTag(hashTag.hashTagId)">
+      <div v-for="(hashTag, index) in tags" :key="index" class="mb-4 flex-box" @click="goToHashTag(hashTag.hashTagId, hashTag.hashTagName)">
         <div class="tag-image">태그</div>
         <span class="tag-text"># {{ hashTag.hashTagName }}</span>
       </div>
@@ -52,12 +52,11 @@ export default defineComponent({
   },
   methods: {
     async search() {
-      this.users = await this.$api("https://i5a403.p.ssafy.io/search/user?keyword=" + this.keyword, "get");
-      this.beers = await this.$api("https://i5a403.p.ssafy.io/search/beer?keyword=" + this.keyword, "get");
-      this.tags = await this.$api("https://i5a403.p.ssafy.io/search/hashtag?keyword=" + this.keyword, "get");
+      this.users = await this.$api("search/user?keyword=" + this.keyword, "get");
+      this.beers = await this.$api("search/beer?keyword=" + this.keyword, "get");
+      this.tags = await this.$api("search/hashtag?keyword=" + this.keyword, "get");
     },
     goToUser(userId) {
-      console.log(userId);
       let sessionUser = sessionStorage.getItem("user.userId");
       if (sessionUser == userId) this.$router.push("/myprofile");
       else this.$router.push({ name: "UserProfile", params: { userId: "userId" } });
@@ -65,8 +64,10 @@ export default defineComponent({
     goToBeer(beerId) {
       this.$router.push({ name: "Detail", params: { beerId: beerId } });
     },
-    goToHashTag(hashTagId) {
-      console.log(hashTagId);
+    goToHashTag(hashTagId, hashTagName) {
+      localStorage.setItem("hashTagId", hashTagId);
+      localStorage.setItem("hashTagName", hashTagName);
+      this.$router.push("/tag");
     },
   },
   watch: {
@@ -121,7 +122,7 @@ export default defineComponent({
   border-bottom-right-radius: 5vw;
   margin-bottom: 1%;
 }
-.round-image {
+.search-round-image {
   width: 45px;
   height: 45px;
   border-radius: 70%;
@@ -158,6 +159,8 @@ video {
   margin-left: 2%;
 }
 .mb-4 {
+  display: flex;
+  align-items: center;
   margin-bottom: 4%;
 }
 .flex-box {
