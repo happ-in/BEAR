@@ -58,7 +58,6 @@ export default {
       this.beer = await this.$api("https://i5a403.p.ssafy.io/beer/random", "get");
       this.countryImage = require("../assets/flags/" + this.beer.country.countryName + ".png");
       this.beerImage = require("../assets/beers/" + this.beer.beerImage + ".png");
-      console.log(this.beerImage);
     },
   }, //컴포넌트 내에서 사용할 메소드 정의
 };

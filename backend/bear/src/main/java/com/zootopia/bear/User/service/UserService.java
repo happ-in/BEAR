@@ -213,7 +213,7 @@ public class UserService {
 		Long userId = user.getUserId();
 
 		if (!userRepository.findById(userId).isPresent() ||
-				(userRepository.findAllByCustomId(user.getCustomId()).size()>1)) {
+				(userRepository.findAllByCustomId(user.getCustomId()).size()>=1)) {
 			return false;
 		}
 		userRepository.save(user);
