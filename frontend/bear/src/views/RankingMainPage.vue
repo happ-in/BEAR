@@ -9,16 +9,14 @@
           <!-- 전체 -->
           <div class="swiper-slide">
             <button class="slide-image" type="submit" name="all" @click="pushRankCategory($event)">
-              <img src="../assets/rankingMain/all.png"
-                alt="all"
-              />
+              <img src="../assets/rankingMain/all.png" alt="all" />
             </button>
           </div>
 
           <!-- 라거 -->
           <div class="swiper-slide">
             <button class="slide-image" type="submit" name="lager" @click="pushRankCategory($event)">
-              <img src="../assets/rankingMain/lager.png" alt="lager"/>
+              <img src="../assets/rankingMain/lager.png" alt="lager" />
             </button>
           </div>
 
@@ -32,28 +30,23 @@
           <!-- 밀맥주 -->
           <div class="swiper-slide">
             <button class="slide-image" type="submit" name="wheat" @click="pushRankCategory($event)">
-              <img 
-                src="../assets/rankingMain/wheat.png"
-                alt="wheat" 
-              />
+              <img src="../assets/rankingMain/wheat.png" alt="wheat" />
             </button>
           </div>
 
           <!-- 스타우트 -->
           <div class="swiper-slide">
             <button class="slide-image" type="submit" name="stout" @click="pushRankCategory($event)">
-              <img 
-                src="../assets/rankingMain/stout.png" alt="stout" />
+              <img src="../assets/rankingMain/stout.png" alt="stout" />
             </button>
           </div>
 
           <!-- 라들러/RTD -->
           <div class="swiper-slide">
             <button class="slide-image" type="submit" name="rtd" @click="pushRankCategory($event)">
-              <img src="../assets/rankingMain/rtd.png" alt="rtd"/>
+              <img src="../assets/rankingMain/rtd.png" alt="rtd" />
             </button>
           </div>
-
         </div>
         <div class="swiper-pagination"></div>
       </div>
@@ -101,7 +94,7 @@ export default {
         name: "RankingCategory",
         params: { category: event.target.alt },
       });
-    },  
+    },
   }, //컴포넌트 내에서 사용할 메소드 정의
 };
 </script>
@@ -285,8 +278,8 @@ $theme-color: #939597;
     border-bottom: 3px solid currentColor;
     padding-bottom: 3px;
   }
-  video{
+  video {
     display: none;
-    }
+  }
 }
 </style>

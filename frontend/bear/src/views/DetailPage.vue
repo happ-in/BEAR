@@ -2,39 +2,43 @@
   <div>
     <h1>상세페이지</h1>
     <el-carousel :interval="0" indicator-position="outside" height="130vw">
-      <el-carousel-item id="beer-detail" >
-        <div id="detail-beerimg-box" style="height:90vw; width:150vw; text-align-last:center; align-self:center; margin-bottom:3%;"><img :src="beerImage" /></div>
+      <el-carousel-item id="beer-detail">
+        <div id="detail-beerimg-box" style="height: 90vw; width: 150vw; text-align-last: center; align-self: center; margin-bottom: 3%">
+          <img :src="beerImage" />
+        </div>
         <h3>{{ beerData.beerName }}</h3>
         <el-rate id="detail-rate" v-model="beerData.beerAvg" allow-half disabled show-template="{beerData.beerAvg}"></el-rate>
-        <p>/{{ beerData.beerCategory }}/{{ beerData.alcoholProof }}</p>
-        <!-- {{ beerData.country.countryName }} -->
+        <p>{{ countryName }}/{{ beerData.beerCategory }}/{{ beerData.alcoholProof }}</p>
+
         <div></div>
       </el-carousel-item>
-      <el-carousel-item class="beer-snack" style="background-color:white;">
-            <div class="snack-sentence" style="padding-left:3%;">
-                <p class="snack-sentence"><span style="font-size:16px; font-weight:bold;">{{ beerData.beerName }} </span>
-                <span style="font-size:14px;">와/과 잘 어울리는 안주는</span><br>
-                <span style="font-size: 35px; font-weight: bold; color: #f5df4d;">{{ snackData.snackCategory }} 안주</span>
-                <span style="font-size:14px;">입니다</span></p>
-            </div>
-            <div id="snack-card-lists">
-                <div id="snack-card-1" v-for="(snack, index) in snackData.snacks" v-bind:key="index"> 
-                    <div v-if="index===0">
-                        <p>{{ snack.snackName }}</p>
-                        <img id="snack-img" :src='require("../assets/snacks/" + snack.snackImage + ".png")' alt="" />                
-                    </div> 
-                </div>
-                <div id="snack-card-2">
-                    <div  v-for="(snack, index) in snackData.snacks" v-bind:key="index" style="padding: 0 2% 0 2%;"> 
-                        <div v-if="index>0">    
-                            <p>{{ snack.snackName }}</p>
-                            <img id="snack-img" :src='require("../assets/snacks/" + snack.snackImage + ".png")' alt="" />                
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            
+      <el-carousel-item class="beer-snack" style="background-color: white">
+        <div class="snack-sentence" style="padding-left: 3%">
+          <p class="snack-sentence">
+            <span style="font-size: 16px; font-weight: bold">{{ beerData.beerName }} </span>
+            <span style="font-size: 14px">와/과 잘 어울리는 안주는</span><br />
+            <span style="font-size: 35px; font-weight: bold; color: #f5df4d">{{ snackData.snackCategory }} 안주</span>
+            <span style="font-size: 14px">입니다</span>
+          </p>
+        </div>
+
+        <div id="snack-card-lists">
+          <div id="snack-card-1" v-for="(snack, index) in snackData.snacks" v-bind:key="index">
+            <div v-if="index === 0">
+              <p>{{ snack.snackName }}</p>
+              <img id="snack-img" :src="require('../assets/snacks/' + snack.snackImage + '.png')" alt="" />
+            </div>
+          </div>
+          <div id="snack-card-2">
+            <div v-for="(snack, index) in snackData.snacks" v-bind:key="index" style="padding: 0 2% 0 2%">
+              <div v-if="index > 0">
+                <p>{{ snack.snackName }}</p>
+                <img id="snack-img" :src="require('../assets/snacks/' + snack.snackImage + '.png')" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
       </el-carousel-item>
     </el-carousel>
   </div>
@@ -50,6 +54,7 @@ export default {
       beerData: [],
       snackData: [],
       beerImage: "",
+      countryName: "",
     };
   },
   setup() {}, //컴포지션 API
@@ -60,19 +65,17 @@ export default {
   unmounted() {}, //unmount가 완료된 후 실행
   methods: {
     async getBeerData() {
-      this.beerData = await this.$api("https://i5a403.p.ssafy.io/beer?beerId=" + this.$route.params.beerId, "get");
-      this.beerImage = require("../assets/beers/" + this.beerData.beerImage + ".png");
-      console.log(this.beerImage)
+      this.beerData = await this.$api("beer?beerId=" + this.$route.params.beerId, "get");
     },
     async getSnackData() {
-      this.snackData = await this.$api("https://i5a403.p.ssafy.io/snack?beerCategory=" + this.beerData.beerCategory, "get");
-      this.snackImage = require("../assets/snacks/" + this.snackData.snacks.snackImage + ".png");
-      console.log(this.snackData)
+      this.snackData = await this.$api("snack?beerCategory=" + this.beerData.beerCategory, "get");
     },
   }, //컴포넌트 내에서 사용할 메소드 정의
   watch: {
     beerData: function () {
+      this.beerImage = require("../assets/beers/" + this.beerData.beerImage + ".png");
       this.getSnackData();
+      this.countryName = this.beerData.country.countryName;
     },
   },
 };
@@ -82,39 +85,39 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400&display=swap");
 
 h1 {
-    font-family: "Noto Sans KR", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
 }
 #beer-detail {
-    height: 120vw;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin-top: 4%;
+  height: 120vw;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 4%;
 }
 #detail-beerimg-box img {
-    padding-top: 5%;
-    height: 90%;
-    object-fit: contain;
+  padding-top: 5%;
+  height: 90%;
+  object-fit: contain;
 }
 #beer-detail h3 {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 
-    font-family: "Noto Sans KR", sans-serif;
-    font-size: 22px;
-    opacity: 0.75;
-    margin: 0;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 22px;
+  opacity: 0.75;
+  margin: 0;
 }
 #detail-rate {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 #beer-detail p {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 
-    font-family: "Noto Sans KR", sans-serif;
-    margin:1%;
+  font-family: "Noto Sans KR", sans-serif;
+  margin: 1%;
 }
 
 #beer-detail:nth-child(2n) {
@@ -126,44 +129,44 @@ h1 {
 }
 
 #snack-sententce {
-    margin-left: 3%;
+  margin-left: 3%;
 }
 #snack-card-lists {
-    height:95vw;
-    border-radius: 5%;
-    background-color: #f5df4d;
+  height: 95vw;
+  border-radius: 5%;
+  background-color: #f5df4d;
 
-    /* display: flex; */
-    justify-content: center;
+  /* display: flex; */
+  justify-content: center;
 }
 #snack-card-1 {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 #snack-card-2 {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 #snack-img {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 
-    width: 36vw;
-    height: 36vw;
-    object-fit: contain;
+  width: 36vw;
+  height: 36vw;
+  object-fit: contain;
 }
 #snack-card-lists p {
-    display: flex;
-    justify-content: center;
-    
-    font-family: "Noto Sans KR", sans-serif;
-    font-weight: bloder;
+  display: flex;
+  justify-content: center;
 
-    margin: 5% 0 1% 0;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: bloder;
+
+  margin: 5% 0 1% 0;
 }
 
 .el-late {
-    height: 100px;
+  height: 100px;
 }
 /* .detail-bearimg-box{
     position: relative;
@@ -181,5 +184,4 @@ h1 {
   height: 90%;
   object-fit: contain;
 } */
-
 </style>
