@@ -12,21 +12,21 @@
     </div>
 
     <div v-if="select == 'account'" class="result-wrapper">
-      <div v-for="(user, index) in users" :key="index" class="mb-4">
-        <!-- <img :src="require('../assets/' + user.beerImage + '.png')" alt="" class="round-image beer-item" /> -->
+      <div v-for="(user, index) in users" :key="index" class="mb-4" @click="goToUser(user.userId)">
+        <img :src="user.userImage" alt="" class="round-image beer-item" />
         <span>{{ user.customId }}</span>
       </div>
     </div>
 
     <div v-if="select == 'beer'" class="result-wrapper">
-      <div v-for="(beer, index) in beers" :key="index" class="mb-4">
+      <div v-for="(beer, index) in beers" :key="index" class="mb-4" @click="goToBeer(beer.beerId)">
         <img :src="require('../assets/beers/' + beer.beerImage + '.png')" alt="" class="round-image beer-item" />
         <span>{{ beer.beerName }}</span>
       </div>
     </div>
 
     <div v-if="select == 'tag'" class="result-wrapper">
-      <div v-for="(hashTag, index) in tags" :key="index" class="mb-4 flex-box">
+      <div v-for="(hashTag, index) in tags" :key="index" class="mb-4 flex-box" @click="goToHashTag(hashTag.hashTagId)">
         <div class="tag-image">태그</div>
         <span class="tag-text"># {{ hashTag.hashTagName }}</span>
       </div>
@@ -56,11 +56,17 @@ export default defineComponent({
       this.beers = await this.$api("https://i5a403.p.ssafy.io/search/beer?keyword=" + this.keyword, "get");
       this.tags = await this.$api("https://i5a403.p.ssafy.io/search/hashtag?keyword=" + this.keyword, "get");
     },
-    setCategory(data) {
-      this.category = data;
+    goToUser(userId) {
+      console.log(userId);
+      let sessionUser = sessionStorage.getItem("user.userId");
+      if (sessionUser == userId) this.$router.push("/myprofile");
+      else this.$router.push({ name: "UserProfile", params: { userId: "userId" } });
     },
-    load() {
-      this.count += 2;
+    goToBeer(beerId) {
+      this.$router.push({ name: "Detail", params: { beerId: beerId } });
+    },
+    goToHashTag(hashTagId) {
+      console.log(hashTagId);
     },
   },
   watch: {
@@ -72,22 +78,11 @@ export default defineComponent({
         this.users = [];
       }
     },
-    select: function () {
-      console.log(this.select);
-    },
   },
 });
 </script>
 
 <style>
-/* #container {
-  position: relative;
-  width: 360px;
-  height: 640px;
-
-  background: white;
-} */
-
 .radio-toolbar {
   text-align-last: center;
 }
