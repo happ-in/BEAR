@@ -211,12 +211,11 @@ public class UserService {
 
 	public boolean updateUser(User user) {
 		Long userId = user.getUserId();
-		Optional<User> new_user = userRepository.findById(userId);
 
-		if (!new_user.isPresent()) {
+		if (!userRepository.findById(userId).isPresent() ||
+				(userRepository.findAllByCustomId(user.getCustomId()).size()>1)) {
 			return false;
 		}
-		// nickname check
 		userRepository.save(user);
 		return true;
 	}
