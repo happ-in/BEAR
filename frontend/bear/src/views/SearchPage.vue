@@ -1,47 +1,32 @@
 <template>
-  <div id="container">
-    <el-input
-      id="search_input"
-      class="inline-input"
-      v-model="keyword"
-      @input="submitAutoComplete"
-      :fetch-suggestions="querySearch"
-      placeholder="태그 또는 맥주를 입력하세요"
-      prefix-icon="el-icon-search"
-      @select="handleSelect"
-      style="width: 309px"
-    ></el-input>
+  <div>
+    <input id="search_input" class="search-input-style" v-model="keyword" placeholder=" 태그 또는 맥주를 입력하세요" />
 
-    <el-button-group style="margin-top: 60px">
-      <el-button type="warning" plain style="width: 120px" @click="this.category = 'account'">계정</el-button>
-      <el-button type="warning" plain style="width: 120px" @click="this.category = 'tag'"> 태그</el-button>
-      <el-button type="warning" autofocus plain style="width: 120px" @click="this.category = 'beer'">맥주</el-button>
-    </el-button-group>
-    <!-- 
-    <ul class="infinite-list" v-infinite-scroll="load" style="overflow: auto" v-if="category == 'beer'">
-      <li v-for="(beer, index) in beers" class="infinite-list-item" :key="index">
-        {{ beer.beerName }}
-      </li>
-    </ul>
-    
-    <ul class="infinite-list" v-infinite-scroll="load" style="overflow: auto" v-if="category == 'tag'">
-      <li v-for="(hashTag, index) in tags" class="infinite-list-item" :key="index">
-        {{ hashTag.hashTagName }}
-      </li>
-    </ul>
-     -->
+    <div class="radio-toolbar">
+      <input type="radio" v-model="select" value="account" checked />
+      <label @click="this.select = 'account'">계정</label>
+      <input type="radio" v-model="select" value="tag" />
+      <label @click="this.select = 'tag'">태그</label>
+      <input type="radio" v-model="select" value="beer" />
+      <label @click="this.select = 'beer'">맥주</label>
+    </div>
 
-    <div v-if="category == 'beer'" class="result-wrapper">
+    <div v-if="select == 'account'" class="result-wrapper">
+      <div v-for="(user, index) in users" :key="index" class="mb-4">
+        <!-- <img :src="require('../assets/' + user.beerImage + '.png')" alt="" class="round-image beer-item" /> -->
+        <span>{{ user.customId }}</span>
+      </div>
+    </div>
+
+    <div v-if="select == 'beer'" class="result-wrapper">
       <div v-for="(beer, index) in beers" :key="index" class="mb-4">
-        <!-- <el-avatar class="item" :size="40" :src="require('../assets/beers/' + beer.beerImage + '.png')"></el-avatar> -->
         <img :src="require('../assets/beers/' + beer.beerImage + '.png')" alt="" class="round-image beer-item" />
         <span>{{ beer.beerName }}</span>
       </div>
     </div>
 
-    <div v-if="category == 'tag'" class="result-wrapper">
-      <div v-for="(hashTag, index) in tags" :key="index" class="mb-4" style="display: flex">
-        <!-- <span class="tag-image item">태그</span> -->
+    <div v-if="select == 'tag'" class="result-wrapper">
+      <div v-for="(hashTag, index) in tags" :key="index" class="mb-4 flex-box">
         <div class="tag-image">태그</div>
         <span class="tag-text"># {{ hashTag.hashTagName }}</span>
       </div>
@@ -61,10 +46,13 @@ export default defineComponent({
       count: 0,
       beers: [],
       tags: [],
+      users: [],
+      select: "",
     };
   },
   methods: {
     async search() {
+      this.users = await this.$api("https://i5a403.p.ssafy.io/search/user?keyword=" + this.keyword, "get");
       this.beers = await this.$api("https://i5a403.p.ssafy.io/search/beer?keyword=" + this.keyword, "get");
       this.tags = await this.$api("https://i5a403.p.ssafy.io/search/hashtag?keyword=" + this.keyword, "get");
     },
@@ -83,25 +71,59 @@ export default defineComponent({
         this.tags = [];
       }
     },
+    select: function () {
+      console.log(this.select);
+    },
   },
 });
 </script>
 
 <style>
-#container {
+/* #container {
   position: relative;
   width: 360px;
   height: 640px;
 
   background: white;
+} */
+
+.radio-toolbar {
+  text-align-last: center;
+}
+.radio-toolbar input[type="radio"] {
+  position: fixed;
+  width: 0;
+}
+.radio-toolbar label {
+  display: inline-block;
+  background-color: #fff;
+  font-size: 16px;
+  width: 28%;
+  text-align: center;
+  font-weight: bold;
+  padding: 2%;
+  box-shadow: 2px 2px 2px #939597;
+  margin-right: 1%;
+}
+.radio-toolbar input[type="radio"]:checked + label {
+  background-color: #f5df4d;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: -1px 0 #939597, 0 1px blue, 1px 0 #939597, 0 -1px #939597;
 }
 
-#search_input {
-  position: absolute;
-  width: 309px;
-  height: 40px;
-  left: 0px;
-  top: 0px;
+.search-input-style {
+  width: -webkit-fill-available;
+  margin: 1%;
+  padding: 3%;
+  margin: 0 auto;
+  border: none; /* <-- This thing here */
+  border: solid 1px #ccc;
+  border-top-left-radius: 5vw;
+  border-top-right-radius: 5vw;
+  border-bottom-left-radius: 5vw;
+  border-bottom-right-radius: 5vw;
+  margin-bottom: 1%;
 }
 .round-image {
   width: 45px;
@@ -141,5 +163,8 @@ video {
 }
 .mb-4 {
   margin-bottom: 4%;
+}
+.flex-box {
+  display: flex;
 }
 </style>
