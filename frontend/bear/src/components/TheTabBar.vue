@@ -3,7 +3,7 @@
     <!-- AR button -->
     <div class="ar_button">
       <button @click="ar_path">
-        <img src="../assets/tabBar/ar.png" alt="ar_icon" width="50">
+        <img src="../assets/tabBar/ar.png" alt="ar_icon" width="40">
         <!-- <p>AR</p> -->
       </button>
     </div>
@@ -13,7 +13,7 @@
       <div class="tabbar"> 
         <div id="menu">
           <router-link v-for="route in routes" :key="route.key" :to="route.path" class="tabbar-menu-list" class-activate="active" exact>
-            <img width="35" :src="route.img" alt="" />
+            <img width="30" :src="route.img" alt="" />
             <div>{{ route.title }}</div>
           </router-link>
         </div>
@@ -54,17 +54,21 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
 
+/* #tap-wrap {
+  
+} */
 .ar_button {
   position: fixed;
   float: right;
   bottom: 0;
   height: 40vw;
   right: 4%;
+  z-index: 7;
 }
 .ar_button button {
   border-radius: 50%;
-  height: 70px;
-  width: 70px;
+  height: 60px;
+  width: 60px;
   padding: 0;
   border: 0;
 
@@ -103,6 +107,7 @@ export default {
 .tabbar-menu-list {
   padding: 0 3vw;
   text-decoration: none;
+  font-size: 10px;
   color: black;
 }
 </style>

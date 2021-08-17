@@ -96,7 +96,6 @@ h1 {
 }
 .card {
   margin-top: 1%;
-  margin-left: 10%;
 
   display: flex;
   justify-content: center;
@@ -104,11 +103,6 @@ h1 {
   width: 291px;
 }
 h2 {
-  /* vertical-align:middle; */
-  /* position: absolute; */
-  /* left: 35px;
-    top: 40px; */
-  /* width: 100%; */
   display: flex;
   justify-content: space-around;
 

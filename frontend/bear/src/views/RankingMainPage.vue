@@ -143,7 +143,7 @@ $theme-color: #939597;
   height: 84%;
   //슬라이드 전체 가로 길이
   width: 1500px;
-  padding-bottom: 85px;
+  // padding-bottom: 85px;
   padding-top: 12px;
 }
 
@@ -197,7 +197,7 @@ $theme-color: #939597;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 85px;
+  height: 40px;
 
   // chained selector hack to handle very specific overrides
   &#{&} {

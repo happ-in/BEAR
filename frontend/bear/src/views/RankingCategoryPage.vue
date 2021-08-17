@@ -5,7 +5,7 @@
     <li id="ranking-box-list" v-for="(beer, index) in rankData" v-bind:key="index">
       <el-card class="box-card card-wrapper" @click="pushBeerId(index)">
         <h2>{{ index + 1 }}위</h2>
-        <img src="#" alt="beerimg" />
+        <div class="beerimg-box"><img :src="beerImage" /></div>
         <div>
           <h2>{{ beer.beerName }}</h2>
           <p>{{ beer.countryName }}/{{ beer.beerCategory }}/{{ beer.alcoholProof }}</p>
@@ -27,6 +27,7 @@ export default {
     //html과 자바스크립트 코드에서 사용할 데이터 변수 선언
     return {
       rankData: [],
+      beerImage: "",
     };
   },
   setup() {}, //컴포지션 API
@@ -48,6 +49,7 @@ export default {
         "https://i5a403.p.ssafy.io/rank/" + this.$route.params.category,
         "get"
       );
+      this.beerImage = require("../assets/beers/" + this.beer.beerImage + ".png");
       console.log(this.rankData);
     },
   }, //컴포넌트 내에서 사용할 메소드 정의
