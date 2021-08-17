@@ -3,7 +3,12 @@
     <h1>{{ this.$route.params.category }}</h1>
     <!-- countryName, beerCategory, alcoholProof 도 추가-->
 
-    <div class="rank-category-item-wrapper" v-for="(beer, index) in rankData" v-bind:key="index">
+    <div
+      class="rank-category-item-wrapper"
+      v-for="(beer, index) in rankData"
+      v-bind:key="index"
+      :style="{ 'background-color': bgRank[index] }"
+    >
       <el-row>
         <el-col :span="3" class="rank-grade"> {{ index + 1 }}위 </el-col>
         <el-col :span="5">
@@ -33,6 +38,7 @@ export default {
     return {
       rankData: [],
       beerImage: "",
+      bgRank: ["#F5DF4D", "rgba(245, 223, 77, 0.6)", "rgba(245, 223, 77, 0.2)", "fff", "fff", "fff", "fff"],
     };
   },
   setup() {}, //컴포지션 API
@@ -61,25 +67,6 @@ export default {
 video {
   display: none;
 }
-.text {
-  font-size: 14px;
-}
-.item {
-  padding: 18px 0;
-}
-#ranking-box-list {
-  list-style: none;
-}
-.card-wrapper {
-  display: flex;
-  margin: 7px;
-  width: 90vw;
-  padding: 5px;
-}
-#beerInfo {
-  display: flex;
-  flex-direction: row;
-}
 .beer-image-wrapper {
   width: 100%;
   height: 120px;
@@ -87,8 +74,13 @@ video {
   padding-top: 10px;
 }
 .rank-category-item-wrapper {
-  box-shadow: 0px 1px 3px grey;
+  box-shadow: 1px 2px 3px grey;
   height: 140px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  margin-top: 2%;
 }
 .rank-grade {
   font-weight: bold;
@@ -96,7 +88,8 @@ video {
   align-self: center;
 }
 .beerName {
-  font-size: x-large;
+  margin-top: 3%;
+  font-size: large;
   font-weight: bold;
   padding-top: 10px;
 }
