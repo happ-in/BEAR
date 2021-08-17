@@ -2,18 +2,23 @@
   <div class="wrapper-rank-category">
     <h1>{{ this.$route.params.category }}</h1>
     <!-- countryName, beerCategory, alcoholProof 도 추가-->
-    <li id="ranking-box-list" v-for="(beer, index) in rankData" v-bind:key="index">
-      <el-card class="box-card card-wrapper" @click="pushBeerId(index)">
-        <h2>{{ index + 1 }}위</h2>
-        <div class="beerimg-box"><img :src="beerImage" /></div>
-        <div>
-          <h2>{{ beer.beerName }}</h2>
-          <p>{{ beer.countryName }}/{{ beer.beerCategory }}/{{ beer.alcoholProof }}</p>
-          <div>{{ beer.beerCategory }}{{ index + 1 }}위</div>
-          <div>{{ beer.totalCount }}명이 좋아해요!</div>
-        </div>
-      </el-card>
-    </li>
+
+    <div class="rank-category-item-wrapper" v-for="(beer, index) in rankData" v-bind:key="index">
+      <el-row>
+        <el-col :span="3" class="rank-grade"> {{ index + 1 }}위 </el-col>
+        <el-col :span="5">
+          <img class="beer-image-wrapper" :src="require('../assets/beers/' + beer.beerImage + '.png')" />
+        </el-col>
+        <el-col :span="16">
+          <el-row class="beerName">{{ beer.beerName }}</el-row>
+          <el-row class="beer-info-etc">{{ beer.countryName }}/{{ beer.beerCategory }}/{{ beer.alcoholProof }}</el-row>
+          <el-row class="total-count-wrapper">
+            <span class="total-count-info">{{ beer.totalCount }}</span
+            >명이 좋아해요!
+          </el-row>
+        </el-col>
+      </el-row>
+    </div>
   </div>
 </template>
 
@@ -45,10 +50,7 @@ export default {
       console.log(this.rankData[index]);
     },
     async getRankData() {
-      this.rankData = await this.$api(
-        "https://i5a403.p.ssafy.io/rank/" + this.$route.params.category,
-        "get"
-      );
+      this.rankData = await this.$api("https://i5a403.p.ssafy.io/rank/" + this.$route.params.category, "get");
       this.beerImage = require("../assets/beers/" + this.rankData.beer.beerImage + ".png");
       console.log(this.rankData);
     },
@@ -63,7 +65,6 @@ video {
 .text {
   font-size: 14px;
 }
-
 .item {
   padding: 18px 0;
 }
@@ -76,18 +77,42 @@ video {
   width: 90vw;
   padding: 5px;
 }
-.el-card__body {
-  display: flex;
-  /* flex-direction: row; */
-  justify-content: center;
-}
-/* .box-card h2 {
-}
-.box-card img {
-
-} */
 #beerInfo {
   display: flex;
   flex-direction: row;
+}
+.beer-image-wrapper {
+  width: 100%;
+  height: 120px;
+  object-fit: contain;
+  padding-top: 10px;
+}
+.rank-category-item-wrapper {
+  box-shadow: 0px 1px 3px grey;
+  height: 140px;
+}
+.rank-grade {
+  font-weight: bold;
+  text-align: center;
+  align-self: center;
+}
+.beerName {
+  font-size: x-large;
+  font-weight: bold;
+  padding-top: 10px;
+}
+.beer-info-etc {
+  font-size: small;
+  color: white;
+  text-shadow: -1px 0 #939597, 0 1px #939597, 1px 0 #939597, 0 -1px #939597;
+}
+.total-count-info {
+  color: #2653af;
+  font-size: x-large;
+  text-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+}
+.total-count-wrapper {
+  padding-top: 35px;
+  align-items: flex-end;
 }
 </style>
