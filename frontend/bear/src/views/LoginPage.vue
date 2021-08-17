@@ -6,7 +6,6 @@
         width="222"
       />
     </a>
-    <button id="custom-logout-btn" type="button" @click="kakaoLogout">카카오 로그아웃</button>
   </div>
 </template>
 <script>
@@ -22,9 +21,6 @@ export default {
     // Kakao.init('15e7887e87b724b15605d38adf95cf84');
     // Kakao.isInitialized();
     // this.kakaoLogout();
-    console.log(this.$route.query.accessToken);
-    console.log(this.$route.query.userId);
-    
   },
   methods: {
     kakaoLogin(){
