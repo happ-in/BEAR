@@ -12,8 +12,8 @@ export default {
     return {
       items: [
         {id : 1, image: require('../assets/landing/land1-2.png')},
-        {id : 2, image: require('../assets/landing/land2.gif')},
-        {id : 3, image: require('../assets/landing/land3.png')}
+        {id : 2, image: require('../assets/landing/land2-2.gif')},
+        {id : 3, image: require('../assets/landing/land3-2.png')}
       ]
     }
   },
