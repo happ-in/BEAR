@@ -73,7 +73,7 @@ export default {
   justify-content: center;
   align-items: center;
 
-  background: #f5df4d;
+  background-color: #f5df4d;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .ar_button button p {
@@ -85,9 +85,12 @@ export default {
   bottom: 0;
   width: 100%;
   height: 17vw;
+  padding-top:2%;
 
   display: flex;
   justify-content: space-around;
+
+  background-color: white;
 }
 #menu {
   padding: 0;

@@ -3,14 +3,24 @@
     <h1>상세페이지</h1>
     <el-carousel indicator-position="outside">
         <el-carousel-item id="beer-detail">
-            <img src="#" alt="">
+            <div>
+                <img src="#" alt="">
+            </div>
             <h3>{{ beerData.beerName }}</h3>
+            <el-rate v-model="value" disabled show-score text-color="#ff9900" score-template="{{ beerData.beerAvg }} points"></el-rate>
+            <p>{{ beerData.country.countryName}}/{{ beerData.beerCategory }}/{{ beerData.alcoholProof }}</p>
             <div>
                 
             </div>
         </el-carousel-item>
         <el-carousel-item id="beer-snack">
-            <h3>{{ item }}</h3>
+            <div>
+                <h1>{{ beerData.beerName}}과 잘 어울리는 안주는 {{snackData.snackCategory}} 안주 입니다</h1>
+                <div id="snack-card" v-for="(snack, index) in snackData" v-bind:key="index">
+                    <img src="" alt="">
+                    <p>{{ snack.snackName}}</p>
+                </div>
+            </div>
         </el-carousel-item>
     </el-carousel>
 </div>
@@ -34,7 +44,7 @@ export default {
     unmounted() {}, //unmount가 완료된 후 실행
     methods: {
         async getBeerData() {
-            this.beerData = await this.$api("https://i5a403.p.ssafy.io/rank/beer?beerId="+this.$route.params.beerId,"get");
+            this.beerData = await this.$api("https://i5a403.p.ssafy.io/beer?beerId="+this.$route.params.beerId,"get");
             console.log(this.rankData);
         },
         async getSnackData() {

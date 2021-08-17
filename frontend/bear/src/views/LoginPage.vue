@@ -19,17 +19,15 @@ export default {
     };
   },
   mounted() {
-    // Kakao.init('fa7ca4339835a3b0d37662fbf0b78fb8');
+    // Kakao.init('15e7887e87b724b15605d38adf95cf84');
     // Kakao.isInitialized();
     // this.kakaoLogout();
+    console.log(this.$route.query.code);
+    console.log(sessionStorage.getItem('accessToken'))
   },
   methods: {
-    async kakaoLogin(){
-      this.data = await this.$api("https://kauth.kakao.com/oauth/authorize?client_id=15e7887e87b724b15605d38adf95cf84&redirect_uri=http://localhost:8080/kakao/login&reponse_type=code","post"); //test API
-      console.log(session.getAttribute("accessToken"));
-      console.log(sessionStorage.getItem("accessToken"));
-      this.$router.push('/');
-
+    kakaoLogin(){
+      window.location.replace("https://kauth.kakao.com/oauth/authorize?client_id=15e7887e87b724b15605d38adf95cf84&redirect_uri=http://localhost:8080/login&response_type=code"); //test API
     }
   },
 };

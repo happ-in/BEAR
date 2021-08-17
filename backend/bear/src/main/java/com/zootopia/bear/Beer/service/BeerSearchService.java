@@ -35,4 +35,8 @@ public class BeerSearchService {
 		List<HashTagTotalDto> hashTagTotalDtos = hashTagRepository.searchHashTagToTal(beer.getBeerId());
 		return new BeerHashTagDto(beer, beerAvg, hashTagTotalDtos);
 	}
+
+	public List<Beer> beerSearchByHashTag(int hashTagId) {
+		return beerRepository.findByHashTag(hashTagId);
+	}
 }

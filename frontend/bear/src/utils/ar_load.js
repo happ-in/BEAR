@@ -471,14 +471,14 @@ export default {
         unmounted() {}, //unmount가 완료된 후 실행
         methods: {recommendFood(){
             // this.$router.push('/');
-            window.open('https://i5a403.p.ssafy.io/beer/detail?beerId='+this.beerData.beerId+'');
+            window.replace('https://i5a403.p.ssafy.io/beer/detail?beerId='+this.beerData.beerId+'');
           },goProfile(){
             this.$router.push('/profile');
-            window.open('https://i5a403.p.ssafy.io/beer/profile');
+            window.replace('https://i5a403.p.ssafy.io/beer/profile');
           },goSearch(){
-            window.open('https://i5a403.p.ssafy.io/beer/search');
+            window.replace('https://i5a403.p.ssafy.io/beer/search');
           },goReview(){
-            window.open('https://i5a403.p.ssafy.io/beer/search');
+            window.replace('https://i5a403.p.ssafy.io/beer/search');
           },
           async getBeerData(id) {
             this.beerData = await this.$api("https://i5a403.p.ssafy.io/beer/ar?searchId="+id,"get"); //test API

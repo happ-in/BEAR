@@ -1,24 +1,16 @@
 <template>
   <h2>{{ user.customId }}</h2>
-  <el-container class="mb-4" style="margin-top: 5%">
-    <!-- 프로필 이미지 -->
-    <el-aside width="200px">
-      <div class="block profile-image">
-        <el-avatar
-          :src="user.userImage"
-          :size="100"
-          @error="errorHandler"
-          style="margin-right: 4px"
-        />
-      </div>
-    </el-aside>
 
-    <!-- 뱃지, 닉네임 -->
-    <el-main>
+  <!-- 프로필 -->
+  <el-row class="profile-user-wrapper">
+    <el-col :span="12">
+      <el-avatar :src="user.userImage" :size="100" style="margin-right: 4px" />
+    </el-col>
+    <el-col :span="12" style="text-align: left">
       <div>뱃지명</div>
       <div>{{ user.nickName }}</div>
-    </el-main>
-  </el-container>
+    </el-col>
+  </el-row>
 
   <!-- 리뷰수/팔로잉/팔로워 -->
   <el-row>
@@ -41,99 +33,83 @@
     <el-button plain style="width: 100%; margin: 3%"> 프로필 변경 </el-button>
   </el-row>
 
-  <div style="width: 100%">
-    <el-tabs type="card">
-      <!-- 북마크 -->
-      <el-tab-pane label="북마크">
-        <el-row>
-          <el-col :span="8" v-for="(o, index) in 2" :key="o" :offset="index > 0 ? 2 : 0">
-            <el-card>
-              <img :src="beer.beerImage" height="200" />
-              <div>
-                <span>{{ beer.beerName }}</span>
-              </div>
-            </el-card>
-          </el-col>
-        </el-row>
-      </el-tab-pane>
+  <div class="radio-toolbar" style="margin-bottom: 5%">
+    <input type="radio" v-model="select" value="bookmark" checked />
+    <label @click="this.select = 'bookmark'">북마크</label>
+    <input type="radio" v-model="select" value="review" />
+    <label @click="this.select = 'review'">리뷰</label>
+    <input type="radio" v-model="select" value="badge" />
+    <label @click="this.select = 'badge'">뱃지</label>
+  </div>
 
-      <!-- 리뷰 -->
-      <el-tab-pane label="리뷰">
-        <div>
-          <el-card class="box-card">
-            <!-- 맥주이미지 -->
-            <el-row>
-              <el-col :span="7"
-                ><img :src="beer.beerImage" class="grid-content bg-purple" style="width: 100%" />
-              </el-col>
+  <!-- 북마크 -->
+  <div v-if="this.select == 'bookmark'">
+    <div></div>
+  </div>
 
-              <!-- 제목, 별점, 해시태그 -->
-              <el-col :span="14">
-                <el-row :gutter="20">
-                  <span>
-                    {{ beer.beerName }}
-                    <img :src="beer.countryImg" style="width: 6%" />
-                  </span>
-                  <el-rate v-model="beer.rating" allow-half disabled></el-rate>
-                </el-row>
+  <!-- 리뷰 -->
+  <div v-if="this.select == 'review'">
+    <el-card>
+      <!-- 맥주이미지 -->
+      <el-row>
+        <el-col :span="7"><img :src="beer.beerImage" class="grid-content bg-purple" style="width: 100%" /> </el-col>
 
-                <div style="position: relative; top: 20px">
-                  <el-tag
-                    type="info"
-                    v-for="(hashTag, index) in beer.hashTags"
-                    :key="index"
-                    style="margin-right: 1%; margin-bottom: 1%"
-                  >
-                    # {{ hashTag.hashTagName }}
-                  </el-tag>
-                </div>
-              </el-col>
+        <!-- 제목, 별점, 해시태그 -->
+        <el-col :span="14">
+          <el-row :gutter="20">
+            <span>
+              {{ beer.beerName }}
+              <img :src="beer.countryImg" style="width: 6%" />
+            </span>
+            <el-rate v-model="beer.rating" allow-half disabled></el-rate>
+          </el-row>
 
-              <!-- 하트 -->
-              <el-col :span="3">
-                <div class="heart-wrapper">
-                  <div class="heart-image">
-                    <img :src="src" />
-                  </div>
-                  <div class="heart-text">
-                    <button @click="isLikeFeed" :class="{ likeFeed: beer.isLike }">
-                      {{ beer.totalLike }}
-                    </button>
-                  </div>
-                </div>
-                <div>
-                  <div
-                    class="heart-wrapper"
-                    style="width: 60%; margin-top: 120%; text-align: center"
-                  >
-                    <img src="../assets/more.png" class="image" />
-                  </div>
-                </div>
-              </el-col>
-            </el-row>
-          </el-card>
-        </div>
-      </el-tab-pane>
+          <div style="position: relative; top: 20px">
+            <el-tag type="info" v-for="(hashTag, index) in beer.hashTags" :key="index" style="margin-right: 1%; margin-bottom: 1%">
+              # {{ hashTag.hashTagName }}
+            </el-tag>
+          </div>
+        </el-col>
 
-      <!-- 뱃지 -->
-      <el-tab-pane label="뱃지">
-        <el-row>
-          <el-col :span="8" style="text-align: center">
+        <!-- 하트 -->
+        <el-col :span="3">
+          <div class="heart-wrapper">
+            <div class="heart-image">
+              <img :src="src" />
+            </div>
+            <div class="heart-text">
+              <button id="heart-button" @click="isLikeFeed" :class="{ likeFeed: beer.isLike }">
+                {{ beer.totalLike }}
+              </button>
+            </div>
+          </div>
+          <div>
+            <div class="heart-wrapper" style="width: 60%; margin-top: 120%; text-align: center">
+              <img src="../assets/more.png" class="image" />
+            </div>
+          </div>
+        </el-col>
+      </el-row>
+    </el-card>
+  </div>
+
+  <!-- 뱃지 -->
+  <div v-if="this.select == 'badge'">
+    <el-row>
+      <el-col :span="8" style="text-align: center">
+        <img src="../assets/logo.png" width="120" /> <br />
+        <el-button type="text" @click="centerDialogVisible = true"> 콜럼버스 </el-button>
+        <el-dialog title="뱃지 타이틀" v-model="centerDialogVisible" width="50%" center>
+          <div style="text-align: center">
             <img src="../assets/logo.png" width="120" /> <br />
-            <el-button type="text" @click="centerDialogVisible = true"> 콜럼버스 </el-button>
-            <el-dialog title="뱃지 타이틀" v-model="centerDialogVisible" width="50%" center>
-              <div style="text-align: center">
-                <img src="../assets/logo.png" width="120" /> <br />
-                <h4>21.08.13 획득</h4>
-                <span>뱃지 설명</span>
-              </div>
-            </el-dialog>
-          </el-col>
-          <el-col :span="8"></el-col>
-          <el-col :span="8"></el-col>
-        </el-row>
-      </el-tab-pane>
-    </el-tabs>
+            <h4>21.08.13 획득</h4>
+            <span>뱃지 설명</span>
+          </div>
+        </el-dialog>
+      </el-col>
+      <el-col :span="8"></el-col>
+      <el-col :span="8"></el-col>
+    </el-row>
   </div>
 </template>
 <script>
@@ -152,22 +128,16 @@ export default {
       },
       beer: {
         beerName: "시메이 화이트 트리펠",
-        beerImage:
-          "https://assets.business.veluga.kr/media/public/Chimay_Chimay_TripelCinq_Cents_4SYlnWG.png",
-        countryImg:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Flag_of_Belgium.svg/240px-Flag_of_Belgium.svg.png",
+        beerImage: "https://assets.business.veluga.kr/media/public/Chimay_Chimay_TripelCinq_Cents_4SYlnWG.png",
+        countryImg: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Flag_of_Belgium.svg/240px-Flag_of_Belgium.svg.png",
         rating: 4.5,
-        hashTags: [
-          { hashTagName: "트라피스트" },
-          { hashTagName: "명품" },
-          { hashTagName: "과일향" },
-          { hashTagName: "향신료" },
-        ],
+        hashTags: [{ hashTagName: "트라피스트" }, { hashTagName: "명품" }, { hashTagName: "과일향" }, { hashTagName: "향신료" }],
         totalLike: 10,
         isLike: false,
       },
       isFollow: false,
       src: require("../assets/heart.png"),
+      select: "",
     };
   },
   setup() {}, //컴포지션 API
@@ -196,8 +166,37 @@ export default {
 };
 </script>
 <style>
-.profile-image {
-  margin-left: 30%;
+.radio-toolbar {
+  text-align-last: center;
+}
+.radio-toolbar input[type="radio"] {
+  position: fixed;
+  width: 0;
+}
+.radio-toolbar label {
+  display: inline-block;
+  background-color: #fff;
+  font-size: 16px;
+  width: 28%;
+  text-align: center;
+  font-weight: bold;
+  padding: 2%;
+  box-shadow: 2px 2px 2px #939597;
+  margin-right: 1%;
+}
+.radio-toolbar input[type="radio"]:checked + label {
+  background-color: #939597;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: -1px 0 #939597, 0 1px black, 1px 0 #939597, 0 -1px #939597;
+}
+.profile-user-wrapper {
+  margin: 3%;
+  align-items: center;
+  text-align: center;
+}
+.profile-user-wrapper > span {
+  text-align: left;
 }
 .grid-content {
   text-align: center;
@@ -213,7 +212,7 @@ export default {
 .feed-item {
   background: white;
 }
-button {
+#heart-button {
   text-decoration: none;
   background-color: transparent !important;
   border-color: transparent !important;

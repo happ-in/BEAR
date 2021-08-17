@@ -1,24 +1,15 @@
 <template>
   <h2>{{ user.customId }}</h2>
-  <el-container class="mb-4" style="margin-top: 5%">
-    <!-- 프로필 이미지 -->
-    <el-aside width="200px">
-      <div class="block profile-image">
-        <el-avatar
-          :src="user.userImage"
-          :size="100"
-          @error="errorHandler"
-          style="margin-right: 4px"
-        />
-      </div>
-    </el-aside>
 
-    <!-- 뱃지, 닉네임 -->
-    <el-main>
+  <el-row class="profile-user-wrapper">
+    <el-col :span="12">
+      <el-avatar :src="user.userImage" :size="100" style="margin-right: 4px" />
+    </el-col>
+    <el-col :span="12" style="text-align: left">
       <div>뱃지명</div>
       <div>{{ user.nickName }}</div>
-    </el-main>
-  </el-container>
+    </el-col>
+  </el-row>
 
   <!-- 리뷰수/팔로잉/팔로워 -->
   <el-row>
@@ -37,8 +28,8 @@
   </el-row>
 
   <!-- 팔로우/팔로우 취소 -->
-  <el-row>
-    <el-button plain style="width: 100%; margin: 3%" @click="isFollow = !isFollow">
+  <el-row style="place-content: center; padding: 1%">
+    <el-button plain @click="isFollow = !isFollow">
       {{ isFollow ? "팔로우 취소" : "팔로우" }}
     </el-button>
   </el-row>
@@ -47,9 +38,7 @@
     <el-card class="box-card">
       <!-- 맥주이미지 -->
       <el-row>
-        <el-col :span="7"
-          ><img :src="beer.beerImage" class="grid-content bg-purple" style="width: 100%" />
-        </el-col>
+        <el-col :span="7"><img :src="beer.beerImage" class="grid-content bg-purple" style="width: 100%" /> </el-col>
 
         <!-- 제목, 별점, 해시태그 -->
         <el-col :span="14">
@@ -62,12 +51,7 @@
           </el-row>
 
           <div style="position: relative; top: 20px">
-            <el-tag
-              type="info"
-              v-for="(hashTag, index) in beer.hashTags"
-              :key="index"
-              style="margin-right: 1%; margin-bottom: 1%"
-            >
+            <el-tag type="info" v-for="(hashTag, index) in beer.hashTags" :key="index" style="margin-right: 1%; margin-bottom: 1%">
               # {{ hashTag.hashTagName }}
             </el-tag>
           </div>
@@ -78,7 +62,7 @@
           <div class="heart-wrapper">
             <div class="heart-image"><img :src="src" class="image" /></div>
             <div class="heart-text">
-              <button @click="isLikeFeed" :class="{ likeFeed: beer.isLike }">
+              <button id="heart-button" @click="isLikeFeed" :class="{ likeFeed: beer.isLike }">
                 {{ beer.totalLike }}
               </button>
             </div>
@@ -102,17 +86,10 @@ export default {
       },
       beer: {
         beerName: "시메이 화이트 트리펠",
-        beerImage:
-          "https://assets.business.veluga.kr/media/public/Chimay_Chimay_TripelCinq_Cents_4SYlnWG.png",
-        countryImg:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Flag_of_Belgium.svg/240px-Flag_of_Belgium.svg.png",
+        beerImage: "https://assets.business.veluga.kr/media/public/Chimay_Chimay_TripelCinq_Cents_4SYlnWG.png",
+        countryImg: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Flag_of_Belgium.svg/240px-Flag_of_Belgium.svg.png",
         rating: 4.5,
-        hashTags: [
-          { hashTagName: "트라피스트" },
-          { hashTagName: "명품" },
-          { hashTagName: "과일향" },
-          { hashTagName: "향신료" },
-        ],
+        hashTags: [{ hashTagName: "트라피스트" }, { hashTagName: "명품" }, { hashTagName: "과일향" }, { hashTagName: "향신료" }],
         totalLike: 10,
         isLike: false,
       },
@@ -156,7 +133,7 @@ export default {
 .feed-item {
   background: white;
 }
-button {
+#heart-button {
   text-decoration: none;
   background-color: transparent !important;
   border-color: transparent !important;
@@ -186,7 +163,15 @@ button:active {
 .likeFeed {
   color: white;
 }
-video{
-    display: none;
+video {
+  display: none;
+}
+.profile-user-wrapper {
+  margin: 3%;
+  align-items: center;
+  text-align: center;
+}
+.profile-user-wrapper > span {
+  text-align: left;
 }
 </style>
