@@ -28,11 +28,9 @@
   </el-row>
 
   <!-- 팔로우/팔로우 취소 -->
-  <el-row style="place-content: center; padding: 1%">
-    <el-button plain @click="isFollow = !isFollow">
-      {{ isFollow ? "팔로우 취소" : "팔로우" }}
-    </el-button>
-  </el-row>
+  <button plain @click="isFollow = !isFollow" class="profile-btn">
+    {{ isFollow ? "팔로우 취소" : "팔로우" }}
+  </button>
 
   <div>
     <el-card class="box-card">
@@ -173,5 +171,16 @@ video {
 }
 .profile-user-wrapper > span {
   text-align: left;
+}
+.profile-btn {
+  width: 100%;
+  padding: 3%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  background: white;
+  border: 0.5px solid #939597;
+}
+.profile-btn:active {
+  box-shadow: 1px 1px 1px rgb(156, 143, 143);
 }
 </style>

@@ -28,10 +28,8 @@
     </el-col>
   </el-row>
 
-  <!-- 팔로우/팔로우 취소 -->
-  <el-row>
-    <el-button plain style="width: 100%; margin: 3%"> 프로필 변경 </el-button>
-  </el-row>
+  <!-- 프로필 변경 -->
+  <button class="profile-btn">프로필 변경</button>
 
   <div class="radio-toolbar" style="margin-bottom: 5%">
     <input type="radio" v-model="select" value="bookmark" checked />
@@ -244,5 +242,16 @@ button:active {
 }
 video {
   display: none;
+}
+.profile-btn {
+  width: 100%;
+  padding: 3%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  background: white;
+  border: 0.5px solid #939597;
+}
+.profile-btn:active {
+  box-shadow: 1px 1px 1px rgb(156, 143, 143);
 }
 </style>
