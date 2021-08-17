@@ -239,6 +239,7 @@ $theme-color: #939597;
 
   button {
     padding: 0;
+    border: 0;
   }
   img {
     object-fit: cover;

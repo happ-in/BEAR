@@ -20,7 +20,7 @@
             <img :src="src" class="image" />
           </div>
           <div class="heart-text">
-            <button @click="isLikeFeed" :class="{ likeFeed: beer.isLike }">
+            <button id="heart-button" @click="isLikeFeed" :class="{ likeFeed: beer.isLike }">
               {{ beer.totalLike }}
             </button>
           </div>
@@ -94,7 +94,7 @@ export default {
 span {
   display: flex;
 }
-button {
+#heart-button {
   text-decoration: none;
   background-color: transparent !important;
   border-color: transparent !important;

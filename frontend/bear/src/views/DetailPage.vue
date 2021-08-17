@@ -44,7 +44,7 @@ export default {
     unmounted() {}, //unmount가 완료된 후 실행
     methods: {
         async getBeerData() {
-            this.beerData = await this.$api("https://i5a403.p.ssafy.io/rank/beer?beerId="+this.$route.params.beerId,"get");
+            this.beerData = await this.$api("https://i5a403.p.ssafy.io/beer?beerId="+this.$route.params.beerId,"get");
             console.log(this.rankData);
         },
         async getSnackData() {

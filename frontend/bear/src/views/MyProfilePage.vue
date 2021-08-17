@@ -78,7 +78,7 @@
               <img :src="src" />
             </div>
             <div class="heart-text">
-              <button @click="isLikeFeed" :class="{ likeFeed: beer.isLike }">
+              <button id="heart-button" @click="isLikeFeed" :class="{ likeFeed: beer.isLike }">
                 {{ beer.totalLike }}
               </button>
             </div>
@@ -212,7 +212,7 @@ export default {
 .feed-item {
   background: white;
 }
-button {
+#heart-button {
   text-decoration: none;
   background-color: transparent !important;
   border-color: transparent !important;

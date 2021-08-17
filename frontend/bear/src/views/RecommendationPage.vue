@@ -27,9 +27,9 @@
           </svg>
           다시하기
         </a>
-        <a href="#" class="button" id="detailbtn" @click="this.$router.push({ name: 'Detail', params: { beerId: this.beer.beerId } })"
-          >상세페이지</a
-        >
+        <a href="#" class="button" id="detailbtn" @click="this.$router.push({ name: 'Detail', params: { beerId: this.beer.beerId } })">
+          상세페이지
+        </a>
       </div>
     </div>
   </div>
@@ -77,7 +77,6 @@ export default {
 
   display: flex;
   flex-direction: column;
-
   align-items: center;
 
   font-family: "Noto Sans KR", sans-serif;
@@ -98,9 +97,9 @@ h1 {
 .card {
   margin-top: 1%;
   margin-left: 10%;
+
   display: flex;
   justify-content: center;
-  /* align-item: center; */
   flex-direction: column;
   width: 291px;
 }
@@ -155,13 +154,15 @@ h2 img {
 #btn {
   display: flex;
   justify-content: space-around;
+
+  text-align:center;
 }
 #repeatbtn {
-  position: absolute;
-  width: 138px;
+  /* position: absolute; */
+  width: 144px;
   height: 43px;
-  left: 42px;
-  top: 570px;
+  /* left: 42px; */
+  /* top: 570px; */
 
   background: #ffffff;
   border: 1px solid #939597;
@@ -183,11 +184,11 @@ h2 img {
   height: 20px;
 }
 #detailbtn {
-  position: absolute;
-  width: 138px;
+  /* position: absolute; */
+  width: 144px;
   height: 43px;
-  left: 180px;
-  top: 570px;
+  /* left: 180px; */
+  /* top: 570px; */
 
   background: #939597;
   border: 1px solid #939597;
