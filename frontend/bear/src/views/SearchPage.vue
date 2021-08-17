@@ -1,28 +1,31 @@
 <template>
-  <div id="container">
-    <input id="search_input" class="search-input-style" v-model="keyword" placeholder="태그 또는 맥주를 입력하세요" />
+  <div>
+    <input id="search_input" class="search-input-style" v-model="keyword" placeholder=" 태그 또는 맥주를 입력하세요" />
 
-    <el-button-group style="margin-top: 2%">
-      <el-button type="warning" plain style="width: 120px" @click="this.category = 'account'">계정</el-button>
-      <el-button type="warning" plain style="width: 120px" @click="this.category = 'tag'"> 태그</el-button>
-      <el-button type="warning" autofocus plain style="width: 120px" @click="this.category = 'beer'">맥주</el-button>
-    </el-button-group>
+    <div class="radio-toolbar">
+      <input type="radio" v-model="select" value="account" checked />
+      <label @click="this.select = 'account'">계정</label>
+      <input type="radio" v-model="select" value="tag" />
+      <label @click="this.select = 'tag'">태그</label>
+      <input type="radio" v-model="select" value="beer" />
+      <label @click="this.select = 'beer'">맥주</label>
+    </div>
 
-    <div v-if="category == 'account'" class="result-wrapper">
+    <div v-if="select == 'account'" class="result-wrapper">
       <div v-for="(user, index) in users" :key="index" class="mb-4">
         <!-- <img :src="require('../assets/' + user.beerImage + '.png')" alt="" class="round-image beer-item" /> -->
         <span>{{ user.customId }}</span>
       </div>
     </div>
 
-    <div v-if="category == 'beer'" class="result-wrapper">
+    <div v-if="select == 'beer'" class="result-wrapper">
       <div v-for="(beer, index) in beers" :key="index" class="mb-4">
         <img :src="require('../assets/beers/' + beer.beerImage + '.png')" alt="" class="round-image beer-item" />
         <span>{{ beer.beerName }}</span>
       </div>
     </div>
 
-    <div v-if="category == 'tag'" class="result-wrapper">
+    <div v-if="select == 'tag'" class="result-wrapper">
       <div v-for="(hashTag, index) in tags" :key="index" class="mb-4 flex-box">
         <div class="tag-image">태그</div>
         <span class="tag-text"># {{ hashTag.hashTagName }}</span>
@@ -44,6 +47,7 @@ export default defineComponent({
       beers: [],
       tags: [],
       users: [],
+      select: "",
     };
   },
   methods: {
@@ -67,23 +71,59 @@ export default defineComponent({
         this.tags = [];
       }
     },
+    select: function () {
+      console.log(this.select);
+    },
   },
 });
 </script>
 
 <style>
-#container {
+/* #container {
   position: relative;
   width: 360px;
   height: 640px;
 
   background: white;
+} */
+
+.radio-toolbar {
+  text-align-last: center;
+}
+.radio-toolbar input[type="radio"] {
+  position: fixed;
+  width: 0;
+}
+.radio-toolbar label {
+  display: inline-block;
+  background-color: #fff;
+  font-size: 16px;
+  width: 28%;
+  text-align: center;
+  font-weight: bold;
+  padding: 2%;
+  box-shadow: 2px 2px 2px #939597;
+  margin-right: 1%;
+}
+.radio-toolbar input[type="radio"]:checked + label {
+  background-color: #f5df4d;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: -1px 0 #939597, 0 1px blue, 1px 0 #939597, 0 -1px #939597;
 }
 
 .search-input-style {
   width: -webkit-fill-available;
-  margin: 2%;
-  height: 40px;
+  margin: 1%;
+  padding: 3%;
+  margin: 0 auto;
+  border: none; /* <-- This thing here */
+  border: solid 1px #ccc;
+  border-top-left-radius: 5vw;
+  border-top-right-radius: 5vw;
+  border-bottom-left-radius: 5vw;
+  border-bottom-right-radius: 5vw;
+  margin-bottom: 1%;
 }
 .round-image {
   width: 45px;
