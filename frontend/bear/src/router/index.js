@@ -5,10 +5,9 @@ import RankingMain from "../views/RankingMainPage.vue";
 import Landing from "../views/LandingPage.vue";
 import RankingCategory from "../views/RankingCategoryPage.vue";
 import FollowPage from "../views/FollowPage.vue";
-import Detail from "../views/DetailPage.vue"
+import Detail from "../views/DetailPage.vue";
+import TagList from "../views/TagListPage.vue";
 //import store from '../store/index';
-
-
 
 const routes = [
   {
@@ -49,11 +48,11 @@ const routes = [
     name: "ReviewWrite",
     component: () => import(/* webpackChunkName: "about" */ "../views/ReviewWrite.vue"),
     beforeEnter: (to, from, next) => {
-      if (store.state.accessToken !== '') {
-       return next();
-    }
-     next('/login');
-    }
+      if (store.state.accessToken !== "") {
+        return next();
+      }
+      next("/login");
+    },
     //beforeEnter: requireAuth() //똑같은 방식으로 여러개 설정가능
   },
   {
@@ -90,11 +89,16 @@ const routes = [
     path: "/detail/:beerId",
     name: "Detail",
     component: Detail,
-  }
+  },
+  {
+    path: "/tag",
+    name: "TagList",
+    component: TagList,
+  },
 ];
 
 // const requireAuth = () => (to, from, next) => {
-  
+
 // }
 
 const router = createRouter({
