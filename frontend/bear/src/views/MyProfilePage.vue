@@ -31,7 +31,7 @@
   <!-- 프로필 변경 -->
   <button class="profile-btn">프로필 변경</button>
 
-  <div class="radio-toolbar" style="margin-bottom: 5%">
+  <div class="profile-radio-toolbar" style="margin-bottom: 5%">
     <input type="radio" v-model="select" value="bookmark" checked />
     <label @click="this.select = 'bookmark'">북마크</label>
     <input type="radio" v-model="select" value="review" />
@@ -164,14 +164,14 @@ export default {
 };
 </script>
 <style>
-.radio-toolbar {
+.profile-radio-toolbar {
   text-align-last: center;
 }
-.radio-toolbar input[type="radio"] {
+.profile-radio-toolbar input[type="radio"] {
   position: fixed;
   width: 0;
 }
-.radio-toolbar label {
+.profile-radio-toolbar label {
   display: inline-block;
   background-color: #fff;
   font-size: 16px;
@@ -182,7 +182,7 @@ export default {
   box-shadow: 2px 2px 2px #939597;
   margin-right: 1%;
 }
-.radio-toolbar input[type="radio"]:checked + label {
+.profile-radio-toolbar input[type="radio"]:checked + label {
   background-color: #939597;
   font-weight: bold;
   color: #fff;
