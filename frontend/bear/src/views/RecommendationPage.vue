@@ -27,7 +27,7 @@
           </svg>
           다시하기
         </a>
-        <a href="#" class="button" id="detailbtn" @click="this.$router.push({ name: 'Detail', params: { beerId: this.beer.beerId } })">
+        <a href="#" class="button" id="detailbtn" @click="this.$router.push({ name: 'Detail', params: { beerId: beer.beerId } })">
           상세페이지
         </a>
       </div>
@@ -155,7 +155,7 @@ h2 img {
   display: flex;
   justify-content: space-around;
 
-  text-align:center;
+  text-align: center;
 }
 #repeatbtn {
   /* position: absolute; */
