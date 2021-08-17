@@ -92,11 +92,7 @@ export default {
   justify-content: space-around;
   background-color: white;
   box-shadow: 0px -1px rgb(192, 184, 184);
-<<<<<<< Updated upstream
   z-index: 8;
-=======
-  z-index: 9;
->>>>>>> Stashed changes
 }
 #menu {
   padding: 0;
