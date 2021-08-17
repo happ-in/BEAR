@@ -19,7 +19,7 @@ import java.util.Optional;
 @Service
 public class UserService {
 
-	private final static String kakaoRESTApiKey = "29af7f847f80be77ed28e6d1c6bee1fd";
+	private final static String kakaoRESTApiKey = "15e7887e87b724b15605d38adf95cf84";
 	private final static String redirectURL = "http://localhost:8080/login/kakao";
 
 	private final UserRepository userRepository;

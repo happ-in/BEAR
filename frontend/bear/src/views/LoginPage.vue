@@ -23,12 +23,17 @@ export default {
     // Kakao.isInitialized();
     // this.kakaoLogout();
     console.log(this.$route.query.code);
-    console.log(sessionStorage.getItem('accessToken'))
+    this.kakaoLogin2();
+    console.log(data);
+    
   },
   methods: {
     kakaoLogin(){
-      window.location.replace("https://kauth.kakao.com/oauth/authorize?client_id=15e7887e87b724b15605d38adf95cf84&redirect_uri=http://localhost:8080/login&response_type=code"); //test API
-    }
+      window.location.replace("https://kauth.kakao.com/oauth/authorize?client_id=15e7887e87b724b15605d38adf95cf84&redirect_uri=http://localhost:8081/login&response_type=code"); //test API
+    },
+    async kakaoLogin2() {
+            this.data = await this.$api("http://localhost:8080/login/kakao?code="+this.$route.query.code,"get"); //test API
+          }
   },
 };
 </script>
