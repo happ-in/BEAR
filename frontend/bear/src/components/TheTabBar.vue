@@ -1,22 +1,20 @@
 <template>
-  <div id="tab-wrap"> 
+  <div id="tab-wrap">
     <!-- AR button -->
     <div class="ar_button">
       <button @click="ar_path">
-        <img src="../assets/tabBar/ar.png" alt="ar_icon" width="40">
+        <img src="../assets/tabBar/ar.png" alt="ar_icon" width="40" />
         <!-- <p>AR</p> -->
       </button>
     </div>
     <!-- tabbar -->
-    <div>
-      <!-- <hr style="border: solid 1px #939597;"> -->
-      <div class="tabbar"> 
-        <div id="menu">
-          <router-link v-for="route in routes" :key="route.key" :to="route.path" class="tabbar-menu-list" class-activate="active" exact>
-            <img width="30" :src="route.img" alt="" />
-            <div>{{ route.title }}</div>
-          </router-link>
-        </div>
+    <!-- <hr style="border: solid 1px #939597;"> -->
+    <div class="tabbar">
+      <div id="menu">
+        <router-link v-for="route in routes" :key="route.key" :to="route.path" class="tabbar-menu-list" class-activate="active" exact>
+          <img width="30" :src="route.img" alt="" />
+          <div>{{ route.title }}</div>
+        </router-link>
       </div>
     </div>
   </div>
@@ -36,7 +34,7 @@ export default {
         { path: "/search", title: "검색", img: require("../assets/tabBar/search.png") },
         { path: "/myprofile", title: "마이페이지", img: require("../assets/tabBar/profile.png") },
       ],
-      ar_link: { path: "/ar", title: "AR", img: require("../assets/tabBar/ar.png")},
+      ar_link: { path: "/ar", title: "AR", img: require("../assets/tabBar/ar.png") },
     };
   },
   setup() {}, //컴포지션 API
@@ -82,19 +80,19 @@ export default {
 }
 .ar_button button p {
   margin: 0;
-} 
+}
 .tabbar {
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
   height: 17vw;
-  padding-top:2%;
-
+  padding-top: 2%;
   display: flex;
   justify-content: space-around;
-
   background-color: white;
+  box-shadow: 0px -1px rgb(192, 184, 184);
+  z-index: 1;
 }
 #menu {
   padding: 0;
@@ -105,7 +103,7 @@ export default {
   font-family: "Noto Sans KR", sans-serif;
 }
 .tabbar-menu-list {
-  padding: 0 3vw;
+  padding: 0 5vw;
   text-decoration: none;
   font-size: 10px;
   color: black;
