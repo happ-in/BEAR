@@ -6,22 +6,35 @@
         <div id="detail-beerimg-box" style="height:90vw; width:150vw; text-align-last:center; align-self:center; margin-bottom:3%;"><img :src="beerImage" /></div>
         <h3>{{ beerData.beerName }}</h3>
         <el-rate id="detail-rate" v-model="beerData.beerAvg" allow-half disabled show-template="{beerData.beerAvg}"></el-rate>
-        <p>{{ beerData.contryName}}/{{ beerData.beerCategory }}/{{ beerData.alcoholProof }}</p>
+        <p>/{{ beerData.beerCategory }}/{{ beerData.alcoholProof }}</p>
         <!-- {{ beerData.country.countryName }} -->
         <div></div>
       </el-carousel-item>
       <el-carousel-item class="beer-snack" style="background-color:white;">
-            <div class="snack-sentence">
-                <p class="snack-sentence"><span style="font-size:18px;">{{ beerData.beerName }}과 잘 어울리는 안주는</span><br>
-                <span style="font-size:40px; font-weight:bold;">{{ snackData.snackCategory }} 안주</span>
-                <span style="font-size:18px;">입니다</span></p>
+            <div class="snack-sentence" style="padding-left:3%;">
+                <p class="snack-sentence"><span style="font-size:16px; font-weight:bold;">{{ beerData.beerName }} </span>
+                <span style="font-size:14px;">와/과 잘 어울리는 안주는</span><br>
+                <span style="font-size: 35px; font-weight: bold; color: #f5df4d;">{{ snackData.snackCategory }} 안주</span>
+                <span style="font-size:14px;">입니다</span></p>
             </div>
-          
-          <div id="snack-card" v-for="(snack, index) in snackData.snacks" v-bind:key="index">
-            <img id="snack-img" :src='require("../assets/snacks/" + snack.snackImage + ".png")' alt="" />
-            <p>{{ snack.snackName }}</p>
-          </div>
+            <div id="snack-card-lists">
+                <div id="snack-card-1" v-for="(snack, index) in snackData.snacks" v-bind:key="index"> 
+                    <div v-if="index===0">
+                        <p>{{ snack.snackName }}</p>
+                        <img id="snack-img" :src='require("../assets/snacks/" + snack.snackImage + ".png")' alt="" />                
+                    </div> 
+                </div>
+                <div id="snack-card-2">
+                    <div  v-for="(snack, index) in snackData.snacks" v-bind:key="index" style="padding: 0 2% 0 2%;"> 
+                        <div v-if="index>0">    
+                            <p>{{ snack.snackName }}</p>
+                            <img id="snack-img" :src='require("../assets/snacks/" + snack.snackImage + ".png")' alt="" />                
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            
       </el-carousel-item>
     </el-carousel>
   </div>
@@ -66,6 +79,11 @@ export default {
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400&display=swap");
+
+h1 {
+    font-family: "Noto Sans KR", sans-serif;
+}
 #beer-detail {
     height: 120vw;
     display: flex;
@@ -81,6 +99,8 @@ export default {
 #beer-detail h3 {
     display: flex;
     justify-content: center;
+
+    font-family: "Noto Sans KR", sans-serif;
     font-size: 22px;
     opacity: 0.75;
     margin: 0;
@@ -92,6 +112,8 @@ export default {
 #beer-detail p {
     display: flex;
     justify-content: center;
+
+    font-family: "Noto Sans KR", sans-serif;
     margin:1%;
 }
 
@@ -102,17 +124,44 @@ export default {
 #beer-detail:nth-child(2n + 1) {
   background-color: white;
 }
+
 #snack-sententce {
     margin-left: 3%;
+}
+#snack-card-lists {
+    height:95vw;
+    border-radius: 5%;
+    background-color: #f5df4d;
+
+    /* display: flex; */
+    justify-content: center;
+}
+#snack-card-1 {
+    display: flex;
+    justify-content: center;
+}
+#snack-card-2 {
+    display: flex;
+    justify-content: center;
 }
 #snack-img {
     display: flex;
     justify-content: center;
 
-    width: 50vw;
-    height: 50vw;
+    width: 36vw;
+    height: 36vw;
     object-fit: contain;
 }
+#snack-card-lists p {
+    display: flex;
+    justify-content: center;
+    
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: bloder;
+
+    margin: 5% 0 1% 0;
+}
+
 .el-late {
     height: 100px;
 }
