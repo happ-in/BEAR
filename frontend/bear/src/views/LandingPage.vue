@@ -1,5 +1,5 @@
 <template>
-    <el-carousel width="360px" height="760px">
+    <el-carousel width="420px" height="760px">
       <el-carousel-item v-for="(item,index) in items" :key="index">
         <img :src="item.image" />  
         <button id="scanbutton" v-if="item.id === 3" @click="goToAr"><img src="../assets/landing/4.png"></button>    
@@ -11,7 +11,7 @@ export default {
   data() {
     return {
       items: [
-        {id : 1, image: require('../assets/landing/land1.png')},
+        {id : 1, image: require('../assets/landing/land1-2.png')},
         {id : 2, image: require('../assets/landing/land2.gif')},
         {id : 3, image: require('../assets/landing/land3.png')}
       ]
@@ -41,7 +41,7 @@ export default {
 
   #scanbutton{
     position: absolute;
-    top: 390px;
+    top: 470px;
     left: 100px;
     text-decoration: none;
     background-color: transparent !important;
