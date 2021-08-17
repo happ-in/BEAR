@@ -92,7 +92,7 @@ export default {
   justify-content: space-around;
   background-color: white;
   box-shadow: 0px -1px rgb(192, 184, 184);
-  z-index: 1;
+  z-index: 8;
 }
 #menu {
   padding: 0;
