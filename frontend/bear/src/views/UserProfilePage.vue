@@ -28,8 +28,8 @@
   </el-row>
 
   <!-- 팔로우/팔로우 취소 -->
-  <el-row>
-    <el-button plain class="profile-el-btn" @click="isFollow = !isFollow">
+  <el-row style="place-content: center; padding: 1%">
+    <el-button plain @click="isFollow = !isFollow">
       {{ isFollow ? "팔로우 취소" : "팔로우" }}
     </el-button>
   </el-row>
