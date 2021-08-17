@@ -1,18 +1,16 @@
 <template>
   <div>
     <h1>상세페이지</h1>
-    <el-carousel indicator-position="outside">
-      <el-carousel-item id="beer-detail">
-        <div>
-          <img src="#" alt="" />
-        </div>
+    <el-carousel :interval="0" indicator-position="outside" height="150vw">
+      <el-carousel-item class="beer-detail" height="80%">
+        <div class="detail-beerimg-box"><img :src="beerImage" /></div>
         <h3>{{ beerData.beerName }}</h3>
-        <el-rate v-model="value" disabled show-score text-color="#ff9900" score-template="{{ beerData.beerAvg }} points"></el-rate>
+        <el-rate v-model="value" disabled show-score text-color="#ff9900" score-template="{ beerData.beerAvg } points"></el-rate>
         <p>/{{ beerData.beerCategory }}/{{ beerData.alcoholProof }}</p>
         <!-- {{ beerData.country.countryName }} -->
         <div></div>
       </el-carousel-item>
-      <el-carousel-item id="beer-snack">
+      <el-carousel-item id="beer-snack" height="80%">
         <div>
           <h1>{{ beerData.beerName }}과 잘 어울리는 안주는 {{ snackData.snackCategory }} 안주 입니다</h1>
           <div id="snack-card" v-for="(snack, index) in snackData" v-bind:key="index">
@@ -34,6 +32,7 @@ export default {
     return {
       beerData: [],
       snackData: [],
+      beerImage: "",
     };
   },
   setup() {}, //컴포지션 API
@@ -45,6 +44,8 @@ export default {
   methods: {
     async getBeerData() {
       this.beerData = await this.$api("https://i5a403.p.ssafy.io/beer?beerId=" + this.$route.params.beerId, "get");
+      this.beerImage = require("../assets/beers/" + this.beerData.beerImage + ".png");
+      consloe.log(this.beerImage)
     },
     async getSnackData() {
       this.snackData = await this.$api("https://i5a403.p.ssafy.io/snack?beerCategory=" + this.beerData.beerCategory, "get");
@@ -59,19 +60,58 @@ export default {
 </script>
 
 <style>
-.el-carousel__item h3 {
-  color: #475669;
-  font-size: 18px;
-  opacity: 0.75;
-  line-height: 300px;
-  margin: 0;
+.beer-detail {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.detail-bearimg-box{
+    display: flex;
+    justify-content: center;
+
+    width: 100px;
+    height: 500px;
+
+    background: #ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.detail-beerimg-box img {
+
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+}
+.beer-detail h3 {
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    opacity: 0.75;
+    margin: 0;
 }
 
-.el-carousel__item:nth-child(2n) {
-  background-color: #99a9bf;
+.beer-detail:nth-child(2n) {
+  background-color: white;
 }
 
-.el-carousel__item:nth-child(2n + 1) {
-  background-color: #d3dce6;
+.beer-detail:nth-child(2n + 1) {
+  background-color: white;
 }
+
+/* .detail-bearimg-box{
+    position: relative;
+    width: 291px;
+    height: 375px;
+
+    background: #ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.detail-beerimg-box img {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 100%;
+  height: 90%;
+  object-fit: contain;
+} */
 </style>
