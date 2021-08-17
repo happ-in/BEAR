@@ -30,4 +30,9 @@ public class BeerSearchController {
 		BeerHashTagDto beerHashTagDto = beerSearchService.beerSearch(searchId);
 		return ResponseEntity.ok(beerHashTagDto);
 	}
+
+	@GetMapping("/search")
+	public ResponseEntity<?> beerSearchByHashTag(@RequestParam int hashTagId) {
+		return ResponseEntity.ok().body(beerSearchService.beerSearchByHashTag(hashTagId));
+	}
 }
