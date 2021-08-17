@@ -49,7 +49,7 @@ export default {
         "https://i5a403.p.ssafy.io/rank/" + this.$route.params.category,
         "get"
       );
-      this.beerImage = require("../assets/beers/" + this.rankData.beer.beerImage + ".png");
+      this.beerImage = require("../assets/beers/" + this.rankData.beerImage + ".png");
       console.log(this.rankData);
     },
   }, //컴포넌트 내에서 사용할 메소드 정의

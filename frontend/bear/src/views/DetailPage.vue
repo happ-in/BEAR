@@ -2,22 +2,26 @@
   <div>
     <h1>상세페이지</h1>
     <el-carousel :interval="0" indicator-position="outside" height="150vw">
-      <el-carousel-item class="beer-detail" height="80%">
+      <el-carousel-item class="beer-detail" >
         <div class="detail-beerimg-box"><img :src="beerImage" /></div>
         <h3>{{ beerData.beerName }}</h3>
-        <el-rate v-model="value" disabled show-score text-color="#ff9900" score-template="{ beerData.beerAvg } points"></el-rate>
-        <p>/{{ beerData.beerCategory }}/{{ beerData.alcoholProof }}</p>
+        <el-rate class="detail-rate" v-model="beerData.beerAvg" allow-half disabled show-template="{beerData.beerAvg}"></el-rate>
+        <p>{{ beerData.contryName}}/{{ beerData.beerCategory }}/{{ beerData.alcoholProof }}</p>
         <!-- {{ beerData.country.countryName }} -->
         <div></div>
       </el-carousel-item>
-      <el-carousel-item id="beer-snack" height="80%">
-        <div>
-          <h1>{{ beerData.beerName }}과 잘 어울리는 안주는 {{ snackData.snackCategory }} 안주 입니다</h1>
+      <el-carousel-item class="beer-snack" style="background-color:white;">
+            <div class="snack-sentence">
+                <p class="snack-sentence"><span style="font-size:18px;">{{ beerData.beerName }}과 잘 어울리는 안주는</span><br>
+                <span style="font-size:40px; font-weight:bold;">{{ snackData.snackCategory }} 안주</span>
+                <span style="font-size:18px;">입니다</span></p>
+            </div>
+          
           <div id="snack-card" v-for="(snack, index) in snackData" v-bind:key="index">
             <img src="" alt="" />
             <p>{{ snack.snackName }}</p>
           </div>
-        </div>
+
       </el-carousel-item>
     </el-carousel>
   </div>
@@ -45,10 +49,12 @@ export default {
     async getBeerData() {
       this.beerData = await this.$api("https://i5a403.p.ssafy.io/beer?beerId=" + this.$route.params.beerId, "get");
       this.beerImage = require("../assets/beers/" + this.beerData.beerImage + ".png");
-      consloe.log(this.beerImage)
+      console.log(this.beerImage)
     },
     async getSnackData() {
       this.snackData = await this.$api("https://i5a403.p.ssafy.io/snack?beerCategory=" + this.beerData.beerCategory, "get");
+      this.snackImage = require("../assets/snacks/" + this.snackData.snackImage + ".png");
+      console.log(this.snackData)
     },
   }, //컴포넌트 내에서 사용할 메소드 정의
   watch: {
@@ -67,19 +73,18 @@ export default {
     flex-direction: column;
 }
 .detail-bearimg-box{
-    display: flex;
-    justify-content: center;
+    place-self: center;
 
-    width: 100px;
-    height: 500px;
+    width: 80%;
+    height: 80%;
 
     background: #ffffff;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
 }
 .detail-beerimg-box img {
-
-    width: 200px;
-    height: 200px;
+    
+    width: 300px;
+    height: 300px;
     object-fit: contain;
 }
 .beer-detail h3 {
@@ -89,6 +94,14 @@ export default {
     opacity: 0.75;
     margin: 0;
 }
+.detail-rate {
+    display: flex;
+    justify-content: center;
+}
+.beer-detail p {
+    display: flex;
+    justify-content: center;
+}
 
 .beer-detail:nth-child(2n) {
   background-color: white;
@@ -97,7 +110,12 @@ export default {
 .beer-detail:nth-child(2n + 1) {
   background-color: white;
 }
-
+.snack-sententce {
+    margin-left: 3%;
+}
+.el-late {
+    height: 100px;
+}
 /* .detail-bearimg-box{
     position: relative;
     width: 291px;
@@ -114,4 +132,5 @@ export default {
   height: 90%;
   object-fit: contain;
 } */
+
 </style>
