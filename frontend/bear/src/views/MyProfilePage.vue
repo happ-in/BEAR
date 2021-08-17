@@ -29,7 +29,7 @@
   </el-row>
 
   <!-- 프로필 변경 -->
-  <button class="profile-btn">프로필 변경</button>
+  <button class="profile-btn" @click="goProfileEdit">프로필 변경</button>
 
   <div class="profile-radio-toolbar" style="margin-bottom: 5%">
     <input type="radio" v-model="select" value="bookmark" checked />
@@ -167,6 +167,9 @@ export default {
     },
     goFollowing() {
       this.$router.push({ name: "Follow", params: { header: "팔로잉" } });
+    },
+    goProfileEdit() {
+      this.$router.push({ name:"ProfileEdit"})
     },
     async getBookmarks() {
       this.bookmarks = await this.$api("search/bookmark?userId=1847933666", "get");

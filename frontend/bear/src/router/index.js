@@ -7,6 +7,7 @@ import RankingCategory from "../views/RankingCategoryPage.vue";
 import FollowPage from "../views/FollowPage.vue";
 import Detail from "../views/DetailPage.vue";
 import TagList from "../views/TagListPage.vue";
+import ProfileEdit from "../views/ProfileEditPage.vue";
 //import store from '../store/index';
 
 const routes = [
@@ -69,6 +70,11 @@ const routes = [
     path: "/myprofile",
     name: "MyProfile",
     component: () => import(/* webpackChunkName: "about" */ "../views/MyProfilePage.vue"),
+  },
+  {
+    path: "/profileedit",
+    name: "ProfileEdit",
+    component: ProfileEdit,
   },
   {
     path: "/ranking",
