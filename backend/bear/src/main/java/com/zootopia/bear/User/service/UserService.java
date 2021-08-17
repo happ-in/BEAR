@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.Optional;
 
 @Service
@@ -100,7 +101,7 @@ public class UserService {
 			JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
 
 			// properties 정보 -> 필수 동의 사항
-			Long userId = element.getAsJsonObject().get("id").getAsLong();
+			long userId = element.getAsJsonObject().get("id").getAsLong();
 			String nickname = properties.getAsJsonObject().get("nickname").getAsString();
 			String profile_image = properties.getAsJsonObject().get("profile_image").getAsString();
 			user.setUserId(userId);
@@ -131,6 +132,42 @@ public class UserService {
 
 		return user;
 	}
+
+	public String getUserImage(String accessToken) {
+		String image = null;
+		String reqURL = "https://kapi.kakao.com/v2/user/me";
+		try {
+			URL url = new URL(reqURL);
+			HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+			conn.setRequestMethod("GET");
+
+			//    요청을 위한 Header 설정
+			conn.setRequestProperty("Authorization", "Bearer " + accessToken);
+
+			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+			String line = "";
+			String result = "";
+
+			while ((line = br.readLine()) != null) {
+				result += line;
+			}
+
+			JsonParser parser = new JsonParser();
+			JsonElement element = parser.parse(result);
+
+			JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
+
+			image = properties.getAsJsonObject().get("profile_image").getAsString();
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return image;
+	}
+
 
 	public long getUserId(String accessToken) {
 		long userId = 0;

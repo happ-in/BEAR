@@ -34,6 +34,11 @@ public class LoginController {
 		if (!user.isPresent()) {
 			user = Optional.of(userService.getKakaoInfo(accessToken));
 			userService.joinUser(user.get());
+		} else {
+			User userObject = user.get();
+			String image = userService.getUserImage(accessToken);
+			userObject.setUserImage(image);
+			userService.updateUser(userObject);
 		}
 		session.setAttribute("userId", userId);
 		session.setAttribute("accessToken", accessToken);
