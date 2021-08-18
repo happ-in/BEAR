@@ -42,8 +42,10 @@
 
   <!-- 북마크 -->
   <div v-if="this.select == 'bookmark'" style="width: 100%">
-    <div class="bookmark-item" v-for="(bookmark, index) in bookmarks" :key="index">
-      <button class="bookmark-btn"><img :src="bookmarkImage" alt="" /></button>
+    <div class="bookmark-item" v-for="(bookmark, index) in bookmarks" :key="index" @click="goToDetail(bookmark.beerId)">
+      <button class="bookmark-btn">
+        <img :src="bookmarkImage" alt="" />
+      </button>
       <img :src="require('../assets/beers/' + bookmark.beerImage + '.png')" alt="" />
     </div>
   </div>
@@ -188,6 +190,9 @@ export default {
     },
     goProfileEdit() {
       this.$router.push({ name: "ProfileEdit" });
+    },
+    goToDetail(beerId) {
+      this.$router.push({ name: "Detail", params: { beerId: beerId } });
     },
     async getBookmarks() {
       this.bookmarks = await this.$api("search/bookmark?userId=" + this.userId, "get");
