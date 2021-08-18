@@ -12,7 +12,7 @@ import com.zootopia.bear.Beer.service.BeerRandomRecommendationService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping(value = "/beer/random")
+@RequestMapping(value = "/api/beer/random")
 @RequiredArgsConstructor
 public class BeerRandomRecommendationController {
 

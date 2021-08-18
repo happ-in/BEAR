@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/follower")
+@RequestMapping("/api/follower")
 @RestController
 public class FollowController {
 	private final FollowService followService;

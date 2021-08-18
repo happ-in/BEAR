@@ -13,7 +13,7 @@ import com.zootopia.bear.Snack.service.SnackRecommendationService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping(value = "/snack")
+@RequestMapping(value = "/api/snack")
 @RequiredArgsConstructor
 public class SnackRecommendationController {
 

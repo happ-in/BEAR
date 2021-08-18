@@ -12,7 +12,7 @@ import com.zootopia.bear.Review.service.ReviewDeletionService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping(value = "/review")
+@RequestMapping(value = "/api/review")
 @RequiredArgsConstructor
 public class ReviewDeletionController {
 
