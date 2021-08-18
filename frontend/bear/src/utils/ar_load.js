@@ -397,7 +397,7 @@ export default {
         this.$refs.btn1.style.visibility = "visible";
         this.$refs.btn2.style.visibility = "visible";
         this.$refs.btn3.style.visibility = "visible";
-      }, 9000);
+      }, 3000);
       letsee.onTrackStart((e) => {
         this.$refs.guide.style.visibility = "hidden";
         this.$refs.guide.style["z-index"] = 0;
