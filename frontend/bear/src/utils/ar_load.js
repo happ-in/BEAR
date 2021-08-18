@@ -407,10 +407,10 @@ export default {
           this.$refs.rate.innerHTML = " " + this.beerData.beerAvg + "";
           this.$refs.proof.innerHTML = " " + this.beerData.alcoholProof + "";
           this.$refs.category.innerHTML = " " + this.beerData.beerCategory + "";
-          this.country = require("../assets/flags/" + this.beerData.country.countryName + ".png");
-          this.star = require("../assets/stars/" + Math.floor(this.beerData.beerAvg) + ".png");
-          this.$refs.flag.innerHTML = "<img id=flag :src=" + this.country + "/>";
-          this.$refs.star.innerHTML = "<img id=star :src=" + this.star + "/>";
+          // this.country = require("../assets/flags/" + this.beerData.country.countryName + ".png");
+          // this.star = require("../assets/stars/" + Math.floor(this.beerData.beerAvg) + ".png");
+          this.$refs.flag.innerHTML = "<img id=flag src=" + require('../assets/flags/' + this.beerData.country.countryName + '.png') +"/>";
+          this.$refs.star.innerHTML = "<img id=star src=" + require('../assets/stars/' + Math.floor(this.beerData.beerAvg) + '.png') +"/>";
           this.$refs.hash1.innerHTML = " #" + this.beerData.hashTags[0].hashTagName + "";
           this.$refs.hash2.innerHTML = " #" + this.beerData.hashTags[1].hashTagName + "";
           this.$refs.hash3.innerHTML = " #" + this.beerData.hashTags[2].hashTagName + "";
