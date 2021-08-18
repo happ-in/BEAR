@@ -113,7 +113,7 @@ public class UserService {
 			boolean hasGender = kakao_account.getAsJsonObject().get("has_gender").getAsBoolean();
 
 			if (hasEmail) {
-				String customId = kakao_account.getAsJsonObject().get("email").getAsString();
+				String customId = kakao_account.getAsJsonObject().get("email").getAsString().split("@")[0];
 				user.setCustomId(customId);
 			}
 			if (hasGender) {
