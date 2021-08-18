@@ -90,7 +90,6 @@ const routes = [
       if (sessionStorage.getItem("token") !== null) {
         next();
       }
-      alert('login please');
       next("/login");
     },
   },
