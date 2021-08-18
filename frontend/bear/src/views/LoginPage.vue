@@ -1,6 +1,6 @@
 <template>
   <div id="container">
-    <img id="login-logo" src="../assets/landing/logo1.png" />
+    <img id="login-logo" src="../assets/landing/logo.png"/>
     <a id="custom-login-btn" @click="kakaoLogin()">
       <img id="login-btn" src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="380" />
     </a>
