@@ -9,6 +9,7 @@
       <div class="follow-wrapper">
         <div>뱃지명</div>
         <div class="nickname">{{ other.nickname }}</div>
+        <div>{{ other.nickname }}</div>
       </div>
     </el-row>
   </div>
@@ -20,11 +21,6 @@ export default {
     return {
       radio: "북마크",
       centerDialogVisible: false,
-      user: {
-        userImage: "https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png",
-        customId: "happ-in",
-        nickName: "순무엄마동생",
-      },
       others: [],
     };
   },
