@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import com.zootopia.bear.User.domain.User;
+import com.zootopia.bear.User.dto.UserUpdateDto;
 import com.zootopia.bear.User.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -209,13 +210,17 @@ public class UserService {
 		return false;
 	}
 
-	public boolean updateUser(User user) {
-		Long userId = user.getUserId();
-
+	public boolean updateUser(UserUpdateDto userUpdateDto) {
+		Long userId = userUpdateDto.getUserId();
+		String nickname = userUpdateDto.getNickname();
+		String customId = userUpdateDto.getCustomId();
 		if (!userRepository.findById(userId).isPresent() ||
-				(userRepository.findAllByCustomId(user.getCustomId()).size()>=1)) {
+				(userRepository.findAllByCustomId(customId).size()>=1)) {
 			return false;
 		}
+		User user = userRepository.findById(userId).get();
+		user.setNickname(nickname);
+		user.setCustomId(customId);
 		userRepository.save(user);
 		return true;
 	}
@@ -242,6 +247,19 @@ public class UserService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public void setImage(long userId,String image){
+		User user = userRepository.findById(userId).get();
+		user.setUserImage(image);
+		userRepository.save(user);
+	}
+
+	public void increaseShareCount(long userId){
+		User user = userRepository.findById(userId).get();
+		int count = user.getShareCount();
+		user.setShareCount(count+1);
+		userRepository.save(user);
 	}
 
 }

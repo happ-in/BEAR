@@ -102,6 +102,8 @@ h2 {
 
   margin-top: 3px;
   margin-bottom: 4px;
+  padding-left: 2%;
+  
   font-family: "Noto Sans KR", sans-serif;
   font-style: normal;
   font-weight: 400;

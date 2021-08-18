@@ -32,16 +32,15 @@ public class LoginController {
 		if (!user.isPresent()) {
 			userService.joinUser(userService.getKakaoInfo(accessToken));
 		} else {
-			User userObject = user.get();
 			String image = userService.getUserImage(accessToken);
-			userObject.setUserImage(image);
-			userService.updateUser(userObject);
+			userService.setImage(userId,image);
 		}
 
 		HashMap<String, String> map = new HashMap<>();
 		map.put("userId", String.valueOf(userId));
 		map.put("accessToken", accessToken);
-		String projectUrl = "https://i5a403.p.ssafy.io/";
+		// String projectUrl = "https://i5a403.p.ssafy.io/";
+		String projectUrl = "http://localhost:8081/";
 		ModelAndView modelAndView = new ModelAndView("redirect:" + projectUrl);
 		modelAndView.addObject("userId", userId);
 		modelAndView.addObject("accessToken", accessToken);
