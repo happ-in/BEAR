@@ -38,7 +38,6 @@ export default {
     //html과 자바스크립트 코드에서 사용할 데이터 변수 선언
     return {
       rankData: [],
-      beerImage: "",
       bgRank: ["#F5DF4D", "rgba(245, 223, 77, 0.6)", "rgba(245, 223, 77, 0.2)", "fff", "fff", "fff", "fff"],
     };
   },
@@ -54,11 +53,9 @@ export default {
         name: "Detail",
         params: { beerId: this.rankData[index].beerId },
       });
-      console.log(this.rankData[index]);
     },
     async getRankData() {
       this.rankData = await this.$api("https://i5a403.p.ssafy.io/rank/" + this.$route.params.category, "get");
-      this.beerImage = require("../assets/beers/" + this.rankData.beer.beerImage + ".png");
     },
     goToDetail(beerId) {
       this.$router.push({ name: "Detail", params: { beerId: beerId } });
