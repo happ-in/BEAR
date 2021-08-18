@@ -158,9 +158,10 @@
   <p id="beer_star" ref="rate"></p>
   <p id="alcohol" ref="proof"></p>
   <p id="category" ref="category"></p>
-  <p ref="country"></p>
+  <p id="country" ref="country"></p>
   <p ref="flag"></p>
-  <p ref="star"></p>
+  <p id="star" ref="star"></p>
+
   
 </div>
 </template>
@@ -240,7 +241,12 @@
   width: 200px;
   height: 43px;
   left: 80px;
-  top: 25%;
+  top: 15%;
+  font-size: 50px;
+  text-align: center;
+  color: #ffce31;
+
+  text-shadow: 3px 3px 3px rgb(0, 0, 0);
 }
 #btn_div {
   width: 100%;
@@ -299,13 +305,36 @@
   object-fit: contain;
 }
 
-#flag{
+/* #flag{
   position: absolute;
   width: 30px;
   height: 30px;
   left: 271px;
   top: 61px;
+} */
+
+#country {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: #f5df4d;
+  border-radius: 50%;
+  left: 275px;
+  text-align: center;
+  top: 52px;
+  text-shadow: 3px 3px 3px rgb(0, 0, 0);
+  box-shadow: 3px 3px 3px rgb(0, 0, 0);
+  /* margin: 0 auto; */
+
+  font-family: Noto Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 8px;
+  line-height: 25px;
+
+  color: #ffffff;
 }
+
 
 #alcohol {
   position: absolute;
@@ -317,6 +346,7 @@
   text-align: center;
   top: 45px;
   text-shadow: 3px 3px 3px rgb(0, 0, 0);
+  box-shadow: 3px 3px 3px rgb(0, 0, 0);
   /* margin: 0 auto; */
 
   font-family: Noto Sans;
@@ -338,6 +368,7 @@
   text-align: center;
   top: 45px;
   text-shadow: 3px 3px 3px rgb(0, 0, 0);
+  box-shadow: 3px 3px 3px rgb(0, 0, 0);
   /* margin: 0 auto; */
 
   font-family: Noto Sans;
@@ -443,7 +474,7 @@
   position: absolute;
   width: 76px;
   height: 50px;
-  left: 159px;
+  left: 169px;
   top: 156px;
 
   font-family: Noto Sans;
