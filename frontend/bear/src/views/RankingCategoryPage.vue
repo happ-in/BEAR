@@ -8,6 +8,7 @@
       v-for="(beer, index) in rankData"
       v-bind:key="index"
       :style="{ 'background-color': bgRank[index] }"
+      @click="goToDetail(beer.beerId)"
     >
       <el-row>
         <el-col :span="3" class="rank-grade"> {{ index + 1 }}위 </el-col>
@@ -58,6 +59,9 @@ export default {
     async getRankData() {
       this.rankData = await this.$api("https://i5a403.p.ssafy.io/rank/" + this.$route.params.category, "get");
       this.beerImage = require("../assets/beers/" + this.rankData.beer.beerImage + ".png");
+    },
+    goToDetail(beerId) {
+      this.$router.push({ name: "Detail", params: { beerId: beerId } });
     },
   }, //컴포넌트 내에서 사용할 메소드 정의
 };
