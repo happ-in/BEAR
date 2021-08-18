@@ -1,49 +1,52 @@
 <template>
+<div class="homefeed-wrap">
   <div class="header">홈피드</div>
+  <div class="feed-list">
+    <div class="feed-wrapper" v-for="(feed, index) in feeds" :key="index">
+      <el-row :gutter="20" class="feed-el-row-header">
+        <el-col :span="3" @click="goToUser(feed.user.userId)">
+          <img :src="feed.user.userImage" alt="" class="feed-round-image" />
+        </el-col>
+        <el-col :span="16" class="feed-customId" @click="goToUser(feed.user.userId)">
+          {{ feed.user.customId }}
+        </el-col>
 
-  <div class="feed-wrapper" v-for="(feed, index) in feeds" :key="index">
-    <el-row :gutter="20" class="feed-el-row-header">
-      <el-col :span="3" @click="goToUser(feed.user.userId)">
-        <img :src="feed.user.userImage" alt="" class="feed-round-image" />
-      </el-col>
-      <el-col :span="16" class="feed-customId" @click="goToUser(feed.user.userId)">
-        {{ feed.user.customId }}
-      </el-col>
-
-      <!-- 하트 -->
-      <el-col :span="5">
-        <div class="heart-wrapper">
-          <div class="heart-image">
-            <img :src="feed.like ? redHeart : whiteHeart" class="image" />
+        <!-- 하트 -->
+        <el-col :span="5">
+          <div class="heart-wrapper">
+            <div class="heart-image">
+              <img :src="feed.like ? redHeart : whiteHeart" class="image" />
+            </div>
+            <div class="heart-text">
+              <button class="heart-button" @click="isLikeFeed(index)" :class="{ likeFeed: feed.like }">
+                {{ feed.totalLike }}
+              </button>
+            </div>
           </div>
-          <div class="heart-text">
-            <button class="heart-button" @click="isLikeFeed(index)" :class="{ likeFeed: feed.like }">
-              {{ feed.totalLike }}
-            </button>
+        </el-col>
+      </el-row>
+
+      <el-row :gutter="20" class="feed-el-row-body" @click="goToDetail(feed.beer.beerId)">
+        <el-col :span="8" style="text-align: center">
+          <img :src="require('../assets/beers/' + feed.beer.beerImage + '.png')" class="grid-content bg-purple" style="height: 120px" />
+        </el-col>
+        <el-col :span="16">
+          <span style="display: flex; font-size: x-large; font-weight: bold">
+            {{ feed.beer.beerName }}
+            <img :src="require('../assets/flags/' + feed.beer.country.countryName + '.png')" style="width: 20px; height: 20px; align-self: center; padding-left: 4px;" />
+          </span>
+          <el-rate v-model="feed.rating" allow-half disabled style="margin-bottom: 5%;"></el-rate>
+
+          <div>
+            <el-tag type="info" v-for="(hashTag, index) in feed.hashTags" :key="index" style="margin-right: 1%; margin-bottom: 1%;">
+              # {{ hashTag.hashTagName }}
+            </el-tag>
           </div>
-        </div>
-      </el-col>
-    </el-row>
-
-    <el-row :gutter="20" class="feed-el-row-body" @click="goToDetail(feed.beer.beerId)">
-      <el-col :span="8" style="text-align: center">
-        <img :src="require('../assets/beers/' + feed.beer.beerImage + '.png')" class="grid-content bg-purple" style="height: 120px" />
-      </el-col>
-      <el-col :span="16">
-        <span style="font-size: x-large; font-weight: bold">
-          {{ feed.beer.beerName }}
-          <img :src="require('../assets/flags/' + feed.beer.country.countryName + '.png')" style="width: 6%" />
-        </span>
-        <el-rate v-model="feed.rating" allow-half disabled style="margin-bottom: 5%"></el-rate>
-
-        <div>
-          <el-tag type="info" v-for="(hashTag, index) in feed.hashTags" :key="index" style="margin-right: 1%; margin-bottom: 1%">
-            # {{ hashTag.hashTagName }}
-          </el-tag>
-        </div>
-      </el-col>
-    </el-row>
+        </el-col>
+      </el-row>
+    </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -159,6 +162,9 @@ button:active {
 }
 video {
   display: none;
+}
+.feed-list {
+  padding-bottom: 20vw;
 }
 .feed-wrapper {
   border: 1px solid #9a9a9a42;

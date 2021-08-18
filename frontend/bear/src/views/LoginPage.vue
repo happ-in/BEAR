@@ -1,5 +1,5 @@
 <template>
-  <div id="container">
+  <div id="login-container">
     <img id="login-logo" src="../assets/landing/logo.png"/>
     <a id="custom-login-btn" @click="kakaoLogin()">
       <img id="login-btn" src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="380" />
@@ -30,6 +30,11 @@ export default {
 };
 </script>
 <style>
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 #login-logo {
   position: absolute;
   top: 30%;
@@ -38,10 +43,11 @@ export default {
 }
 #login-btn {
   position: absolute;
-  width: 380px;
+  width: 320px;
   height: 60px;
-  top: 50%;
-  left: 5%;
+  top: 41%;
+  left: 10%;
+
 }
 video {
   display: none;
