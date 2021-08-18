@@ -222,6 +222,8 @@ $theme-color: #939597;
   height: 100%;
   width: 100%;
   padding: 0;
+  border: 0;
+
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -230,10 +232,6 @@ $theme-color: #939597;
   will-change: transform;
   transition: transform 1400ms ease;
 
-  button {
-    padding: 0;
-    border: 0;
-  }
   img {
     object-fit: cover;
   }

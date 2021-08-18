@@ -3,26 +3,28 @@
     <h1>{{ this.$route.params.category }}</h1>
     <!-- countryName, beerCategory, alcoholProof 도 추가-->
 
-    <div
-      class="rank-category-item-wrapper"
-      v-for="(beer, index) in rankData"
-      v-bind:key="index"
-      :style="{ 'background-color': bgRank[index] }"
-    >
-      <el-row>
-        <el-col :span="3" class="rank-grade"> {{ index + 1 }}위 </el-col>
-        <el-col :span="5">
-          <img class="beer-image-wrapper" :src="require('../assets/beers/' + beer.beerImage + '.png')" />
-        </el-col>
-        <el-col :span="16">
-          <el-row class="beerName">{{ beer.beerName }}</el-row>
-          <el-row class="beer-info-etc">{{ beer.countryName }}/{{ beer.beerCategory }}/{{ beer.alcoholProof }}</el-row>
-          <el-row class="total-count-wrapper">
-            <span class="total-count-info">{{ beer.totalCount }}</span
-            >명이 좋아해요!
-          </el-row>
-        </el-col>
-      </el-row>
+    <div class="rank-category-list">
+      <div
+        class="rank-category-item-wrapper"
+        v-for="(beer, index) in rankData"
+        v-bind:key="index"
+        :style="{ 'background-color': bgRank[index] }"
+      >
+        <el-row>
+          <el-col :span="3" class="rank-grade"> {{ index + 1 }}위 </el-col>
+          <el-col :span="5">
+            <img class="beer-image-wrapper" :src="require('../assets/beers/' + beer.beerImage + '.png')" />
+          </el-col>
+          <el-col :span="16">
+            <el-row class="beerName">{{ beer.beerName }}</el-row>
+            <el-row class="beer-info-etc">{{ beer.countryName }}/{{ beer.beerCategory }}/{{ beer.alcoholProof }}</el-row>
+            <el-row class="total-count-wrapper">
+              <span class="total-count-info">{{ beer.totalCount }}</span
+              >명이 좋아해요!
+            </el-row>
+          </el-col>
+        </el-row>
+      </div>
     </div>
   </div>
 </template>
@@ -37,7 +39,6 @@ export default {
     //html과 자바스크립트 코드에서 사용할 데이터 변수 선언
     return {
       rankData: [],
-      beerImage: "",
       bgRank: ["#F5DF4D", "rgba(245, 223, 77, 0.6)", "rgba(245, 223, 77, 0.2)", "fff", "fff", "fff", "fff"],
     };
   },
@@ -53,11 +54,12 @@ export default {
         name: "Detail",
         params: { beerId: this.rankData[index].beerId },
       });
-      console.log(this.rankData[index]);
     },
     async getRankData() {
       this.rankData = await this.$api("https://i5a403.p.ssafy.io/rank/" + this.$route.params.category, "get");
-      this.beerImage = require("../assets/beers/" + this.rankData.beer.beerImage + ".png");
+    },
+    goToDetail(beerId) {
+      this.$router.push({ name: "Detail", params: { beerId: beerId } });
     },
   }, //컴포넌트 내에서 사용할 메소드 정의
 };
@@ -72,6 +74,9 @@ video {
   height: 120px;
   object-fit: contain;
   padding-top: 10px;
+}
+.rank-category-list {
+  margin-bottom: 20vw;
 }
 .rank-category-item-wrapper {
   box-shadow: 1px 2px 3px grey;
