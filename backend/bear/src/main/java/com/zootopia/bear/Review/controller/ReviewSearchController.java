@@ -26,4 +26,10 @@ public class ReviewSearchController {
 		List<ReviewDto> reviewDtoList = reviewSearchService.searchMyReview(userId);
 		return new ResponseEntity<>(reviewDtoList, HttpStatus.OK);
 	}
+
+	@GetMapping("/other")
+	public ResponseEntity<?> OtherReviewSearch(@RequestParam long otherId, @RequestParam long myId) {
+		List<ReviewDto> reviewDtoList = reviewSearchService.searchOtherReview(otherId, myId);
+		return new ResponseEntity<>(reviewDtoList, HttpStatus.OK);
+	}
 }
