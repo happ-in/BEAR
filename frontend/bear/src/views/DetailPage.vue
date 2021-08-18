@@ -4,6 +4,9 @@
     <el-carousel :interval="0" indicator-position="outside" height="130vw">
       <el-carousel-item id="beer-detail">
         <div id="detail-beerimg-box" style="height: 90vw; width: 150vw; text-align-last: center; align-self: center; margin-bottom: 3%">
+            <div class="chart-area">
+              <div id="container" style="width:100%; height:100%;"></div>
+            </div>
           <img :src="beerImage" />
         </div>
         <h3>{{ beerData.beerName }}</h3>
