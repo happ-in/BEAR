@@ -96,15 +96,15 @@
 
   <!-- 뱃지 -->
   <div v-if="this.select == 'badge'">
-    <el-row>
+    <el-row v-for="badge,index in badge" :key="index">
       <el-col :span="8" style="text-align: center">
         <img src="../assets/logo.png" width="120" /> <br />
-        <el-button type="text" @click="centerDialogVisible = true"> 콜럼버스 </el-button>
+        <el-button type="text" @click="centerDialogVisible = true"> {{badge.title}} </el-button>
         <el-dialog title="뱃지 타이틀" v-model="centerDialogVisible" width="50%" center>
           <div style="text-align: center">
             <img src="../assets/logo.png" width="120" /> <br />
             <h4>21.08.13 획득</h4>
-            <span>뱃지 설명</span>
+            <span>{{badge.explain}}</span>
           </div>
         </el-dialog>
       </el-col>
