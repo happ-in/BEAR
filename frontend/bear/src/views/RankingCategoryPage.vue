@@ -56,7 +56,7 @@ export default {
       });
     },
     async getRankData() {
-      this.rankData = await this.$api("https://i5a403.p.ssafy.io/rank/" + this.$route.params.category, "get");
+      this.rankData = await this.$api("rank/" + this.$route.params.category, "get");
     },
     goToDetail(beerId) {
       this.$router.push({ name: "Detail", params: { beerId: beerId } });

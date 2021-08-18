@@ -55,7 +55,7 @@ export default {
   unmounted() {}, //unmount가 완료된 후 실행
   methods: {
     async retry() {
-      this.beer = await this.$api("https://i5a403.p.ssafy.io/beer/random", "get");
+      this.beer = await this.$api("beer/random", "get");
       this.countryImage = require("../assets/flags/" + this.beer.country.countryName + ".png");
       this.beerImage = require("../assets/beers/" + this.beer.beerImage + ".png");
     },
