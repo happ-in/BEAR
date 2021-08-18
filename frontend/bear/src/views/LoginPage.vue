@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     kakaoLogin(){
-      window.location.replace("https://kauth.kakao.com/oauth/authorize?client_id=15e7887e87b724b15605d38adf95cf84&redirect_uri=http://localhost:8080/login/kakao&response_type=code"); //test API
+      window.location.replace("https://kauth.kakao.com/oauth/authorize?client_id=15e7887e87b724b15605d38adf95cf84&redirect_uri=https://i5a403.p.ssafy.io/login/kakao&response_type=code"); //test API
     },
   },
 };

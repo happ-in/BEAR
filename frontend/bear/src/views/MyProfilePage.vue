@@ -164,6 +164,8 @@ export default {
     this.userId = sessionStorage.getItem("userId");
     const response = this.$api("search/userInfo?userId=" + this.userId, "get");
     console.log(response);
+    this.user = response;
+    console.log(this.user);
   }, //template에 정의된 html코드가 레너링된 후 실행
   unmounted() {}, //unmount가 완료된 후 실행
   methods: {
