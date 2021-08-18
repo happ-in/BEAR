@@ -214,13 +214,18 @@ public class UserService {
 		Long userId = userUpdateDto.getUserId();
 		String nickname = userUpdateDto.getNickname();
 		String customId = userUpdateDto.getCustomId();
-		if (!userRepository.findById(userId).isPresent() ||
-				(userRepository.findAllByCustomId(customId).size()>=1)) {
+
+		if (!userRepository.findById(userId).isPresent()) {
 			return false;
 		}
 		User user = userRepository.findById(userId).get();
+		if (!user.getCustomId().equals(customId)) {
+			if(userRepository.findAllByCustomId(customId).size()>=1) {
+				return false;
+			}
+			user.setCustomId(customId);
+		}
 		user.setNickname(nickname);
-		user.setCustomId(customId);
 		userRepository.save(user);
 		return true;
 	}
