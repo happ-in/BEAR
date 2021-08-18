@@ -1,14 +1,14 @@
 <template>
-  <h2>{{ user.customId }}</h2>
+  <h2>{{ this.user.customId }}</h2>
 
   <!-- 프로필 -->
   <el-row class="profile-user-wrapper">
     <el-col :span="12">
-      <el-avatar :src="user.userImage" :size="100" style="margin-right: 4px" />
+      <el-avatar :src="this.user.userImage" :size="100" style="margin-right: 4px" />
     </el-col>
     <el-col :span="12" style="text-align: left">
       <div>뱃지명</div>
-      <div>{{ user.nickName }}</div>
+      <div>{{ this.user.nickname }}</div>
     </el-col>
   </el-row>
 
@@ -16,15 +16,15 @@
   <el-row>
     <el-col :span="8">
       <div class="grid-content bg-purple">리뷰수</div>
-      <div class="grid-content bg-purple">00</div>
+      <div class="grid-content bg-purple">{{this.user.reviewCount}}</div>
     </el-col>
     <el-col :span="8" @click="goFollowing">
       <div class="grid-content bg-purple-light">팔로잉</div>
-      <div class="grid-content bg-purple-light">00</div>
+      <div class="grid-content bg-purple-light">{{this.user.followCount}}</div>
     </el-col>
     <el-col :span="8" @click="goFollower">
       <div class="grid-content bg-purple">팔로워</div>
-      <div class="grid-content bg-purple">00</div>
+      <div class="grid-content bg-purple">{{this.user.followerCount}}</div>
     </el-col>
   </el-row>
 
@@ -50,16 +50,16 @@
 
   <!-- 리뷰 -->
   <div v-if="this.select == 'review'">
-    <el-card>
+    <el-card v-for="beer,index in beer" :key="index">
       <!-- 맥주이미지 -->
       <el-row>
-        <el-col :span="7"><img :src="beer.beerImage" class="grid-content bg-purple" style="width: 100%" /> </el-col>
+        <el-col :span="7"><img :src="require('../assets/beers/' + beer.beer.beerImage + '.png')" class="grid-content bg-purple" style="height: 120px" /></el-col>
 
         <!-- 제목, 별점, 해시태그 -->
         <el-col :span="14">
           <el-row :gutter="20">
             <span>
-              {{ beer.beerName }}
+              {{ beer.beer.beerName }}
               <img :src="beer.countryImg" style="width: 6%" />
             </span>
             <el-rate v-model="beer.rating" allow-half disabled></el-rate>
@@ -152,20 +152,19 @@ export default {
       bookmarkImage: require("../assets/bookmark/bookmark-yes.png"),
       isBookmark: true,
       select: "bookmark",
+      badge: [],
     };
   },
   setup() {}, //컴포지션 API
   created() {
     this.getBookmarks();
-    console.log(this.bookmarks);
   }, //컴포넌트가 생성되면 실행
   mounted() {
-    sessionStorage.setItem("userId","1823341610");
     this.userId = sessionStorage.getItem("userId");
-    const response = this.$api("search/userInfo?userId=" + this.userId, "get");
-    console.log(response);
-    this.user = response;
-    console.log(this.user);
+    this.getUserData();
+    this.getBookmarks();
+    this.getReviewBeer();
+    this.getBadge();
   }, //template에 정의된 html코드가 레너링된 후 실행
   unmounted() {}, //unmount가 완료된 후 실행
   methods: {
@@ -189,8 +188,23 @@ export default {
       this.$router.push({ name:"ProfileEdit"})
     },
     async getBookmarks() {
-      this.bookmarks = await this.$api("search/bookmark?userId=1847933666", "get");
+      this.bookmarks = await this.$api("search/bookmark?userId=" + this.userId, "get");
+      console.log(this.bookmarks);
     },
+    async getUserData() {
+      this.user = await this.$api("search/userInfo?userId=" + this.userId, "get");
+      console.log(this.user);
+    },
+    async getReviewBeer() {
+      this.beer = await this.$api("review?userId=" + this.userId, "get");
+      console.log(this.beer);
+      console.log(this.beer[0]);
+    },
+    async getBadge() {
+      this.badge = await this.$api("search/badge?userId=" + this.userId, "get");
+      console.log(this.badge);
+    },
+
   },
 };
 </script>
