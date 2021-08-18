@@ -3,60 +3,59 @@
     <div>
       <h1 class="header">랭킹</h1>
     </div>
-    <div>
-      <div class="swiper-container">
-        <div class="swiper-wrapper">
-          <!-- 전체 -->
-          <div class="swiper-slide">
-            <button class="slide-image" type="submit" name="all" @click="pushRankCategory($event)">
-              <img src="../assets/rankingMain/all.png"
-                alt="all"
-              />
-            </button>
-          </div>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
 
-          <!-- 라거 -->
-          <div class="swiper-slide">
-            <button class="slide-image" type="submit" name="lager" @click="pushRankCategory($event)">
-              <img src="../assets/rankingMain/lager.png" alt="lager"/>
-            </button>
-          </div>
-
-          <!-- 에일 -->
-          <div class="swiper-slide">
-            <button class="slide-image" type="submit" name="ale" @click="pushRankCategory($event)">
-              <img src="../assets/rankingMain/ale.png" alt="ale" />
-            </button>
-          </div>
-
-          <!-- 밀맥주 -->
-          <div class="swiper-slide">
-            <button class="slide-image" type="submit" name="wheat" @click="pushRankCategory($event)">
-              <img 
-                src="../assets/rankingMain/wheat.png"
-                alt="wheat" 
-              />
-            </button>
-          </div>
-
-          <!-- 스타우트 -->
-          <div class="swiper-slide">
-            <button class="slide-image" type="submit" name="stout" @click="pushRankCategory($event)">
-              <img 
-                src="../assets/rankingMain/stout.png" alt="stout" />
-            </button>
-          </div>
-
-          <!-- 라들러/RTD -->
-          <div class="swiper-slide">
-            <button class="slide-image" type="submit" name="rtd" @click="pushRankCategory($event)">
-              <img src="../assets/rankingMain/rtd.png" alt="rtd"/>
-            </button>
-          </div>
-
+        <!-- 스타우트 -->
+        <div class="swiper-slide">
+          <button class="slide-image" type="submit" name="stout" @click="pushRankCategory($event)">
+            <img 
+              src="../assets/rankingMain/stout.png" alt="stout" />
+          </button>
         </div>
-        <div class="swiper-pagination"></div>
+
+        <!-- 라들러/RTD -->
+        <div class="swiper-slide">
+          <button class="slide-image" type="submit" name="rtd" @click="pushRankCategory($event)">
+            <img src="../assets/rankingMain/rtd.png" alt="rtd"/>
+          </button>
+        </div>
+
+        <!-- 전체 -->
+        <div class="swiper-slide">
+          <button class="slide-image" type="submit" name="all" @click="pushRankCategory($event)">
+            <img src="../assets/rankingMain/all.png"
+              alt="all"
+            />
+          </button>
+        </div>
+
+        <!-- 라거 -->
+        <div class="swiper-slide">
+          <button class="slide-image" type="submit" name="lager" @click="pushRankCategory($event)">
+            <img src="../assets/rankingMain/lager.png" alt="lager"/>
+          </button>
+        </div>
+
+        <!-- 에일 -->
+        <div class="swiper-slide">
+          <button class="slide-image" type="submit" name="ale" @click="pushRankCategory($event)">
+            <img src="../assets/rankingMain/ale.png" alt="ale" />
+          </button>
+        </div>
+
+        <!-- 밀맥주 -->
+        <div class="swiper-slide">
+          <button class="slide-image" type="submit" name="wheat" @click="pushRankCategory($event)">
+            <img 
+              src="../assets/rankingMain/wheat.png"
+              alt="wheat" 
+            />
+          </button>
+        </div>
+
       </div>
+      <div class="swiper-pagination"></div>
     </div>
   </div>
 </template>
@@ -123,8 +122,8 @@ $theme-color: #939597;
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  // justify-content: center;
+  // align-items: center;
 }
 
 // title
@@ -140,7 +139,7 @@ $theme-color: #939597;
 
 .swiper-container {
   //슬라이드 세로 길이
-  height: 700px;
+  height: 600px;
   //슬라이드 전체 가로 길이
   width: 420px;
   // padding-bottom: 85px;
@@ -150,13 +149,15 @@ $theme-color: #939597;
 
 .swiper-wrapper {
   // enough width to have off screen slides partially visible
-  width: 70%;
+  width: 60%;
+  height:70%;
+  
   will-change: transform;
 }
 
 .swiper-slide {
   width: 100%;
-
+  height: 720px;
     &.swiper-slide-next,
     &.swiper-slide-prev,
     &.swiper-slide-duplicate-next,
@@ -191,10 +192,6 @@ $theme-color: #939597;
   &#{&}#{&} {
     margin: 0;
   }
-
-  // @media (min-width: map-get($breakpoints, "md")) {
-  //   w
-  // }
 }
 
 // ==========================================
