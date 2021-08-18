@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "https://i5a403.p.ssafy.io/";
+axios.defaults.baseURL = "https://i5a403.p.ssafy.io/api/";
 
 export default {
   methods: {

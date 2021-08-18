@@ -1,7 +1,7 @@
 <template>
   <div class="random-wrapper">
     <!-- 페이지 이름 -->
-    <h1>랜덤 추천</h1>
+    <div class="header">랜덤 추천</div>
     <!-- 맥주 이름, 국기 이미지 -->
     <div class="card">
       <h2>
@@ -55,7 +55,7 @@ export default {
   unmounted() {}, //unmount가 완료된 후 실행
   methods: {
     async retry() {
-      this.beer = await this.$api("https://i5a403.p.ssafy.io/beer/random", "get");
+      this.beer = await this.$api("beer/random", "get");
       this.countryImage = require("../assets/flags/" + this.beer.country.countryName + ".png");
       this.beerImage = require("../assets/beers/" + this.beer.beerImage + ".png");
     },

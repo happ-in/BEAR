@@ -14,7 +14,7 @@ import com.zootopia.bear.Review.service.ReviewSearchService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/feed")
+@RequestMapping("/api/feed")
 @RequiredArgsConstructor
 public class FeedController {
 

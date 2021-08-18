@@ -18,7 +18,7 @@ import com.zootopia.bear.Review.service.ReviewRegistryService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping(value = "/review")
+@RequestMapping(value = "/api/review")
 @RequiredArgsConstructor
 public class ReviewRegistryController {
 

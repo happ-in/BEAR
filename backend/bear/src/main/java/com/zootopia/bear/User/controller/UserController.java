@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 @RestController
 @RequiredArgsConstructor
 public class UserController {

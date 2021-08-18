@@ -15,7 +15,7 @@ import com.zootopia.bear.Review.service.ReviewSearchService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/review")
+@RequestMapping("/api/review")
 @RequiredArgsConstructor
 public class ReviewSearchController {
 

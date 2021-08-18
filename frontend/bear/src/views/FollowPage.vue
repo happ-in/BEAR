@@ -1,6 +1,6 @@
 <template>
   <div style="margin: 3%">
-    <h2>{{ $route.params.header }}</h2>
+    <div class="header">{{ $route.params.header }}</div>
   </div>
 
   <div style="width: 100%; padding: 2%" v-for="(other, index) in others" :key="index">

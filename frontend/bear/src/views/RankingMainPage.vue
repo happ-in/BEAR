@@ -1,7 +1,7 @@
 <template>
   <div id="ranking-wrapper">
     <div>
-      <h1 class="ranking-title">Ranking</h1>
+      <div class="header">랭킹</div>
     </div>
     <div>
       <div class="swiper-container">

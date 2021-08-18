@@ -16,7 +16,7 @@ import com.zootopia.bear.Rank.service.RankService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping(value = "/rank")
+@RequestMapping(value = "/api/rank")
 @RequiredArgsConstructor
 public class RankController {
 
