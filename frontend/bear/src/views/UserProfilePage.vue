@@ -12,17 +12,17 @@
   </el-row>
 
   <!-- 리뷰수/팔로잉/팔로워 -->
-  <el-row>
+  <el-row style="height: 7vh">
     <el-col :span="8">
-      <div class="grid-content bg-purple">리뷰수</div>
+      <div class="grid-content bg-purple strong">리뷰수</div>
       <div class="grid-content bg-purple">{{ user.reviewCount }}</div>
     </el-col>
     <el-col :span="8" @click="goToFollowing(user.userId)">
-      <div class="grid-content bg-purple-light">팔로잉</div>
+      <div class="grid-content bg-purple-light strong">팔로잉</div>
       <div class="grid-content bg-purple-light">{{ user.followCount }}</div>
     </el-col>
     <el-col :span="8" @click="goToFollower(user.userId)">
-      <div class="grid-content bg-purple">팔로워</div>
+      <div class="grid-content bg-purple-light strong">팔로워</div>
       <div class="grid-content bg-purple">{{ user.followerCount }}</div>
     </el-col>
   </el-row>

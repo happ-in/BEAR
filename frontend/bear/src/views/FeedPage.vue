@@ -145,6 +145,7 @@ video {
 .feed-wrapper {
   border: 1px solid #9a9a9a42;
   box-shadow: 2px 2px 2px #9a9a9a42;
+  margin-top: 12px;
 }
 .feed-el-row-header {
   border-bottom: 1px solid #9a9a9a42;

@@ -13,17 +13,17 @@
   </el-row>
 
   <!-- 리뷰수/팔로잉/팔로워 -->
-  <el-row>
+  <el-row style="height: 7vh">
     <el-col :span="8">
-      <div class="grid-content bg-purple">리뷰수</div>
+      <div class="grid-content bg-purple strong">리뷰수</div>
       <div class="grid-content bg-purple">{{ this.user.reviewCount }}</div>
     </el-col>
     <el-col :span="8" @click="goToFollowing">
-      <div class="grid-content bg-purple-light">팔로잉</div>
+      <div class="grid-content bg-purple-light strong">팔로잉</div>
       <div class="grid-content bg-purple-light">{{ this.user.followCount }}</div>
     </el-col>
     <el-col :span="8" @click="goToFollower">
-      <div class="grid-content bg-purple">팔로워</div>
+      <div class="grid-content bg-purple strong">팔로워</div>
       <div class="grid-content bg-purple">{{ this.user.followerCount }}</div>
     </el-col>
   </el-row>
@@ -253,6 +253,7 @@ export default {
   text-shadow: -1px 0 #939597, 0 1px black, 1px 0 #939597, 0 -1px #939597;
 }
 .profile-user-wrapper {
+  padding-top: 12px;
   margin: 3%;
   align-items: center;
   text-align: center;

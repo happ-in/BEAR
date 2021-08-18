@@ -22,11 +22,30 @@ export default {
 </script>
 
 <style>
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+.notosanskr * {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+/* * {
+  font-family: CookieRun-Regular;
+} */
 .header {
   width: 100%;
-  height: 5`vh;
+  height: 5vh;
+  font-family: Pretendard-Regular;
   font-size: x-large;
   text-align: center;
   text-shadow: -1px 0 0 black;
+}
+.strong {
+  font-weight: bold;
 }
 </style>
