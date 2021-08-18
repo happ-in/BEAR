@@ -477,17 +477,17 @@ export default {
         unmounted() {}, //unmount가 완료된 후 실행
         methods: {recommendFood(){
             // this.$router.push('/');
-            window.open('/beer/detail?beerId='+this.beerData.beerId+'');
+            window.open('beer/detail?beerId='+this.beerData.beerId+'');
           },goProfile(){
             // this.$router.push('/profile');
-            window.open('/beer/profile');
+            window.open('beer/profile');
           },goSearch(){
-            window.open('/beer/search');
+            window.open('beer/search');
           },goReview(){
-            window.open('/review/write');
+            window.open('review/write');
           },
           async getBeerData(id) {
-            this.beerData = await this.$api("/beer/ar?searchId="+id,"get"); //test API
+            this.beerData = await this.$api("beer/ar?searchId="+id,"get"); //test API
             console.log(this.beerData);
           }
     } //컴포넌트 내에서 사용할 메소드 정의
