@@ -52,25 +52,25 @@
 
   <!-- 리뷰 -->
   <div v-if="this.select == 'review'">
-    <el-card v-for="(beer, index) in beer" :key="index">
+    <el-card v-for="(review, index) in reviews" :key="index">
       <!-- 맥주이미지 -->
       <el-row>
         <el-col :span="7">
-          <img :src="require('../assets/beers/' + beer.beer.beerImage + '.png')" class="grid-content bg-purple" style="height: 120px" />
+          <img :src="require('../assets/beers/' + review.beer.beerImage + '.png')" class="grid-content bg-purple" style="height: 120px" />
         </el-col>
 
         <!-- 제목, 별점, 해시태그 -->
         <el-col :span="14">
           <el-row :gutter="20">
             <span>
-              {{ beer.beer.beerName }}
-              <img :src="beer.countryImg" style="width: 6%" />
+              {{ review.beer.beerName }}
+              <img src="" style="width: 6%" />
             </span>
-            <el-rate v-model="beer.rating" allow-half disabled></el-rate>
+            <el-rate v-model="review.rating" allow-half disabled></el-rate>
           </el-row>
 
           <div style="position: relative; top: 20px">
-            <el-tag type="info" v-for="(hashTag, index) in beer.hashTags" :key="index" style="margin-right: 1%; margin-bottom: 1%">
+            <el-tag type="info" v-for="(hashTag, index) in review.hashTags" :key="index" style="margin-right: 1%; margin-bottom: 1%">
               # {{ hashTag.hashTagName }}
             </el-tag>
           </div>
@@ -80,17 +80,12 @@
         <el-col :span="3">
           <div class="heart-wrapper">
             <div class="heart-image">
-              <img :src="src" />
+              <img :src="review.like ? heartYes : heartNo" />
             </div>
             <div class="heart-text">
-              <button id="heart-button" @click="isLikeFeed" :class="{ likeFeed: beer.isLike }">
-                {{ beer.totalLike }}
+              <button id="heart-button" @click="isLikeFeed(index)" :class="{ likeFeed: review.like }">
+                {{ review.totalLike }}
               </button>
-            </div>
-          </div>
-          <div>
-            <div class="heart-wrapper" style="width: 60%; margin-top: 120%; text-align: center">
-              <img src="../assets/more.png" class="image" />
             </div>
           </div>
         </el-col>
@@ -124,6 +119,8 @@ export default {
   data() {
     //html과 자바스크립트 코드에서 사용할 데이터 변수 선언
     return {
+      heartYes: require("../assets/redHeart.png"),
+      heartNo: require("../assets/heart.png"),
       userId: "",
       radio: "북마크",
       centerDialogVisible: false,
@@ -137,11 +134,8 @@ export default {
         reviewCount: "",
         followCount: "",
         followerCount: "",
-        // userImage: "https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png",
-        // customId: "happ-in",
-        // nickName: "순무엄마동생",
       },
-      beer: {
+      reviews: {
         beerName: "",
         beerImage: "",
         countryImg: "",
@@ -150,15 +144,7 @@ export default {
         totalLike: "",
         isLike: "",
       },
-      // beer: {
-      //   beerName: "시메이 화이트 트리펠",
-      //   beerImage: "https://assets.business.veluga.kr/media/public/Chimay_Chimay_TripelCinq_Cents_4SYlnWG.png",
-      //   countryImg: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Flag_of_Belgium.svg/240px-Flag_of_Belgium.svg.png",
-      //   rating: 4.5,
-      //   hashTags: [{ hashTagName: "트라피스트" }, { hashTagName: "명품" }, { hashTagName: "과일향" }, { hashTagName: "향신료" }],
-      //   totalLike: 10,
-      //   isLike: false,
-      // },
+
       isFollow: false,
       src: require("../assets/heart.png"),
       bookmarks: [],
@@ -181,17 +167,31 @@ export default {
   }, //template에 정의된 html코드가 레너링된 후 실행
   unmounted() {}, //unmount가 완료된 후 실행
   methods: {
-    isLikeFeed() {
-      this.beer.isLike = !this.beer.isLike;
-      if (this.beer.isLike) {
-        this.beer.totalLike += 1;
-        this.addlike();
-        this.src = require("../assets/redHeart.png");
+    isLikeFeed(index) {
+      let now = this.reviews[index];
+      now.like = !now.like;
+
+      let data = {
+        userId: sessionStorage.getItem("userId"),
+        reviewId: now.reviewId,
+      };
+
+      console.log(data);
+      if (now.like) {
+        now.totalLike += 1;
+        this.addLike(data);
       } else {
-        this.beer.totalLike -= 1;
-        this.cancellike();
-        this.src = require("../assets/heart.png");
+        now.totalLike -= 1;
+        this.cancelLike(data);
       }
+      // if (this.reviews.isLike) {
+      //   this.reviews.totalLike += 1;
+      //   this.addlike();
+      //   this.src = require("../assets/redHeart.png");
+      // } else {
+      //   this.reviews.totalLike -= 1;
+      //   this.cancellike();
+      //   this.src = require("../assets/heart.png");
     }, //컴포넌트 내에서 사용할 메소드 정의
     goToFollowing() {
       this.$router.push({ name: "Follow", params: { header: "팔로잉", userId: this.userId } });
@@ -214,22 +214,22 @@ export default {
       console.log(this.user);
     },
     async getReviewBeer() {
-      this.beer = await this.$api("review?userId=" + this.userId, "get");
-      console.log(this.beer);
-      console.log(this.beer[0]);
+      this.reviews = await this.$api("review?userId=" + this.userId, "get");
+      console.log(this.reviews);
+      console.log(this.reviews[0]);
     },
     async getBadge() {
       this.badge = await this.$api("search/badge?userId=" + this.userId, "get");
       console.log(this.badge);
     },
-    async addlike() {
-      await this.$api("review/like", "post", this.data);
-      console.log("review")
+    async addLike(data) {
+      await this.$api("review/like", "post", data);
+      console.log("review");
     },
-    async cancellike() {
-      await this.$api("review/like", "delete", this.data);
+    async cancelLike(data) {
+      await this.$api("review/like", "delete", data);
     },
-  }
+  },
 };
 </script>
 <style>
