@@ -28,7 +28,7 @@
   </el-row>
 
   <!-- 팔로우/팔로우 취소 -->
-  <button plain @click="isFollow = !isFollow" class="profile-btn">
+  <button plain @click="doFollow" class="profile-btn">
     {{ isFollow ? "팔로우 취소" : "팔로우" }}
   </button>
 
@@ -79,23 +79,37 @@ export default {
     return {
       user: [],
       reviews: [],
-      isFollow: false,
+      isFollow: "",
       src: require("../assets/heart.png"),
+      otherId: localStorage.getItem("searchUserId"),
+      myId: sessionStorage.getItem("userId"),
     };
   },
   setup() {}, //컴포지션 API
   created() {
     this.getUser();
     this.getReviews();
+    this.amIFollow();
   }, //컴포넌트가 생성되면 실행
   mounted() {}, //template에 정의된 html코드가 레너링된 후 실행
   unmounted() {}, //unmount가 완료된 후 실행
   methods: {
     async getUser() {
-      this.user = await this.$api("search/userInfo?userId=" + localStorage.getItem("searchUserId"), "get");
+      this.user = await this.$api("search/userInfo?userId=" + this.otherId, "get");
     },
     async getReviews() {
-      this.reviews = await this.$api("review?userId=" + localStorage.getItem("searchUserId"), "get");
+      this.reviews = await this.$api("review?userId=" + this.otherId, "get");
+    },
+    async amIFollow() {
+      this.isFollow = await this.$api("follower/check?userId=" + this.myId + "&followId=" + this.otherId, "get");
+    },
+    async follow() {
+      let data = { userId: this.myId, followerId: this.otherId };
+      await this.$api("follower/addFollow", "post", data);
+    },
+    async unFollow() {
+      let data = { userId: this.myId, followerId: this.otherId };
+      await this.$api("follower/deleteFollow", "delete", data);
     },
     isLikeFeed(index) {
       let now = this.reviews[index];
@@ -116,6 +130,12 @@ export default {
     },
     goToFollower(userId) {
       this.$router.push({ name: "Follow", params: { header: "팔로워", userId: userId } });
+    },
+    doFollow() {
+      console.log(this.isFollow);
+      this.isFollow = !this.isFollow;
+      if (this.isFollow) this.follow();
+      else this.unFollow();
     },
   },
 };

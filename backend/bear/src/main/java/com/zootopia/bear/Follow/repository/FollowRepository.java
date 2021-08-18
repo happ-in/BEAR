@@ -9,10 +9,13 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.Table;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @Table(name = "follow")
 public interface FollowRepository extends JpaRepository<Follow, FollowerId> {
+	@Override
+	Optional<Follow> findById(FollowerId followerId);
 
 	List<Follow> findAllByFollowerId_UserId(long userId);
 
