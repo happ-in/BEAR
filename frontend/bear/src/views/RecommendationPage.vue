@@ -1,7 +1,7 @@
 <template>
   <div class="random-wrapper">
     <!-- 페이지 이름 -->
-    <h1>랜덤 추천</h1>
+    <div class="header">랜덤 추천</div>
     <!-- 맥주 이름, 국기 이미지 -->
     <div class="card">
       <h2>

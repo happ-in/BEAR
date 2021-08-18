@@ -1,5 +1,5 @@
 <template>
-  <h2>홈피드</h2>
+  <div class="header">홈피드</div>
 
   <div class="feed-wrapper" v-for="(feed, index) in feeds" :key="index">
     <el-row :gutter="20" class="feed-el-row-header">

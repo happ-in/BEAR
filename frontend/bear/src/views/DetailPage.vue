@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>상세페이지</h1>
+    <div class="header">상세페이지</div>
     <el-carousel :interval="0" indicator-position="outside" height="130vw">
       <el-carousel-item id="beer-detail">
         <div id="detail-beerimg-box" style="height: 90vw; width: 150vw; text-align-last: center; align-self: center; margin-bottom: 3%">

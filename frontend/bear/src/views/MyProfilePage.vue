@@ -1,5 +1,5 @@
 <template>
-  <h2>{{ this.user.customId }}</h2>
+  <div class="header">{{ this.user.customId }}</div>
 
   <!-- 프로필 -->
   <el-row class="profile-user-wrapper">
