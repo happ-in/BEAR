@@ -119,7 +119,7 @@ public class SearchService {
 		for(Follow follower : list) {
 			long followUserId = follower.getFollowerId().getFollowUserId();
 			User followUser = userRepository.findById(followUserId).get();
-			followList.add(new FollowDto(followUserId,followUser.getNickname(), followUser.getUserImage()));
+			followList.add(new FollowDto(followUserId,followUser.getNickname(), followUser.getUserImage(),followUser.getCustomId()));
 		}
 		return followList;
 	}
@@ -130,7 +130,7 @@ public class SearchService {
 		for(Follow follower : list) {
 			long followerId = follower.getFollowerId().getUserId();
 			User followerUser = userRepository.findById(followerId).get();
-			followerList.add(new FollowDto(followerId,followerUser.getNickname(),followerUser.getUserImage()));
+			followerList.add(new FollowDto(followerId,followerUser.getNickname(),followerUser.getUserImage(),followerUser.getCustomId()));
 		}
 		return followerList;
 	}
