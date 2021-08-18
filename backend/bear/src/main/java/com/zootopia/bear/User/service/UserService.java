@@ -20,7 +20,7 @@ import java.util.Optional;
 public class UserService {
 
 	private final static String kakaoRESTApiKey = "15e7887e87b724b15605d38adf95cf84";
-	private final static String redirectURL = "https://i5a403.p.ssafy.io//login/kakao";
+	private final static String redirectURL = "https://i5a403.p.ssafy.io/login/kakao";
 
 	private final UserRepository userRepository;
 
