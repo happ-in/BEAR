@@ -15,6 +15,7 @@ const routes = [
     path: "/",
     name: "Landing",
     component: Landing,
+    
   },
   // {
   //   path: "/",
@@ -38,20 +39,35 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ "../views/SearchPage.vue"),
+    beforeEnter: (to, from, next) => {
+      if (sessionStorage.getItem("token") !== null) {
+        next();
+      }
+      alert('login please');
+      next("/login");
+    },
   },
   {
     path: "/feed",
     name: "Feed",
     component: () => import(/* webpackChunkName: "about" */ "../views/FeedPage.vue"),
+    beforeEnter: (to, from, next) => {
+      if (sessionStorage.getItem("token") !== null) {
+        next();
+      }
+      alert('login please');
+      next("/login");
+    },
   },
   {
     path: "/review/write",
     name: "ReviewWrite",
     component: () => import(/* webpackChunkName: "about" */ "../views/ReviewWrite.vue"),
     beforeEnter: (to, from, next) => {
-      if (store.state.accessToken !== "") {
-        return next();
+      if (sessionStorage.getItem("token") !== null) {
+        next();
       }
+      alert('login please');
       next("/login");
     },
     //beforeEnter: requireAuth() //똑같은 방식으로 여러개 설정가능
@@ -70,6 +86,13 @@ const routes = [
     path: "/myprofile",
     name: "MyProfile",
     component: () => import(/* webpackChunkName: "about" */ "../views/MyProfilePage.vue"),
+    beforeEnter: (to, from, next) => {
+      if (sessionStorage.getItem("token") !== null) {
+        next();
+      }
+      alert('login please');
+      next("/login");
+    },
   },
   {
     path: "/profileedit",
