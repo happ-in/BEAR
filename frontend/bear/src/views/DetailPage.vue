@@ -4,12 +4,18 @@
     <el-carousel :interval="0" indicator-position="outside" height="130vw">
       <el-carousel-item id="beer-detail">
         <div id="detail-beerimg-box" style="height: 90vw; width: 150vw; text-align-last: center; align-self: center; margin-bottom: 3%">
-            <div class="chart-area">
-              <div id="container" style="width:100%; height:100%;"></div>
-            </div>
+          <div class="chart-area">
+            <div id="container" style="width: 100%; height: 100%"></div>
+          </div>
           <img :src="beerImage" />
         </div>
-        <h3>{{ beerData.beerName }}</h3>
+        <div style="display: flex; align-items: flex-end; align-self: center">
+          <h3>{{ beerData.beerName }}</h3>
+          <button>
+            <img style="width: 25px" src="../assets/bookmark/bookmark-no.png" alt="" />
+          </button>
+        </div>
+
         <el-rate id="detail-rate" v-model="beerData.beerAvg" allow-half disabled show-template="{beerData.beerAvg}"></el-rate>
         <p>{{ countryName }}/{{ beerData.beerCategory }}/{{ beerData.alcoholProof }}</p>
 

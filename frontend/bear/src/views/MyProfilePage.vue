@@ -53,9 +53,9 @@
     <el-card v-for="(beer, index) in beer" :key="index">
       <!-- 맥주이미지 -->
       <el-row>
-        <el-col :span="7"
-          ><img :src="require('../assets/beers/' + beer.beer.beerImage + '.png')" class="grid-content bg-purple" style="height: 120px"
-        /></el-col>
+        <el-col :span="7">
+          <img :src="require('../assets/beers/' + beer.beer.beerImage + '.png')" class="grid-content bg-purple" style="height: 120px" />
+        </el-col>
 
         <!-- 제목, 별점, 해시태그 -->
         <el-col :span="14">
