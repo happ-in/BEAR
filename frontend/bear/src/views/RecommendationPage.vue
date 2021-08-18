@@ -1,8 +1,9 @@
 <template>
   <div class="random-wrapper">
-    <!-- 맥주 이름, 국기 이미지 -->
     <div class="card">
       <h1 class="header">랜덤 추천</h1>
+
+      <!-- 맥주 이름, 국기 이미지 -->
       <h2>
         {{ beer.beerName }}
         <img :src="countryImage" />
@@ -97,7 +98,7 @@ export default {
 }
 h2 {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
 
   margin-top: 3px;
   margin-bottom: 4px;
@@ -114,7 +115,7 @@ h2 img {
   /* vertical-align: middle; */
   align-self: center;
   /* display: flex; */
-
+  padding-left: 2%;
   /* padding-bottom: 10px; */
   width: 24px;
   height: 15.97px;

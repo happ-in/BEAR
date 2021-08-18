@@ -1,14 +1,14 @@
 <template>
   <div class="wrapper-rank-category">
-    <div class="header">{{ headerTitle[this.$route.params.category] }}</div>
+    <h1 class="header">{{ headerTitle[this.$route.params.category] }}</h1>
     <!-- countryName, beerCategory, alcoholProof 도 추가-->
-
     <div class="rank-category-list">
       <div
         class="rank-category-item-wrapper"
         v-for="(beer, index) in rankData"
         v-bind:key="index"
         :style="{ 'background-color': bgRank[index] }"
+        @click="goToDetail(beer.beerId)"
       >
         <el-row>
           <el-col :span="3" class="rank-grade"> {{ index + 1 }}위 </el-col>
@@ -63,7 +63,7 @@ export default {
       });
     },
     async getRankData() {
-      this.rankData = await this.$api("rank/" + this.$route.params.category, "get");
+      this.rankData = await this.$api("https://i5a403.p.ssafy.io/api/rank/" + this.$route.params.category, "get");
     },
     goToDetail(beerId) {
       this.$router.push({ name: "Detail", params: { beerId: beerId } });
