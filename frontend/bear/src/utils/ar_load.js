@@ -409,11 +409,12 @@ export default {
           this.$refs.category.innerHTML = " " + this.beerData.beerCategory + "";
           // this.country = require("../assets/flags/" + this.beerData.country.countryName + ".png");
           // this.star = require("../assets/stars/" + Math.floor(this.beerData.beerAvg) + ".png");
-          this.$refs.flag.innerHTML = "<img id=flag src=" + require('../assets/flags/' + this.beerData.country.countryName + '.png') +"/>";
+          this.$refs.flag.innerHTML = "<img id=flag src="+require('../assets/flags/대한민국.png')+"/>";
           this.$refs.star.innerHTML = "<img id=star src=" + require('../assets/stars/' + Math.floor(this.beerData.beerAvg) + '.png') +"/>";
           this.$refs.hash1.innerHTML = " #" + this.beerData.hashTags[0].hashTagName + "";
           this.$refs.hash2.innerHTML = " #" + this.beerData.hashTags[1].hashTagName + "";
           this.$refs.hash3.innerHTML = " #" + this.beerData.hashTags[2].hashTagName + "";
+          // this.$refs.hash4.innerHTML = " #" + this.beerData.hashTags[3].hashTagName + "";
           this.$refs.hash4.innerHTML = " #" + this.beerData.hashTags[3].hashTagName + "";
         }, 300);
       });
