@@ -2,7 +2,7 @@
   <div class="random-wrapper">
     <!-- 맥주 이름, 국기 이미지 -->
     <div class="card">
-      <div class="header">랜덤 추천</div>
+      <h1 class="header">랜덤 추천</h1>
       <h2>
         {{ beer.beerName }}
         <img :src="countryImage" />
@@ -86,11 +86,6 @@ export default {
     rgba(245, 223, 77, 0.945675) 36.98%,
     #f5df4d 100%
   );
-}
-h1 {
-  display: flex;
-  justify-content: center;
-  margin: 7% 0 3% 0;
 }
 .card {
   margin-top: 1%;
