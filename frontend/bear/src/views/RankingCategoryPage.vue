@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper-rank-category">
-    <h1 class="header">{{ this.$route.params.category }}</h1>
+    <h1 class="header">{{ headerTitle[this.$route.params.category] }}</h1>
     <!-- countryName, beerCategory, alcoholProof 도 추가-->
     <div class="rank-category-list">
       <div
@@ -8,7 +8,7 @@
         v-for="(beer, index) in rankData"
         v-bind:key="index"
         :style="{ 'background-color': bgRank[index] }"
-        @click="goToDetail()"
+        @click="goToDetail(beer.beerId)"
       >
         <el-row>
           <el-col :span="3" class="rank-grade"> {{ index + 1 }}위 </el-col>
@@ -40,6 +40,13 @@ export default {
     return {
       rankData: [],
       bgRank: ["#F5DF4D", "rgba(245, 223, 77, 0.6)", "rgba(245, 223, 77, 0.2)", "fff", "fff", "fff", "fff"],
+      headerTitle: {
+        all: "전체",
+        lager: "라거",
+        ale: "에일",
+        stout: "스타우트",
+        rtd: "라들러/RTD",
+      },
     };
   },
   setup() {}, //컴포지션 API
