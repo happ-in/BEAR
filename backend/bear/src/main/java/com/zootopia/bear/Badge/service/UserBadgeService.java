@@ -11,6 +11,7 @@ import com.zootopia.bear.User.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,6 +36,7 @@ public class UserBadgeService {
         if(user.getShareCount()>=3) {
             UserBadge userBadge = new UserBadge(
                     checkUserBadgeId,
+                    LocalDateTime.now(),
                     badgeRepository.getById(badgeId),
                     user
             );
@@ -52,6 +54,7 @@ public class UserBadgeService {
         if(!reviewRepository.findByBeerId(beerId).isPresent()) {
             UserBadge userBadge = new UserBadge(
                     checkUserBadgeId,
+                    LocalDateTime.now(),
                     badgeRepository.getById(badgeId),
                     userRepository.getById(userId)
             );
@@ -76,6 +79,7 @@ public class UserBadgeService {
         if(count>=3) {
             UserBadge userBadge = new UserBadge(
                     checkUserBadgeId,
+                    LocalDateTime.now(),
                     badgeRepository.getById(badgeId),
                     userRepository.getById(userId)
             );
@@ -100,6 +104,7 @@ public class UserBadgeService {
         if(count>=2) {
             UserBadge userBadge = new UserBadge(
                     checkUserBadgeId,
+                    LocalDateTime.now(),
                     badgeRepository.getById(badgeId),
                     userRepository.getById(userId)
             );

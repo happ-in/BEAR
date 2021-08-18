@@ -1,11 +1,13 @@
 package com.zootopia.bear.Search.service;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import com.zootopia.bear.Badge.domain.Badge;
 import com.zootopia.bear.Badge.domain.UserBadge;
+import com.zootopia.bear.Badge.domain.UserBadgeId;
 import com.zootopia.bear.Badge.dto.GainBadge;
 import com.zootopia.bear.Badge.repository.BadgeRepository;
 import com.zootopia.bear.Badge.repository.UserBadgeRepository;
@@ -142,12 +144,14 @@ public class SearchService {
 		List<Badge> badgeList = badgeRepository.findAll();
 
 		for(Badge badge : badgeList) {
-			if(userBadgeList.contains(badge.getBadgeId())) {
-				gainBadgeList.add(new GainBadge(badge,true));
+			int badgeId = badge.getBadgeId();
+			if(userBadgeList.contains(badgeId)) {
+				UserBadgeId userBadgeId = new UserBadgeId(badgeId,userId);
+				String localDateTime = userBadgeRepository.findByUserBadgeId(userBadgeId).getAcquisitionDate().format(DateTimeFormatter.ofPattern("yyyy.MM.dd"));;
+				gainBadgeList.add(new GainBadge(badge,localDateTime,true));
 			} else {
-				gainBadgeList.add(new GainBadge(badge,false));
+				gainBadgeList.add(new GainBadge(badge,null,false));
 			}
-
 		}
 		return gainBadgeList;
 	}

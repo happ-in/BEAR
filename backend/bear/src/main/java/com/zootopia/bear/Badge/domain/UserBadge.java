@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @AllArgsConstructor
@@ -15,6 +16,7 @@ import javax.persistence.*;
 public class UserBadge {
     @EmbeddedId
     private UserBadgeId userBadgeId;
+    private LocalDateTime acquisitionDate;
 
     @MapsId("badgeId")
     @ManyToOne

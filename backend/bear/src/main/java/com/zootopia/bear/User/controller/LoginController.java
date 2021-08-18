@@ -43,7 +43,7 @@ public class LoginController {
 		map.put("accessToken", accessToken);
 		String projectUrl = "http://localhost:8081/";
 		ModelAndView modelAndView = new ModelAndView("redirect:" + projectUrl);
-		modelAndView.addObject("userId", String.valueOf(userId));
+		modelAndView.addObject("userId", userId);
 		modelAndView.addObject("accessToken", accessToken);
 		return modelAndView;
 	}
