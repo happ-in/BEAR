@@ -405,12 +405,19 @@ export default {
         setTimeout(() => {
           this.$refs.title.innerHTML = " " + this.beerData.beerName + "";
           this.$refs.rate.innerHTML = " " + this.beerData.beerAvg + "";
-          this.$refs.proof.innerHTML = " " + this.beerData.alcoholProof + "";
+          this.$refs.proof.innerHTML = " " + this.beerData.alcoholProof + "%";
           this.$refs.category.innerHTML = " " + this.beerData.beerCategory + "";
+          this.$refs.country.innerHTML = " " + this.beerData.country.countryName + "";
           // this.country = require("../assets/flags/" + this.beerData.country.countryName + ".png");
           // this.star = require("../assets/stars/" + Math.floor(this.beerData.beerAvg) + ".png");
-          this.$refs.flag.innerHTML = "<img id=flag src="+require('../assets/flags/대한민국.png')+"/>";
-          this.$refs.star.innerHTML = "<img id=star src=" + require('../assets/stars/' + Math.floor(this.beerData.beerAvg) + '.png') +"/>";
+          // this.$refs.flag.innerHTML = "<img id=flag src="+require('../assets/flags/대한민국.png')+"/>";
+          if (Math.floor(this.beerData.beerAvg) == 5) { this.$refs.star.innerHTML = "★★★★★"; }
+          else if (Math.floor(this.beerData.beerAvg) == 4) { this.$refs.star.innerHTML = "★★★★☆"; }
+          else if (Math.floor(this.beerData.beerAvg) == 3) { this.$refs.star.innerHTML = "★★★☆☆"; }
+          else if (Math.floor(this.beerData.beerAvg) == 2) { this.$refs.star.innerHTML = "★★☆☆☆"; }
+          else if (Math.floor(this.beerData.beerAvg) == 1) { this.$refs.star.innerHTML = "★☆☆☆☆"; }
+          else{this.$refs.star.innerHTML = "☆☆☆☆☆"; }
+          
           this.$refs.hash1.innerHTML = " #" + this.beerData.hashTags[0].hashTagName + "";
           this.$refs.hash2.innerHTML = " #" + this.beerData.hashTags[1].hashTagName + "";
           this.$refs.hash3.innerHTML = " #" + this.beerData.hashTags[2].hashTagName + "";
