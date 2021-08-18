@@ -17,11 +17,11 @@
       <div class="grid-content bg-purple">리뷰수</div>
       <div class="grid-content bg-purple">{{ user.reviewCount }}</div>
     </el-col>
-    <el-col :span="8">
+    <el-col :span="8" @click="goToFollowing(user.userId)">
       <div class="grid-content bg-purple-light">팔로잉</div>
       <div class="grid-content bg-purple-light">{{ user.followCount }}</div>
     </el-col>
-    <el-col :span="8">
+    <el-col :span="8" @click="goToFollower(user.userId)">
       <div class="grid-content bg-purple">팔로워</div>
       <div class="grid-content bg-purple">{{ user.followerCount }}</div>
     </el-col>
@@ -110,6 +110,12 @@ export default {
     }, //컴포넌트 내에서 사용할 메소드 정의
     goToDetail(beerId) {
       this.$router.push({ name: "Detail", params: { beerId: beerId } });
+    },
+    goToFollowing(userId) {
+      this.$router.push({ name: "Follow", params: { header: "팔로우", userId: userId } });
+    },
+    goToFollower(userId) {
+      this.$router.push({ name: "Follow", params: { header: "팔로잉", userId: userId } });
     },
   },
 };
