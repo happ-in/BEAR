@@ -142,14 +142,23 @@ export default {
         // nickName: "순무엄마동생",
       },
       beer: {
-        beerName: "시메이 화이트 트리펠",
-        beerImage: "https://assets.business.veluga.kr/media/public/Chimay_Chimay_TripelCinq_Cents_4SYlnWG.png",
-        countryImg: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Flag_of_Belgium.svg/240px-Flag_of_Belgium.svg.png",
-        rating: 4.5,
-        hashTags: [{ hashTagName: "트라피스트" }, { hashTagName: "명품" }, { hashTagName: "과일향" }, { hashTagName: "향신료" }],
-        totalLike: 10,
-        isLike: false,
+        beerName: "",
+        beerImage: "",
+        countryImg: "",
+        rating: "",
+        hashTags: [],
+        totalLike: "",
+        isLike: "",
       },
+      // beer: {
+      //   beerName: "시메이 화이트 트리펠",
+      //   beerImage: "https://assets.business.veluga.kr/media/public/Chimay_Chimay_TripelCinq_Cents_4SYlnWG.png",
+      //   countryImg: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Flag_of_Belgium.svg/240px-Flag_of_Belgium.svg.png",
+      //   rating: 4.5,
+      //   hashTags: [{ hashTagName: "트라피스트" }, { hashTagName: "명품" }, { hashTagName: "과일향" }, { hashTagName: "향신료" }],
+      //   totalLike: 10,
+      //   isLike: false,
+      // },
       isFollow: false,
       src: require("../assets/heart.png"),
       bookmarks: [],
@@ -176,9 +185,11 @@ export default {
       this.beer.isLike = !this.beer.isLike;
       if (this.beer.isLike) {
         this.beer.totalLike += 1;
+        this.addlike();
         this.src = require("../assets/redHeart.png");
       } else {
         this.beer.totalLike -= 1;
+        this.cancellike();
         this.src = require("../assets/heart.png");
       }
     }, //컴포넌트 내에서 사용할 메소드 정의
@@ -211,7 +222,14 @@ export default {
       this.badge = await this.$api("search/badge?userId=" + this.userId, "get");
       console.log(this.badge);
     },
-  },
+    async addlike() {
+      await this.$api("review/like", "post", this.data);
+      console.log("review")
+    },
+    async cancellike() {
+      await this.$api("review/like", "delete", this.data);
+    },
+  }
 };
 </script>
 <style>
