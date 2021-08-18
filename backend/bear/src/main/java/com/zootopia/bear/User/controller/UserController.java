@@ -2,6 +2,7 @@ package com.zootopia.bear.User.controller;
 
 import com.zootopia.bear.Search.service.SearchService;
 import com.zootopia.bear.User.domain.User;
+import com.zootopia.bear.User.dto.UserUpdateDto;
 import com.zootopia.bear.User.service.UserService;
 
 import lombok.RequiredArgsConstructor;
@@ -29,8 +30,9 @@ public class UserController {
 	}
 
 	@PutMapping("/update")
-	public ResponseEntity<?> updateUser(@RequestBody User user) {
-		if (userService.updateUser(user)) {
+	public ResponseEntity<?> updateUser(@RequestBody UserUpdateDto userUpdateDto) {
+
+		if (userService.updateUser(userUpdateDto)) {
 			return new ResponseEntity<>(true, HttpStatus.OK);
 		}
 		return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);
@@ -45,11 +47,10 @@ public class UserController {
 	}
 
 	@GetMapping("/share")
-	public ResponseEntity<?> shareFeed(@RequestParam long userid) {
-		User user = searchService.getUser(userid).get();
-		int origin = user.getShareCount();
-		user.setShareCount(origin + 1);
-		userService.updateUser(user);
+	public ResponseEntity<?> shareFeed(@RequestParam long userId) {
+		userService.increaseShareCount(userId);
 		return new ResponseEntity<>(true, HttpStatus.OK);
 	}
+
+
 }
