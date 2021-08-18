@@ -112,10 +112,10 @@ export default {
       this.$router.push({ name: "Detail", params: { beerId: beerId } });
     },
     goToFollowing(userId) {
-      this.$router.push({ name: "Follow", params: { header: "팔로우", userId: userId } });
+      this.$router.push({ name: "Follow", params: { header: "팔로잉", userId: userId } });
     },
     goToFollower(userId) {
-      this.$router.push({ name: "Follow", params: { header: "팔로잉", userId: userId } });
+      this.$router.push({ name: "Follow", params: { header: "팔로워", userId: userId } });
     },
   },
 };

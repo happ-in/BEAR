@@ -36,7 +36,7 @@ export default {
   unmounted() {}, //unmount가 완료된 후 실행
   methods: {
     async getOthers() {
-      if ("팔로우" == this.$route.params.header) {
+      if ("팔로잉" == this.$route.params.header) {
         this.others = await this.$api("search/follows?userId=" + this.$route.params.userId);
       } else {
         this.others = await this.$api("search/followers?userId=" + this.$route.params.userId);

@@ -16,15 +16,15 @@
   <el-row>
     <el-col :span="8">
       <div class="grid-content bg-purple">리뷰수</div>
-      <div class="grid-content bg-purple">{{this.user.reviewCount}}</div>
+      <div class="grid-content bg-purple">{{ this.user.reviewCount }}</div>
     </el-col>
-    <el-col :span="8" @click="goFollowing">
+    <el-col :span="8" @click="goToFollowing">
       <div class="grid-content bg-purple-light">팔로잉</div>
-      <div class="grid-content bg-purple-light">{{this.user.followCount}}</div>
+      <div class="grid-content bg-purple-light">{{ this.user.followCount }}</div>
     </el-col>
-    <el-col :span="8" @click="goFollower">
+    <el-col :span="8" @click="goToFollower">
       <div class="grid-content bg-purple">팔로워</div>
-      <div class="grid-content bg-purple">{{this.user.followerCount}}</div>
+      <div class="grid-content bg-purple">{{ this.user.followerCount }}</div>
     </el-col>
   </el-row>
 
@@ -50,10 +50,12 @@
 
   <!-- 리뷰 -->
   <div v-if="this.select == 'review'">
-    <el-card v-for="beer,index in beer" :key="index">
+    <el-card v-for="(beer, index) in beer" :key="index">
       <!-- 맥주이미지 -->
       <el-row>
-        <el-col :span="7"><img :src="require('../assets/beers/' + beer.beer.beerImage + '.png')" class="grid-content bg-purple" style="height: 120px" /></el-col>
+        <el-col :span="7"
+          ><img :src="require('../assets/beers/' + beer.beer.beerImage + '.png')" class="grid-content bg-purple" style="height: 120px"
+        /></el-col>
 
         <!-- 제목, 별점, 해시태그 -->
         <el-col :span="14">
@@ -96,15 +98,15 @@
 
   <!-- 뱃지 -->
   <div v-if="this.select == 'badge'">
-    <el-row v-for="badge,index in badge" :key="index">
+    <el-row v-for="(badge, index) in badge" :key="index">
       <el-col :span="8" style="text-align: center">
         <img src="../assets/logo.png" width="120" /> <br />
-        <el-button type="text" @click="centerDialogVisible = true"> {{badge.title}} </el-button>
+        <el-button type="text" @click="centerDialogVisible = true"> {{ badge.title }} </el-button>
         <el-dialog title="뱃지 타이틀" v-model="centerDialogVisible" width="50%" center>
           <div style="text-align: center">
             <img src="../assets/logo.png" width="120" /> <br />
             <h4>21.08.13 획득</h4>
-            <span>{{badge.explain}}</span>
+            <span>{{ badge.explain }}</span>
           </div>
         </el-dialog>
       </el-col>
@@ -120,19 +122,19 @@ export default {
   data() {
     //html과 자바스크립트 코드에서 사용할 데이터 변수 선언
     return {
-      userId : "",
+      userId: "",
       radio: "북마크",
       centerDialogVisible: false,
       user: {
-        userId:"",
-				customId:"",
-			  userImage:"",
-				nickname:"",
-				sex:"",
-				shareCount:"",
-				reviewCount:"",
-				followCount:"",
-				followerCount:""
+        userId: "",
+        customId: "",
+        userImage: "",
+        nickname: "",
+        sex: "",
+        shareCount: "",
+        reviewCount: "",
+        followCount: "",
+        followerCount: "",
         // userImage: "https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png",
         // customId: "happ-in",
         // nickName: "순무엄마동생",
@@ -178,14 +180,14 @@ export default {
         this.src = require("../assets/heart.png");
       }
     }, //컴포넌트 내에서 사용할 메소드 정의
-    goFollower() {
-      this.$router.push({ name: "Follow", params: { header: "팔로워" } });
+    goToFollowing() {
+      this.$router.push({ name: "Follow", params: { header: "팔로잉", userId: this.userId } });
     },
-    goFollowing() {
-      this.$router.push({ name: "Follow", params: { header: "팔로잉" } });
+    goToFollower() {
+      this.$router.push({ name: "Follow", params: { header: "팔로워", userId: this.userId } });
     },
     goProfileEdit() {
-      this.$router.push({ name:"ProfileEdit"})
+      this.$router.push({ name: "ProfileEdit" });
     },
     async getBookmarks() {
       this.bookmarks = await this.$api("search/bookmark?userId=" + this.userId, "get");
@@ -204,7 +206,6 @@ export default {
       this.badge = await this.$api("search/badge?userId=" + this.userId, "get");
       console.log(this.badge);
     },
-
   },
 };
 </script>
