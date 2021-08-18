@@ -18,6 +18,11 @@ public class FollowController {
 		this.followService = followService;
 	}
 
+	@GetMapping("/check")
+	public ResponseEntity<?> isFollow(@RequestParam long userId, @RequestParam long followId) {
+		return ResponseEntity.ok().body(followService.isFollowing(userId, followId));
+	}
+
 	@PostMapping("/addFollow")
 	public ResponseEntity<?> addFollow(@RequestBody FollowRegister followRegister) {
 		long userId = followRegister.getUserId();

@@ -1,5 +1,7 @@
 package com.zootopia.bear.Follow.service;
 
+import java.util.Map;
+
 import com.zootopia.bear.Follow.domain.Follow;
 import com.zootopia.bear.Follow.domain.FollowerId;
 import com.zootopia.bear.Follow.repository.FollowRepository;
@@ -26,5 +28,9 @@ public class FollowService {
 
 	public void deleteFollowUser(long userId, long followUserId) {
 		followRepository.deleteById(new FollowerId(userId, followUserId));
+	}
+
+	public boolean isFollowing(long userId, long followId) {
+		return followRepository.findById(new FollowerId(userId, followId)).isPresent();
 	}
 }
