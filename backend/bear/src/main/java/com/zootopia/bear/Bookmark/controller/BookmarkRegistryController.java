@@ -31,4 +31,9 @@ public class BookmarkRegistryController {
 		bookmarkService.deleteBookmark(userId, beerId);
 		return new ResponseEntity<>(true, HttpStatus.OK);
 	}
+
+	@GetMapping
+	public ResponseEntity<?> isBookmark(@RequestParam long userId, @RequestParam int beerId) {
+		return ResponseEntity.ok().body(bookmarkService.isBookmark(userId, beerId));
+	}
 }

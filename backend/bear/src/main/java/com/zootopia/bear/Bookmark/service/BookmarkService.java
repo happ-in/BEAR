@@ -28,4 +28,8 @@ public class BookmarkService {
 		bookmarkRepository.deleteById(bookmarkId);
 	}
 
+	public boolean isBookmark(long userId, int beerId) {
+		return bookmarkRepository.findById(new BookmarkId(userId, beerId)).isPresent();
+	}
+
 }
