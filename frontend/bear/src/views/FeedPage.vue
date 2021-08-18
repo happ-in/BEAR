@@ -1,44 +1,41 @@
 <template>
   <h2>홈피드</h2>
 
-  <div class="feed-wrapper">
+  <div class="feed-wrapper" v-for="(feed, index) in feeds" :key="index">
     <el-row :gutter="20" class="feed-el-row-header">
-      <el-col :span="8">
-        <div @click="this.$router.push('/profile')">
-          <span>
-            <el-avatar :size="25" :src="user.userImage" style="margin-right: 4px"> </el-avatar>
-            {{ user.customId }}
-          </span>
-        </div>
+      <el-col :span="3" @click="goToUser(feed.user.userId)">
+        <img :src="feed.user.userImage" alt="" class="feed-round-image" />
       </el-col>
-
-      <el-col :span="11"> </el-col>
-
+      <el-col :span="16" class="feed-customId" @click="goToUser(feed.user.userId)">
+        {{ feed.user.customId }}
+      </el-col>
       <el-col :span="5">
         <div class="heart-wrapper">
           <div class="heart-image">
-            <img :src="src" class="image" />
+            <img :src="feed.like ? redHeart : whiteHeart" class="image" />
           </div>
           <div class="heart-text">
-            <button id="heart-button" @click="isLikeFeed" :class="{ likeFeed: beer.isLike }">
-              {{ beer.totalLike }}
+            <button class="heart-button" @click="isLikeFeed(index)" :class="{ likeFeed: feed.like }">
+              {{ feed.totalLike }}
             </button>
           </div>
         </div>
       </el-col>
     </el-row>
 
-    <el-row :gutter="20" class="feed-el-row-body">
-      <el-col :span="8"><img :src="beer.beerImage" class="grid-content bg-purple" style="width: 100%" /> </el-col>
+    <el-row :gutter="20" class="feed-el-row-body" @click="goToDetail(feed.beer.beerId)">
+      <el-col :span="8" style="text-align: center">
+        <img :src="require('../assets/beers/' + feed.beer.beerImage + '.png')" class="grid-content bg-purple" style="height: 120px" />
+      </el-col>
       <el-col :span="16">
-        <span>
-          {{ beer.beerName }}
-          <img :src="beer.countryImg" style="width: 6%" />
+        <span style="font-size: x-large; font-weight: bold">
+          {{ feed.beer.beerName }}
+          <img :src="require('../assets/flags/' + feed.beer.country.countryName + '.png')" style="width: 6%" />
         </span>
-        <el-rate v-model="beer.rating" allow-half disabled style="margin-bottom: 5%"></el-rate>
+        <el-rate v-model="feed.rating" allow-half disabled style="margin-bottom: 5%"></el-rate>
 
         <div>
-          <el-tag type="info" v-for="(hashTag, index) in beer.hashTags" :key="index" style="margin-right: 1%; margin-bottom: 1%">
+          <el-tag type="info" v-for="(hashTag, index) in feed.hashTags" :key="index" style="margin-right: 1%; margin-bottom: 1%">
             # {{ hashTag.hashTagName }}
           </el-tag>
         </div>
@@ -54,36 +51,34 @@ export default {
   data() {
     //html과 자바스크립트 코드에서 사용할 데이터 변수 선언
     return {
-      user: {
-        userImage: "https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png",
-        customId: "happ-in",
-      },
-      beer: {
-        beerName: "시메이 화이트 트리펠",
-        beerImage: "https://assets.business.veluga.kr/media/public/Chimay_Chimay_TripelCinq_Cents_4SYlnWG.png",
-        countryImg: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Flag_of_Belgium.svg/240px-Flag_of_Belgium.svg.png",
-        rating: 4.5,
-        hashTags: [{ hashTagName: "트라피스트" }, { hashTagName: "명품" }, { hashTagName: "과일향" }, { hashTagName: "향신료" }],
-        totalLike: 10,
-        isLike: false,
-      },
-      src: require("../assets/heart.png"),
+      feeds: [],
+      heartImage: "",
+      redHeart: require("../assets/redHeart.png"),
+      whiteHeart: require("../assets/heart.png"),
     };
   },
   setup() {}, //컴포지션 API
-  created() {}, //컴포넌트가 생성되면 실행
+  created() {
+    this.getFeeds();
+  }, //컴포넌트가 생성되면 실행
   mounted() {}, //template에 정의된 html코드가 레너링된 후 실행
   unmounted() {}, //unmount가 완료된 후 실행
   methods: {
-    isLikeFeed() {
-      this.beer.isLike = !this.beer.isLike;
-      if (this.beer.isLike) {
-        this.beer.totalLike += 1;
-        this.src = require("../assets/redHeart.png");
-      } else {
-        this.beer.totalLike -= 1;
-        this.src = require("../assets/heart.png");
-      }
+    isLikeFeed(index) {
+      let now = this.feeds[index];
+      now.like = !now.like;
+      if (now.like) now.totalLike += 1;
+      else now.totalLike -= 1;
+    },
+    async getFeeds() {
+      this.feeds = await this.$api("feed?userId=" + sessionStorage.getItem("userId"), "get");
+    },
+    goToUser(userId) {
+      localStorage.setItem("searchUserId", userId);
+      this.$router.push("/profile");
+    },
+    goToDetail(beerId) {
+      this.$router.push({ name: "Detail", params: { beerId: beerId } });
     },
   }, //컴포넌트 내에서 사용할 메소드 정의
 };
@@ -91,10 +86,24 @@ export default {
 <style>
 @import url("//unpkg.com/element-plus/lib/theme-chalk/index.css");
 
+.feed-round-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 70%;
+  background: #939597;
+  overflow: hidden;
+  object-fit: scale-down;
+}
+.feed-customId {
+  align-self: center;
+  padding-left: 1%;
+  font-size: large;
+  font-weight: bold;
+}
 span {
   display: flex;
 }
-#heart-button {
+.heart-button {
   text-decoration: none;
   background-color: transparent !important;
   border-color: transparent !important;
