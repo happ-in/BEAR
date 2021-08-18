@@ -43,7 +43,6 @@ const routes = [
       if (sessionStorage.getItem("token") !== null) {
         next();
       }
-      alert('login please');
       next("/login");
     },
   },
@@ -55,7 +54,6 @@ const routes = [
       if (sessionStorage.getItem("token") !== null) {
         next();
       }
-      alert('login please');
       next("/login");
     },
   },
@@ -67,7 +65,6 @@ const routes = [
       if (sessionStorage.getItem("token") !== null) {
         next();
       }
-      alert('login please');
       next("/login");
     },
     //beforeEnter: requireAuth() //똑같은 방식으로 여러개 설정가능
