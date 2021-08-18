@@ -32,10 +32,8 @@ public class LoginController {
 		if (!user.isPresent()) {
 			userService.joinUser(userService.getKakaoInfo(accessToken));
 		} else {
-			User userObject = user.get();
 			String image = userService.getUserImage(accessToken);
-			userObject.setUserImage(image);
-			userService.updateUser(userObject);
+			userService.setImage(userId,image);
 		}
 
 		HashMap<String, String> map = new HashMap<>();
