@@ -7,7 +7,7 @@
     </el-col>
     <el-col :span="12" style="text-align: left">
       <div>뱃지명</div>
-      <div>{{ user.nickName }}</div>
+      <div>{{ user.nickname }}</div>
     </el-col>
   </el-row>
 
@@ -15,15 +15,15 @@
   <el-row>
     <el-col :span="8">
       <div class="grid-content bg-purple">리뷰수</div>
-      <div class="grid-content bg-purple">00</div>
+      <div class="grid-content bg-purple">{{ user.reviewCount }}</div>
     </el-col>
     <el-col :span="8">
       <div class="grid-content bg-purple-light">팔로잉</div>
-      <div class="grid-content bg-purple-light">00</div>
+      <div class="grid-content bg-purple-light">{{ user.followCount }}</div>
     </el-col>
     <el-col :span="8">
       <div class="grid-content bg-purple">팔로워</div>
-      <div class="grid-content bg-purple">00</div>
+      <div class="grid-content bg-purple">{{ user.followerCount }}</div>
     </el-col>
   </el-row>
 
@@ -32,42 +32,42 @@
     {{ isFollow ? "팔로우 취소" : "팔로우" }}
   </button>
 
-  <div>
-    <el-card class="box-card">
-      <!-- 맥주이미지 -->
-      <el-row>
-        <el-col :span="7"><img :src="beer.beerImage" class="grid-content bg-purple" style="width: 100%" /> </el-col>
+  <div class="review-wrapper" v-for="(review, index) in reviews" :key="index" @click="goToDetail(review.beer.beerId)">
+    <el-row :gutter="20" class="review-el-row-body">
+      <el-col :span="6" style="text-align: center">
+        <img :src="require('../assets/beers/' + review.beer.beerImage + '.png')" class="grid-content bg-purple review-beerImage" />
+      </el-col>
+      <el-col :span="14">
+        <span class="review-beerName">
+          {{ review.beer.beerName }}
+          <img :src="require('../assets/flags/' + review.beer.country.countryName + '.png')" style="width: 6%" />
+        </span>
+        <br />
+        <span class="review-beerInfo"
+          >{{ review.beer.country.countryName }}/{{ review.beer.beerCategory }}/{{ review.beer.alcoholProof }}</span
+        >
+        <el-rate v-model="review.rating" allow-half disabled style="margin-bottom: 7%"></el-rate>
 
-        <!-- 제목, 별점, 해시태그 -->
-        <el-col :span="14">
-          <el-row :gutter="20">
-            <span>
-              {{ beer.beerName }}
-              <img :src="beer.countryImg" style="width: 6%" />
-            </span>
-            <el-rate v-model="beer.rating" allow-half disabled></el-rate>
-          </el-row>
+        <div>
+          <el-tag type="info" v-for="(hashTag, index) in review.hashTags" :key="index" style="margin-right: 1%; margin-bottom: 1%">
+            # {{ hashTag.hashTagName }}
+          </el-tag>
+        </div>
+      </el-col>
 
-          <div style="position: relative; top: 20px">
-            <el-tag type="info" v-for="(hashTag, index) in beer.hashTags" :key="index" style="margin-right: 1%; margin-bottom: 1%">
-              # {{ hashTag.hashTagName }}
-            </el-tag>
+      <el-col :span="4">
+        <div class="review-heart">
+          <div class="heart-image">
+            <img :src="src" class="image" />
           </div>
-        </el-col>
-
-        <!-- 하트 -->
-        <el-col :span="3">
-          <div class="heart-wrapper">
-            <div class="heart-image"><img :src="src" class="image" /></div>
-            <div class="heart-text">
-              <button id="heart-button" @click="isLikeFeed" :class="{ likeFeed: beer.isLike }">
-                {{ beer.totalLike }}
-              </button>
-            </div>
+          <div class="heart-text">
+            <button id="heart-button" @click="isLikeFeed(index)" :class="{ likeFeed: review.like }">
+              {{ review.totalLike }}
+            </button>
           </div>
-        </el-col>
-      </el-row>
-    </el-card>
+        </div>
+      </el-col>
+    </el-row>
   </div>
 </template>
 <script>
@@ -77,43 +77,62 @@ export default {
   data() {
     //html과 자바스크립트 코드에서 사용할 데이터 변수 선언
     return {
-      user: {
-        userImage: "https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png",
-        customId: "happ-in",
-        nickName: "순무엄마동생",
-      },
-      beer: {
-        beerName: "시메이 화이트 트리펠",
-        beerImage: "https://assets.business.veluga.kr/media/public/Chimay_Chimay_TripelCinq_Cents_4SYlnWG.png",
-        countryImg: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Flag_of_Belgium.svg/240px-Flag_of_Belgium.svg.png",
-        rating: 4.5,
-        hashTags: [{ hashTagName: "트라피스트" }, { hashTagName: "명품" }, { hashTagName: "과일향" }, { hashTagName: "향신료" }],
-        totalLike: 10,
-        isLike: false,
-      },
+      user: [],
+      reviews: [],
       isFollow: false,
       src: require("../assets/heart.png"),
     };
   },
   setup() {}, //컴포지션 API
-  created() {}, //컴포넌트가 생성되면 실행
+  created() {
+    this.getUser();
+    this.getReviews();
+  }, //컴포넌트가 생성되면 실행
   mounted() {}, //template에 정의된 html코드가 레너링된 후 실행
   unmounted() {}, //unmount가 완료된 후 실행
   methods: {
-    isLikeFeed() {
-      this.beer.isLike = !this.beer.isLike;
-      if (this.beer.isLike) {
-        this.beer.totalLike += 1;
+    async getUser() {
+      this.user = await this.$api("search/userInfo?userId=" + localStorage.getItem("searchUserId"), "get");
+    },
+    async getReviews() {
+      this.reviews = await this.$api("review?userId=" + localStorage.getItem("searchUserId"), "get");
+    },
+    isLikeFeed(index) {
+      let now = this.reviews[index];
+      now.like = !now.like;
+      if (now.like) {
+        now.totalLike += 1;
         this.src = require("../assets/redHeart.png");
       } else {
-        this.beer.totalLike -= 1;
+        now.totalLike -= 1;
         this.src = require("../assets/heart.png");
       }
     }, //컴포넌트 내에서 사용할 메소드 정의
+    goToDetail(beerId) {
+      this.$router.push({ name: "Detail", params: { beerId: beerId } });
+    },
   },
 };
 </script>
 <style>
+.review-beerInfo {
+  font-size: smaller;
+  color: gray;
+}
+.review-beerName {
+  font-size: large;
+  font-weight: bold;
+}
+.review-beerImage {
+  height: 120px;
+}
+.review-wrapper {
+  border: 1px solid #9a9a9a42;
+  box-shadow: 2px 2px 2px #9a9a9a42;
+}
+.review-el-row-body {
+  margin: 4%;
+}
 .profile-image {
   margin-left: 30%;
 }
@@ -141,11 +160,11 @@ export default {
 button:active {
   color: inherit;
 }
-.heart-wrapper {
+.review-heart {
   position: relative;
-  left: 5%;
+  left: 6%;
 }
-.heart-wrapper img {
+.review-heart img {
   width: 60%;
   vertical-align: middle;
 }
