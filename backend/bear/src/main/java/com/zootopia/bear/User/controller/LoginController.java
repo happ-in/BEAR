@@ -41,7 +41,8 @@ public class LoginController {
 		HashMap<String, String> map = new HashMap<>();
 		map.put("userId", String.valueOf(userId));
 		map.put("accessToken", accessToken);
-		String projectUrl = "https://i5a403.p.ssafy.io/";
+		// String projectUrl = "https://i5a403.p.ssafy.io/";
+		String projectUrl = "http://localhost:8081/";
 		ModelAndView modelAndView = new ModelAndView("redirect:" + projectUrl);
 		modelAndView.addObject("userId", userId);
 		modelAndView.addObject("accessToken", accessToken);
