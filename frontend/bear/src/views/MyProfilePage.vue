@@ -120,12 +120,22 @@ export default {
   data() {
     //html과 자바스크립트 코드에서 사용할 데이터 변수 선언
     return {
+      userId : "",
       radio: "북마크",
       centerDialogVisible: false,
       user: {
-        userImage: "https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png",
-        customId: "happ-in",
-        nickName: "순무엄마동생",
+        userId:"",
+				customId:"",
+			  userImage:"",
+				nickname:"",
+				sex:"",
+				shareCount:"",
+				reviewCount:"",
+				followCount:"",
+				followerCount:""
+        // userImage: "https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png",
+        // customId: "happ-in",
+        // nickName: "순무엄마동생",
       },
       beer: {
         beerName: "시메이 화이트 트리펠",
@@ -149,7 +159,12 @@ export default {
     this.getBookmarks();
     console.log(this.bookmarks);
   }, //컴포넌트가 생성되면 실행
-  mounted() {}, //template에 정의된 html코드가 레너링된 후 실행
+  mounted() {
+    sessionStorage.setItem("userId","1823341610");
+    this.userId = sessionStorage.getItem("userId");
+    const response = this.$api("search/userInfo?userId=" + this.userId, "get");
+    console.log(response);
+  }, //template에 정의된 html코드가 레너링된 후 실행
   unmounted() {}, //unmount가 완료된 후 실행
   methods: {
     isLikeFeed() {
