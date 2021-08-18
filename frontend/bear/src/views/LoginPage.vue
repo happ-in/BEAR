@@ -1,9 +1,10 @@
 <template>
-  <div>
+  <div id="container">
+    <img id="login-logo" src="../assets/landing/logo1.png"/>
     <a id="custom-login-btn" @click="kakaoLogin()">
-      <img
+      <img id="login-btn"
         src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
-        width="222"
+        width="380"
       />
     </a>
   </div>
@@ -30,21 +31,20 @@ export default {
 };
 </script>
 <style>
-    #custom-login-btn{
-        position: absolute;
-        width: 40px;
-        height: 40px;
-        top: 65%;
-        left: 50%; 
-    }
-    #custom-logout-btn{
-        position: absolute;
-        width: 140px;
-        height: 40px;
-        top: 65%;
-        left: 40%; 
-    }
-    video{
-    display: none;
-    }
+  #login-logo{
+    position: absolute;
+    top: 30%;
+    left: 25%;
+    width:200px; 
+  }
+  #login-btn{
+    position: absolute;
+    width: 380px;
+    height: 60px;
+    top: 50%;
+    left: 5%; 
+  }
+  video{
+   display: none;
+  }
 </style>
