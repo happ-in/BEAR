@@ -484,7 +484,7 @@ export default {
           },goSearch(){
             window.open('/beer/search');
           },goReview(){
-            window.open('/beer/search');
+            window.open('/review/write');
           },
           async getBeerData(id) {
             this.beerData = await this.$api("/beer/ar?searchId="+id,"get"); //test API
