@@ -9,6 +9,8 @@
       <el-col :span="16" class="feed-customId" @click="goToUser(feed.user.userId)">
         {{ feed.user.customId }}
       </el-col>
+
+      <!-- 하트 -->
       <el-col :span="5">
         <div class="heart-wrapper">
           <div class="heart-image">
@@ -67,8 +69,18 @@ export default {
     isLikeFeed(index) {
       let now = this.feeds[index];
       now.like = !now.like;
-      if (now.like) now.totalLike += 1;
-      else now.totalLike -= 1;
+
+      let data = {
+        userId: sessionStorage.getItem("userId"),
+        reviewId: now.reviewId,
+      };
+      if (now.like) {
+        now.totalLike += 1;
+        this.addLike(data);
+      } else {
+        now.totalLike -= 1;
+        this.cancelLike(data);
+      }
     },
     async getFeeds() {
       this.feeds = await this.$api("feed?userId=" + sessionStorage.getItem("userId"), "get");
@@ -79,6 +91,12 @@ export default {
     },
     goToDetail(beerId) {
       this.$router.push({ name: "Detail", params: { beerId: beerId } });
+    },
+    async addLike(data) {
+      await this.$api("review/like", "post", data);
+    },
+    async cancelLike(data) {
+      await this.$api("review/like", "delete", data);
     },
   }, //컴포넌트 내에서 사용할 메소드 정의
 };

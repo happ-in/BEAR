@@ -64,8 +64,9 @@
           <el-row :gutter="20">
             <span>
               {{ review.beer.beerName }}
-              <img src="" style="width: 6%" />
+              <img :src="require('../assets/flags/' + review.beer.country.countryName + '.png')" style="width: 6%" />
             </span>
+            <b></b>
             <el-rate v-model="review.rating" allow-half disabled></el-rate>
           </el-row>
 

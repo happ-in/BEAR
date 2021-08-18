@@ -32,13 +32,13 @@
     {{ isFollow ? "팔로우 취소" : "팔로우" }}
   </button>
 
-  <div class="review-wrapper" v-for="(review, index) in reviews" :key="index" @click="goToDetail(review.beer.beerId)">
+  <div class="review-wrapper" v-for="(review, index) in reviews" :key="index">
     <el-row :gutter="20" class="review-el-row-body">
-      <el-col :span="6" style="text-align: center">
+      <el-col :span="6" style="text-align: center" @click="goToDetail(review.beer.beerId)">
         <img :src="require('../assets/beers/' + review.beer.beerImage + '.png')" class="grid-content bg-purple review-beerImage" />
       </el-col>
       <el-col :span="14">
-        <span class="review-beerName">
+        <span class="review-beerName" @click="goToDetail(review.beer.beerId)">
           {{ review.beer.beerName }}
           <img :src="require('../assets/flags/' + review.beer.country.countryName + '.png')" style="width: 6%" />
         </span>
@@ -58,10 +58,10 @@
       <el-col :span="4">
         <div class="review-heart">
           <div class="heart-image">
-            <img :src="src" class="image" />
+            <img :src="review.like ? heartYes : heartNo" class="image" />
           </div>
           <div class="heart-text">
-            <button id="heart-button" @click="isLikeFeed(index)" :class="{ likeFeed: review.like }">
+            <button id="heart-button" @click="isLikeFeed(index)" :class="{ likeReview: review.like }">
               {{ review.totalLike }}
             </button>
           </div>
@@ -80,7 +80,8 @@ export default {
       user: [],
       reviews: [],
       isFollow: "",
-      src: require("../assets/heart.png"),
+      heartYes: require("../assets/redHeart.png"),
+      heartNo: require("../assets/heart.png"),
       otherId: localStorage.getItem("searchUserId"),
       myId: sessionStorage.getItem("userId"),
     };
@@ -98,7 +99,7 @@ export default {
       this.user = await this.$api("search/userInfo?userId=" + this.otherId, "get");
     },
     async getReviews() {
-      this.reviews = await this.$api("review?userId=" + this.otherId, "get");
+      this.reviews = await this.$api("review/other?myId=" + this.myId + "&otherId=" + this.otherId, "get");
     },
     async amIFollow() {
       this.isFollow = await this.$api("follower/check?userId=" + this.myId + "&followId=" + this.otherId, "get");
@@ -111,15 +112,27 @@ export default {
       let data = { userId: this.myId, followerId: this.otherId };
       await this.$api("follower/deleteFollow", "delete", data);
     },
+    async addLike(data) {
+      await this.$api("review/like", "post", data);
+    },
+    async cancelLike(data) {
+      await this.$api("review/like", "delete", data);
+    },
     isLikeFeed(index) {
       let now = this.reviews[index];
       now.like = !now.like;
+
+      let data = {
+        userId: sessionStorage.getItem("userId"),
+        reviewId: now.reviewId,
+      };
+
       if (now.like) {
         now.totalLike += 1;
-        this.src = require("../assets/redHeart.png");
+        this.addLike(data);
       } else {
         now.totalLike -= 1;
-        this.src = require("../assets/heart.png");
+        this.cancelLike(data);
       }
     }, //컴포넌트 내에서 사용할 메소드 정의
     goToDetail(beerId) {
@@ -203,7 +216,7 @@ button:active {
   top: 48%;
   transform: translate(-50%, -50%);
 }
-.likeFeed {
+.likeReview {
   color: white;
 }
 video {
