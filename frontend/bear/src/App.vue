@@ -44,6 +44,7 @@ export default {
   font-size: x-large;
   text-align: center;
   text-shadow: -1px 0 0 black;
+  margin-bottom: 2%;
 }
 .strong {
   font-weight: bold;
