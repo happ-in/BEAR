@@ -1,7 +1,7 @@
 <template>
   <div id="ranking-wrapper">
     <div>
-      <div class="header">랭킹</div>
+      <h1 class="header">랭킹</h1>
     </div>
     <div>
       <div class="swiper-container">
@@ -9,14 +9,16 @@
           <!-- 전체 -->
           <div class="swiper-slide">
             <button class="slide-image" type="submit" name="all" @click="pushRankCategory($event)">
-              <img src="../assets/rankingMain/all.png" alt="all" />
+              <img src="../assets/rankingMain/all.png"
+                alt="all"
+              />
             </button>
           </div>
 
           <!-- 라거 -->
           <div class="swiper-slide">
             <button class="slide-image" type="submit" name="lager" @click="pushRankCategory($event)">
-              <img src="../assets/rankingMain/lager.png" alt="lager" />
+              <img src="../assets/rankingMain/lager.png" alt="lager"/>
             </button>
           </div>
 
@@ -30,23 +32,28 @@
           <!-- 밀맥주 -->
           <div class="swiper-slide">
             <button class="slide-image" type="submit" name="wheat" @click="pushRankCategory($event)">
-              <img src="../assets/rankingMain/wheat.png" alt="wheat" />
+              <img 
+                src="../assets/rankingMain/wheat.png"
+                alt="wheat" 
+              />
             </button>
           </div>
 
           <!-- 스타우트 -->
           <div class="swiper-slide">
             <button class="slide-image" type="submit" name="stout" @click="pushRankCategory($event)">
-              <img src="../assets/rankingMain/stout.png" alt="stout" />
+              <img 
+                src="../assets/rankingMain/stout.png" alt="stout" />
             </button>
           </div>
 
           <!-- 라들러/RTD -->
           <div class="swiper-slide">
             <button class="slide-image" type="submit" name="rtd" @click="pushRankCategory($event)">
-              <img src="../assets/rankingMain/rtd.png" alt="rtd" />
+              <img src="../assets/rankingMain/rtd.png" alt="rtd"/>
             </button>
           </div>
+
         </div>
         <div class="swiper-pagination"></div>
       </div>
@@ -94,7 +101,7 @@ export default {
         name: "RankingCategory",
         params: { category: event.target.alt },
       });
-    },
+    },  
   }, //컴포넌트 내에서 사용할 메소드 정의
 };
 </script>
@@ -102,11 +109,11 @@ export default {
 <style lang="scss">
 // https://dribbble.com/shots/6763080-Cruise-Tech-Motion-Study
 
-$breakpoints: (
-  "sm": 50px,
-  "md": 108px,
-  "lg": 1024px,
-);
+// $breakpoints: (
+//   "sm": 50px,
+//   "md": 108px,
+//   "lg": 1024px,
+// );
 
 $theme-color: #939597;
 
@@ -133,10 +140,11 @@ $theme-color: #939597;
 
 .swiper-container {
   //슬라이드 세로 길이
-  height: 60vh;
+  height: 700px;
   //슬라이드 전체 가로 길이
-  width: 1500px;
+  width: 500px;
   // padding-bottom: 85px;
+  margin-top: 1%;
   padding-top: 12px;
 }
 
@@ -147,19 +155,7 @@ $theme-color: #939597;
 }
 
 .swiper-slide {
-  width: 90%;
-  background-color: white;
-  overflow: hidden;
-
-  &.swiper-slide-active,
-  &.swiper-slide-duplicate-active {
-    .slide-image {
-      transform: scale3d(1, 1, 1);
-    }
-  }
-
-  @media (min-width: map-get($breakpoints, "sm")) {
-    width: 100%;
+  width: 100%;
 
     &.swiper-slide-next,
     &.swiper-slide-prev,
@@ -169,20 +165,6 @@ $theme-color: #939597;
         transform: scale3d(1, 1, 1);
       }
     }
-  }
-
-  @media (min-width: map-get($breakpoints, "md")) {
-    width: 33.333333%;
-
-    &.swiper-slide-next,
-    &.swiper-slide-prev,
-    &.swiper-slide-duplicate-next,
-    &.swiper-slide-duplicate-prev {
-      .slide-image {
-        transform: scale3d(1, 1, 1);
-      }
-    }
-  }
 }
 
 .swiper-pagination {
@@ -191,6 +173,7 @@ $theme-color: #939597;
   justify-content: center;
   align-items: center;
   height: 40px;
+  // margin-top: 30px;
 
   // chained selector hack to handle very specific overrides
   &#{&} {
@@ -200,7 +183,7 @@ $theme-color: #939597;
 
 .swiper-pagination-bullet {
   background: $theme-color;
-  width: 22px;
+  width: 50px;
   height: 4px;
   border-radius: 0;
   transition: opacity 1s ease;
@@ -209,9 +192,9 @@ $theme-color: #939597;
     margin: 0;
   }
 
-  @media (min-width: map-get($breakpoints, "md")) {
-    width: 40px;
-  }
+  // @media (min-width: map-get($breakpoints, "md")) {
+  //   w
+  // }
 }
 
 // ==========================================
@@ -219,11 +202,10 @@ $theme-color: #939597;
 // ==========================================
 
 .slide-image {
-  height: 100%;
-  width: 100%;
+  height: 50vh;
+  width: 30vh;
   padding: 0;
   border: 0;
-
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -233,6 +215,8 @@ $theme-color: #939597;
   transition: transform 1400ms ease;
 
   img {
+    width:100%;
+    height:100%;
     object-fit: cover;
   }
 }
@@ -276,8 +260,8 @@ $theme-color: #939597;
     border-bottom: 3px solid currentColor;
     padding-bottom: 3px;
   }
-  video {
+  video{
     display: none;
-  }
+    }
 }
 </style>
