@@ -1,7 +1,7 @@
 <template>
   <div id="ranking-wrapper">
     <div>
-      <h1 class="ranking-title">Ranking</h1>
+      <h1 class="header">랭킹</h1>
     </div>
     <div>
       <div class="swiper-container">
@@ -140,10 +140,11 @@ $theme-color: #939597;
 
 .swiper-container {
   //슬라이드 세로 길이
-  height: 89%;
+  height: 700px;
   //슬라이드 전체 가로 길이
   width: 500px;
   // padding-bottom: 85px;
+  margin-top: 1%;
   padding-top: 12px;
 }
 
@@ -172,6 +173,7 @@ $theme-color: #939597;
   justify-content: center;
   align-items: center;
   height: 40px;
+  // margin-top: 30px;
 
   // chained selector hack to handle very specific overrides
   &#{&} {
