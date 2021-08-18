@@ -133,7 +133,7 @@ $theme-color: #939597;
 
 .swiper-container {
   //슬라이드 세로 길이
-  height: 84%;
+  height: 60vh;
   //슬라이드 전체 가로 길이
   width: 1500px;
   // padding-bottom: 85px;
