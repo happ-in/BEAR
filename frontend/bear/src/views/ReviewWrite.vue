@@ -73,7 +73,10 @@ export default {
   },
   setup() {}, //컴포지션 API
   created() {}, //컴포넌트가 생성되면 실행
-  mounted() {}, //template에 정의된 html코드가 레너링된 후 실행
+  mounted() {
+    const beerId = this.$route.query.beerId;
+    this.getBeerData(beerId);
+  }, //template에 정의된 html코드가 레너링된 후 실행
   unmounted() {}, //unmount가 완료된 후 실행
   methods: {
     cancel(index) {
@@ -82,6 +85,10 @@ export default {
           this.tagNames.pop(this.tagNames[index]);
         }
       });
+    },
+    async getBeerData(id) {
+      this.beer = await this.$api("beer?beerId=" + id, "get"); //test API
+      console.log(this.beerData);
     },
   },
 };

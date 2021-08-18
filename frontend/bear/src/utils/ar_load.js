@@ -124,15 +124,15 @@ export default {
       //   const xrElement = letsee.createXRElement(div);
       //   letsee.bindXRElement(xrElement, entity);
       // });
-      // letsee //카스 후레시
-      //   .addTarget("https://developer.letsee.io/api-tm/target-manager/target-uid/611489683f9ee405ea644b23")
-      //   .then((entity) => {
-      //     let div = this.$refs.con;
-      //     div.style.width = 360 + "px";
-      //     div.style.height = 640 + "px";
-      //     const xrElement = letsee.createXRElement(div);
-      //     letsee.bindXRElement(xrElement, entity);
-      //   });
+      letsee //카스 후레시
+        .addTarget("https://developer.letsee.io/api-tm/target-manager/target-uid/611489683f9ee405ea644b23")
+        .then((entity) => {
+          let div = this.$refs.con;
+          div.style.width = 360 + "px";
+          div.style.height = 640 + "px";
+          const xrElement = letsee.createXRElement(div);
+          letsee.bindXRElement(xrElement, entity);
+        });
       // letsee //칼스버그
       //   .addTarget("https://developer.letsee.io/api-tm/target-manager/target-uid/611489632f7b8005cc146ef9")
       //   .then((entity) => {
@@ -211,15 +211,15 @@ export default {
       //     const xrElement = letsee.createXRElement(div);
       //     letsee.bindXRElement(xrElement, entity);
       //   });
-      // letsee //하이네켄
-      //   .addTarget("https://developer.letsee.io/api-tm/target-manager/target-uid/6114890f56197305fc5c1320")
-      //   .then((entity) => {
-      //     let div = this.$refs.con;
-      //     div.style.width = 360 + "px";
-      //     div.style.height = 640 + "px";
-      //     const xrElement = letsee.createXRElement(div);
-      //     letsee.bindXRElement(xrElement, entity);
-      //   });
+      letsee //하이네켄
+        .addTarget("https://developer.letsee.io/api-tm/target-manager/target-uid/6114890f56197305fc5c1320")
+        .then((entity) => {
+          let div = this.$refs.con;
+          div.style.width = 360 + "px";
+          div.style.height = 640 + "px";
+          const xrElement = letsee.createXRElement(div);
+          letsee.bindXRElement(xrElement, entity);
+        });
       // letsee //한맥
       //   .addTarget("https://developer.letsee.io/api-tm/target-manager/target-uid/6114890a3f9ee405ea644b20")
       //   .then((entity) => {
@@ -229,24 +229,24 @@ export default {
       //     const xrElement = letsee.createXRElement(div);
       //     letsee.bindXRElement(xrElement, entity);
       //   });
-      // letsee //기네스
-      //   .addTarget("https://developer.letsee.io/api-tm/target-manager/target-uid/611489013f9ee405ea644b1f")
-      //   .then((entity) => {
-      //     let div = this.$refs.con;
-      //     div.style.width = 360 + "px";
-      //     div.style.height = 640 + "px";
-      //     const xrElement = letsee.createXRElement(div);
-      //     letsee.bindXRElement(xrElement, entity);
-      //   });
-      // letsee //블랑
-      //   .addTarget("https://developer.letsee.io/api-tm/target-manager/target-uid/611488f72f7b8005cc146ef8")
-      //   .then((entity) => {
-      //     let div = this.$refs.con;
-      //     div.style.width = 360 + "px";
-      //     div.style.height = 640 + "px";
-      //     const xrElement = letsee.createXRElement(div);
-      //     letsee.bindXRElement(xrElement, entity);
-      //   });
+      letsee //기네스
+        .addTarget("https://developer.letsee.io/api-tm/target-manager/target-uid/611489013f9ee405ea644b1f")
+        .then((entity) => {
+          let div = this.$refs.con;
+          div.style.width = 360 + "px";
+          div.style.height = 640 + "px";
+          const xrElement = letsee.createXRElement(div);
+          letsee.bindXRElement(xrElement, entity);
+        });
+      letsee //블랑
+        .addTarget("https://developer.letsee.io/api-tm/target-manager/target-uid/611488f72f7b8005cc146ef8")
+        .then((entity) => {
+          let div = this.$refs.con;
+          div.style.width = 360 + "px";
+          div.style.height = 640 + "px";
+          const xrElement = letsee.createXRElement(div);
+          letsee.bindXRElement(xrElement, entity);
+        });
       // letsee //파울라너 뮌헨라거
       // .addTarget(
       //   "https://developer.letsee.io/api-tm/target-manager/target-uid/611488f13f9ee405ea644b1e"
@@ -351,15 +351,15 @@ export default {
       //   const xrElement = letsee.createXRElement(div);
       //   letsee.bindXRElement(xrElement, entity);
       // });
-      // letsee //테라
-      //   .addTarget("https://developer.letsee.io/api-tm/target-manager/target-uid/611488a63f9ee405ea644b19")
-      //   .then((entity) => {
-      //     let div = this.$refs.con;
-      //     div.style.width = 360 + "px";
-      //     div.style.height = 640 + "px";
-      //     const xrElement = letsee.createXRElement(div);
-      //     letsee.bindXRElement(xrElement, entity);
-      //   });
+      letsee //테라
+        .addTarget("https://developer.letsee.io/api-tm/target-manager/target-uid/611488a63f9ee405ea644b19")
+        .then((entity) => {
+          let div = this.$refs.con;
+          div.style.width = 360 + "px";
+          div.style.height = 640 + "px";
+          const xrElement = letsee.createXRElement(div);
+          letsee.bindXRElement(xrElement, entity);
+        });
       letsee //스텔라
         .addTarget("https://developer.letsee.io/api-tm/target-manager/target-uid/611d1bc056197305fc5c1323")
         .then((entity) => {
@@ -369,28 +369,28 @@ export default {
           const xrElement = letsee.createXRElement(div);
           letsee.bindXRElement(xrElement, entity);
         });
-      // letsee //칭따오
-      //   .addTarget("https://developer.letsee.io/api-tm/target-manager/target-uid/6114807ef8e80a05ba9010d3")
-      //   .then((entity) => {
-      //     let div = this.$refs.con;
-      //     div.style.width = 360 + "px";
-      //     div.style.height = 640 + "px";
-      //     const xrElement = letsee.createXRElement(div);
-      //     letsee.bindXRElement(xrElement, entity);
-      //   });
-      // letsee //호가든
-      //   .addTarget("https://developer.letsee.io/api-tm/target-manager/target-uid/611480742f7b8005cc146ef2")
-      //   .then((entity) => {
-      //     let div = this.$refs.con;
-      //     div.style.width = 360 + "px";
-      //     div.style.height = 640 + "px";
-      //     const xrElement = letsee.createXRElement(div);
-      //     letsee.bindXRElement(xrElement, entity);
-      //   });
+      letsee //칭따오
+        .addTarget("https://developer.letsee.io/api-tm/target-manager/target-uid/6114807ef8e80a05ba9010d3")
+        .then((entity) => {
+          let div = this.$refs.con;
+          div.style.width = 360 + "px";
+          div.style.height = 640 + "px";
+          const xrElement = letsee.createXRElement(div);
+          letsee.bindXRElement(xrElement, entity);
+        });
+      letsee //호가든
+        .addTarget("https://developer.letsee.io/api-tm/target-manager/target-uid/611480742f7b8005cc146ef2")
+        .then((entity) => {
+          let div = this.$refs.con;
+          div.style.width = 360 + "px";
+          div.style.height = 640 + "px";
+          const xrElement = letsee.createXRElement(div);
+          letsee.bindXRElement(xrElement, entity);
+        });
       this.$refs.btn1.style.visibility = "hidden";
       this.$refs.btn2.style.visibility = "hidden";
-      // this.$refs.btn3.style.visibility = "hidden";
-      // this.$refs.btn4.style.visibility = "hidden";
+      this.$refs.btn3.style.visibility = "hidden";
+      this.$refs.btn4.style.visibility = "hidden";
       setTimeout(() => {
         this.$refs.loading.style.visibility = "hidden";
         this.$refs.load.style.visibility = "hidden";
@@ -406,7 +406,7 @@ export default {
         console.log(this.beerData);
         setTimeout(() => {
           this.$refs.title.innerHTML = " " + this.beerData.beerName + "";
-          this.$refs.rate.innerHTML = " " + this.beerData.beerAvg + "";
+          this.$refs.rate.innerHTML = " " + (this.beerData.beerAvg).toFixed(1) + "";
           this.$refs.proof.innerHTML = " " + this.beerData.alcoholProof + "%";
           this.$refs.category.innerHTML = " " + this.beerData.beerCategory + "";
           this.$refs.country.innerHTML = " " + this.beerData.country.countryName + "";
@@ -436,7 +436,6 @@ export default {
         this.getBeerData(e.trace.entity.substr(81, 4));
         console.log(this.beerData);
       });
-
       this.$refs.guide.style.visibility = "visible";
       this.$refs.guide.style["z-index"] = 500;
       //this.$refs.btn_div.style.visibility = "visible";
@@ -459,7 +458,7 @@ export default {
     },
     goReview() {
       // window.open("beer/search");
-      window.open("review/write");
+      window.open("review/write?beerId=" + this.beerData.beerId);
     },
     async getBeerData(id) {
       this.beerData = await this.$api("beer/ar?searchId=" + id, "get"); //test API
