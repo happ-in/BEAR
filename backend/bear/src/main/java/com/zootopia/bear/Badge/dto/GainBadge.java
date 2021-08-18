@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Setter
 @Getter
 @AllArgsConstructor
@@ -13,13 +15,15 @@ public class GainBadge {
     private String explain;
     private String condition;
     private String badgeImage;
+    private String acquisitionDate;
     private boolean isGain;
 
-    public GainBadge(Badge badge,boolean isGain) {
+    public GainBadge(Badge badge,String acquisitionDate,boolean isGain) {
         this.title = badge.getTitle();
         this.explain = badge.getExplain();
         this.condition = badge.getCondition();
         this.badgeImage = badge.getBadgeImage();
+        this.acquisitionDate = acquisitionDate;
         this.isGain = isGain;
     }
 
