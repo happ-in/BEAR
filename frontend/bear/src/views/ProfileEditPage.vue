@@ -6,7 +6,7 @@
         <div class="header">프로필 수정</div>
       </el-col>
       <el-col :span="6">
-        <el-button round style="padding: 8px 16px; float: right">수정</el-button>
+        <el-button round style="padding: 8px 16px; float: right" @click="updateUser">수정</el-button>
       </el-col>
     </el-row>
 
@@ -56,6 +56,16 @@ export default {
       this.user = await this.$api("search/userInfo?userId=" + sessionStorage.getItem("userId"), "get");
       this.customId = this.user.customId;
       this.nickname = this.user.nickname;
+    },
+    async updateUser() {
+      let data = {
+        customId: this.customId,
+        nickname: this.nickname,
+        userId: sessionStorage.getItem("userId"),
+      };
+      let flag = await this.$api("user/update", "put", data);
+      if (flag) this.$router.push("/myprofile");
+      else alert("중복된 아이디입니다.");
     },
     logout() {
       sessionStorage.clear();
