@@ -47,7 +47,7 @@ export default defineComponent({
       beers: [],
       tags: [],
       users: [],
-      select: "",
+      select: "account",
     };
   },
   methods: {
@@ -57,9 +57,10 @@ export default defineComponent({
       this.tags = await this.$api("search/hashtag?keyword=" + this.keyword, "get");
     },
     goToUser(userId) {
-      let sessionUser = sessionStorage.getItem("user.userId");
+      let sessionUser = sessionStorage.getItem("userId");
+      localStorage.setItem("searchUserId", userId);
       if (sessionUser == userId) this.$router.push("/myprofile");
-      else this.$router.push({ name: "UserProfile", params: { userId: "userId" } });
+      else this.$router.push({ name: "UserProfile", params: { userId: userId } });
     },
     goToBeer(beerId) {
       this.$router.push({ name: "Detail", params: { beerId: beerId } });
