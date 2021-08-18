@@ -91,7 +91,7 @@ export default {
 h1 {
   display: flex;
   justify-content: center;
-  margin: 5% 0 3% 0;
+  margin: 7% 0 3% 0;
 }
 .card {
   margin-top: 1%;

@@ -2,6 +2,7 @@
   <div class="wrapper-rank-category">
     <h1>{{ this.$route.params.category }}</h1>
     <!-- countryName, beerCategory, alcoholProof 도 추가-->
+<<<<<<< HEAD
 
     <div
       class="rank-category-item-wrapper"
@@ -24,6 +25,30 @@
           </el-row>
         </el-col>
       </el-row>
+=======
+    <div class="rank-category-list">
+      <div
+        class="rank-category-item-wrapper"
+        v-for="(beer, index) in rankData"
+        v-bind:key="index"
+        :style="{ 'background-color': bgRank[index] }"
+      >
+        <el-row>
+          <el-col :span="3" class="rank-grade"> {{ index + 1 }}위 </el-col>
+          <el-col :span="5">
+            <img class="beer-image-wrapper" :src="require('../assets/beers/' + beer.beerImage + '.png')" />
+          </el-col>
+          <el-col :span="16">
+            <el-row class="beerName">{{ beer.beerName }}</el-row>
+            <el-row class="beer-info-etc">{{ beer.countryName }}/{{ beer.beerCategory }}/{{ beer.alcoholProof }}</el-row>
+            <el-row class="total-count-wrapper">
+              <span class="total-count-info">{{ beer.totalCount }}</span
+              >명이 좋아해요!
+            </el-row>
+          </el-col>
+        </el-row>
+      </div>
+>>>>>>> 86ef3e0 (Design: Change rankcategory)
     </div>
   </div>
 </template>
@@ -73,6 +98,9 @@ video {
   height: 120px;
   object-fit: contain;
   padding-top: 10px;
+}
+.rank-category-list {
+  margin-bottom: 20vw;
 }
 .rank-category-item-wrapper {
   box-shadow: 1px 2px 3px grey;
