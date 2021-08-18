@@ -389,7 +389,8 @@ export default {
       //   });
       this.$refs.btn1.style.visibility = "hidden";
       this.$refs.btn2.style.visibility = "hidden";
-      this.$refs.btn3.style.visibility = "hidden";
+      // this.$refs.btn3.style.visibility = "hidden";
+      // this.$refs.btn4.style.visibility = "hidden";
       setTimeout(() => {
         this.$refs.loading.style.visibility = "hidden";
         this.$refs.load.style.visibility = "hidden";
@@ -398,6 +399,7 @@ export default {
       }, 3000);
       letsee.onTrackStart((e) => {
         this.$refs.btn3.style.visibility = "visible";
+        this.$refs.btn4.style.visibility = "visible";
         this.$refs.guide.style.visibility = "hidden";
         this.$refs.guide.style["z-index"] = 0;
         this.getBeerData(e.trace.entity.substr(81, 4));
@@ -428,6 +430,7 @@ export default {
       letsee.onTrackEnd((e) => {
         this.$refs.guide.style.visibility = "visible";
         this.$refs.btn3.style.visibility = "hidden";
+        this.$refs.btn4.style.visibility = "hidden";
         this.$refs.guide.style["z-index"] = 500;
         console.log(e.trace.entity.substr(81, 4));
         this.getBeerData(e.trace.entity.substr(81, 4));
@@ -455,6 +458,7 @@ export default {
       window.open("beer/search");
     },
     goReview() {
+      // window.open("beer/search");
       window.open("review/write");
     },
     async getBeerData(id) {

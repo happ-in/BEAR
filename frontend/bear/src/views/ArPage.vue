@@ -80,6 +80,7 @@
     </svg>
   </div>
   <!-- 안주추천 버튼 -->
+  <div>
   <div id="btn_div" ref="btn3">
       <svg 
           class="btn_more"
@@ -87,11 +88,11 @@
           xmlns="http://www.w3.org/2000/svg"
           width="110"
           height="62"
-          viewBox="0 0 110 62"
+          viewBox="-55 0 110 62"
       >
       <defs>
         <filter
-          id="xdxotu3hsa"
+          id="xdxotu3hsa2"
           width="110"
           height="62"
           x="0"
@@ -105,7 +106,7 @@
           <feComposite in="SourceGraphic" />
         </filter>
         <filter
-          id="w2ozhmi69b"
+          id="w2ozhmi69b2"
           width="92"
           height="30"
           x="21.5"
@@ -148,6 +149,77 @@
           </g>
         </g>
       </svg>
+    </div>
+    <!-- 리뷰남기기 버튼 -->
+    <div id="btn_div1" ref="btn4">
+      <svg 
+          class="btn_more"
+          id="btn_more"
+          xmlns="http://www.w3.org/2000/svg"
+          width="110"
+          height="62"
+          viewBox="70 0 110 62"
+      >
+      <defs>
+        <filter
+          id="xdxotu3hsa"
+          width="110"
+          height="62"
+          x="0"
+          y="0"
+          filterUnits="userSpaceOnUse"
+        >
+          <feOffset dx="3" dy="3" />
+          <feGaussianBlur result="blur" stdDeviation="3" />
+          <feFlood flood-opacity=".302" />
+          <feComposite in2="blur" operator="in" />
+          <feComposite in="SourceGraphic" />
+        </filter>
+        <filter
+          id="w2ozhmi69b"
+          width="92"
+          height="30"
+          x="21.5"
+          y="13.5"
+          filterUnits="userSpaceOnUse"
+        >
+          <feOffset />
+          <feGaussianBlur result="blur-2" stdDeviation="1.5" />
+          <feFlood flood-opacity=".161" />
+          <feComposite in2="blur-2" operator="in" />
+          <feComposite in="SourceGraphic" />
+        </filter>
+      </defs>
+      <g>
+        <g
+          filter="url(#xdxotu3hsa)"
+          transform="translate(-82 -122) translate(82 122)"
+        >
+          <path fill="#F5DF4D" d="M0 0H140V44H0z" transform="translate(6 6)" />
+        </g>
+        <g
+          @click="goReview"
+          filter="url(#w2ozhmi69b)"
+          transform="translate(-82 -122) translate(82 122)"
+        >
+          <text
+            fill="#fff"
+            font-family="AppleSDGothicNeo-ExtraBold, Apple SD Gothic Neo"
+            font-size="18px"
+            font-weight="800"
+            transform="translate(26 34)"
+            style="
+              text-shadow: -1px 0 #939597, 0 1px #939597, 1px 0 #939597,
+                0 -1px #939597;
+              text-align: right;
+            "
+          >
+            <tspan x="0" y="0">리뷰쓰기</tspan>
+          </text>
+          </g>
+        </g>
+      </svg>
+    </div>
     </div>
     <div id="container" ref="con">
   <p id="beer_hash_one" ref="hash1"></p>
@@ -249,13 +321,30 @@
   text-shadow: 3px 3px 3px rgb(0, 0, 0);
 }
 #btn_div {
-  width: 100%;
+  width: 60%;
   height: 40px;
   margin-bottom: 50px;
   position: absolute;
   transform: translate(-50%, -50%);
   top: 85%;
-  left: 50%;
+  left: 20%;
+  bottom: 0;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  z-index: 600;
+  visibility: visible;
+  border-radius: 50px;
+}
+
+#btn_div1 {
+  width: 60%;
+  height: 40px;
+  margin-bottom: 50px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 85%;
+  left: 80%;
   bottom: 0;
   display: flex;
   align-content: center;
@@ -300,7 +389,7 @@
 }
 
 .btn_more {
-  width: 200px;
+  width: 420px;
   height: 60px;
   object-fit: contain;
 }
