@@ -9,10 +9,10 @@
           </div>
           <img :src="beerImage" />
         </div>
-        <div style="display: flex; align-items: flex-end; align-self: center">
+        <div id="bookmark-beername">
           <h3>{{ beerData.beerName }}</h3>
-          <button>
-            <img style="width: 25px" src="../assets/bookmark/bookmark-no.png" alt="" />
+          <button style="border: none; background: transparent !important" @click="doBookmark">
+            <img style="width: 25px" :src="isBookmark ? bookmarkYes : bookmarkNo" alt="" />
           </button>
         </div>
 
@@ -64,11 +64,19 @@ export default {
       snackData: [],
       beerImage: "",
       countryName: "",
+      isBookmark: "",
+      bookmarkYes: require("../assets/bookmark/bookmark-yes.png"),
+      bookmarkNo: require("../assets/bookmark/bookmark-no.png"),
+      data: {
+        userId: sessionStorage.getItem("userId"),
+        beerId: this.$route.params.beerId,
+      },
     };
   },
   setup() {}, //컴포지션 API
   created() {
     this.getBeerData();
+    this.getBookmarkFlag();
   }, //컴포넌트가 생성되면 실행
   mounted() {}, //template에 정의된 html코드가 레너링된 후 실행
   unmounted() {}, //unmount가 완료된 후 실행
@@ -78,6 +86,23 @@ export default {
     },
     async getSnackData() {
       this.snackData = await this.$api("snack?beerCategory=" + this.beerData.beerCategory, "get");
+    },
+    async getBookmarkFlag() {
+      this.isBookmark = await this.$api(
+        "bookmark?userId=" + sessionStorage.getItem("userId") + "&beerId=" + this.$route.params.beerId,
+        "get"
+      );
+    },
+    async addBookmark() {
+      await this.$api("bookmark", "post", this.data);
+    },
+    async cancelBookmark() {
+      await this.$api("bookmark", "delete", this.data);
+    },
+    doBookmark() {
+      this.isBookmark = !this.isBookmark;
+      if (this.isBookmark) this.addBookmark();
+      else this.cancelBookmark();
     },
   }, //컴포넌트 내에서 사용할 메소드 정의
   watch: {
@@ -92,7 +117,11 @@ export default {
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400&display=swap");
-
+#bookmark-beername {
+  display: flex;
+  align-items: flex-end;
+  align-self: center;
+}
 h1 {
   font-family: "Noto Sans KR", sans-serif;
 }
