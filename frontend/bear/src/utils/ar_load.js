@@ -419,6 +419,7 @@ export default {
       });
       letsee.onTrackEnd((e) => {
         this.$refs.guide.style.visibility = "visible";
+        this.$refs.btn3.style.visibility = "hidden";
         this.$refs.guide.style["z-index"] = 500;
         console.log(e.trace.entity.substr(81, 4));
         this.getBeerData(e.trace.entity.substr(81, 4));
