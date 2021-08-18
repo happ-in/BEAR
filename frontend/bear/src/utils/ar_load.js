@@ -93,7 +93,7 @@ export default {
       //   });
       letsee //제주위트에일
       .addTarget(
-        "https://developer.letsee.io/api-tm/target-manager/target-uid/611d1d3b2f7b8005cc146efd"
+        "https://developer.letsee.io/api-tm/target-manager/target-uid/611d225e2f7b8005cc146f00"
       )
       .then((entity) => {
         let div = this.$refs.con;
