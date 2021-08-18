@@ -142,7 +142,7 @@ $theme-color: #939597;
   //슬라이드 세로 길이
   height: 700px;
   //슬라이드 전체 가로 길이
-  width: 500px;
+  width: 420px;
   // padding-bottom: 85px;
   margin-top: 1%;
   padding-top: 12px;
@@ -150,7 +150,7 @@ $theme-color: #939597;
 
 .swiper-wrapper {
   // enough width to have off screen slides partially visible
-  width: 60%;
+  width: 70%;
   will-change: transform;
 }
 
