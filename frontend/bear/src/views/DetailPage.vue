@@ -2,6 +2,7 @@
   <div>
     <div class="header">상세페이지</div>
     <el-carousel :interval="0" indicator-position="outside" height="140vw">
+      <!-- bear-carousel -->
       <el-carousel-item id="beer-detail">
         <!-- beer img -->
         <div id="detail-beerimg-box">
@@ -18,14 +19,15 @@
         <p>{{ countryName }}/{{ beerData.beerCategory }}/{{ beerData.alcoholProof }}</p>
       </el-carousel-item>
 
+      <!-- snack-carousel -->
       <el-carousel-item class="beer-snack" style="magrin: 0px auto">
         <div class="snack-sentence" style="padding-left: 3%">
-          <p class="snack-sentence">
+          <div class="snack-sentence">
             <span style="font-size: 16px; font-weight: bold">{{ beerData.beerName }} </span>
-            <span style="font-size: 14px">와/과 잘 어울리는 안주는</span><br />
+            <span style="font-size: 14px">와/과 잘 어울리는 안주는</span><br/>
             <span style="font-size: 35px; font-weight: bold; color: #f5df4d">{{ snackData.snackCategory }} 안주</span>
             <span style="font-size: 14px">입니다</span>
-          </p>
+          </div>
         </div>
 
         <div id="snack-card-lists">
@@ -141,7 +143,6 @@ p {
   height: 90vw; 
   width: 100vw; 
 
-  /* align-self: center; */
   text-align: -webkit-center; 
   margin-bottom: 3%;
 }

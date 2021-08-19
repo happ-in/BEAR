@@ -120,17 +120,20 @@
   <div class="badge-list" v-if="this.select == 'badgeItem'">
     <el-row>
       <el-col :span="12" style="text-align: center" v-for="(badge, index) in badges" :key="index">
-        <el-button type="text" @click="centerDialogVisible[index] = true" style="color: black">
+        <el-button class="badge-button" type="text" @click="centerDialogVisible[index] = true" style="color: black">
           <!-- 뱃지 미획득시 이미지(흑백)-->
           <div v-if="badge.gain == false" style="text-align: -webkit-center">
             <div style="border-radius: 50%; height: 120px; width: 120px; background-color: white; margin: 0px">
-              <img :src="require('../assets/badge/' + badge.badgeImage + '.png')" width="120" style="mix-blend-mode: luminosity" /> <br />
+              <img :src="require('../assets/badge/' + badge.badgeImage + '.png')" width="120" style="mix-blend-mode: luminosity" />
             </div>
           </div>
           <!-- 뱃지 획득시 이미지(컬러)-->
-          <div v-else><img :src="require('../assets/badge/' + badge.badgeImage + '.png')" width="120" /> <br /></div>
+          <div v-else>
+            <img :src="require('../assets/badge/' + badge.badgeImage + '.png')" width="120" />
+          </div>
           <p>{{ badge.title }}</p>
         </el-button>
+
         <!-- 뱃지모달 -->
         <el-dialog title="뱃지 타이틀" v-model="centerDialogVisible[index]" width="70%" center>
           <!-- 뱃지이미지 -->
@@ -317,6 +320,7 @@ export default {
   width: 100%;
   object-fit: contain;
 }
+
 .profile-radio-toolbar {
   text-align-last: center;
 }
@@ -341,6 +345,12 @@ export default {
   color: #fff;
   text-shadow: -1px 0 #939597, 0 1px black, 1px 0 #939597, 0 -1px #939597;
 }
+/* badge */
+.badge-button {
+  display: flex;
+  flex-direction: column;
+}
+/* tabbar padding */
 .bookmark-list {
   padding-bottom: 20vw;
 }
@@ -350,6 +360,7 @@ export default {
 .badge-list {
   padding-bottom: 20vw;
 }
+
 .profile-user-wrapper {
   padding-top: 12px;
   margin: 3%;

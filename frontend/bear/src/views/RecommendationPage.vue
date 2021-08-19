@@ -4,13 +4,13 @@
       <h1 class="header">랜덤 추천</h1>
 
       <!-- 맥주 이름, 국기 이미지 -->
-      <h2>
+      <h2 class="random-beer-name">
         {{ beer.beerName }}
         <img :src="countryImage" />
       </h2>
 
       <!-- 맥주 이미지 -->
-      <div class="beerimg-box"><img :src="beerImage" /></div>
+      <div class="random-beerimg-box"><img :src="beerImage" /></div>
 
       <!-- 해시태그 -->
       <ul class="hashtag">
@@ -65,8 +65,13 @@ export default {
 </script>
 
 <style>
-/* 다시하기랑 상세페이지 중간으로/ 글자 간격 띄우고 싶다  */
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400&display=swap");
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 .random-wrapper {
   position: absolute;
@@ -97,7 +102,7 @@ export default {
   flex-direction: column;
   width: 291px;
 }
-h2 {
+.random-beerimg-box {
   display: flex;
   justify-content: flex-start;
 
@@ -113,28 +118,31 @@ h2 {
 
   color: #000000;
 }
-h2 img {
+.random-beer-name {
+  font-family: 'GmarketSansMedium';
+  margin: 4% 0 2% 2%;
+}
+.random-beer-name img {
   position: inline;
-  /* vertical-align: middle; */
+  vertical-align: middle;
   align-self: center;
-  /* display: flex; */
-  padding-left: 2%;
-  /* padding-bottom: 10px; */
+  padding-left: 1%;
+  padding-bottom: 2px;
+
+  font-family: 'GmarketSansMedium';
   width: 24px;
-  height: 15.97px;
+  height: 24px;
   bottom: 10px;
 }
-.beerimg-box {
+.random-beerimg-box {
   position: relative;
   width: 291px;
   height: 375px;
-  /* left: 34px;
-    top: 104px; */
 
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.beerimg-box img {
+.random-beerimg-box img {
   position: absolute;
   top: 20px;
   left: 0;
@@ -199,10 +207,6 @@ h2 img {
   top: 73%;
   width: 280px;
   padding-left: 2vw;
-  /* left: 10.83%;
-    right: 57.22%;
-    top: 76.88%;
-    bottom: 19.69%; */
 
   columns: 2;
   -webkit-columns: 2;
@@ -220,7 +224,7 @@ h2 img {
 
   text-align: left;
   text-shadow: -1px 0 #939597, 0 1px #939597, 1px 0 #939597, 0 -1px #939597;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: 'GmarketSansMedium';
   font-style: normal;
   font-weight: bold;
   font-size: 20px;
