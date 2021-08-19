@@ -161,6 +161,7 @@ p {
 
   display: flex;
   flex-flow: wrap;
+  /* place-content: center; */
 
   font-family: '양진체';
   font-size: 20px;
