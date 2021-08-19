@@ -160,7 +160,6 @@ export default {
   },
   setup() {}, //컴포지션 API
   created() {
-    this.getBookmarks();
   }, //컴포넌트가 생성되면 실행
   mounted() {
     this.userId = sessionStorage.getItem("userId");
