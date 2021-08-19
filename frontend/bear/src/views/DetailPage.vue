@@ -3,11 +3,11 @@
     <div class="header">상세페이지</div>
     <el-carousel :interval="0" indicator-position="outside" height="140vw">
       <el-carousel-item id="beer-detail">
-        <div id="detail-beerimg-box" style="height: 90vw; width: 150vw; text-align-last: center; align-self: center; margin-bottom: 3%">
+        <div id="detail-beerimg-box" style="height: 90vw; width: 100vw; text-align-last: center; align-self: center; margin-bottom: 3%">
           <div class="chart-area">
             <div id="container" style="width: 100%; height: 100%"></div>
           </div>
-          <img :src="beerImage" />
+          <img :src="beerImage"/>
         </div>
         <div id="bookmark-beername">
           <h3>{{ beerData.beerName }}</h3>
@@ -22,7 +22,7 @@
         <div></div>
       </el-carousel-item>
 
-      <el-carousel-item class="beer-snack" style="background-color: white">
+      <el-carousel-item class="beer-snack" style="magrin: 0px auto">
         <div class="snack-sentence" style="padding-left: 3%">
           <p class="snack-sentence">
             <span style="font-size: 16px; font-weight: bold">{{ beerData.beerName }} </span>
