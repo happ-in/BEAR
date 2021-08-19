@@ -49,4 +49,16 @@ export default {
 .strong {
   font-weight: bold;
 }
+.profile-follow-box {
+  height: 9vh;
+  border-bottom: 1px solid grey;
+  border-top: 1px solid gray;
+  align-content: center;
+}
+.profile-nickname {
+  text-align: left;
+  font-size: x-large;
+  font-weight: bold;
+  padding-bottom: 3%;
+}
 </style>

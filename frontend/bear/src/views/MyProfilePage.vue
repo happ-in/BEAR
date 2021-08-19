@@ -1,35 +1,34 @@
 <template>
-  <div class="header">{{ this.user.customId }}</div>
+  <div class="header">{{ user.customId }}</div>
 
   <!-- 프로필 -->
   <el-row class="profile-user-wrapper">
-    <el-col :span="12">
-      <el-avatar :src="this.user.userImage" :size="100" style="margin-right: 4px" />
+    <el-col :span="8">
+      <el-avatar :src="user.userImage" :size="100" />
     </el-col>
-    <el-col :span="12" style="text-align: left">
-      <div>뱃지명</div>
-      <div>{{ this.user.nickname }}</div>
+    <el-col :span="1"></el-col>
+    <el-col :span="15">
+      <div class="profile-nickname">{{ user.nickname }}</div>
+      <!-- 프로필 변경 -->
+      <button class="profile-btn" @click="goProfileEdit">프로필 변경</button>
     </el-col>
   </el-row>
 
   <!-- 리뷰수/팔로잉/팔로워 -->
-  <el-row style="height: 7vh">
+  <el-row class="profile-follow-box">
     <el-col :span="8">
       <div class="grid-content bg-purple strong">리뷰수</div>
-      <div class="grid-content bg-purple">{{ this.user.reviewCount }}</div>
+      <div class="grid-content bg-purple">{{ user.reviewCount }}</div>
     </el-col>
     <el-col :span="8" @click="goToFollowing">
       <div class="grid-content bg-purple-light strong">팔로잉</div>
-      <div class="grid-content bg-purple-light">{{ this.user.followCount }}</div>
+      <div class="grid-content bg-purple-light">{{ user.followCount }}</div>
     </el-col>
     <el-col :span="8" @click="goToFollower">
       <div class="grid-content bg-purple strong">팔로워</div>
-      <div class="grid-content bg-purple">{{ this.user.followerCount }}</div>
+      <div class="grid-content bg-purple">{{ user.followerCount }}</div>
     </el-col>
   </el-row>
-
-  <!-- 프로필 변경 -->
-  <button class="profile-btn" @click="goProfileEdit">프로필 변경</button>
 
   <div class="profile-radio-toolbar" style="margin-bottom: 5%">
     <input type="radio" v-model="select" value="bookmark" checked />

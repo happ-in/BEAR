@@ -1,13 +1,18 @@
 <template>
   <div>
-    <div style="display: flex">
-      <h2>리뷰</h2>
-      <el-button round>등록</el-button>
-    </div>
+    <el-row>
+      <el-col :span="6"> </el-col>
+      <el-col :span="12">
+        <div class="header">리뷰</div>
+      </el-col>
+      <el-col :span="6">
+        <el-button round style="padding: 8px 16px; float: right">등록</el-button>
+      </el-col>
+    </el-row>
     <el-card class="box-card">
       <div style="display: flex">
-        <h1>'{{ beer.beerName }}'</h1>
-        <h4>어떠셨나요?</h4>
+        <span style="font-size: larger; font-weight: bold">'{{ beer.beerName }}'</span>
+        <span style="align-self: flex-end">어떠셨나요?</span>
       </div>
 
       <div style="text-align: center">
@@ -17,13 +22,7 @@
 
       <div style="margin-top: 20px">
         <div v-for="(hashTag, index) in beer.hashTags" :key="index" class="checkbox-wrapper">
-          <input
-            type="checkbox"
-            ref="tags"
-            v-model="tagNames"
-            :id="hashTag.hashTagName"
-            :value="hashTag.hashTagName"
-          />
+          <input type="checkbox" ref="tags" v-model="tagNames" :id="hashTag.hashTagName" :value="hashTag.hashTagName" />
           <div>
             <span style="padding: 5px"> #{{ hashTag.hashTagName }} </span>
           </div>
@@ -32,9 +31,7 @@
     </el-card>
 
     <el-row style="margin: 3px">
-      <el-col :span="20"
-        ><el-input placeholder="직접 입력" v-model="keyword" class="input-with-select"
-      /></el-col>
+      <el-col :span="20"><el-input placeholder="직접 입력" v-model="keyword" class="input-with-select" /></el-col>
       <el-col :span="4"><el-button icon="el-icon-search"></el-button></el-col>
     </el-row>
 
@@ -52,16 +49,9 @@ export default {
     return {
       beer: {
         beerName: "시메이 화이트 트리펠",
-        beerImage:
-          "https://assets.business.veluga.kr/media/public/Chimay_Chimay_TripelCinq_Cents_4SYlnWG.png",
-        countryImg:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Flag_of_Belgium.svg/240px-Flag_of_Belgium.svg.png",
-        hashTags: [
-          { hashTagName: "트라피스트" },
-          { hashTagName: "명품" },
-          { hashTagName: "과일향" },
-          { hashTagName: "향신료" },
-        ],
+        beerImage: "https://assets.business.veluga.kr/media/public/Chimay_Chimay_TripelCinq_Cents_4SYlnWG.png",
+        countryImg: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Flag_of_Belgium.svg/240px-Flag_of_Belgium.svg.png",
+        hashTags: [{ hashTagName: "트라피스트" }, { hashTagName: "명품" }, { hashTagName: "과일향" }, { hashTagName: "향신료" }],
         totalLike: 10,
         isLike: false,
       },
@@ -124,7 +114,7 @@ input[type="checkbox"]:checked ~ div {
   line-height: 25px;
   transition: 0.5s ease;
 }
-video{
-    display: none;
+video {
+  display: none;
 }
 </style>
