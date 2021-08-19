@@ -37,13 +37,13 @@ public class ReviewSearchService {
 
 
 	public List<ReviewDto> searchOtherReview(long otherId, long userId) {
-		List<Review> reviews = reviewRepository.findAllByUserId(otherId);
+		List<Review> reviews = reviewRepository.findAllByUserIdOrderByStartDateDesc(otherId);
 		return getReviewDtos(userId, reviews);
 	}
 
 	public List<ReviewDto> searchMyReview(long userId) {
 		// 1. 내가 작성한 리뷰 가져오기
-		List<Review> reviews = reviewRepository.findAllByUserId(userId);
+		List<Review> reviews = reviewRepository.findAllByUserIdOrderByStartDateDesc(userId);
 		return getReviewDtos(userId, reviews);
 	}
 
