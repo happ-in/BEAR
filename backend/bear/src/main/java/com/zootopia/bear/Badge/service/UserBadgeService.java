@@ -55,8 +55,8 @@ public class UserBadgeService {
             UserBadge userBadge = new UserBadge(
                     checkUserBadgeId,
                     LocalDateTime.now(),
-                    badgeRepository.getById(badgeId),
-                    userRepository.getById(userId)
+                    badgeRepository.findByBadgeId(badgeId),
+                    userRepository.findByUserId(userId)
             );
             userBadgeRepository.save(userBadge);
         }
