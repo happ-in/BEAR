@@ -394,13 +394,13 @@
   object-fit: contain;
 }
 
-#flag{
+/* #flag{
   position: absolute;
   width: 30px;
   height: 30px;
   left: 271px;
   top: 71px;
-}
+} */
 
 #country {
   position: absolute;

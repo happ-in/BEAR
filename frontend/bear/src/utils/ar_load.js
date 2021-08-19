@@ -410,9 +410,9 @@ export default {
           this.$refs.proof.innerHTML = " " + this.beerData.alcoholProof + "%";
           this.$refs.category.innerHTML = " " + this.beerData.beerCategory + "";
           this.$refs.country.innerHTML = " " + this.beerData.country.countryName + "";
-          this.country = "i5a403.p.ssafy.io" + require("../assets/flags/" + this.beerData.country.countryName + ".png");
+          // this.country = "i5a403.p.ssafy.io" + require("../assets/flags/" + this.beerData.country.countryName + ".png");
           // this.star = require("../assets/stars/" + Math.floor(this.beerData.beerAvg) + ".png");
-          this.$refs.flag.innerHTML = "<img src=" + this.country + "/>";
+          // this.$refs.flag.innerHTML = "<img src=" + this.country + "/>";
           if (Math.floor(this.beerData.beerAvg) == 5) { this.$refs.star.innerHTML = "★★★★★"; }
           else if (Math.floor(this.beerData.beerAvg) == 4) { this.$refs.star.innerHTML = "★★★★☆"; }
           else if (Math.floor(this.beerData.beerAvg) == 3) { this.$refs.star.innerHTML = "★★★☆☆"; }
