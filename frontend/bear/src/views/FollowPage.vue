@@ -5,10 +5,9 @@
 
   <div style="width: 100%; padding: 2%" v-for="(other, index) in others" :key="index">
     <el-row>
-      <el-avatar :size="100" :src="other.userImage" />
+      <el-avatar :size="80" :src="other.userImage" />
       <div class="follow-wrapper">
-        <div>뱃지명</div>
-        <div class="nickname">{{ other.nickname }}</div>
+        <div class="nickname">{{ other.customId }}</div>
         <div>{{ other.nickname }}</div>
       </div>
     </el-row>
@@ -48,6 +47,7 @@ video {
 .nickname {
   font-size: x-large;
   font-weight: bold;
+  margin-bottom: 5%;
 }
 .follow-wrapper {
   align-self: center;
