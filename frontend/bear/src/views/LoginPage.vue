@@ -30,24 +30,20 @@ export default {
 };
 </script>
 <style>
-#container {
+#login-container {
   display: flex;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
+  margin-top:54%;
 }
 #login-logo {
-  position: absolute;
-  top: 30%;
-  left: 25%;
+
   width: 200px;
 }
 #login-btn {
-  position: absolute;
   width: 320px;
   height: 60px;
-  top: 41%;
-  left: 10%;
-
 }
 video {
   display: none;
