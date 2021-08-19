@@ -13,6 +13,8 @@ import com.zootopia.bear.Review.domain.Review;
 
 @Repository
 public interface ReviewRepository extends JpaRepository<Review, Integer> {
+	List<Review> findAllByUserId(long userId);
+
 	List<Review> findAllByUserIdOrderByStartDateDesc(long userId);
 
 	@Query(value = "select sum(rating)/count(*) from review where beer_id=1 group by beer_id;", nativeQuery = true)

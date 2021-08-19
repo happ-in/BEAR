@@ -94,7 +94,7 @@ public class UserBadgeService {
         if(userBadgeId.isPresent()) {
             return;
         }
-        List<Review> reviewList = reviewRepository.findAllByUserId(userId);
+        List<Review> reviewList = reviewRepository.findAllByUserIdOrderByStartDateDesc(userId);
         int count = 0;
         for(Review review : reviewList) {
             if(review.getRating()<=1) {
