@@ -99,8 +99,8 @@
     <el-row>
       <el-col :span="12" style="text-align: center" v-for="(badge, index) in badges" :key="index">
         <img :src="require('../assets/badge/' + badge.badgeImage + '.png')" width="120" /> <br />
-        <el-button type="text" @click="centerDialogVisible = true"> {{ badge.title }} </el-button>
-        <el-dialog title="뱃지 타이틀" v-model="centerDialogVisible" width="50%" center>
+        <el-button type="text" @click="centerDialogVisible[index] = true"> {{ badge.title }} </el-button>
+        <el-dialog title="뱃지 타이틀" v-model="centerDialogVisible[index]" width="50%" center>
           <div style="text-align: center">
             <img :src="require('../assets/badge/' + badge.badgeImage + '.png')" width="120" /> <br />
             <h4>{{ badge.acquisitionDate ? badge.acquisitionDate : "미획득" }}</h4>
@@ -127,7 +127,7 @@ export default {
       heartNo: require("../assets/heart.png"),
       userId: "",
       radio: "북마크",
-      centerDialogVisible: false,
+      centerDialogVisible: [],
       user: {
         userId: "",
         customId: "",
@@ -159,8 +159,7 @@ export default {
     };
   },
   setup() {}, //컴포지션 API
-  created() {
-  }, //컴포넌트가 생성되면 실행
+  created() {}, //컴포넌트가 생성되면 실행
   mounted() {
     this.userId = sessionStorage.getItem("userId");
     this.getUserData();
