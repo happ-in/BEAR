@@ -14,8 +14,8 @@
 
       <!-- 해시태그 -->
       <ul class="hashtag">
-        <li v-for="(hashtag, index) in beer.hashtags" :key="index">
-          <p>{{ hashtag.hashTagName }}</p>
+        <li v-for="(hashtag, index) in beer.hashTags" :key="index">
+          <p># {{ hashtag.hashTagName }}</p>
         </li>
       </ul>
 
@@ -58,6 +58,7 @@ export default {
       this.beer = await this.$api("beer/random", "get");
       this.countryImage = require("../assets/flags/" + this.beer.country.countryName + ".png");
       this.beerImage = require("../assets/beers/" + this.beer.beerImage + ".png");
+      console.log(this.beer);
     },
   }, //컴포넌트 내에서 사용할 메소드 정의
 };
