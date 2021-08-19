@@ -17,8 +17,8 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
 
 	List<Review> findAllByUserIdOrderByStartDateDesc(long userId);
 
-	@Query(value = "select sum(rating)/count(*) from review where beer_id=1 group by beer_id;", nativeQuery = true)
-	double beerAvg(int beerId);
+	@Query(value = "select sum(rating)/count(*) from review where beer_id=:beerId group by beer_id;", nativeQuery = true)
+	double beerAvg(@Param("beerId") int beerId);
 
 	@Modifying(clearAutomatically = true)
 	@Query(value = "update review set rating = :rating where review_id = :reviewId", nativeQuery = true)
