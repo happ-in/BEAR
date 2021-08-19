@@ -3,19 +3,19 @@
     <div class="header">상세페이지</div>
     <el-carousel :interval="0" indicator-position="outside" height="140vw">
       <el-carousel-item id="beer-detail">
-        <div id="detail-beerimg-box" style="height: 90vw; width: 100vw; text-align-last: center; align-self: center; margin-bottom: 3%">
-          <div class="chart-area">
-            <div id="container" style="width: 100%; height: 100%"></div>
-          </div>
-          <img :src="beerImage"/>
+
+        <!-- beer img -->
+        <div id="detail-beerimg-box">
+          <img id="detail-beerimg" :src="beerImage"/>
         </div>
+
+        <!-- beer info -->
         <div id="bookmark-beername">
           <h3>{{ beerData.beerName }}</h3>
           <button style="border: none; background: transparent !important" @click="doBookmark">
             <img style="width: 25px" :src="isBookmark ? bookmarkYes : bookmarkNo" alt="" />
           </button>
         </div>
-
         <el-rate id="detail-rate" v-model="beerData.beerAvg" allow-half disabled show-template="{beerData.beerAvg}"></el-rate>
         <p>{{ countryName }}/{{ beerData.beerCategory }}/{{ beerData.alcoholProof }}</p>
 
@@ -141,9 +141,19 @@ p {
   flex-direction: column;
   margin-top: 4%;
 }
-#detail-beerimg-box img {
+#detail-beerimg-box {
+  height: 90vw; 
+  width: 100vw; 
+
+  text-align: -webkit-center; 
+  /* align-self: center;  */
+
+  margin-bottom: 3%;
+}
+#detail-beerimg-box img{
   padding-top: 5%;
   height: 90%;
+
   object-fit: contain;
 }
 #beer-detail h3 {

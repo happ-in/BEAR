@@ -102,8 +102,6 @@
             </template>
           </el-dropdown>
         </el-col>
-
-        
       </el-row>
     </el-card>
   </div>
@@ -123,7 +121,7 @@
           <div v-else>
             <img :src="require('../assets/badge/' + badge.badgeImage + '.png')" width="120" /> <br />
           </div>
-          {{ badge.title }} 
+          <p>{{ badge.title }}</p> 
         </el-button>
         <!-- 뱃지모달 -->
         <el-dialog title="뱃지 타이틀" v-model="centerDialogVisible[index]" width="70%" center>
