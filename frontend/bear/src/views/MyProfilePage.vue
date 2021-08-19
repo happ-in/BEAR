@@ -37,7 +37,7 @@
     <input type="radio" v-model="select" value="review" />
     <label @click="this.select = 'review'">리뷰</label>
     <input type="radio" v-model="select" value="badge" />
-    <label @click="this.select = 'badge'">뱃지</label>
+    <label @click="this.select = 'badgeItem'">뱃지</label>
   </div>
 
   <!-- 북마크 -->
@@ -95,16 +95,19 @@
   </div>
 
   <!-- 뱃지 -->
-  <div class="badge-list" v-if="this.select == 'badge'">
-    <el-row v-for="(badge, index) in badge" :key="index">
-      <el-col :span="8" style="text-align: center">
-        <img src="../assets/logo.png" width="120" /> <br />
+  <div class="badge-list" v-if="this.select == 'badgeItem'">
+    <el-row>
+      <el-col :span="12" style="text-align: center" v-for="(badge, index) in badges" :key="index">
+        <img :src="require('../assets/badge/' + badge.badgeImage + '.png')" width="120" /> <br />
         <el-button type="text" @click="centerDialogVisible = true"> {{ badge.title }} </el-button>
         <el-dialog title="뱃지 타이틀" v-model="centerDialogVisible" width="50%" center>
           <div style="text-align: center">
-            <img src="../assets/logo.png" width="120" /> <br />
-            <h4>21.08.13 획득</h4>
-            <span>{{ badge.explain }}</span>
+            <img :src="require('../assets/badge/' + badge.badgeImage + '.png')" width="120" /> <br />
+            <h4>{{ badge.acquisitionDate ? badge.acquisitionDate : "미획득" }}</h4>
+            <span>
+              획득방법: <br />
+              {{ badge.explain }}
+            </span>
           </div>
         </el-dialog>
       </el-col>
@@ -152,7 +155,7 @@ export default {
       bookmarkImage: require("../assets/bookmark/bookmark-yes.png"),
       isBookmark: true,
       select: "bookmark",
-      badge: [],
+      badges: [],
     };
   },
   setup() {}, //컴포지션 API
@@ -185,14 +188,6 @@ export default {
         now.totalLike -= 1;
         this.cancelLike(data);
       }
-      // if (this.reviews.isLike) {
-      //   this.reviews.totalLike += 1;
-      //   this.addlike();
-      //   this.src = require("../assets/redHeart.png");
-      // } else {
-      //   this.reviews.totalLike -= 1;
-      //   this.cancellike();
-      //   this.src = require("../assets/heart.png");
     }, //컴포넌트 내에서 사용할 메소드 정의
     goToFollowing() {
       this.$router.push({ name: "Follow", params: { header: "팔로잉", userId: this.userId } });
@@ -208,24 +203,19 @@ export default {
     },
     async getBookmarks() {
       this.bookmarks = await this.$api("search/bookmark?userId=" + this.userId, "get");
-      console.log(this.bookmarks);
     },
     async getUserData() {
       this.user = await this.$api("search/userInfo?userId=" + this.userId, "get");
-      console.log(this.user);
     },
     async getReviewBeer() {
       this.reviews = await this.$api("review?userId=" + this.userId, "get");
-      console.log(this.reviews);
-      console.log(this.reviews[0]);
     },
     async getBadge() {
-      this.badge = await this.$api("search/badge?userId=" + this.userId, "get");
-      console.log(this.badge);
+      this.badges = await this.$api("search/badge?userId=" + this.userId, "get");
+      console.log(this.badges);
     },
     async addLike(data) {
       await this.$api("review/like", "post", data);
-      console.log("review");
     },
     async cancelLike(data) {
       await this.$api("review/like", "delete", data);
