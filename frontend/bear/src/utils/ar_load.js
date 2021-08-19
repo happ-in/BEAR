@@ -389,8 +389,8 @@ export default {
         });
       this.$refs.btn1.style.visibility = "hidden";
       this.$refs.btn2.style.visibility = "hidden";
-      this.$refs.btn3.style.visibility = "hidden";
-      this.$refs.btn4.style.visibility = "hidden";
+      this.$refs.btn3.style.visibility = "visible";
+      this.$refs.btn4.style.visibility = "visible";
       setTimeout(() => {
         this.$refs.loading.style.visibility = "hidden";
         this.$refs.load.style.visibility = "hidden";
@@ -446,7 +446,7 @@ export default {
   methods: {
     recommendFood() {
       // this.$router.push('/');
-      window.open("beer/detail/" + this.beerData.beerId + "");
+      window.open("detail/" + this.beerData.beerId + "");
     },
     goProfile() {
       // this.$router.push('/profile');
