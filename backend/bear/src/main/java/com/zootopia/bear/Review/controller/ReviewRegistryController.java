@@ -28,9 +28,9 @@ public class ReviewRegistryController {
 
 	@PostMapping
 	public ResponseEntity<?> reviewRegistry(@Valid @RequestBody ReviewRegistryDto reviewRegistryDto) {
-		reviewRegistryService.reviewRegistry(reviewRegistryDto);
 		long userId = reviewRegistryDto.getUserId();
 		userBadgeService.addColumbusBadge(userId, reviewRegistryDto.getBeerId());
+		reviewRegistryService.reviewRegistry(reviewRegistryDto);
 		userBadgeService.addAngelBadge(userId);
 		userBadgeService.addDevilBadge(userId);
 		return ResponseEntity.ok(true);

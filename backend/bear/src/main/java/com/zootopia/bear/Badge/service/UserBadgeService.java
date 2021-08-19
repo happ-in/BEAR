@@ -51,12 +51,12 @@ public class UserBadgeService {
         if(userBadgeId.isPresent()) {
             return;
         }
-        if(!reviewRepository.findByBeerId(beerId).isPresent()) {
+        if(!(reviewRepository.findByBeerId(beerId).isPresent())) {
             UserBadge userBadge = new UserBadge(
                     checkUserBadgeId,
                     LocalDateTime.now(),
-                    badgeRepository.getById(badgeId),
-                    userRepository.getById(userId)
+                    badgeRepository.findByBadgeId(badgeId),
+                    userRepository.findByUserId(userId)
             );
             userBadgeRepository.save(userBadge);
         }
