@@ -412,7 +412,7 @@ export default {
           this.$refs.country.innerHTML = " " + this.beerData.country.countryName + "";
           this.country = "i5a403.p.ssafy.io" + require("../assets/flags/" + this.beerData.country.countryName + ".png");
           // this.star = require("../assets/stars/" + Math.floor(this.beerData.beerAvg) + ".png");
-          this.$refs.flag.innerHTML = "<img id=flag src="+require('../assets/flags/대한민국.png')+"/>";
+          this.$refs.flag.innerHTML = "<img src=" + this.country + "/>";
           if (Math.floor(this.beerData.beerAvg) == 5) { this.$refs.star.innerHTML = "★★★★★"; }
           else if (Math.floor(this.beerData.beerAvg) == 4) { this.$refs.star.innerHTML = "★★★★☆"; }
           else if (Math.floor(this.beerData.beerAvg) == 3) { this.$refs.star.innerHTML = "★★★☆☆"; }
