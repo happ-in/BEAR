@@ -446,7 +446,7 @@ export default {
   methods: {
     recommendFood() {
       // this.$router.push('/');
-      window.open("beer/detail?beerId=" + this.beerData.beerId + "");
+      window.open("beer/detail/" + this.beerData.beerId + "");
     },
     goProfile() {
       // this.$router.push('/profile');
