@@ -1,5 +1,6 @@
 package com.zootopia.bear.User.controller;
 
+import com.zootopia.bear.Badge.service.UserBadgeService;
 import com.zootopia.bear.Search.service.SearchService;
 import com.zootopia.bear.User.domain.User;
 import com.zootopia.bear.User.dto.UserUpdateDto;
@@ -20,6 +21,7 @@ public class UserController {
 
 	private final UserService userService;
 	private final SearchService searchService;
+	private final UserBadgeService userBadgeService;
 
 	@GetMapping(value = "/logout")
 	public ResponseEntity<?> logout(HttpSession session) {
@@ -49,6 +51,7 @@ public class UserController {
 	@GetMapping("/share")
 	public ResponseEntity<?> shareFeed(@RequestParam long userId) {
 		userService.increaseShareCount(userId);
+		userBadgeService.addExpertBadge(userId);
 		return new ResponseEntity<>(true, HttpStatus.OK);
 	}
 

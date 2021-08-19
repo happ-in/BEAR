@@ -26,13 +26,13 @@ public class UserBadgeService {
 
 
     public void addExpertBadge(long userId) {
-        int badgeId = 1;
+        int badgeId = 4;
         UserBadgeId checkUserBadgeId = new UserBadgeId(badgeId,userId);
         Optional<UserBadge> userBadgeId =  userBadgeRepository.findById(checkUserBadgeId);
         if(userBadgeId.isPresent()) {
             return;
         }
-        User user = userRepository.getById(userId);
+        User user = userRepository.findById(userId).get();
         if(user.getShareCount()>=3) {
             UserBadge userBadge = new UserBadge(
                     checkUserBadgeId,
@@ -45,7 +45,7 @@ public class UserBadgeService {
     }
 
     public void addColumbusBadge(long userId,int beerId) {
-        int badgeId = 2;
+        int badgeId = 5;
         UserBadgeId checkUserBadgeId = new UserBadgeId(badgeId,userId);
         Optional<UserBadge> userBadgeId =  userBadgeRepository.findById(checkUserBadgeId);
         if(userBadgeId.isPresent()) {
@@ -63,7 +63,7 @@ public class UserBadgeService {
     }
 
     public void addAngelBadge(long userId) {
-        int badgeId = 3;
+        int badgeId = 6;
         UserBadgeId checkUserBadgeId = new UserBadgeId(badgeId,userId);
         Optional<UserBadge> userBadgeId =  userBadgeRepository.findById(checkUserBadgeId);
         if(userBadgeId.isPresent()) {
@@ -88,7 +88,7 @@ public class UserBadgeService {
     }
 
     public void addDevilBadge(long userId) {
-        int badgeId = 4;
+        int badgeId = 7;
         UserBadgeId checkUserBadgeId = new UserBadgeId(badgeId,userId);
         Optional<UserBadge> userBadgeId =  userBadgeRepository.findById(checkUserBadgeId);
         if(userBadgeId.isPresent()) {
