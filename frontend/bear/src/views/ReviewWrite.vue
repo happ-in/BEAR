@@ -79,8 +79,7 @@ export default {
     console.log(this.beerId);
   }, //컴포넌트가 생성되면 실행
   mounted() {
-    this.getBeerData(beerId);
-    console.log(this.beer);
+    this.getBeerData(this.beerId);
   }, //template에 정의된 html코드가 레너링된 후 실행
   unmounted() {}, //unmount가 완료된 후 실행
   methods: {
