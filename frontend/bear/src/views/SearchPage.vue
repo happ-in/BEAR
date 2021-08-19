@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input id="search_input" class="search-input-style" v-model="keyword" placeholder=" 태그 또는 맥주를 입력하세요" />
+    <input id="search_input" class="search-input-style" v-model="keyword" @keyup="search" placeholder=" 태그 또는 맥주를 입력하세요" />
 
     <div class="radio-toolbar">
       <input type="radio" v-model="select" value="account" checked />
@@ -69,16 +69,6 @@ export default defineComponent({
       localStorage.setItem("hashTagId", hashTagId);
       localStorage.setItem("hashTagName", hashTagName);
       this.$router.push("/tag");
-    },
-  },
-  watch: {
-    keyword: function () {
-      if (this.keyword !== "") this.search();
-      else {
-        this.beers = [];
-        this.tags = [];
-        this.users = [];
-      }
     },
   },
 });
