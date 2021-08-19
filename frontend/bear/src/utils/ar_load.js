@@ -450,10 +450,10 @@ export default {
     },
     goProfile() {
       // this.$router.push('/profile');
-      window.open("beer/profile");
+      window.open("profile");
     },
     goSearch() {
-      window.open("beer/search");
+      window.open("search");
     },
     goReview() {
       // window.open("beer/search");
