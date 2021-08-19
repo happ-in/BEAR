@@ -5,7 +5,10 @@ export default {
     //html과 자바스크립트 코드에서 사용할 데이터 변수 선언
     return {
       sampleData: "hidden",
-      beerData: { beerName: "수집중" },
+      beerData: {
+        beerName: "수집중",
+        hashTags: []
+      },
       brName: "no",
       country: "",
       star: "",
@@ -412,7 +415,7 @@ export default {
           this.$refs.country.innerHTML = " " + this.beerData.country.countryName + "";
           // this.country = "i5a403.p.ssafy.io" + require("../assets/flags/" + this.beerData.country.countryName + ".png");
           // this.star = require("../assets/stars/" + Math.floor(this.beerData.beerAvg) + ".png");
-          // this.$refs.flag.innerHTML = "<img src=" + this.country + "/>";
+          
           if (Math.floor(this.beerData.beerAvg) == 5) { this.$refs.star.innerHTML = "★★★★★"; }
           else if (Math.floor(this.beerData.beerAvg) == 4) { this.$refs.star.innerHTML = "★★★★☆"; }
           else if (Math.floor(this.beerData.beerAvg) == 3) { this.$refs.star.innerHTML = "★★★☆☆"; }
@@ -420,11 +423,17 @@ export default {
           else if (Math.floor(this.beerData.beerAvg) == 1) { this.$refs.star.innerHTML = "★☆☆☆☆"; }
           else{this.$refs.star.innerHTML = "☆☆☆☆☆"; }
           
-          this.$refs.hash1.innerHTML = " #" + this.beerData.hashTags[0].hashTagName + "";
-          this.$refs.hash2.innerHTML = " #" + this.beerData.hashTags[1].hashTagName + "";
-          this.$refs.hash3.innerHTML = " #" + this.beerData.hashTags[2].hashTagName + "";
+          // this.$refs.flag.innerHTML = this.beerData.hashTags.length;
+          
+          if (this.beerData.hashTags.length == 0) {this.$refs.hash1.innerHTML = " ";}
+          else{this.$refs.hash1.innerHTML = " #" + this.beerData.hashTags[0].hashTagName + "";}    
+          if (this.beerData.hashTags.length == 1) { this.$refs.hash2.innerHTML = " "; }
+          else{this.$refs.hash2.innerHTML = " #" + this.beerData.hashTags[1].hashTagName + "";}
+          if (this.beerData.hashTags.length == 2) { this.$refs.hash3.innerHTML = " "; }
+          else{this.$refs.hash3.innerHTML = " #" + this.beerData.hashTags[2].hashTagName + "";}
           // this.$refs.hash4.innerHTML = " #" + this.beerData.hashTags[3].hashTagName + "";
-          this.$refs.hash4.innerHTML = " #" + this.beerData.hashTags[3].hashTagName + "";
+          if (this.beerData.hashTags.length == 3) {this.$refs.hash4.innerHTML = " ";}
+          else{this.$refs.hash4.innerHTML = " #" + this.beerData.hashTags[3].hashTagName + "";}
         }, 300);
       });
       letsee.onTrackEnd((e) => {
@@ -433,7 +442,7 @@ export default {
         this.$refs.btn4.style.visibility = "hidden";
         this.$refs.guide.style["z-index"] = 500;
         console.log(e.trace.entity.substr(81, 4));
-        this.getBeerData(e.trace.entity.substr(81, 4));
+        //this.getBeerData(e.trace.entity.substr(81, 4));
       });
       this.$refs.guide.style.visibility = "visible";
       this.$refs.guide.style["z-index"] = 500;
