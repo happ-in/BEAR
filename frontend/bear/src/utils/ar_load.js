@@ -370,7 +370,7 @@ export default {
           letsee.bindXRElement(xrElement, entity);
         });
       letsee //칭따오
-        .addTarget("https://developer.letsee.io/api-tm/target-manager/target-uid/6114807ef8e80a05ba9010d3")
+        .addTarget("https://developer.letsee.io/api-tm/target-manager/target-uid/611dc75a3f9ee405ea644b2e")
         .then((entity) => {
           let div = this.$refs.con;
           div.style.width = 360 + "px";

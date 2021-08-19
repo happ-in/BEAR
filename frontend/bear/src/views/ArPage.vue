@@ -507,7 +507,7 @@
 }
 #beer_hash_three {
   position: absolute;
-  width: 124px;
+  width: 200px;
   height: 33px;
   left: 209.46px;
   top: calc(50% - 33px / 2 + 146.67px);
@@ -524,7 +524,7 @@
 }
 #beer_hash_four {
   position: absolute;
-  width: 139px;
+  width: 200px;
   height: 39px;
   left: 219px;
   top: 277.7px;
