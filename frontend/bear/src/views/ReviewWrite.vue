@@ -75,11 +75,11 @@ export default {
   },
   setup() {}, //컴포지션 API
   created() {
-    this.getHashTags();
+    this.beerId = this.$route.query.beerId;
+    console.log(this.beerId);
   }, //컴포넌트가 생성되면 실행
   mounted() {
-    this.beerId = this.$route.query.beerId;
-    this.getBeerData(beerId);
+    this.getBeerData(this.beerId);
   }, //template에 정의된 html코드가 레너링된 후 실행
   unmounted() {}, //unmount가 완료된 후 실행
   methods: {
