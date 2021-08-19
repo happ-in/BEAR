@@ -3,23 +3,18 @@
     <div class="card">
       <h1 class="header">랜덤 추천</h1>
 
-      <!-- 맥주 이름, 국기 이미지 -->
       <h2 class="random-beer-name">
         {{ beer.beerName }}
         <img :src="countryImage" />
       </h2>
 
-      <!-- 맥주 이미지 -->
       <div class="random-beerimg-box"><img :src="beerImage" /></div>
-
-      <!-- 해시태그 -->
       <ul class="hashtag">
         <li v-for="(hashtag, index) in beer.hashTags" :key="index">
           <p># {{ hashtag.hashTagName }}</p>
         </li>
       </ul>
 
-      <!-- 버튼 -->
       <div id="btn">
         <a href="#" class="button" id="repeatbtn" @click="retry">
           <svg fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -37,30 +32,24 @@
 
 <script>
 export default {
-  name: "Recommendation", //컴포넌트 이름
-  components: {},
+  name: "Recommendation", 
   data() {
-    //html과 자바스크립트 코드에서 사용할 데이터 변수 선언
     return {
       beer: [],
       countryImage: "",
       beerImage: "",
     };
   },
-  setup() {}, //컴포지션 API
   created() {
     this.retry();
-  }, //컴포넌트가 생성되면 실행
-  mounted() {}, //template에 정의된 html코드가 레너링된 후 실행
-  unmounted() {}, //unmount가 완료된 후 실행
+  },
   methods: {
     async retry() {
       this.beer = await this.$api("beer/random", "get");
       this.countryImage = require("../assets/flags/" + this.beer.country.countryName + ".png");
       this.beerImage = require("../assets/beers/" + this.beer.beerImage + ".png");
-      console.log(this.beer);
     },
-  }, //컴포넌트 내에서 사용할 메소드 정의
+  }, 
 };
 </script>
 
@@ -72,7 +61,6 @@ export default {
     font-weight: normal;
     font-style: normal;
 }
-
 .random-wrapper {
   position: absolute;
   width: 102%;
@@ -114,7 +102,6 @@ export default {
   font-style: normal;
   font-weight: 400;
   font-size: 25px;
-  /* line-height: 38px; */
 
   color: #000000;
 }
@@ -157,11 +144,8 @@ export default {
   text-align: center;
 }
 #repeatbtn {
-  /* position: absolute; */
   width: 144px;
   height: 43px;
-  /* left: 42px; */
-  /* top: 570px; */
 
   background: #ffffff;
   border: 1px solid #939597;
@@ -183,11 +167,8 @@ export default {
   height: 20px;
 }
 #detailbtn {
-  /* position: absolute; */
   width: 144px;
   height: 43px;
-  /* left: 180px; */
-  /* top: 570px; */
 
   background: #939597;
   border: 1px solid #939597;

@@ -7,7 +7,6 @@
   </div>
 </template>
 <script>
-// import axios from 'axios'
 export default {
   components: {},
   data() {
@@ -15,16 +14,11 @@ export default {
       data: [],
     };
   },
-  mounted() {
-    // Kakao.init('15e7887e87b724b15605d38adf95cf84');
-    // Kakao.isInitialized();
-    // this.kakaoLogout();
-  },
   methods: {
     kakaoLogin() {
       window.location.replace(
         "https://kauth.kakao.com/oauth/authorize?client_id=15e7887e87b724b15605d38adf95cf84&redirect_uri=https://i5a403.p.ssafy.io/api/login/kakao&response_type=code"
-      ); //test API
+      );
     },
   },
 };

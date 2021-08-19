@@ -1,6 +1,6 @@
 <template>
+<div>
   <div class="header">{{ user.customId }}</div>
-
   <!-- 프로필 -->
   <el-row class="profile-user-wrapper">
     <el-col :span="8">
@@ -54,7 +54,7 @@
     <el-card v-for="(review, index) in reviews" :key="index">
       <!-- 맥주이미지 -->
       <el-row>
-        <el-col :span="7">
+        <el-col :span="7" style="text-align: center; padding-right: 6%;">
           <img :src="require('../assets/beers/' + review.beer.beerImage + '.png')" class="grid-content bg-purple" style="height: 120px" />
         </el-col>
 
@@ -103,10 +103,7 @@
                       review.beer.beerName,
                       'https://i5a403.p.ssafy.io' + require('../assets/beers/' + review.beer.beerImage + '.png'),
                       review.hashTags
-                    )
-                  "
-                  >공유</el-dropdown-item
-                >
+                    )">공유</el-dropdown-item>
                 <el-dropdown-item @click="deletereview(review.reviewId)">삭제</el-dropdown-item>
               </el-dropdown-menu>
             </template>
@@ -156,6 +153,7 @@
       <el-col :span="8"></el-col>
     </el-row>
   </div>
+</div>
 </template>
 <script>
 import { More } from "@element-plus/icons";
@@ -203,16 +201,14 @@ export default {
       badges: [],
     };
   },
-  setup() {}, //컴포지션 API
-  created() {}, //컴포넌트가 생성되면 실행
   mounted() {
     this.userId = sessionStorage.getItem("userId");
     this.getUserData();
     this.getBookmarks();
     this.getReviewBeer();
     this.getBadge();
-  }, //template에 정의된 html코드가 레너링된 후 실행
-  unmounted() {}, //unmount가 완료된 후 실행
+  },
+  unmounted() {},
   methods: {
     isLikeFeed(index) {
       let now = this.reviews[index];
@@ -222,8 +218,6 @@ export default {
         userId: sessionStorage.getItem("userId"),
         reviewId: now.reviewId,
       };
-
-      console.log(data);
       if (now.like) {
         now.totalLike += 1;
         this.addLike(data);
@@ -255,7 +249,6 @@ export default {
     },
     async getBadge() {
       this.badges = await this.$api("search/badge?userId=" + this.userId, "get");
-      console.log(this.badges);
     },
     async addLike(data) {
       await this.$api("review/like", "post", data);
@@ -269,13 +262,10 @@ export default {
     },
     async sendLink(id, title, image, hashtaglist) {
       let hashtags = "";
-      console.log(hashtaglist);
       await this.$api("user/share?userId=" + this.userId, "get");
       for (var hashtag in hashtaglist) {
         hashtags += "#" + hashtaglist[hashtag].hashTagName;
       }
-      console.log(hashtags);
-
       Kakao.Link.sendDefault({
         objectType: "feed",
         content: {
@@ -345,22 +335,10 @@ export default {
   color: #fff;
   text-shadow: -1px 0 #939597, 0 1px black, 1px 0 #939597, 0 -1px #939597;
 }
-/* badge */
 .badge-button {
   display: flex;
   flex-direction: column;
 }
-/* tabbar padding */
-.bookmark-list {
-  padding-bottom: 20vw;
-}
-.review-list {
-  padding-bottom: 20vw;
-}
-.badge-list {
-  padding-bottom: 20vw;
-}
-
 .profile-user-wrapper {
   padding-top: 12px;
   margin: 3%;
@@ -437,5 +415,18 @@ video {
 }
 .el-dialog__header {
   padding-bottom: 0;
+}
+.el-card__body {
+  padding: 10px;
+}
+/* tabbar padding */
+.bookmark-list {
+  padding-bottom: 20vw;
+}
+.review-list {
+  padding-bottom: 37vw;
+}
+.badge-list {
+  padding-bottom: 20vw;
 }
 </style>

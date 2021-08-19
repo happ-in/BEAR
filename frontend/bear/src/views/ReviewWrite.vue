@@ -58,10 +58,9 @@
 </template>
 <script>
 export default {
-  name: "ReviewWrite", //컴포넌트 이름
+  name: "ReviewWrite",
   components: {},
   data() {
-    //html과 자바스크립트 코드에서 사용할 데이터 변수 선언
     return {
       beer: [],
       rating: null,
@@ -73,15 +72,12 @@ export default {
       beerId: "",
     };
   },
-  setup() {}, //컴포지션 API
   created() {
     this.beerId = this.$route.query.beerId;
-    console.log(this.beerId);
-  }, //컴포넌트가 생성되면 실행
+  }, 
   mounted() {
     this.getBeerData(this.beerId);
-  }, //template에 정의된 html코드가 레너링된 후 실행
-  unmounted() {}, //unmount가 완료된 후 실행
+  },
   methods: {
     async getBeerData(id) {
       this.beer = await this.$api("beer?beerId=" + id, "get"); //test API

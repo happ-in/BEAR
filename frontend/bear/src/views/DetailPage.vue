@@ -1,11 +1,16 @@
 <template>
   <div>
     <div class="header">상세페이지</div>
-    <el-carousel :interval="0" indicator-position="outside" height="140vw">
+    <el-carousel :interval="0" indicator-position="outside" height="135vw">
       <!-- bear-carousel -->
       <el-carousel-item id="beer-detail">
         <!-- beer img -->
-        <div id="detail-beerimg-box">
+        <div class="detail-beerimg-box">
+          <div id="detail-hashtags">
+            <div  v-for="(hashtag, index) in beerData.hashTags" :key="index">
+              <span># {{ hashtag.hashTagName }}&nbsp;</span>
+            </div>
+          </div>
           <img id="detail-beerimg" :src="beerImage"/>
         </div>
         <!-- beer info -->
@@ -29,7 +34,6 @@
             <span style="font-size: 14px">입니다</span>
           </p>
         </div>
-
         <div id="snack-card-lists">
           <div id="snack-card-1" v-for="(snack, index) in snackData.snacks" v-bind:key="index">
             <div v-if="index === 0">
@@ -74,10 +78,6 @@ export default {
     this.getBeerData();
     this.getBookmarkFlag();
   },
-  mounted() {
-
-  }, 
-  unmounted() {},
   methods: {
     async getBeerData() {
       this.beerData = await this.$api("beer?beerId=" + this.$route.params.beerId, "get");
@@ -102,7 +102,7 @@ export default {
       if (this.isBookmark) this.addBookmark();
       else this.cancelBookmark();
     },
-  }, //컴포넌트 내에서 사용할 메소드 정의
+  },
   watch: {
     beerData: function () {
       this.beerImage = require("../assets/beers/" + this.beerData.beerImage + ".png");
@@ -114,6 +114,12 @@ export default {
 </script>
 
 <style>
+@font-face {
+    font-family: '양진체';
+    src: url('https://cdn.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 @font-face {
     font-family: 'GmarketSansMedium';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
@@ -139,14 +145,29 @@ p {
   flex-direction: column;
   margin-top: 4%;
 }
-#detail-beerimg-box {
-  height: 90vw; 
-  width: 100vw; 
+.detail-beerimg-box {
+  position: relative;
+  height: 105vw; 
+  width: 90%; 
+  
+  align-self: center;
+  display: flex;
+  justify-content: center;
 
-  text-align: -webkit-center; 
-  margin-bottom: 3%;
+  margin: 3% 0 3% 0;
 }
-#detail-beerimg-box img{
+#detail-hashtags {
+  position: absolute;
+
+  display: flex;
+  flex-flow: wrap;
+
+  font-family: '양진체';
+  font-size: 20px;
+  color:#f5df4d;
+}
+#detail-beerimg {
+  position: absolute;
   padding-top: 5%;
   height: 90%;
 
@@ -195,7 +216,6 @@ p {
   border-radius: 5%;
   background-color: #f5df4d;
 
-  /* display: flex; */
   justify-content: center;
 }
 #snack-card-1 {
@@ -207,7 +227,7 @@ p {
   display: flex;
   justify-content: center;
 
-  padding: 0 3% 0 3%
+  padding: 0 3% 0 3%;
 }
 #snack-img {
   display: flex;
@@ -221,29 +241,11 @@ p {
   display: flex;
   justify-content: center;
 
-  /* font-family: "Noto Sans KR", sans-serif; */
   font-weight: blod;
 
   margin: 5% 0 1% 0;
 }
-
 .el-late {
   height: 100px;
 }
-/* .detail-bearimg-box{
-    position: relative;
-    width: 291px;
-    height: 375px;
-
-    background: #ffffff;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-.detail-beerimg-box img {
-  position: absolute;
-  top: 20px;
-  left: 0;
-  width: 100%;
-  height: 90%;
-  object-fit: contain;
-} */
 </style>

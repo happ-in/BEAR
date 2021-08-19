@@ -1,7 +1,6 @@
 <template>
   <div class="wrapper-rank-category">
     <h1 class="header">{{ headerTitle[this.$route.params.category] }}</h1>
-    <!-- countryName, beerCategory, alcoholProof 도 추가-->
     <div class="rank-category-list">
       <div
         class="rank-category-item-wrapper"
@@ -30,13 +29,10 @@
 </template>
 
 <script>
-// import axios from 'axios';
-
 export default {
-  name: "RankingCategory", //컴포넌트 이름
+  name: "RankingCategory", 
   components: {},
   data() {
-    //html과 자바스크립트 코드에서 사용할 데이터 변수 선언
     return {
       rankData: [],
       bgRank: ["#F5DF4D", "rgba(245, 223, 77, 0.6)", "rgba(245, 223, 77, 0.2)", "fff", "fff", "fff", "fff"],
@@ -50,12 +46,9 @@ export default {
       },
     };
   },
-  setup() {}, //컴포지션 API
-  created() {}, //컴포넌트가 생성되면 실행
   mounted() {
     this.getRankData();
-  }, //template에 정의된 html코드가 레너링된 후 실행
-  unmounted() {}, //unmount가 완료된 후 실행
+  },
   methods: {
     pushBeerId(index) {
       this.$router.push({
@@ -69,7 +62,7 @@ export default {
     goToDetail(beerId) {
       this.$router.push({ name: "Detail", params: { beerId: beerId } });
     },
-  }, //컴포넌트 내에서 사용할 메소드 정의
+  },
 };
 </script>
 

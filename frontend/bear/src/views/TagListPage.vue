@@ -1,4 +1,5 @@
 <template>
+<div>
   <div class="search-header">
     <h2 class="search-header-tag"># {{ hashTagName }}</h2>
     <h2>이 포함된 맥주</h2>
@@ -13,25 +14,21 @@
       </div>
     </el-row>
   </div>
+</div>
 </template>
 <script>
 export default {
   name: "TagList",
-  components: {},
   data() {
-    //html과 자바스크립트 코드에서 사용할 데이터 변수 선언
     return {
       beers: [],
       hashTagName: "",
     };
   },
-  setup() {}, //컴포지션 API
   created() {
     this.getBeerData();
     this.hashTagName = localStorage.getItem("hashTagName");
-  }, //컴포넌트가 생성되면 실행
-  mounted() {}, //template에 정의된 html코드가 레너링된 후 실행
-  unmounted() {}, //unmount가 완료된 후 실행
+  },
   methods: {
     async getBeerData() {
       this.beers = await this.$api("beer/search?hashTagId=" + localStorage.getItem("hashTagId"), "get");
