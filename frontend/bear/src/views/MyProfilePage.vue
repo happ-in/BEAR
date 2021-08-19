@@ -255,10 +255,10 @@ export default {
     async cancelLike(data) {
       await this.$api("review/like", "delete", data);
     },
-    sendLink(id,title, image, hashtaglist) {
+    async sendLink(id,title, image, hashtaglist) {
       let hashtags = ""
       console.log(hashtaglist)
-
+      await this.$api("user/share?userId="+ this.userId, "get");
       for (var hashtag in hashtaglist) {
         hashtags += '#' + hashtaglist[hashtag].hashTagName;
       };
