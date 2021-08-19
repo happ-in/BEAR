@@ -141,7 +141,7 @@ p {
   height: 90vw; 
   width: 100vw; 
 
-  align-self: stretch;
+  /* align-self: center; */
   text-align: -webkit-center; 
   margin-bottom: 3%;
 }
