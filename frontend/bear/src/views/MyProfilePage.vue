@@ -119,10 +119,10 @@
   <!-- 뱃지 -->
   <div class="badge-list" v-if="this.select == 'badgeItem'">
     <el-row>
-      <el-col :span="12" style="text-align: center" v-for="(badge, index) in badges" :key="index">
-        <el-button class="badge-button" type="text" @click="centerDialogVisible[index] = true" style="color: black">
+      <el-col :span="12" style="text-align: -webkit-center;" v-for="(badge, index) in badges" :key="index">
+        <el-button class="badge-button" type="text" @click="centerDialogVisible[index] = true" style="color: black;">
           <!-- 뱃지 미획득시 이미지(흑백)-->
-          <div v-if="badge.gain == false" style="text-align: -webkit-center">
+          <div v-if="badge.gain == false" style="text-align: -webkit-center;">
             <div style="border-radius: 50%; height: 120px; width: 120px; background-color: white; margin: 0px">
               <img :src="require('../assets/badge/' + badge.badgeImage + '.png')" width="120" style="mix-blend-mode: luminosity" />
             </div>
@@ -135,9 +135,9 @@
         </el-button>
 
         <!-- 뱃지모달 -->
-        <el-dialog title="뱃지 타이틀" v-model="centerDialogVisible[index]" width="70%" center>
-          <!-- 뱃지이미지 -->
-          <div style="text-align: center">
+        <el-dialog title="뱃지" v-model="centerDialogVisible[index]" width="80%" center>
+          <div style="text-align: center; padding:0; margin-bottom:10%">
+            <h2 style="margin-top:0;">{{badge.title}}</h2>
             <div v-if="badge.gain == false" style="text-align: -webkit-center">
               <div style="border-radius: 50%; height: 120px; width: 120px; background-color: white; margin: 0px">
                 <img :src="require('../assets/badge/' + badge.badgeImage + '.png')" width="120" style="mix-blend-mode: luminosity" /> <br />
@@ -434,5 +434,8 @@ video {
 }
 .el-icon-arrow-down {
   font-size: 12px;
+}
+.el-dialog__header {
+  padding-bottom: 0;
 }
 </style>

@@ -21,13 +21,13 @@
 
       <!-- snack-carousel -->
       <el-carousel-item class="beer-snack" style="magrin: 0px auto">
-        <div class="snack-sentence" style="padding-left: 3%">
-          <div class="snack-sentence">
+        <div id="snack-sentence">
+          <p>
             <span style="font-size: 16px; font-weight: bold">{{ beerData.beerName }} </span>
             <span style="font-size: 14px">와/과 잘 어울리는 안주는</span><br/>
             <span style="font-size: 35px; font-weight: bold; color: #f5df4d">{{ snackData.snackCategory }} 안주</span>
             <span style="font-size: 14px">입니다</span>
-          </div>
+          </p>
         </div>
 
         <div id="snack-card-lists">
@@ -53,10 +53,9 @@
 
 <script>
 export default {
-  name: "Detail", //컴포넌트 이름
+  name: "Detail",
   components: {},
   data() {
-    //html과 자바스크립트 코드에서 사용할 데이터 변수 선언
     return {
       beerData: [],
       snackData: [],
@@ -71,13 +70,14 @@ export default {
       },
     };
   },
-  setup() {}, //컴포지션 API
   created() {
     this.getBeerData();
     this.getBookmarkFlag();
-  }, //컴포넌트가 생성되면 실행
-  mounted() {}, //template에 정의된 html코드가 레너링된 후 실행
-  unmounted() {}, //unmount가 완료된 후 실행
+  },
+  mounted() {
+
+  }, 
+  unmounted() {},
   methods: {
     async getBeerData() {
       this.beerData = await this.$api("beer?beerId=" + this.$route.params.beerId, "get");
@@ -181,9 +181,15 @@ p {
   background-color: white;
 }
 
-#snack-sententce {
-  margin-left: 3%;
+#snack-sentence {
+  padding-left: 3%;
+  
 }
+#snack-sentence p {
+  margin: 2% ;
+  font-family: 'GmarketSansMedium';
+}
+
 #snack-card-lists {
   height: 110vw;
   border-radius: 5%;

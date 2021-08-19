@@ -28,14 +28,14 @@
 
         <el-row :gutter="20" class="feed-el-row-body" @click="goToDetail(feed.beer.beerId)">
           <el-col :span="8" style="text-align: center">
-            <img :src="require('../assets/beers/' + feed.beer.beerImage + '.png')" class="grid-content bg-purple" style="height: 120px" />
+            <img :src="require('../assets/beers/' + feed.beer.beerImage + '.png')" class="grid-content bg-purple" style="height: 120px; padding-left: 3%" />
           </el-col>
           <el-col :span="16">
             <span style="display: flex; font-size: large; font-weight: bold">
               {{ feed.beer.beerName }}
               <img
                 :src="require('../assets/flags/' + feed.beer.country.countryName + '.png')"
-                style="width: 20px; height: 20px; align-self: center; padding-left: 4px"
+                style="width: 20px; height: 20px; align-self: center; padding-left: 2%;"
               />
             </span>
             <el-rate v-model="feed.rating" allow-half disabled style="margin-bottom: 5%"></el-rate>
@@ -123,9 +123,6 @@ export default {
   padding-left: 1%;
   font-size: large;
   font-weight: bold;
-}
-span {
-  display: flex;
 }
 .heart-button {
   text-decoration: none;

@@ -4,11 +4,9 @@
     <div class="ar_button">
       <button @click="ar_path">
         <img src="../assets/tabBar/ar.png" alt="ar_icon" width="40" />
-        <!-- <p>AR</p> -->
       </button>
     </div>
     <!-- tabbar -->
-    <!-- <hr style="border: solid 1px #939597;"> -->
     <div class="tabbar">
       <div id="menu">
         <router-link v-for="route in routes" :key="route.key" :to="route.path" class="tabbar-menu-list" class-activate="active" exact>
@@ -25,7 +23,6 @@ export default {
   name: "TabBar",
   components: {},
   data() {
-    //html과 자바스크립트 코드에서 사용할 데이터 변수 선언
     return {
       routes: [
         { path: "/recommendation", title: "랜덤추천", img: require("../assets/tabBar/dice.png") },
@@ -37,10 +34,6 @@ export default {
       ar_link: { path: "/ar", title: "AR", img: require("../assets/tabBar/ar.png") },
     };
   },
-  setup() {}, //컴포지션 API
-  created() {}, //컴포넌트가 생성되면 실행
-  mounted() {}, //template에 정의된 html코드가 레너링된 후 실행
-  unmounted() {}, //unmount가 완료된 후 실행
   methods: {
     ar_path: function () {
       window.location.href = "/ar";
@@ -52,9 +45,6 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
 
-/* #tap-wrap {
-  
-} */
 .ar_button {
   position: fixed;
   float: right;
@@ -95,7 +85,6 @@ export default {
   padding: 0;
   display: flex;
   text-align: center;
-  /* text-align: center; */
 
   font-family: "Noto Sans KR", sans-serif;
 }
