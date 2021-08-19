@@ -90,8 +90,24 @@
           </div>
         </el-col>
       </el-row>
+
+      <!-- 드롭다운 -->
+      <el-dropdown class="dropdow">
+        <span class="el-dropdown-link">
+          <el-svg-icon><more /></el-svg-icon>
+      <i class="el-icon-arrow-down el-icon--right"></i>
+        </span>
+        <template #dropdown>
+          <el-dropdown-menu>
+            <el-dropdown-item @click="sendLink(review.beer.beerId, review.beer.beerName, 'https://i5a403.p.ssafy.io'+require('../assets/beers/' + review.beer.beerImage + '.png'),review.hashTags)">공유</el-dropdown-item>
+            <el-dropdown-item>삭제</el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
     </el-card>
   </div>
+
+  
 
   <!-- 뱃지 -->
   <div class="badge-list" v-if="this.select == 'badgeItem'">
@@ -116,6 +132,7 @@
   </div>
 </template>
 <script>
+
 export default {
   name: "UserFollow", //컴포넌트 이름
   components: {},
@@ -217,6 +234,37 @@ export default {
     async cancelLike(data) {
       await this.$api("review/like", "delete", data);
     },
+    sendLink(id,title, image, hashtaglist) {
+      let hashtags = ""
+      console.log(hashtaglist)
+
+      for (var hashtag in hashtaglist) {
+        hashtags += '#' + hashtaglist[hashtag].hashTagName;
+      };
+      console.log(hashtags)
+
+      Kakao.Link.sendDefault({
+        objectType: 'feed',
+        content: {
+          title: title,
+          description: hashtags,
+          imageUrl: image,
+          link: {
+            mobileWebUrl: 'https://i5a403.p.ssafy.io',
+            webUrl: 'https://i5a403.p.ssafy.io',
+          },
+        },
+        buttons: [
+          {
+            title: 'bear로 이동하기',
+            link: {
+              mobileWebUrl: 'https://i5a403.p.ssafy.io/detail/'+id,
+              webUrl: 'https://i5a403.p.ssafy.io/detail/'+id,
+            },
+          },
+        ],
+      })
+    }
   },
 };
 </script>
@@ -339,4 +387,11 @@ video {
 .profile-btn:active {
   box-shadow: 1px 1px 1px rgb(156, 143, 143);
 }
+.el-dropdown-link {
+    cursor: pointer;
+    color: #409EFF;
+  }
+  .el-icon-arrow-down {
+    font-size: 12px;
+  }
 </style>
