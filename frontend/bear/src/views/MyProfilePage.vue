@@ -36,7 +36,7 @@
     <label @click="this.select = 'bookmark'">북마크</label>
     <input type="radio" v-model="select" value="review" />
     <label @click="this.select = 'review'">리뷰</label>
-    <input type="radio" v-model="select" value="badge" />
+    <input type="radio" v-model="select" value="badgeItem" />
     <label @click="this.select = 'badgeItem'">뱃지</label>
   </div>
 
