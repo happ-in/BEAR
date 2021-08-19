@@ -2,17 +2,22 @@
   <div class="header">{{ user.customId }}</div>
 
   <el-row class="profile-user-wrapper">
-    <el-col :span="12">
-      <el-avatar :src="user.userImage" :size="100" style="margin-right: 4px" />
+    <el-col :span="8">
+      <el-avatar :src="user.userImage" :size="100" />
     </el-col>
-    <el-col :span="12" style="text-align: left">
-      <div>뱃지명</div>
-      <div>{{ user.nickname }}</div>
+    <el-col :span="1"></el-col>
+    <el-col :span="15" style="text-align: left">
+      <div class="profile-nickname">{{ user.nickname }}</div>
+
+      <!-- 팔로우/팔로우 취소 -->
+      <button plain @click="doFollow" class="profile-btn">
+        {{ isFollow ? "팔로우 취소" : "팔로우" }}
+      </button>
     </el-col>
   </el-row>
 
   <!-- 리뷰수/팔로잉/팔로워 -->
-  <el-row style="height: 7vh">
+  <el-row class="profile-follow-box">
     <el-col :span="8">
       <div class="grid-content bg-purple strong">리뷰수</div>
       <div class="grid-content bg-purple">{{ user.reviewCount }}</div>
@@ -26,11 +31,6 @@
       <div class="grid-content bg-purple">{{ user.followerCount }}</div>
     </el-col>
   </el-row>
-
-  <!-- 팔로우/팔로우 취소 -->
-  <button plain @click="doFollow" class="profile-btn">
-    {{ isFollow ? "팔로우 취소" : "팔로우" }}
-  </button>
 
   <div class="review-wrapper" v-for="(review, index) in reviews" :key="index">
     <el-row :gutter="20" class="review-el-row-body">
