@@ -8909,6 +8909,11 @@ vue-awesome-swiper@^4.1.1:
   resolved "https://registry.yarnpkg.com/vue-awesome-swiper/-/vue-awesome-swiper-4.1.1.tgz#8f7ab221ad003021d756b86aa618f429924900fe"
   integrity sha512-50um10t6N+lJaORkpwSi1wWuMmBI1sgFc9Znsi5oUykw2cO5DzLaBHcO2JNX21R+Ue4TGoIJDhhxjBHtkFrTEQ==
 
+vue-axios@^3.2.5:
+  version "3.2.5"
+  resolved "https://registry.yarnpkg.com/vue-axios/-/vue-axios-3.2.5.tgz#b3bd0c82a44cc9164aeca0efa071ac103e15767f"
+  integrity sha512-V7XUzu0v3WOzd8PEF9m/ZoVivap+ToBPOXrhI8AsnczD93YXvGG+HkeQhJHAF/jeav8CsPDF3X/Z2vCqBbjsMQ==
+
 vue-eslint-parser@^7.10.0:
   version "7.10.0"
   resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-7.10.0.tgz#ea4e4b10fd10aa35c8a79ac783488d8abcd29be8"
@@ -8953,6 +8958,11 @@ vue-router@^4.0.0-0:
   integrity sha512-YbPf6QnZpyyWfnk7CUt2Bme+vo7TLfg1nGZNkvYqKYh4vLaFw6Gn8bPGdmt5m4qrGnKoXLqc4htAsd3dIukICA==
   dependencies:
     "@vue/devtools-api" "^6.0.0-beta.14"
+
+vue-session@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/vue-session/-/vue-session-1.0.0.tgz#ca642c751f569a48f8dd66f356f1727fbe081f7c"
+  integrity sha512-Ep9lRKGgCZdcGV3In3R3zoSp5Wr+hlcIc8WJ9BG+QKzibwaFZnnvp9HBVdd+dU8d6HGLSi5sWywDmd5MkrkfoQ==
 
 vue-style-loader@^4.1.0, vue-style-loader@^4.1.2:
   version "4.1.3"

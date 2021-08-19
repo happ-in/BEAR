@@ -93,9 +93,6 @@
           <el-dropdown class="dropdown">
             <span class="el-dropdown-link">
               <more style="width: 20px; height: 20px; margin-left: 8px; color: #939597;"/>
-
-              <!-- <el-svg-icon colot="#939597" size="20"><more /></el-svg-icon> -->
-              <!-- <i class="el-icon-arrow-down el-icon--right"></i> -->
             </span>
             <template #dropdown>
               <el-dropdown-menu>
@@ -115,11 +112,31 @@
   <div class="badge-list" v-if="this.select == 'badgeItem'">
     <el-row>
       <el-col :span="12" style="text-align: center" v-for="(badge, index) in badges" :key="index">
-        <img :src="require('../assets/badge/' + badge.badgeImage + '.png')" width="120" /> <br />
-        <el-button type="text" @click="centerDialogVisible[index] = true"> {{ badge.title }} </el-button>
-        <el-dialog title="뱃지 타이틀" v-model="centerDialogVisible[index]" width="50%" center>
-          <div style="text-align: center">
+        <el-button type="text" @click="centerDialogVisible[index] = true" style="color:black;">
+          <!-- 뱃지 미획득시 이미지(흑백)-->
+          <div v-if="badge.gain==false" style="text-align:-webkit-center;">
+            <div style="border-radius: 50%; height: 120px; width: 120px; background-color:white; margin:0px;">
+              <img :src="require('../assets/badge/' + badge.badgeImage + '.png')" width="120" style="mix-blend-mode:luminosity;"/> <br />
+            </div>
+          </div>
+          <!-- 뱃지 획득시 이미지(컬러)-->
+          <div v-else>
             <img :src="require('../assets/badge/' + badge.badgeImage + '.png')" width="120" /> <br />
+          </div>
+          {{ badge.title }} 
+        </el-button>
+        <!-- 뱃지모달 -->
+        <el-dialog title="뱃지 타이틀" v-model="centerDialogVisible[index]" width="70%" center>
+          <!-- 뱃지이미지 -->
+          <div style="text-align: center">
+            <div v-if="badge.gain==false" style="text-align:-webkit-center;">
+              <div style="border-radius: 50%; height: 120px; width: 120px; background-color:white; margin:0px;">
+                <img :src="require('../assets/badge/' + badge.badgeImage + '.png')" width="120" style="mix-blend-mode:luminosity;"/> <br />
+              </div>
+            </div>
+            <div v-else>
+              <img :src="require('../assets/badge/' + badge.badgeImage + '.png')" width="120" /> <br />
+            </div>
             <h4>{{ badge.acquisitionDate ? badge.acquisitionDate : "미획득" }}</h4>
             <span>
               획득방법: <br />
