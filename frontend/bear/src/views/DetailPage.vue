@@ -3,12 +3,10 @@
     <div class="header">상세페이지</div>
     <el-carousel :interval="0" indicator-position="outside" height="140vw">
       <el-carousel-item id="beer-detail">
-
         <!-- beer img -->
         <div id="detail-beerimg-box">
           <img id="detail-beerimg" :src="beerImage"/>
         </div>
-
         <!-- beer info -->
         <div id="bookmark-beername">
           <h3>{{ beerData.beerName }}</h3>
@@ -18,8 +16,6 @@
         </div>
         <el-rate id="detail-rate" v-model="beerData.beerAvg" allow-half disabled show-template="{beerData.beerAvg}"></el-rate>
         <p>{{ countryName }}/{{ beerData.beerCategory }}/{{ beerData.alcoholProof }}</p>
-
-        <div></div>
       </el-carousel-item>
 
       <el-carousel-item class="beer-snack" style="magrin: 0px auto">
@@ -145,9 +141,8 @@ p {
   height: 90vw; 
   width: 100vw; 
 
+  align-self: stretch;
   text-align: -webkit-center; 
-  /* align-self: center;  */
-
   margin-bottom: 3%;
 }
 #detail-beerimg-box img{

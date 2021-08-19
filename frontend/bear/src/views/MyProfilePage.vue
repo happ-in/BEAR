@@ -97,7 +97,7 @@
             <template #dropdown>
               <el-dropdown-menu>
                 <el-dropdown-item @click="sendLink(review.beer.beerId, review.beer.beerName, 'https://i5a403.p.ssafy.io'+require('../assets/beers/' + review.beer.beerImage + '.png'),review.hashTags)">공유</el-dropdown-item>
-                <el-dropdown-item>삭제</el-dropdown-item>
+                <el-dropdown-item @click="deletereview(review.reviewId)">삭제</el-dropdown-item>
               </el-dropdown-menu>
             </template>
           </el-dropdown>
@@ -175,6 +175,7 @@ export default {
         followerCount: "",
       },
       reviews: {
+        reviewId:"",
         beerName: "",
         beerImage: "",
         countryImg: "",
@@ -252,6 +253,10 @@ export default {
     },
     async cancelLike(data) {
       await this.$api("review/like", "delete", data);
+    },
+    async deletereview(data) {
+      console.log(data);
+      await this.$api("review", 'delete', data);
     },
     async sendLink(id,title, image, hashtaglist) {
       let hashtags = ""
