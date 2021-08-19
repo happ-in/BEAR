@@ -44,6 +44,7 @@ export default {
         all: "전체",
         lager: "라거",
         ale: "에일",
+        wheat: "밀맥주",
         stout: "스타우트",
         rtd: "라들러/RTD",
       },

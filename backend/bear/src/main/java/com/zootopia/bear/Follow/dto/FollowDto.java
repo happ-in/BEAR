@@ -11,4 +11,5 @@ public class FollowDto {
 	private long userId;
 	private String nickname;
 	private String userImage;
+	private String customId;
 }

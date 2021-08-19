@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="header">상세페이지</div>
-    <el-carousel :interval="0" indicator-position="outside" height="130vw">
+    <el-carousel :interval="0" indicator-position="outside" height="140vw">
       <el-carousel-item id="beer-detail">
         <div id="detail-beerimg-box" style="height: 90vw; width: 100vw; text-align-last: center; align-self: center; margin-bottom: 3%">
           <div class="chart-area">
@@ -40,7 +40,7 @@
             </div>
           </div>
           <div id="snack-card-2">
-            <div v-for="(snack, index) in snackData.snacks" v-bind:key="index" style="padding: 0 2% 0 2%">
+            <div v-for="(snack, index) in snackData.snacks" v-bind:key="index" style="padding-right: 7%">
               <div v-if="index > 0">
                 <p>{{ snack.snackName }}</p>
                 <img id="snack-img" :src="require('../assets/snacks/' + snack.snackImage + '.png')" alt="" />
@@ -116,6 +116,12 @@ export default {
 </script>
 
 <style>
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400&display=swap");
 #bookmark-beername {
   display: flex;
@@ -124,6 +130,9 @@ export default {
 }
 h1 {
   font-family: "Noto Sans KR", sans-serif;
+}
+p {
+  font-family:'GmarketSansMedium';
 }
 #beer-detail {
   height: 120vw;
@@ -170,7 +179,7 @@ h1 {
   margin-left: 3%;
 }
 #snack-card-lists {
-  height: 95vw;
+  height: 110vw;
   border-radius: 5%;
   background-color: #f5df4d;
 
@@ -180,10 +189,13 @@ h1 {
 #snack-card-1 {
   display: flex;
   justify-content: center;
+  padding-top: 3%;
 }
 #snack-card-2 {
   display: flex;
   justify-content: center;
+
+  padding: 0 3% 0 3%
 }
 #snack-img {
   display: flex;
@@ -197,8 +209,8 @@ h1 {
   display: flex;
   justify-content: center;
 
-  font-family: "Noto Sans KR", sans-serif;
-  font-weight: bloder;
+  /* font-family: "Noto Sans KR", sans-serif; */
+  font-weight: blod;
 
   margin: 5% 0 1% 0;
 }

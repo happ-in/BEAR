@@ -41,7 +41,7 @@
   </div>
 
   <!-- 북마크 -->
-  <div v-if="this.select == 'bookmark'" style="width: 100%">
+  <div class="bookmark-list" v-if="this.select == 'bookmark'" style="width: 100%">
     <div class="bookmark-item" v-for="(bookmark, index) in bookmarks" :key="index" @click="goToDetail(bookmark.beerId)">
       <button class="bookmark-btn">
         <img :src="bookmarkImage" alt="" />
@@ -51,7 +51,7 @@
   </div>
 
   <!-- 리뷰 -->
-  <div v-if="this.select == 'review'">
+  <div class="review-list" v-if="this.select == 'review'">
     <el-card v-for="(review, index) in reviews" :key="index">
       <!-- 맥주이미지 -->
       <el-row>
@@ -95,7 +95,7 @@
   </div>
 
   <!-- 뱃지 -->
-  <div v-if="this.select == 'badge'">
+  <div class="badge-list" v-if="this.select == 'badge'">
     <el-row v-for="(badge, index) in badge" :key="index">
       <el-col :span="8" style="text-align: center">
         <img src="../assets/logo.png" width="120" /> <br />
@@ -275,6 +275,15 @@ export default {
   font-weight: bold;
   color: #fff;
   text-shadow: -1px 0 #939597, 0 1px black, 1px 0 #939597, 0 -1px #939597;
+}
+.bookmark-list {
+  padding-bottom: 20vw;
+}
+.review-list {
+  padding-bottom: 20vw;
+}
+.badge-list {
+  padding-bottom: 20vw;
 }
 .profile-user-wrapper {
   padding-top: 12px;
