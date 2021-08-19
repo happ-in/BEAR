@@ -78,10 +78,6 @@ export default {
   background-color: #f5df4d;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-
-.ar_button img {
-  box-shadow: 0px 4px 4px grey;
-}
 .tabbar {
   position: fixed;
   left: 0;
