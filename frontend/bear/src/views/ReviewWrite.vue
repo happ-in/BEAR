@@ -6,10 +6,11 @@
         <div class="header">리뷰</div>
       </el-col>
       <el-col :span="6">
-        <el-button round style="padding: 8px 16px; float: right">등록</el-button>
+        <el-button round style="padding: 8px 16px; float: right" @click="regist">등록</el-button>
       </el-col>
     </el-row>
-    <el-card class="box-card">
+
+    <el-card class="box-card" style="margin-top: 2%; padding-bottom: 2%">
       <div style="display: flex">
         <span style="font-size: larger; font-weight: bold">'{{ beer.beerName }}'</span>
         <span style="align-self: flex-end">어떠셨나요?</span>
@@ -22,7 +23,7 @@
 
       <div style="margin-top: 20px">
         <div v-for="(hashTag, index) in beer.hashTags" :key="index" class="checkbox-wrapper">
-          <input type="checkbox" ref="tags" v-model="tagNames" :id="hashTag.hashTagName" :value="hashTag.hashTagName" />
+          <input type="checkbox" ref="tags" v-model="selectedTags" :id="hashTag.hashTagName" :value="hashTag.hashTagName" />
           <div>
             <span style="padding: 5px"> #{{ hashTag.hashTagName }} </span>
           </div>
@@ -30,13 +31,28 @@
       </div>
     </el-card>
 
-    <el-row style="margin: 3px">
-      <el-col :span="20"><el-input placeholder="직접 입력" v-model="keyword" class="input-with-select" /></el-col>
-      <el-col :span="4"><el-button icon="el-icon-search"></el-button></el-col>
+    <el-row>
+      <el-col :span="20">
+        <el-input placeholder="직접 입력" v-model="keyword" class="input-with-select" @keyup.enter="addTag(this.keyword)"
+      /></el-col>
+
+      <el-col :span="4">
+        <el-button style="width: 100%" icon="el-icon-search"></el-button>
+      </el-col>
     </el-row>
 
-    <div class="tag-name" v-for="(tagName, index) in tagNames" :key="index">
-      <el-button @click="cancel(index)">#{{ tagName }}</el-button>
+    <div class="review-select-box">
+      <el-scrollbar max-height="200px" v-show="isShow">
+        <p class="item" v-for="(hashTag, index) in hashTags" :key="index" @click="addTag(hashTag.hashTagName)">
+          #{{ hashTag.hashTagName }}
+        </p>
+      </el-scrollbar>
+    </div>
+
+    <div style="margin-top: 3%">
+      <div class="checkbox-wrapper" v-for="(tagName, index) in selectedTags" :key="index">
+        <el-button @click="selectedTags.splice(index, 1)">#{{ tagName }}</el-button>
+      </div>
     </div>
   </div>
 </template>
@@ -47,43 +63,87 @@ export default {
   data() {
     //html과 자바스크립트 코드에서 사용할 데이터 변수 선언
     return {
-      beer: {
-        beerName: "시메이 화이트 트리펠",
-        beerImage: "https://assets.business.veluga.kr/media/public/Chimay_Chimay_TripelCinq_Cents_4SYlnWG.png",
-        countryImg: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Flag_of_Belgium.svg/240px-Flag_of_Belgium.svg.png",
-        hashTags: [{ hashTagName: "트라피스트" }, { hashTagName: "명품" }, { hashTagName: "과일향" }, { hashTagName: "향신료" }],
-        totalLike: 10,
-        isLike: false,
-      },
+      beer: [],
       rating: null,
       hashTags: [],
-      tagNames: [],
+      selectedTags: [],
+      searchTags: [],
       keyword: "",
+      isShow: false,
+      beerId: "",
     };
   },
   setup() {}, //컴포지션 API
-  created() {}, //컴포넌트가 생성되면 실행
+  created() {
+    this.getHashTags();
+  }, //컴포넌트가 생성되면 실행
   mounted() {
-    const beerId = this.$route.query.beerId;
+    this.beerId = this.$route.query.beerId;
     this.getBeerData(beerId);
   }, //template에 정의된 html코드가 레너링된 후 실행
   unmounted() {}, //unmount가 완료된 후 실행
   methods: {
-    cancel(index) {
-      this.beer.hashTags.forEach((element) => {
-        if (element.hashTagName == this.tagNames[index]) {
-          this.tagNames.pop(this.tagNames[index]);
-        }
-      });
-    },
     async getBeerData(id) {
       this.beer = await this.$api("beer?beerId=" + id, "get"); //test API
-      console.log(this.beerData);
+    },
+    async getHashTags() {
+      this.hashTags = await this.$api("search/hashtag?keyword=" + this.keyword, "get");
+    },
+    addTag(name) {
+      let flag = false;
+
+      for (let i = 0; i < this.selectedTags.length; i++) {
+        if (this.selectedTags[i] == name) {
+          flag = true;
+          break;
+        }
+      }
+      if (!flag) this.selectedTags.push(name);
+    },
+    async regist() {
+      let reviewHashTags = [];
+      this.selectedTags.forEach((element) => {
+        reviewHashTags.push({ hashTagName: element });
+      });
+
+      let review = {
+        userId: sessionStorage.getItem("userId"),
+        beerId: this.beerId,
+        rating: this.rating,
+        hashTags: reviewHashTags,
+      };
+
+      await this.$api("review", "post", review);
+      this.$router.push("/feed");
+    },
+  },
+  watch: {
+    keyword() {
+      if (this.keyword == "") this.isShow = false;
+      else {
+        this.isShow = true;
+        this.getHashTags();
+      }
     },
   },
 };
 </script>
 <style>
+.selected-tag-name {
+  margin-right: 1%;
+}
+.review-select-box {
+  box-shadow: 1px 4px 5px 1px #d3d3d3;
+  padding-left: 3%;
+  margin: 1%;
+}
+.el-dropdown-link {
+  cursor: pointer;
+  color: #409eff;
+}
+.el-icon-arrow-down {
+  font-size: 12px;
+}
 input[type="checkbox"] {
   position: absolute;
   top: 0;
