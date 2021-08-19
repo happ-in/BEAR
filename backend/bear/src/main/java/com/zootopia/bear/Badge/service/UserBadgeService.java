@@ -51,7 +51,7 @@ public class UserBadgeService {
         if(userBadgeId.isPresent()) {
             return;
         }
-        if(!reviewRepository.findByBeerId(beerId).isPresent()) {
+        if(!(reviewRepository.findByBeerId(beerId).isPresent())) {
             UserBadge userBadge = new UserBadge(
                     checkUserBadgeId,
                     LocalDateTime.now(),
