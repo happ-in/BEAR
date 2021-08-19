@@ -434,7 +434,6 @@ export default {
         this.$refs.guide.style["z-index"] = 500;
         console.log(e.trace.entity.substr(81, 4));
         this.getBeerData(e.trace.entity.substr(81, 4));
-        console.log(this.beerData);
       });
       this.$refs.guide.style.visibility = "visible";
       this.$refs.guide.style["z-index"] = 500;

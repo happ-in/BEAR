@@ -77,7 +77,7 @@
         </el-col>
 
         <!-- 하트 -->
-        <el-col :span="3">
+        <el-col :span="3" style="display:flex; flex-direction: column;justify-content:space-between; ">
           <div class="heart-wrapper">
             <div class="heart-image">
               <img :src="review.like ? heartYes : heartNo" />
@@ -88,26 +88,28 @@
               </button>
             </div>
           </div>
-        </el-col>
-      </el-row>
 
-      <!-- 드롭다운 -->
-      <el-dropdown class="dropdow">
-        <span class="el-dropdown-link">
-          <el-svg-icon><more /></el-svg-icon>
-      <i class="el-icon-arrow-down el-icon--right"></i>
-        </span>
-        <template #dropdown>
-          <el-dropdown-menu>
-            <el-dropdown-item @click="sendLink(review.beer.beerId, review.beer.beerName, 'https://i5a403.p.ssafy.io'+require('../assets/beers/' + review.beer.beerImage + '.png'),review.hashTags)">공유</el-dropdown-item>
-            <el-dropdown-item>삭제</el-dropdown-item>
-          </el-dropdown-menu>
-        </template>
-      </el-dropdown>
+            <!-- 드롭다운 -->
+          <el-dropdown class="dropdown">
+            <span class="el-dropdown-link">
+              <more style="width: 20px; height: 20px; margin-left: 8px; color: #939597;"/>
+
+              <!-- <el-svg-icon colot="#939597" size="20"><more /></el-svg-icon> -->
+              <!-- <i class="el-icon-arrow-down el-icon--right"></i> -->
+            </span>
+            <template #dropdown>
+              <el-dropdown-menu>
+                <el-dropdown-item @click="sendLink(review.beer.beerId, review.beer.beerName, 'https://i5a403.p.ssafy.io'+require('../assets/beers/' + review.beer.beerImage + '.png'),review.hashTags)">공유</el-dropdown-item>
+                <el-dropdown-item>삭제</el-dropdown-item>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
+        </el-col>
+
+        
+      </el-row>
     </el-card>
   </div>
-
-  
 
   <!-- 뱃지 -->
   <div class="badge-list" v-if="this.select == 'badgeItem'">
@@ -132,10 +134,12 @@
   </div>
 </template>
 <script>
-
+import { More } from '@element-plus/icons'
 export default {
   name: "UserFollow", //컴포넌트 이름
-  components: {},
+  components: {
+    [More.name]: More,
+  },
   data() {
     //html과 자바스크립트 코드에서 사용할 데이터 변수 선언
     return {
