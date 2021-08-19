@@ -76,9 +76,11 @@ export default {
   setup() {}, //컴포지션 API
   created() {
     this.beerId = this.$route.query.beerId;
+    console.log(this.beerId);
   }, //컴포넌트가 생성되면 실행
   mounted() {
     this.getBeerData(beerId);
+    console.log(this.beer);
   }, //template에 정의된 html코드가 레너링된 후 실행
   unmounted() {}, //unmount가 완료된 후 실행
   methods: {

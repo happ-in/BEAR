@@ -450,7 +450,7 @@ export default {
     },
     goProfile() {
       // this.$router.push('/profile');
-      window.open("profile");
+      window.open("myprofile");
     },
     goSearch() {
       window.open("search");
