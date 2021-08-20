@@ -20,7 +20,6 @@ import javax.servlet.http.HttpSession;
 public class UserController {
 
 	private final UserService userService;
-	private final SearchService searchService;
 	private final UserBadgeService userBadgeService;
 
 	@GetMapping(value = "/logout")
@@ -54,6 +53,4 @@ public class UserController {
 		userBadgeService.addExpertBadge(userId);
 		return new ResponseEntity<>(true, HttpStatus.OK);
 	}
-
-
 }

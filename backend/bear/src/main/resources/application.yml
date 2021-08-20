@@ -4,7 +4,3 @@ spring:
     driver-class-name: org.mariadb.jdbc.Driver
     username: zootopia
     password: zoo2021!
-
-  jpa:
-    open-in-view: false
-    show-sql: true
