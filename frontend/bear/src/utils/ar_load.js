@@ -406,7 +406,6 @@ export default {
         this.$refs.guide.style.visibility = "hidden";
         this.$refs.guide.style["z-index"] = 0;
         this.getBeerData(e.trace.entity.substr(81, 4));
-        console.log(this.beerData);
         setTimeout(() => {
           this.$refs.title.innerHTML = " " + this.beerData.beerName + "";
           this.$refs.rate.innerHTML = " " + (this.beerData.beerAvg).toFixed(1) + "";
@@ -422,8 +421,6 @@ export default {
           else if (Math.floor(this.beerData.beerAvg) == 2) { this.$refs.star.innerHTML = "★★☆☆☆"; }
           else if (Math.floor(this.beerData.beerAvg) == 1) { this.$refs.star.innerHTML = "★☆☆☆☆"; }
           else{this.$refs.star.innerHTML = "☆☆☆☆☆"; }
-          
-          // this.$refs.flag.innerHTML = this.beerData.hashTags.length;
           
           if (this.beerData.hashTags.length == 0) {this.$refs.hash1.innerHTML = " ";}
           else{this.$refs.hash1.innerHTML = " #" + this.beerData.hashTags[0].hashTagName + "";}    
@@ -441,12 +438,10 @@ export default {
         this.$refs.btn3.style.visibility = "hidden";
         this.$refs.btn4.style.visibility = "hidden";
         this.$refs.guide.style["z-index"] = 500;
-        console.log(e.trace.entity.substr(81, 4));
-        //this.getBeerData(e.trace.entity.substr(81, 4));
+
       });
       this.$refs.guide.style.visibility = "visible";
       this.$refs.guide.style["z-index"] = 500;
-      //this.$refs.btn_div.style.visibility = "visible";
     });
     letsee.init();
   }, //컴포넌트가 생성되면 실행
@@ -454,23 +449,19 @@ export default {
   unmounted() {}, //unmount가 완료된 후 실행
   methods: {
     recommendFood() {
-      // this.$router.push('/');
       window.open("detail/" + this.beerData.beerId + "");
     },
     goProfile() {
-      // this.$router.push('/profile');
       window.open("myprofile");
     },
     goSearch() {
       window.open("search");
     },
     goReview() {
-      // window.open("beer/search");
       window.open("review/write?beerId=" + this.beerData.beerId);
     },
     async getBeerData(id) {
       this.beerData = await this.$api("beer/ar?searchId=" + id, "get"); //test API
-      console.log(this.beerData);
     },
   }, //컴포넌트 내에서 사용할 메소드 정의
 };
