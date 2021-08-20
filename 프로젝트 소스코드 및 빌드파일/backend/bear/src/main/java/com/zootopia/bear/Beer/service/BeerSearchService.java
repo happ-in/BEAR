@@ -1,5 +1,6 @@
 package com.zootopia.bear.Beer.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -24,14 +25,14 @@ public class BeerSearchService {
 
 	public BeerHashTagDto beerSearch(int beerId) {
 		Beer beer = beerRepository.findById(beerId);
-		double beerAvg = reviewRepository.beerAvg(beerId);
+		double beerAvg = reviewRepository.beerAvg(beerId).orElse(0.0);
 		List<HashTagTotalDto> hashTagTotalDtos = hashTagRepository.searchHashTagToTal(beerId);
 		return new BeerHashTagDto(beer, beerAvg, hashTagTotalDtos);
 	}
 
 	public BeerHashTagDto beerSearch(String searchId) {
 		Beer beer = beerRepository.findBySearchId(searchId);
-		double beerAvg = reviewRepository.beerAvg(beer.getBeerId());
+		double beerAvg = reviewRepository.beerAvg(beer.getBeerId()).orElse(0.0);
 		List<HashTagTotalDto> hashTagTotalDtos = hashTagRepository.searchHashTagToTal(beer.getBeerId());
 		return new BeerHashTagDto(beer, beerAvg, hashTagTotalDtos);
 	}

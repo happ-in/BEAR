@@ -7,11 +7,11 @@
         <!-- beer img -->
         <div class="detail-beerimg-box">
           <div id="detail-hashtags">
-            <div  v-for="(hashtag, index) in beerData.hashTags" :key="index">
+            <div v-for="(hashtag, index) in beerData.hashTags" :key="index">
               <span># {{ hashtag.hashTagName }}&nbsp;</span>
             </div>
           </div>
-          <img id="detail-beerimg" :src="beerImage"/>
+          <img id="detail-beerimg" :src="beerImage" />
         </div>
         <!-- beer info -->
         <div id="bookmark-beername">
@@ -29,7 +29,7 @@
         <div id="snack-sentence">
           <p>
             <span style="font-size: 16px; font-weight: bold">{{ beerData.beerName }} </span>
-            <span style="font-size: 14px">와/과 잘 어울리는 안주는</span><br/>
+            <span style="font-size: 14px">와/과 잘 어울리는 안주는</span><br />
             <span style="font-size: 35px; font-weight: bold; color: #f5df4d">{{ snackData.snackCategory }} 안주</span>
             <span style="font-size: 14px">입니다</span>
           </p>
@@ -81,6 +81,7 @@ export default {
   methods: {
     async getBeerData() {
       this.beerData = await this.$api("beer?beerId=" + this.$route.params.beerId, "get");
+      console.log(this.beerData);
     },
     async getSnackData() {
       this.snackData = await this.$api("snack?beerCategory=" + this.beerData.beerCategory, "get");
@@ -115,16 +116,16 @@ export default {
 
 <style>
 @font-face {
-    font-family: '양진체';
-    src: url('https://cdn.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "양진체";
+  src: url("https://cdn.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "GmarketSansMedium";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400&display=swap");
 #bookmark-beername {
@@ -136,7 +137,7 @@ h1 {
   font-family: "Noto Sans KR", sans-serif;
 }
 p {
-  font-family:'GmarketSansMedium';
+  font-family: "GmarketSansMedium";
 }
 #beer-detail {
   height: 120vw;
@@ -147,9 +148,9 @@ p {
 }
 .detail-beerimg-box {
   position: relative;
-  height: 105vw; 
-  width: 90%; 
-  
+  height: 105vw;
+  width: 90%;
+
   align-self: center;
   display: flex;
   justify-content: center;
@@ -163,9 +164,9 @@ p {
   flex-flow: wrap;
   place-content: center;
 
-  font-family: '양진체';
+  font-family: "양진체";
   font-size: 20px;
-  color:#f5df4d;
+  color: #f5df4d;
 }
 #detail-beerimg {
   position: absolute;
@@ -205,11 +206,10 @@ p {
 
 #snack-sentence {
   padding-left: 3%;
-  
 }
 #snack-sentence p {
-  margin: 2% ;
-  font-family: 'GmarketSansMedium';
+  margin: 2%;
+  font-family: "GmarketSansMedium";
 }
 
 #snack-card-lists {
