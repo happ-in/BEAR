@@ -1,6 +1,6 @@
 <template>
+<div>
   <div class="header">{{ user.customId }}</div>
-
   <!-- 프로필 -->
   <el-row class="profile-user-wrapper">
     <el-col :span="8">
@@ -54,7 +54,7 @@
     <el-card v-for="(review, index) in reviews" :key="index">
       <!-- 맥주이미지 -->
       <el-row>
-        <el-col :span="7">
+        <el-col :span="7" style="text-align: center; padding-right: 6%;">
           <img :src="require('../assets/beers/' + review.beer.beerImage + '.png')" class="grid-content bg-purple" style="height: 120px" />
         </el-col>
 
@@ -77,7 +77,7 @@
         </el-col>
 
         <!-- 하트 -->
-        <el-col :span="3" style="display:flex; flex-direction: column;justify-content:space-between; ">
+        <el-col :span="3" style="display: flex; flex-direction: column; justify-content: space-between">
           <div class="heart-wrapper">
             <div class="heart-image">
               <img :src="review.like ? heartYes : heartNo" />
@@ -89,15 +89,22 @@
             </div>
           </div>
 
-            <!-- 드롭다운 -->
+          <!-- 드롭다운 -->
           <el-dropdown class="dropdown">
             <span class="el-dropdown-link">
-              <more style="width: 20px; height: 20px; margin-left: 8px; color: #939597;"/>
+              <more style="width: 20px; height: 20px; margin-left: 8px; color: #939597" />
             </span>
             <template #dropdown>
               <el-dropdown-menu>
-                <el-dropdown-item @click="sendLink(review.beer.beerId, review.beer.beerName, 'https://i5a403.p.ssafy.io'+require('../assets/beers/' + review.beer.beerImage + '.png'),review.hashTags)">공유</el-dropdown-item>
-                <el-dropdown-item>삭제</el-dropdown-item>
+                <el-dropdown-item
+                  @click="
+                    sendLink(
+                      review.beer.beerId,
+                      review.beer.beerName,
+                      'https://i5a403.p.ssafy.io' + require('../assets/beers/' + review.beer.beerImage + '.png'),
+                      review.hashTags
+                    )">공유</el-dropdown-item>
+                <el-dropdown-item @click="deletereview(review.reviewId)">삭제</el-dropdown-item>
               </el-dropdown-menu>
             </template>
           </el-dropdown>
@@ -109,32 +116,31 @@
   <!-- 뱃지 -->
   <div class="badge-list" v-if="this.select == 'badgeItem'">
     <el-row>
-      <el-col :span="12" style="text-align: center" v-for="(badge, index) in badges" :key="index">
-        <el-button type="text" @click="centerDialogVisible[index] = true" style="color:black;">
+      <el-col :span="12" style="text-align: -webkit-center;" v-for="(badge, index) in badges" :key="index">
+        <el-button class="badge-button" type="text" @click="centerDialogVisible[index] = true" style="color: black;">
           <!-- 뱃지 미획득시 이미지(흑백)-->
-          <div v-if="badge.gain==false" style="text-align:-webkit-center;">
-            <div style="border-radius: 50%; height: 120px; width: 120px; background-color:white; margin:0px;">
-              <img :src="require('../assets/badge/' + badge.badgeImage + '.png')" width="120" style="mix-blend-mode:luminosity;"/> <br />
+          <div v-if="badge.gain == false" style="text-align: -webkit-center;">
+            <div style="border-radius: 50%; height: 120px; width: 120px; background-color: white; margin: 0px">
+              <img :src="require('../assets/badge/' + badge.badgeImage + '.png')" width="120" style="mix-blend-mode: luminosity" />
             </div>
           </div>
           <!-- 뱃지 획득시 이미지(컬러)-->
           <div v-else>
-            <img :src="require('../assets/badge/' + badge.badgeImage + '.png')" width="120" /> <br />
+            <img :src="require('../assets/badge/' + badge.badgeImage + '.png')" width="120" />
           </div>
-          <p>{{ badge.title }}</p> 
+          <p>{{ badge.title }}</p>
         </el-button>
+
         <!-- 뱃지모달 -->
-        <el-dialog title="뱃지 타이틀" v-model="centerDialogVisible[index]" width="70%" center>
-          <!-- 뱃지이미지 -->
-          <div style="text-align: center">
-            <div v-if="badge.gain==false" style="text-align:-webkit-center;">
-              <div style="border-radius: 50%; height: 120px; width: 120px; background-color:white; margin:0px;">
-                <img :src="require('../assets/badge/' + badge.badgeImage + '.png')" width="120" style="mix-blend-mode:luminosity;"/> <br />
+        <el-dialog title="뱃지" v-model="centerDialogVisible[index]" width="80%" center>
+          <div style="text-align: center; padding:0; margin-bottom:10%">
+            <h2 style="margin-top:0;">{{badge.title}}</h2>
+            <div v-if="badge.gain == false" style="text-align: -webkit-center">
+              <div style="border-radius: 50%; height: 120px; width: 120px; background-color: white; margin: 0px">
+                <img :src="require('../assets/badge/' + badge.badgeImage + '.png')" width="120" style="mix-blend-mode: luminosity" /> <br />
               </div>
             </div>
-            <div v-else>
-              <img :src="require('../assets/badge/' + badge.badgeImage + '.png')" width="120" /> <br />
-            </div>
+            <div v-else><img :src="require('../assets/badge/' + badge.badgeImage + '.png')" width="120" /> <br /></div>
             <h4>{{ badge.acquisitionDate ? badge.acquisitionDate : "미획득" }}</h4>
             <span>
               획득방법: <br />
@@ -147,9 +153,10 @@
       <el-col :span="8"></el-col>
     </el-row>
   </div>
+</div>
 </template>
 <script>
-import { More } from '@element-plus/icons'
+import { More } from "@element-plus/icons";
 export default {
   name: "UserFollow", //컴포넌트 이름
   components: {
@@ -175,6 +182,7 @@ export default {
         followerCount: "",
       },
       reviews: {
+        reviewId: "",
         beerName: "",
         beerImage: "",
         countryImg: "",
@@ -193,16 +201,14 @@ export default {
       badges: [],
     };
   },
-  setup() {}, //컴포지션 API
-  created() {}, //컴포넌트가 생성되면 실행
   mounted() {
     this.userId = sessionStorage.getItem("userId");
     this.getUserData();
     this.getBookmarks();
     this.getReviewBeer();
     this.getBadge();
-  }, //template에 정의된 html코드가 레너링된 후 실행
-  unmounted() {}, //unmount가 완료된 후 실행
+  },
+  unmounted() {},
   methods: {
     isLikeFeed(index) {
       let now = this.reviews[index];
@@ -212,8 +218,6 @@ export default {
         userId: sessionStorage.getItem("userId"),
         reviewId: now.reviewId,
       };
-
-      console.log(data);
       if (now.like) {
         now.totalLike += 1;
         this.addLike(data);
@@ -245,7 +249,6 @@ export default {
     },
     async getBadge() {
       this.badges = await this.$api("search/badge?userId=" + this.userId, "get");
-      console.log(this.badges);
     },
     async addLike(data) {
       await this.$api("review/like", "post", data);
@@ -253,37 +256,38 @@ export default {
     async cancelLike(data) {
       await this.$api("review/like", "delete", data);
     },
-    async sendLink(id,title, image, hashtaglist) {
-      let hashtags = ""
-      console.log(hashtaglist)
-      await this.$api("user/share?userId="+ this.userId, "get");
+    async deletereview(data) {
+      await this.$api("review?reviewId=" + data, "delete");
+      this.getReviewBeer();
+    },
+    async sendLink(id, title, image, hashtaglist) {
+      let hashtags = "";
+      await this.$api("user/share?userId=" + this.userId, "get");
       for (var hashtag in hashtaglist) {
-        hashtags += '#' + hashtaglist[hashtag].hashTagName;
-      };
-      console.log(hashtags)
-
+        hashtags += "#" + hashtaglist[hashtag].hashTagName;
+      }
       Kakao.Link.sendDefault({
-        objectType: 'feed',
+        objectType: "feed",
         content: {
           title: title,
           description: hashtags,
           imageUrl: image,
           link: {
-            mobileWebUrl: 'https://i5a403.p.ssafy.io',
-            webUrl: 'https://i5a403.p.ssafy.io',
+            mobileWebUrl: "https://i5a403.p.ssafy.io",
+            webUrl: "https://i5a403.p.ssafy.io",
           },
         },
         buttons: [
           {
-            title: 'bear로 이동하기',
+            title: "bear로 이동하기",
             link: {
-              mobileWebUrl: 'https://i5a403.p.ssafy.io/detail/'+id,
-              webUrl: 'https://i5a403.p.ssafy.io/detail/'+id,
+              mobileWebUrl: "https://i5a403.p.ssafy.io/detail/" + id,
+              webUrl: "https://i5a403.p.ssafy.io/detail/" + id,
             },
           },
         ],
-      })
-    }
+      });
+    },
   },
 };
 </script>
@@ -306,6 +310,7 @@ export default {
   width: 100%;
   object-fit: contain;
 }
+
 .profile-radio-toolbar {
   text-align-last: center;
 }
@@ -330,14 +335,9 @@ export default {
   color: #fff;
   text-shadow: -1px 0 #939597, 0 1px black, 1px 0 #939597, 0 -1px #939597;
 }
-.bookmark-list {
-  padding-bottom: 20vw;
-}
-.review-list {
-  padding-bottom: 20vw;
-}
-.badge-list {
-  padding-bottom: 20vw;
+.badge-button {
+  display: flex;
+  flex-direction: column;
 }
 .profile-user-wrapper {
   padding-top: 12px;
@@ -407,10 +407,26 @@ video {
   box-shadow: 1px 1px 1px rgb(156, 143, 143);
 }
 .el-dropdown-link {
-    cursor: pointer;
-    color: #409EFF;
-  }
-  .el-icon-arrow-down {
-    font-size: 12px;
-  }
+  cursor: pointer;
+  color: #409eff;
+}
+.el-icon-arrow-down {
+  font-size: 12px;
+}
+.el-dialog__header {
+  padding-bottom: 0;
+}
+.el-card__body {
+  padding: 10px;
+}
+/* tabbar padding */
+.bookmark-list {
+  padding-bottom: 20vw;
+}
+.review-list {
+  padding-bottom: 37vw;
+}
+.badge-list {
+  padding-bottom: 20vw;
+}
 </style>

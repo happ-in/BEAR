@@ -1,14 +1,8 @@
 <template>
-  <!-- <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/ar">AR</router-link> |
-    <router-link to="/recomendation">Rcomendation</router-link> |
-    <router-link to="/search">Search</router-link> | -->
-  <div id="app">
-    <router-view></router-view>
-
-    <tab-bar></tab-bar>
-  </div>
+<div id="app">
+  <router-view></router-view>
+  <tab-bar></tab-bar>
+</div>
 </template>
 
 <script>
@@ -33,10 +27,6 @@ export default {
 .notosanskr * {
   font-family: "Noto Sans KR", sans-serif;
 }
-
-/* * {
-  font-family: CookieRun-Regular;
-} */
 .header {
   width: 100%;
   height: 5vh;

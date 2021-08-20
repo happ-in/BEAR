@@ -1,4 +1,5 @@
 <template>
+<div class="follow-wrap">
   <div style="margin: 3%">
     <div class="header">{{ $route.params.header }}</div>
   </div>
@@ -12,6 +13,7 @@
       </div>
     </el-row>
   </div>
+</div>
 </template>
 <script>
 export default {

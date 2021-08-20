@@ -34,23 +34,18 @@
 
 <script>
 export default {
-  name: "profileEdit", //컴포넌트 이름
+  name: "profileEdit",
   components: {},
   data() {
-    //html과 자바스크립트 코드에서 사용할 데이터 변수 선언
     return {
       user: [],
       customId: "",
       nickname: "",
     };
   },
-  setup() {}, //컴포지션 API
   created() {
     this.getUser();
-  }, //컴포넌트가 생성되면 실행
-
-  mounted() {}, //template에 정의된 html코드가 레너링된 후 실행
-  unmounted() {}, //unmount가 완료된 후 실행
+  }, 
   methods: {
     async getUser() {
       this.user = await this.$api("search/userInfo?userId=" + sessionStorage.getItem("userId"), "get");
@@ -71,7 +66,7 @@ export default {
       sessionStorage.clear();
       this.$router.push("/login");
     },
-  }, //컴포넌트 내에서 사용할 메소드 정의
+  },
 };
 </script>
 

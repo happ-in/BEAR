@@ -1,27 +1,21 @@
 <template>
   <div id="ranking-wrapper">
-    <div>
-      <h1 class="header">랭킹</h1>
-    </div>
+    <div><h1 class="header">랭킹</h1></div>
+
     <div class="swiper-container">
       <div class="swiper-wrapper">
 
-        <!-- 스타우트 -->
         <div class="swiper-slide">
           <button class="slide-image" type="submit" name="stout" @click="pushRankCategory($event)">
             <img 
               src="../assets/rankingMain/stout.png" alt="stout" />
           </button>
         </div>
-
-        <!-- 라들러/RTD -->
         <div class="swiper-slide">
           <button class="slide-image" type="submit" name="rtd" @click="pushRankCategory($event)">
             <img src="../assets/rankingMain/rtd.png" alt="rtd"/>
           </button>
         </div>
-
-        <!-- 전체 -->
         <div class="swiper-slide">
           <button class="slide-image" type="submit" name="all" @click="pushRankCategory($event)">
             <img src="../assets/rankingMain/all.png"
@@ -29,22 +23,16 @@
             />
           </button>
         </div>
-
-        <!-- 라거 -->
         <div class="swiper-slide">
           <button class="slide-image" type="submit" name="lager" @click="pushRankCategory($event)">
             <img src="../assets/rankingMain/lager.png" alt="lager"/>
           </button>
         </div>
-
-        <!-- 에일 -->
         <div class="swiper-slide">
           <button class="slide-image" type="submit" name="ale" @click="pushRankCategory($event)">
             <img src="../assets/rankingMain/ale.png" alt="ale" />
           </button>
         </div>
-
-        <!-- 밀맥주 -->
         <div class="swiper-slide">
           <button class="slide-image" type="submit" name="wheat" @click="pushRankCategory($event)">
             <img 
@@ -53,29 +41,17 @@
             />
           </button>
         </div>
-
       </div>
+
       <div class="swiper-pagination"></div>
+
     </div>
   </div>
 </template>
 
 <script>
-// import RankingCategory from "./RankingCategoryPage.vue";
-
 export default {
-  name: "RankingMain", //컴포넌트 이름
-  components: {
-    // RankingCategory,
-  },
-  data() {
-    //html과 자바스크립트 코드에서 사용할 데이터 변수 선언
-    return {
-      sampleData: "",
-    };
-  },
-  setup() {}, //컴포지션 API
-  created() {}, //컴포넌트가 생성되면 실행
+  name: "RankingMain",
   mounted() {
     new Swiper(".swiper-container", {
       slidesPerView: "auto",
@@ -92,8 +68,7 @@ export default {
         clickable: true,
       },
     });
-  }, //template에 정의된 html코드가 레너링된 후 실행
-  unmounted() {}, //unmount가 완료된 후 실행
+  },
   methods: {
     pushRankCategory(event) {
       this.$router.push({
@@ -101,19 +76,11 @@ export default {
         params: { category: event.target.alt },
       });
     },  
-  }, //컴포넌트 내에서 사용할 메소드 정의
+  },
 };
 </script>
 
 <style lang="scss">
-// https://dribbble.com/shots/6763080-Cruise-Tech-Motion-Study
-
-// $breakpoints: (
-//   "sm": 50px,
-//   "md": 108px,
-//   "lg": 1024px,
-// );
-
 $theme-color: #939597;
 
 #ranking-wrapper {
@@ -122,39 +89,23 @@ $theme-color: #939597;
   width: 100%;
   display: flex;
   flex-direction: column;
-  // justify-content: center;
-  // align-items: center;
 }
-
-// title
 #ranking-title {
-  // display: flex;
-  // justify-content: center;
   margin: 10px;
 }
-
-// ==========================================
-// SWIPER
-// ==========================================
-
+// swiper
 .swiper-container {
-  //슬라이드 세로 길이
   height: 600px;
-  //슬라이드 전체 가로 길이
   width: 420px;
-  // padding-bottom: 85px;
   margin-top: 1%;
   padding-top: 12px;
 }
-
 .swiper-wrapper {
-  // enough width to have off screen slides partially visible
   width: 60%;
   height:70%;
   
   will-change: transform;
 }
-
 .swiper-slide {
   width: 100%;
   height: 720px;
@@ -167,21 +118,17 @@ $theme-color: #939597;
       }
     }
 }
-
 .swiper-pagination {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 40px;
-  // margin-top: 30px;
 
-  // chained selector hack to handle very specific overrides
   &#{&} {
     bottom: 0;
   }
 }
-
 .swiper-pagination-bullet {
   background: $theme-color;
   width: 50px;
@@ -193,11 +140,7 @@ $theme-color: #939597;
     margin: 0;
   }
 }
-
-// ==========================================
-// SLIDES
-// ==========================================
-
+// slider
 .slide-image {
   height: 50vh;
   width: 30vh;
@@ -206,7 +149,7 @@ $theme-color: #939597;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  transform: scale3d(1.3, 1.3, 1); // 3d to hardware accelerate
+  transform: scale3d(1.3, 1.3, 1);
   backface-visibility: hidden;
   will-change: transform;
   transition: transform 1400ms ease;
@@ -217,7 +160,6 @@ $theme-color: #939597;
     object-fit: cover;
   }
 }
-
 .slide-content {
   padding: 0 2.2rem;
   display: flex;
@@ -231,7 +173,6 @@ $theme-color: #939597;
     padding-top: 2.8rem;
     flex-grow: 0;
   }
-
   p {
     display: flex;
     line-height: 1.8;
@@ -239,7 +180,6 @@ $theme-color: #939597;
     font-size: 14px;
     flex-grow: 1;
   }
-
   footer {
     display: flex;
     justify-content: space-between;
@@ -248,7 +188,6 @@ $theme-color: #939597;
     font-size: 14px;
     color: #c2c0e0;
   }
-
   a {
     color: $theme-color;
     font-size: 12px;

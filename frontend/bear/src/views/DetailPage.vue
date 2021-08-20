@@ -1,14 +1,18 @@
 <template>
   <div>
     <div class="header">상세페이지</div>
-    <el-carousel :interval="0" indicator-position="outside" height="140vw">
+    <el-carousel :interval="0" indicator-position="outside" height="135vw">
+      <!-- bear-carousel -->
       <el-carousel-item id="beer-detail">
-
         <!-- beer img -->
-        <div id="detail-beerimg-box">
+        <div class="detail-beerimg-box">
+          <div id="detail-hashtags">
+            <div  v-for="(hashtag, index) in beerData.hashTags" :key="index">
+              <span># {{ hashtag.hashTagName }}&nbsp;</span>
+            </div>
+          </div>
           <img id="detail-beerimg" :src="beerImage"/>
         </div>
-
         <!-- beer info -->
         <div id="bookmark-beername">
           <h3>{{ beerData.beerName }}</h3>
@@ -18,20 +22,18 @@
         </div>
         <el-rate id="detail-rate" v-model="beerData.beerAvg" allow-half disabled show-template="{beerData.beerAvg}"></el-rate>
         <p>{{ countryName }}/{{ beerData.beerCategory }}/{{ beerData.alcoholProof }}</p>
-
-        <div></div>
       </el-carousel-item>
 
+      <!-- snack-carousel -->
       <el-carousel-item class="beer-snack" style="magrin: 0px auto">
-        <div class="snack-sentence" style="padding-left: 3%">
-          <p class="snack-sentence">
+        <div id="snack-sentence">
+          <p>
             <span style="font-size: 16px; font-weight: bold">{{ beerData.beerName }} </span>
-            <span style="font-size: 14px">와/과 잘 어울리는 안주는</span><br />
+            <span style="font-size: 14px">와/과 잘 어울리는 안주는</span><br/>
             <span style="font-size: 35px; font-weight: bold; color: #f5df4d">{{ snackData.snackCategory }} 안주</span>
             <span style="font-size: 14px">입니다</span>
           </p>
         </div>
-
         <div id="snack-card-lists">
           <div id="snack-card-1" v-for="(snack, index) in snackData.snacks" v-bind:key="index">
             <div v-if="index === 0">
@@ -55,10 +57,9 @@
 
 <script>
 export default {
-  name: "Detail", //컴포넌트 이름
+  name: "Detail",
   components: {},
   data() {
-    //html과 자바스크립트 코드에서 사용할 데이터 변수 선언
     return {
       beerData: [],
       snackData: [],
@@ -73,13 +74,10 @@ export default {
       },
     };
   },
-  setup() {}, //컴포지션 API
   created() {
     this.getBeerData();
     this.getBookmarkFlag();
-  }, //컴포넌트가 생성되면 실행
-  mounted() {}, //template에 정의된 html코드가 레너링된 후 실행
-  unmounted() {}, //unmount가 완료된 후 실행
+  },
   methods: {
     async getBeerData() {
       this.beerData = await this.$api("beer?beerId=" + this.$route.params.beerId, "get");
@@ -104,7 +102,7 @@ export default {
       if (this.isBookmark) this.addBookmark();
       else this.cancelBookmark();
     },
-  }, //컴포넌트 내에서 사용할 메소드 정의
+  },
   watch: {
     beerData: function () {
       this.beerImage = require("../assets/beers/" + this.beerData.beerImage + ".png");
@@ -116,6 +114,12 @@ export default {
 </script>
 
 <style>
+@font-face {
+    font-family: '양진체';
+    src: url('https://cdn.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 @font-face {
     font-family: 'GmarketSansMedium';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
@@ -141,16 +145,30 @@ p {
   flex-direction: column;
   margin-top: 4%;
 }
-#detail-beerimg-box {
-  height: 90vw; 
-  width: 100vw; 
+.detail-beerimg-box {
+  position: relative;
+  height: 105vw; 
+  width: 90%; 
+  
+  align-self: center;
+  display: flex;
+  justify-content: center;
 
-  text-align: -webkit-center; 
-  /* align-self: center;  */
-
-  margin-bottom: 3%;
+  margin: 3% 0 3% 0;
 }
-#detail-beerimg-box img{
+#detail-hashtags {
+  position: absolute;
+
+  display: flex;
+  flex-flow: wrap;
+  /* place-content: center; */
+
+  font-family: '양진체';
+  font-size: 20px;
+  color:#f5df4d;
+}
+#detail-beerimg {
+  position: absolute;
   padding-top: 5%;
   height: 90%;
 
@@ -185,15 +203,20 @@ p {
   background-color: white;
 }
 
-#snack-sententce {
-  margin-left: 3%;
+#snack-sentence {
+  padding-left: 3%;
+  
 }
+#snack-sentence p {
+  margin: 2% ;
+  font-family: 'GmarketSansMedium';
+}
+
 #snack-card-lists {
   height: 110vw;
   border-radius: 5%;
   background-color: #f5df4d;
 
-  /* display: flex; */
   justify-content: center;
 }
 #snack-card-1 {
@@ -205,7 +228,7 @@ p {
   display: flex;
   justify-content: center;
 
-  padding: 0 3% 0 3%
+  padding: 0 3% 0 3%;
 }
 #snack-img {
   display: flex;
@@ -219,29 +242,11 @@ p {
   display: flex;
   justify-content: center;
 
-  /* font-family: "Noto Sans KR", sans-serif; */
   font-weight: blod;
 
   margin: 5% 0 1% 0;
 }
-
 .el-late {
   height: 100px;
 }
-/* .detail-bearimg-box{
-    position: relative;
-    width: 291px;
-    height: 375px;
-
-    background: #ffffff;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-.detail-beerimg-box img {
-  position: absolute;
-  top: 20px;
-  left: 0;
-  width: 100%;
-  height: 90%;
-  object-fit: contain;
-} */
 </style>

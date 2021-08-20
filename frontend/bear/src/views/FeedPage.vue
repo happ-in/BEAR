@@ -28,14 +28,14 @@
 
         <el-row :gutter="20" class="feed-el-row-body" @click="goToDetail(feed.beer.beerId)">
           <el-col :span="8" style="text-align: center">
-            <img :src="require('../assets/beers/' + feed.beer.beerImage + '.png')" class="grid-content bg-purple" style="height: 120px" />
+            <img :src="require('../assets/beers/' + feed.beer.beerImage + '.png')" class="grid-content bg-purple" style="height: 120px; padding-left: 3%" />
           </el-col>
           <el-col :span="16">
             <span style="display: flex; font-size: large; font-weight: bold">
               {{ feed.beer.beerName }}
               <img
                 :src="require('../assets/flags/' + feed.beer.country.countryName + '.png')"
-                style="width: 20px; height: 20px; align-self: center; padding-left: 4px"
+                style="width: 20px; height: 20px; align-self: center; padding-left: 2%;"
               />
             </span>
             <el-rate v-model="feed.rating" allow-half disabled style="margin-bottom: 5%"></el-rate>
@@ -54,10 +54,9 @@
 
 <script>
 export default {
-  name: "Feed", //컴포넌트 이름
+  name: "Feed", 
   components: {},
   data() {
-    //html과 자바스크립트 코드에서 사용할 데이터 변수 선언
     return {
       feeds: [],
       heartImage: "",
@@ -65,12 +64,10 @@ export default {
       whiteHeart: require("../assets/heart.png"),
     };
   },
-  setup() {}, //컴포지션 API
+  setup() {}, 
   created() {
     this.getFeeds();
-  }, //컴포넌트가 생성되면 실행
-  mounted() {}, //template에 정의된 html코드가 레너링된 후 실행
-  unmounted() {}, //unmount가 완료된 후 실행
+  }, 
   methods: {
     isLikeFeed(index) {
       let now = this.feeds[index];
@@ -104,7 +101,7 @@ export default {
     async cancelLike(data) {
       await this.$api("review/like", "delete", data);
     },
-  }, //컴포넌트 내에서 사용할 메소드 정의
+  },
 };
 </script>
 <style>
@@ -123,9 +120,6 @@ export default {
   padding-left: 1%;
   font-size: large;
   font-weight: bold;
-}
-span {
-  display: flex;
 }
 .heart-button {
   text-decoration: none;
