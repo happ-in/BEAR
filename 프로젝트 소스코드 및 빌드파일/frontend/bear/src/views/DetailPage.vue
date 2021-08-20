@@ -81,7 +81,6 @@ export default {
   methods: {
     async getBeerData() {
       this.beerData = await this.$api("beer?beerId=" + this.$route.params.beerId, "get");
-      console.log(this.beerData);
     },
     async getSnackData() {
       this.snackData = await this.$api("snack?beerCategory=" + this.beerData.beerCategory, "get");
