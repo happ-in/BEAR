@@ -1,24 +1,17 @@
 # BEAR
 
-## 팀원
-
 #### 박상준, [박민광](https://github.com/minkpang), [박혜빈](https://github.com/happ-in), [전예지](https://github.com/yeahaluu)
+### [📺 UCC](https://youtu.be/k9ZZYctwgz0)  
 
+### [🎬 시연영상](https://www.youtube.com/watch?v=mQJGjZQTsCY&t=19s)
 
-
-## 기술스택 및 배포
-
-
-
-![image](https://user-images.githubusercontent.com/36289638/130325226-37864867-01cd-43e8-8708-9a10c76f258e.png)
-
-### ⭐Certbot을 이용하여 HTTPS 배포⭐
-
-### ⭐AR의 경우 오픈소스인 렛시를 사용⭐
+<br/>
 
 
 
 
+
+<br/>
 
 ## 기획배경
 
@@ -28,9 +21,21 @@
 
 
 
-## BEAR 보러가기
+<br/>
 
-### [📺 UCC](https://youtu.be/k9ZZYctwgz0)  
 
-### [🎬 시연영상](https://www.youtube.com/watch?v=mQJGjZQTsCY&t=19s)
+## 기술스택 및 배포
+
+- ⭐Certbot을 이용하여 HTTPS 배포⭐
+
+- ⭐AR의 경우 오픈소스인 렛시를 사용⭐
+
+
+![image](https://user-images.githubusercontent.com/36289638/130325226-37864867-01cd-43e8-8708-9a10c76f258e.png)
+
+
+
+<br/>
+
+
 
