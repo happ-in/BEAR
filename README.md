@@ -41,3 +41,11 @@
 
 ![image](https://user-images.githubusercontent.com/36289638/130327184-011fe1f4-42a0-432b-a0d2-edb31b94e9b7.png)
 
+
+<br/>
+
+### 맡은 부분
+
+- 백엔드
+- 프론트엔드
+- DB
