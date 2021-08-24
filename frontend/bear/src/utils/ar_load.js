@@ -392,7 +392,7 @@ export default {
         });
       this.$refs.btn1.style.visibility = "hidden";
       this.$refs.btn2.style.visibility = "hidden";
-      this.$refs.btn3.style.visibility = "hideen";
+      this.$refs.btn3.style.visibility = "hidden";
       this.$refs.btn4.style.visibility = "hidden";
       setTimeout(() => {
         this.$refs.loading.style.visibility = "hidden";
