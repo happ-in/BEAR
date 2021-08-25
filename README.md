@@ -1,9 +1,19 @@
 # BEAR
 
-#### 박상준, [박민광](https://github.com/minkpang), [박혜빈](https://github.com/happ-in), [전예지](https://github.com/yeahaluu)
+
 ### [📺 UCC](https://youtu.be/k9ZZYctwgz0)  
 
 ### [🎬 시연영상](https://www.youtube.com/watch?v=mQJGjZQTsCY&t=19s)
+
+<br/>
+
+
+### Contributer
+||박상준|[박민광](https://github.com/minkpang)|[박혜빈](https://github.com/happ-in)|[전예지](https://github.com/yeahaluu)|
+|-|-|-|-|-|
+|역할|전체 팀장|FE 팀장|BE 팀장|디자인팀장|
+|제작|카카오 API연동 <br> (로그인, 공유) <br>|AR 오픈소스 렛시 <br> (타겟 인식, 3D 렌더링)|DB 설계 <br> BE <br> FE|Jira <br> FE|
+
 
 <br/>
 
@@ -42,10 +52,4 @@
 ![image](https://user-images.githubusercontent.com/36289638/130327184-011fe1f4-42a0-432b-a0d2-edb31b94e9b7.png)
 
 
-<br/>
 
-### 맡은 부분
-
-- 백엔드
-- 프론트엔드
-- DB
