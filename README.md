@@ -9,10 +9,12 @@
 <br/>
 
 
-### Contributer
+### 팀원
 <a href="https://github.com/happ-in/BEAR/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=happ-in/BEAR" />
 </a>
+
+### 역할
 
 ||[박상준](https://github.com/june11215)|[박민광](https://github.com/minkpang)|[박혜빈](https://github.com/happ-in)|[전예지](https://github.com/yeahaluu)|
 |-|-|-|-|-|
