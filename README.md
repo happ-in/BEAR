@@ -1,5 +1,8 @@
 # BEAR
 
+<a href="https://github.com/happ-in/BEAR/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=happ-in/BEAR" />
+</a>
 
 ### [📺 UCC](https://youtu.be/k9ZZYctwgz0)  
 
@@ -9,6 +12,7 @@
 
 
 ### Contributer
+
 ||박상준|[박민광](https://github.com/minkpang)|[박혜빈](https://github.com/happ-in)|[전예지](https://github.com/yeahaluu)|
 |-|-|-|-|-|
 |역할|전체 팀장|FE 팀장|BE 팀장|디자인팀장|
