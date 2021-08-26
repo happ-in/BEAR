@@ -1,8 +1,6 @@
 # BEAR
 
-<a href="https://github.com/happ-in/BEAR/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=happ-in/BEAR" />
-</a>
+
 
 ### [📺 UCC](https://youtu.be/k9ZZYctwgz0)  
 
@@ -12,8 +10,11 @@
 
 
 ### Contributer
+<a href="https://github.com/happ-in/BEAR/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=happ-in/BEAR" />
+</a>
 
-||박상준|[박민광](https://github.com/minkpang)|[박혜빈](https://github.com/happ-in)|[전예지](https://github.com/yeahaluu)|
+||[박상준](https://github.com/june11215)|[박민광](https://github.com/minkpang)|[박혜빈](https://github.com/happ-in)|[전예지](https://github.com/yeahaluu)|
 |-|-|-|-|-|
 |역할|전체 팀장|FE 팀장|BE 팀장|디자인팀장|
 |제작|카카오 API연동 <br> (로그인, 공유) <br>|AR 오픈소스 렛시 <br> (타겟 인식, 3D 렌더링)|DB 설계 <br> BE <br> FE  <br> AWS E 배포|Jira <br> FE <br> AWS FE 배포|
