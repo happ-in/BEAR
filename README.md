@@ -2,25 +2,31 @@
 
 
 
+### [📄 문서](https://drive.google.com/drive/folders/1nWqjPvvZnD7TtoOIX39ah03JNh4sA0HP)
+
 ### [📺 UCC](https://youtu.be/k9ZZYctwgz0)  
 
 ### [🎬 시연영상](https://www.youtube.com/watch?v=mQJGjZQTsCY&t=19s)
 
+### [🍻 와이어프레임](https://www.figma.com/file/MAbZRQljnkd26LKbzxEy5k/BEAR)
+
+
+
 <br/>
 
 
-### 팀원
+### Zootopia 🦝🦊🐰🦁
 <a href="https://github.com/happ-in/BEAR/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=happ-in/BEAR" />
 </a>
 
-### 역할
+### 
 
 ||[박상준](https://github.com/june11215)|[박민광](https://github.com/minkpang)|[박혜빈](https://github.com/happ-in)|[전예지](https://github.com/yeahaluu)|
 |-|-|-|-|-|
 |역할|전체 팀장|FE 팀장|BE 팀장|디자인팀장|
-|제작|카카오 API연동 <br> (로그인, 공유) <br>|AR 오픈소스 렛시 <br> (타겟 인식, 3D 렌더링)|DB 설계 <br> BE <br> FE  <br> AWS BE 배포|Jira <br> FE <br> AWS FE 배포|
-
+|사진|<img src="https://user-images.githubusercontent.com/36289638/131222987-85622468-2594-445b-8ef9-616b24f38f07.png" style="zoom: 65%"/>|<img src="https://user-images.githubusercontent.com/36289638/131222927-d5bb537c-2666-42c6-bd64-ba579f568adc.png" alt="image" />|![image](https://user-images.githubusercontent.com/36289638/131223029-1fafd140-9fc8-46c8-9692-5fe19235ee7d.png)|<img src="https://user-images.githubusercontent.com/36289638/131222893-370290e9-8530-4538-b6d2-a7e158fde8a9.png" alt="image" style="zoom:50%;" />|
+|제작|카카오 API연동 <br/> (로그인, 공유) <br/>|AR 오픈소스 렛시 <br/> (타겟 인식, 3D 렌더링)|DB 설계 <br/> BE <br/> FE  <br/> AWS BE 배포|Jira <br/> FE <br/> AWS FE 배포|
 
 <br/>
 
@@ -41,11 +47,11 @@
 <br/>
 
 
-## 기술스택 및 배포
+## 🛠 Architecture & 기술스택/배포
 
 - ⭐Certbot을 이용하여 HTTPS 배포⭐
-
 - ⭐AR의 경우 오픈소스인 렛시를 사용⭐
+- 
 
 
 ![image](https://user-images.githubusercontent.com/36289638/130325226-37864867-01cd-43e8-8708-9a10c76f258e.png)
@@ -54,7 +60,9 @@
 
 <br/>
 
-## DB ERD
+
+
+## 🕋 DB ERD
 
 ![image](https://user-images.githubusercontent.com/36289638/130327184-011fe1f4-42a0-432b-a0d2-edb31b94e9b7.png)
 
