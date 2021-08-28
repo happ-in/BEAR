@@ -20,11 +20,9 @@
 
 
 
-----
-
-
-
 <br/>
+
+
 
 ## ✍🏻기획배경
 
@@ -70,15 +68,17 @@
 
 
 
----
+<br/>
 
 
 
-### [📄 Documents](https://drive.google.com/drive/folders/1nWqjPvvZnD7TtoOIX39ah03JNh4sA0HP)
+## 📚 자료
 
-### [🍻 와이어프레임](https://www.figma.com/file/MAbZRQljnkd26LKbzxEy5k/BEAR)
+#### [📄 Documents](https://drive.google.com/drive/folders/1nWqjPvvZnD7TtoOIX39ah03JNh4sA0HP)
 
-### [📺 UCC](https://youtu.be/k9ZZYctwgz0)  
+#### [🍻 와이어프레임](https://www.figma.com/file/MAbZRQljnkd26LKbzxEy5k/BEAR)
 
-### [🎬 시연영상](https://www.youtube.com/watch?v=mQJGjZQTsCY&t=19s)
+#### [📺 UCC](https://youtu.be/k9ZZYctwgz0)  
+
+#### [🎬 시연영상](https://www.youtube.com/watch?v=mQJGjZQTsCY&t=19s)
 
